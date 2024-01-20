@@ -1,110 +1,311 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+# <img src=""  width="40" height="40">  &nbsp;*Add title and icon here*
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+*Add high level summary here*
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+*Add link to deployed project here* [link.]()
 
-## Gitpod Reminders
+![Responsive Mockup Screenshot]() *Add responsive screenshot here*
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Contents
+<a name="contents"></a>
 
-`python3 -m http.server`
+- [UX](#ux)
+  - [Strategy](#strategy)
+    - [Agile Methodology](#agile-methodology)
+    - [User Stories](#user-stories)
+  - [Scope](#scope)
+    - [Essential Content](#essential-content)
+    - [Optional Content](#optional-content)
+  - [Structure](#structure)
+  - [Skeleton](#structure)
+    - [Wireframes](#wireframes)
+  - [Surface(Design)](#surface-design)
+    - [Colour Scheme](#colour-scheme)
+    - [Imagery](#imagery)
+    - [Logo](#logo)
+    - [Typography](#typography)
+- [Features](#features)
+  - [Security Features](#security-features)
+  - [Existing Features](#existing-features)
+  - [Features Left to Implement](#features-left-to-implement)
+- [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
+  - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Deploying to Heroku](#deploying-to-heroku)
+  - [Forking the GitHub Repository](#forking-the-github-repository)
+  - [Making a Local Clone](#making-a-local-clone)
+- [Credits](#credits)
+  - [Content](#content)
+  - [Media](#media)
 
-A blue button should appear to click: _Make Public_,
+## UX
+### Strategy
+The objective of the site is to *ADD*
 
-Another blue button should appear to click: _Open Browser_.
+#### Agile Methodology
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The Agile Project Management approach was used in this project. *ADD* epics were completed each with their own varying number of user stories. The user stories were categorised using MoSCoW prioritisation with Github issue labels of *Must Have*, *Should Have*, *Could Have* and *Won't Have*. Each user story was assigned a timebox value using the [Fibonacci Sequence](https://www.linkedin.com/pulse/why-agile-teams-use-fibonacci-sequence-estimating-corrado-de-sanctis). 
+ Over the course of the project, *ADD* sprints were completed selecting user stories based on a timebox value of no more than 8 per sprint. The epics, user stories and also bugs were all tracked and visualised using the Github Project Kanban board feature, which can be found [here.]() *ADD LINK*
 
-A blue button should appear to click: _Make Public_,
+#### User Stories
 
-Another blue button should appear to click: _Open Browser_.
+As stated, the user stories were collated into *ADD* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *ADD* user stories, with *ADD* Must Have (*ADD*%), *ADD* Should Have(*ADD*%), *ADD* Could Have (*ADD*%) and *ADD* Won't Have (*ADD*%). 
+<br>![user-story-breakdown]()*ADD user story breakdown graph*
+The total number of story points assigned to the user stories is *ADD* of which Must Have assigned *ADD* points(*ADD*%), Should Have assigned *ADD* points(*ADD*%), Could Have assigned *ADD* points(*ADD*%) and Won't Have assigned *ADD* points (*ADD*%).
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<table>
+<tr>
+  <img src="" >*ADD Total Story Point graph*
+</tr>
+<tr>
+<td width=50%>
+  <img src="" > *ADD Must have story point graph*
+</td>
+<td>
+  <img src=""> *ADD Should have story point graph*
 
-To log into the Heroku toolbelt CLI:
+</td>
+</tr>
+<tr>
+<td width=50%>
+  <img src="" > *ADD could have story point graph*
+</td>
+<td>
+  <img src=""> *ADD wont have story point grpah*
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+</td>
+</tr>
+</table>
+The user stories were broken down into tasks and acceptance criteria which can be reviewed by clicking on the linked epics and user stories below.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+1. [*ADD*Epic]()
+    - [*ADD user stories*]()
 
-------
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Scope
+#### Essential Content
+ - *ADD essential content summary*.
 
-**September 20 2023:** Update Python version to 3.9.17.
+#### Optional Content
+- *ADD optional content*.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Structure
+- *ADD database description*.<br><br>
+![database schema]() *ADD database schema image*
+- The front end utilises bootstrap and bespoke styling for a user friendly, designed approach. 
+- *ADD static and image storage solution*.
+### Skeleton
+#### Wireframes
+- The desktop wireframes can be found [here.]()*ADD web wireframes*
+- The mobile and tablet wireframes can be found [here.]()*ADD mobile wireframes*
+### Surface (Design)
+#### Colour Scheme
+- The main theme colour for the site is a shade of *ADD* called *ADD*. <br><br>
+      <p align="center">
+![colour-pallette]()*ADD colour pallette image*
+      </p>
+      <p align="center">
+![colour-hex-codes]() *ADD hex code image*
+      </p>
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+#### Imagery
+- *ADD image descriptions*.<br><br>
+![hero-image]() *ADD images*
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- *ADD icon descriptions*.<br><br>
+<p align="center">
+  <img src=""  width="100" height="100">*ADD icon images*
+</p>
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+#### Logo
+- *ADD logo description*.<br><br>
+![logo-image]()*ADD logo image*
+#### Typography
+- *ADD description of fonts used*.<br><br>
+<a href="#contents">BACK TO CONTENTS 🔼</a>
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+## Features 
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### Security Features
+- There are a number of features utilsed in the app to ensure the security of private information. The following information is contained in the env.py file and Heroku config vars:
+  - *ADD security features eg those below*. 
+  - The database URL and secret key.
+  - Allowed hosts.
+- There are *ADD* user types avialable in the app: *ADD*. The different groups confer different permissiions as described below:
+  - All users can view *ADD*.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### Existing Features
+- __Navbar__
+  - *ADD*.<br><br>
+  ![navbar]()
+- __Footer__
+  - *ADD*.<br><br>
+  ![footer]()<br><br>
+- __Login Page__ 
+  - *ADD*<br><br>
+        <p align="center">
+  ![login]()
+      </p>
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- __Register Page__ 
+  - *ADD*.<br><br>
+  ![login]()
+- __Home Page__ 
+  - *ADD*.<br><br>
+   ![home page]()<br><br>
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- __Logout Page__ 
+  - *ADD*
+          <p align="center">
+      <img src="">
+      </p> 
+- __Alerts__
+  - *ADD*
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Features Left to Implement
+A number of features were considered at the outset of and during the project but were shelved due to time constraints. These are detailed briefly below:
+- *ADD*.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+<a href="#contents">BACK TO CONTENTS 🔼</a>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Technologies Used
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Languages Used *UPDATE*
+- **Python**: used extensively during project utilising the MVT (Model View Template) software design pattern.
+- **Javascript**: Used for front end functionality notably the Google Maps API, conditional formatting.
+- **HTML5**: Used for rendering the DOM.
+- **CSS3**: Used to apply custom styling where bootstrap did not extend to the project design requirements.
+- **Django Template Language**: Used within the DOM to connect with the backend and render data on the page.
+- **Markdown**: Used exclusively for README and TESTING.<br>
 
-------
+### Frameworks, Libraries & Programs Used *UPDATE*
+- **Django**: web framework to enable full stack development of this project.
+- **Heroku**: cloud based platform used for site deployment.
+- **elephantSQL**: cloud based database storage.
+- **Cloudinary**: cloud based storage for images.
+- **Bootstrap**: CSS framework for class based styling directly in the DOM.
+- **dateutil**: used to calculate relative dates.
+- **datetime**: from the standard library, used to perform operations on date and time objects and strings.
+- **os**: from the standard library used to access system method to clear terminal screen at appropriate points whilst the program is running.
+- **gunicorn**: Python HTTP server for WSGI applications.
+- **json**: used to create json of instantiated model date for use in Javascript.
+- **freezegun**: used to set a known date for testing.
+- **jest**: used for testing Javascript.
+- **Google Maps**: Javascript API required for map.
+- **Gitpod** cloud based IDE used for majority of the project.
+- **Git** used for version control.
+- **GitHub** as cloud repository for Git version control.
+- Any other libraries not explicitly mentioned here can be found in the [requirements.txt](requirements.txt) file.
+- **DBeaver** a desktop app which connects with a database and can generate relationship diagrams.
 
-## FAQ about the uptime script
+<br><a href="#contents">BACK TO CONTENTS 🔼</a>
+## Testing 
+Testing information can be found [here.](TESTING.md)
 
-**Why have you added this script?**
+<a href="#contents">BACK TO CONTENTS 🔼</a>
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## Deployment *UPDATE*
 
-**How will this affect me?**
+### Prepare the environment and settings.py file:
+1. In your GitPod workspace, create an env.py file in the main directory.
+2. Add the DATABASE_URL value and your chosen SECRET_KEY value to the env.py file. 
+3. Update the settings.py file to import the env.py file and add the SECRETKEY and DATABASE_URL file paths.
+4. Comment out the default database configuration.
+5. Save files and make migrations.
+6. Add Cloudinary URL to env.py
+7. Add the cloudinary libraries to the list of installed apps.
+8. Add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+9. Link the file to the templates directory in Heroku.
+10. Change the templates directory to TEMPLATES_DIR
+11. Add Heroku to the ALLOWED_HOSTS list.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Create files / directories
+1. Create requirements.txt file
+2. Create three directories in the main directory; media, storage and templates.
+3. Create a file named "Procfile" in the main directory and add the following: web: gunicorn project-name.wsgi
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Deploying to Heroku
+* This site was deployed by completing the following steps:
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+1. Log in to [Heroku](https://id.heroku.com) or create an account.
+2. On the main page click the button labelled New in the top right corner and from the drop-down menu select Create New App.
+3. You must enter a unique app name.
+4. Next select your region.
+5. Click on the Create App button
+6. The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars.
+7. Click Reveal Config Vars and enter the following:
+    - Add ALLOWED_HOSTS into the key box and in the value add in the hosting sites ie Heroku app URL.
+    - Enter CLOUDINARY_URL into the next available Key box and then in the value box add the unique Cloduinary URL.
+    - Enter DATABASE_URL into the next available Key box and then in the value box add the unique Database URL.
+    - Enter DISABLE_COLLECTSTATIC into the next available Key box and then in the value box add 1 if this is to be disabled to prevent errors or 0 if the app is in a state where errors will not be generated.
+    - Enter port into the next available Key box and 8000 into the Value box and click the Add button.
+    - Enter SECRET_KEY into the next available Key box and then whichever secret key was selected into the corresponding Value box.
+8. Next, scroll down to the Buildpack section click Add Buildpack and confirm that Heorku/Python buildpack is present.
+9. Scroll to the top of the page and choose the Deploy tab.
+10. Select Github as the deployment method.
+11. Confirm you want to connect to GitHub.
+12. Search for the repository name and click the connect button.
+13. Scroll to the bottom of the deploy page and select the preferred deployment type.
+14. Click either Enable Automatic Deploys for automatic deployment when you push updates to Github.
 
-**So….?**
+### Forking the GitHub Repository
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps:
 
-**Can I opt out?**
+1. Log in to GitHub and locate the [GitHub Repository.](https://github.com/johnamdickson/portfolio-project-3)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository.](https://github.com/johnamdickson/portfolio-project-3)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
 
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 ```
 
-**Anything more?**
+7. Press Enter. Your local clone will be created.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+> Cloning into `CI-Clone`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+```
 
----
+Click [here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.<br><br>
 
-Happy coding!
+
+<a href="#contents">BACK TO CONTENTS 🔼</a>
+## Credits *UPDATE*
+### Content 
+NOTE: Specific links are included within the Python, Javascript, HTML and CSS  files. The list below summarises content credits in general.
+- Stack Overflow, W3 Docs, Slack, Django docs and other online resources were a massive help for Python, Javascript, HTML or CSS code that enabled some of the functionality I was looking for.
+- This [website](https://www.scaler.com/topics/multiline-comment-in-python/) gave guidance for making multi-line comments where using `“””` is recommended for docstrings and using `#` for comments.
+- Guidance on JS function comments was taken from this [website.](https://courses.cs.washington.edu/courses/cse154/18au/resources/styleguide/commenting.html#:~:text=Function%20Commenting%20Format,a%20value%20of%20%2D1)
+
+### Media
+- The site fonts were source from [Google Fonts.](https://fonts.google.com/)
+- All gifs were generated on [ezgif.com.](https://ezgif.com/video-to-gif)
+- All emission images were sourced from [Pexels.](https://www.pexels.com/)
+- The database schema was created on [drawSQL.](https://drawsql.app/)
+- The Django secret key was created using [Djecrety.](https://djecrety.ir)
+- Markdown tables were generated using this online [tool.](https://jakebathman.github.io/Markdown-Table-Generator/)
+- The colour name was sourced from [Name That Color.](https://chir.ag/projects/name-that-color/)
+- The site colour scheme pallete was generated using the palette creation tool in [Color Hex.](https://www.color-hex.com/) 
+- All icons used on the website were from [Font Awesome](https://fontawesome.com/)
+<br>
+
+<a href="#contents">BACK TO CONTENTS 🔼</a>
