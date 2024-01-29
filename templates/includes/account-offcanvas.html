@@ -1,0 +1,39 @@
+{% load static %}
+
+<h5 class="offcanvas-title" id="offcanvas-menuLabel">Account Menu</h5>
+<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body">
+  
+  {% if request.user.is_authenticated %}
+  {% if request.user.is_superuser %}
+  <div class="row">
+    <div class="col-12">    
+      <a href="">
+        <i class="fa-solid fa-industry fa-2xl mt-3"></i>
+        <p class="mt-2">Product Management</p>
+      </a>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-12">    
+      <a href="">
+        <i class="fa-regular fa-user fa-2xl mt-3"></i>
+        <p class="mt-2">My Profile</p>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">    
+      <a href="{% url 'account_logout' %}">
+        <i class="fa-solid fa-right-from-bracket fa-2xl mt-3"></i>
+        <p class="mt-2">Logout</p>
+      </a>
+    </div>
+  </div>
+{% else %}
+  <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+  <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+{% endif %}
+<div>
