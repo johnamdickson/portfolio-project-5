@@ -10,6 +10,7 @@ body {
     #b8d3d0 65%,
     #81A8A3 100%
   );
+  font-family: 'Quicksand', sans-serif;
     /* background-color: #b8d3d0; */
 }
 
@@ -19,6 +20,11 @@ body {
 
 /* ----------------------------------- Header Styling ----------------------------------- */
 
+header {
+    font-family: 'Bitter', serif;
+    font-weight: 200;
+    letter-spacing: 2.5px;
+}
 .main-logo-link {
     display: flex;
     align-items: center;
@@ -33,12 +39,21 @@ body {
     opacity: 0.7;
 }
 
+.lws-logo-font {
+    font-family: 'Sacramento', cursive;
+    font-size: calc(1.5rem + .9vw);
+}
+
 .nav-link {
     color: #FFFFFF;
 }
 
 .nav-link:hover {
     color: #FFFFFF95;
+}
+
+.nav-link:focus {
+    color: #efc2e5;
 }
 
 .search-bar {
