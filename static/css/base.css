@@ -93,3 +93,41 @@ header .nav-link:focus {
 .search-bar {
     border-radius: 20px !important;
 }
+
+/* ----------------------------------- Home Page Styling ----------------------------------- */
+
+.home-container {
+    height: 600px;
+}
+
+.home-image-main {
+    background: center / cover no-repeat url("/media/crochet-hook.jpg");
+    border-radius: 0 10px 10px 0;
+}
+
+.home-image-1 {
+    background: center / cover no-repeat url("/media/beanies.jpg");
+    border-radius: 20px;
+}
+
+.home-image-2 {
+    background: center / cover no-repeat url("/media/balls-of-yarn.jpg");
+    border-radius: 20px;
+}
+
+.home-image-3 {
+    background: center / cover no-repeat url("/media/teddy-bear-hats.jpg");
+    border-radius: 20px;
+}
+
+.home-image-4 {
+    background: center / cover no-repeat url("/media/heart-hat.jpg");
+    border-radius: 20px;
+}
+
+.image-grid img {
+    height: 300px;
+    max-width: 80%;
+    object-fit: cover;
+    border-radius: 10px;;
+}
