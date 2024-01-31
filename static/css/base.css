@@ -11,13 +11,34 @@ body {
     #81A8A3 100%
   );
   font-family: 'Quicksand', sans-serif;
+  font-weight: 200;
   letter-spacing: 1.5px;
 }
-h1,h2,h3,h4,h5 {
+
+h1,h2,h3,h4,h5,h6 {
     font-family: 'Bitter', serif;
     font-weight: 200;
     letter-spacing: 2.5px;
 }
+
+.search-bar {
+    border: 1px solid #F2BFDC;
+}
+
+.btn-custom {
+    border: 1px solid #4d6562;
+    border-radius: 30px;
+    color: #4d6562;
+    background-color: #f2cbe1;
+}
+
+.btn-custom:hover {
+    border: 1px solid #F2BFDC;
+    border-radius: 20px;
+    color: #f2cbe1;
+    background-color: #4d6562;
+}
+
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 
@@ -107,26 +128,32 @@ header .nav-link:focus {
 .home-image-main {
     background: center / cover no-repeat url("/media/crochet-hook.jpg");
     border-radius: 20px;
+    border: 0.5px solid #F2BFDC;
+}
+
+.home-image-1, .home-image-2, .home-image-3, .home-image-4 {
+    border-radius: 20px;
+    border: 0.5px solid #F2BFDC;
 }
 
 .home-image-1 {
     background: center / cover no-repeat url("/media/beanies.jpg");
-    border-radius: 20px;
 }
 
 .home-image-2 {
     background: center / cover no-repeat url("/media/balls-of-yarn.jpg");
-    border-radius: 20px;
 }
 
 .home-image-3 {
     background: center / cover no-repeat url("/media/teddy-bear-hats.jpg");
-    border-radius: 20px;
 }
 
 .home-image-4 {
     background: center / cover no-repeat url("/media/heart-hat.jpg");
-    border-radius: 20px;
+}
+
+.home-image-flex {
+    align-items: flex-end;
 }
 
 .image-grid img {
@@ -134,4 +161,28 @@ header .nav-link:focus {
     max-width: 80%;
     object-fit: cover;
     border-radius: 10px;;
+}
+
+.home-image-callout {
+    border-radius: 0 20px 0 20px;
+    border-left: 1px solid #F2BFDC;
+    border-bottom: 1px solid #F2BFDC;
+    color: #Fff;
+    background-color: rgba(77, 101, 98, 0.7);
+}
+
+.small-home-callout {
+    border-radius: 20px 0 20px 0;
+    border-left: 1px solid #F2BFDC;
+    border-top: 1px solid #F2BFDC;
+    color: #Fff;
+    background-color: rgba(77, 101, 98, 0.8);
+}
+
+.small-home-callout h6{
+    font-size: 0.9em;;
+}
+
+.small-home-callout button{
+    font-size: 0.75em;;
 }
