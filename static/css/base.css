@@ -191,7 +191,9 @@ header .nav-link:focus {
 
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
+/* transition to medium screens */
 @media (max-width: 992px) {
+
     .home-image-main {
         background-position: top;
     }
@@ -207,5 +209,16 @@ header .nav-link:focus {
 
     .home-container {
         height: 800px;
+    }
+}
+
+/* transition to small screens */
+@media (max-width: 768px) {
+    .home-image-callout h5 {
+        font-size: 0.8rem;
+    }
+
+    .home-image-callout p, .home-image-callout button {
+        font-size: 0.6rem;
     }
 }
