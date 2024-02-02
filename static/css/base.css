@@ -215,10 +215,10 @@ header .nav-link:focus {
 /* transition to small screens */
 @media (max-width: 768px) {
     .home-image-callout h5 {
-        font-size: 0.8rem;
+        font-size: clamp(0.9rem, 4vw, 1.15rem);
     }
 
     .home-image-callout p, .home-image-callout button {
-        font-size: 0.6rem;
+        font-size: clamp(0.55rem, 3vw, 0.75rem);
     }
 }
