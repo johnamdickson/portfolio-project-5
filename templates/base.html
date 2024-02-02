@@ -44,7 +44,7 @@
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
-
+    
     <header class="container-fluid my-3">
       <div class="row">
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
@@ -111,6 +111,19 @@
           </div>
       </div>
   </header>
+
+  {% if request.path != "/" %}
+
+  <div class="row mb-4 nav-container">
+    <nav class="navbar navbar-expand-md navbar-light w-100">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% include 'includes/main-nav.html' %}  
+    </nav>
+</div>
+
+  {% endif %}
 
 
 
