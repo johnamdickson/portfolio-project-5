@@ -47,12 +47,14 @@
     
     <header class="container-fluid my-3">
       <div class="row">
+          <!-- logo -->
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
               <a href="{% url 'home' %}" class="nav-link main-logo-link">
                   <img src="/media/logo-transparent-background.png" alt="" class="lws-logo d-inline me-4">
                   <h2 class="lws-logo-font my-0 d-inline">Little Woolly Snuggles</h2>
               </a>
           </div>
+          <!-- search bar -->
           <div class="col-12 col-md-6 ps-md-4 col-lg-4 my-auto py-1 py-lg-0">
               <form method="GET" action="">
                   <div class="input-group w-100">
@@ -67,21 +69,37 @@
                   </div>
               </form>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 my-auto py-1 py-lg-0">
+          <!-- header for small screens -->
+          <div class="col-12 d-md-none my-auto py-1">
+            {% include 'includes/header-sm-screen.html' %}
+          </div>
+          <!-- header for medium and above -->
+          <div class="d-none d-md-block col-6 col-lg-4 my-auto py-1 py-lg-0">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-4">
-                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-account" role="button" aria-controls="offcanvas-menu-account">
+                <div class="row flex justify-content-evenly">
+                    <div class="col-3 d-md-none">
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-nav" role="button" aria-controls="offcanvas-menu-nav">
+                            <div class="text-center">
+                                <i class="fa-solid fa-bars"></i>
+                                <p class="my-0">Menu</p>
+                            </div>
+                        </a>
+                        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvas-menu-nav" aria-labelledby="offcanvas-navLabel-account">
+                            {% include 'includes/offcanvas/nav-offcanvas.html' %}
+                        </div>
+                    </div>
+                    <div class="col-3 col-md-4">
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-account" role="button" aria-controls="offcanvas-menu-">
                             <div class="text-center">
                                 <i class="fas fa-user fa-lg"></i>
                                 <p class="my-0">Account</p>
                             </div>
                         </a>
                         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-account" aria-labelledby="offcanvas-menuLabel-account">
-                            {% include 'includes/account-offcanvas.html' %}
+                            {% include 'includes/offcanvas/account-offcanvas.html' %}
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3 col-md-4">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-weight-light{% endif %} nav-link" href="">
                             <div class="text-center">
                                 <i class="fas fa-cart-shopping fa-lg"></i>
@@ -95,7 +113,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3 col-md-4">
                         <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-about" role="button" aria-controls="offcanvas-menu-about">
                             <div class="text-center">
                             <i class="fa-solid fa-book-open fa-lg"></i>
@@ -103,7 +121,7 @@
                             </div>
                         </a>
                           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-about" aria-labelledby="offcanvas-menuLabel-about">
-                              {% include 'includes/about-offcanvas.html' %}
+                              {% include 'includes/offcanvas/about-offcanvas.html' %}
                           </div>
                     </div>
                 </div>
@@ -114,7 +132,7 @@
 
   {% if request.path != "/" %}
 
-  <div class="row mb-4 nav-container">
+  <div class="row mb-4 nav-container d-none d-md-block">
     <nav class="navbar navbar-expand-md navbar-light w-100">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

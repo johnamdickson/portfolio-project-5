@@ -1,0 +1,93 @@
+{% load static %}
+<div class="offcanvas-header">
+<h4 class="offcanvas-title" id="offcanvas-menuLabel">Navigation Menu</h4>
+<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<hr>
+<div class="offcanvas-body">
+  <div class="row">
+    <div class="col-12 mt-2">    
+      <a href="">
+        <i class="fa-solid fa-house fa-xl me-4 d-inline"></i>
+        <h5 class="d-inline">Home</h5> 
+      </a>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 mt-3">  
+        <div class="dropdown">
+            <a class="dropdown-toggle dropup" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-store fa-xl me-4 d-inline"></i>
+               <h5 class="d-inline">All Products</h5> 
+            </a>
+          
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              {% include 'includes/menus/all-products.html' %}
+
+            </ul>
+          </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 mt-3">    
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-graduation-cap fa-xl me-4 d-inline"></i>
+                <h5 class="d-inline">Learn to Crochet</h5>
+            </a>
+          
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              {% include 'includes/menus/learn-to-crochet.html' %}
+            </ul>
+          </div>
+    </div>
+  </div>
+  <hr>
+<div class="row">
+  <div class="col-12 mt-3">    
+    <a href="">
+      <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-hat-wizard fa-xl me-4 d-inline"></i>
+          <h5 class="d-inline">Hats</h5>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          {% include 'includes/menus/hats.html' %}
+        </ul>
+      </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12 mt-3">    
+    <a href="{% url 'account_signup' %}">
+      <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-rug fa-xl me-4 d-inline"></i>
+          <h5 class="d-inline">Blankets</h5>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          {% include 'includes/menus/blankets.html' %}
+        </ul>
+      </div>
+  </div>
+</div>
+  <hr>
+  <div class="row">
+    <div class="col-12 mt-3">    
+      <a href="">
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-shuffle fa-xl me-4 d-inline"></i>
+            <h5 class="d-inline">Assorted</h5>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {% include 'includes/menus/assorted.html' %}
+          </ul>
+        </div>
+    </div>
+  </div>
+  <hr>
+</div>

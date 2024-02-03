@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row flex justify-content-evenly">
+        {% if request.path != "/" %}
+        <div class="col-3">
+            <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-nav" role="button" aria-controls="offcanvas-menu-nav">
+                <div class="text-center">
+                    <i class="fa-solid fa-bars"></i>
+                    <p class="my-0">Menu</p>
+                </div>
+            </a>
+            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvas-menu-nav" aria-labelledby="offcanvas-navLabel-account">
+                {% include 'includes/offcanvas/nav-offcanvas.html' %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-3">
+            <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-account-sm" role="button" aria-controls="offcanvas-menu-account-sm">
+                <div class="text-center">
+                    <i class="fas fa-user fa-lg"></i>
+                    <p class="my-0">Account</p>
+                </div>
+            </a>
+            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvas-menu-account-sm" aria-labelledby="offcanvas-menuLabel-account">
+                {% include 'includes/offcanvas/account-offcanvas.html' %}
+            </div>
+        </div>
+        <div class="col-3 col-md">
+            <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-weight-light{% endif %} nav-link" href="">
+                <div class="text-center">
+                    <i class="fas fa-cart-shopping fa-lg"></i>
+                    <p class="my-0">
+                        {% if grand_total %}
+                            €{{ grand_total|floatformat:2 }}
+                        {% else %}
+                            €0.00
+                        {% endif %}
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-3 col-md-4">
+            <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-about-sm" role="button" aria-controls="offcanvas-menu-about-sm">
+                <div class="text-center">
+                <i class="fa-solid fa-book-open fa-lg"></i>
+                <p class="my-0">About</p>
+                </div>
+            </a>
+              <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvas-menu-about-sm" aria-labelledby="offcanvas-menuLabel-about">
+                  {% include 'includes/offcanvas/about-offcanvas.html' %}
+              </div>
+        </div>
+    </div>
+</div>
