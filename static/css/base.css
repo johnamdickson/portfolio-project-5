@@ -135,7 +135,6 @@ header .nav-link:focus {
     border-radius: 20px !important;
 }
 
-
 .nav-container {
     background-color: #fff;
     color: #698a85;
@@ -144,6 +143,10 @@ header .nav-link:focus {
 .navbar-light .navbar-nav .nav-link {
     color: #698a85;
     font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.dropdown-item {
+    color: #698a85;
 }
 /* ----------------------------------- Home Page Styling ----------------------------------- */
 
