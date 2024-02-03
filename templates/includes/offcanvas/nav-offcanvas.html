@@ -7,9 +7,9 @@
 <div class="offcanvas-body">
   <div class="row">
     <div class="col-12 mt-2">    
-      <a href="">
+      <a href="{% url 'home' %}">
         <i class="fa-solid fa-house fa-xl me-4 d-inline"></i>
-        <h5 class="d-inline">Home</h5> 
+        <p class="d-inline">Home</p> 
       </a>
     </div>
   </div>
@@ -19,7 +19,7 @@
         <div class="dropdown">
             <a class="dropdown-toggle dropup" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-store fa-xl me-4 d-inline"></i>
-               <h5 class="d-inline">All Products</h5> 
+               <p class="d-inline">All Products</p> 
             </a>
           
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -35,7 +35,7 @@
         <div class="dropdown">
             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-graduation-cap fa-xl me-4 d-inline"></i>
-                <h5 class="d-inline">Learn to Crochet</h5>
+                <p class="d-inline">Learn to Crochet</p>
             </a>
           
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -51,7 +51,7 @@
       <div class="dropdown">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-hat-wizard fa-xl me-4 d-inline"></i>
-          <h5 class="d-inline">Hats</h5>
+          <p class="d-inline">Hats</p>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {% include 'includes/menus/hats.html' %}
@@ -66,7 +66,7 @@
       <div class="dropdown">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-rug fa-xl me-4 d-inline"></i>
-          <h5 class="d-inline">Blankets</h5>
+          <p class="d-inline">Blankets</p>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {% include 'includes/menus/blankets.html' %}
@@ -81,7 +81,7 @@
         <div class="dropdown">
           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-shuffle fa-xl me-4 d-inline"></i>
-            <h5 class="d-inline">Assorted</h5>
+            <p class="d-inline">Assorted</p>
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             {% include 'includes/menus/assorted.html' %}
