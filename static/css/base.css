@@ -94,6 +94,11 @@ header {
     letter-spacing: 2.5px;
 }
 
+.navbar {
+    border-top: 0.5px solid #F2BFDC;
+    border-bottom: 1px solid #F2BFDC;
+}
+
 .main-logo-link {
     display: flex;
     align-items: center;
