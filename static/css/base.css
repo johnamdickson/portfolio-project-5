@@ -136,6 +136,10 @@ header .nav-link:focus {
     color: #698a85;
 }
 
+.navbar-light .navbar-nav .nav-link {
+    color: #698a85;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+}
 /* ----------------------------------- Home Page Styling ----------------------------------- */
 
 .home-container {
