@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% load i18n %}
+{% block extra_title %}
+{{ block.super }}
+- Welcome
+{% endblock %}
+
 {% block content %}
 
   <div class="container-fluid home-container mt-4 w-100">

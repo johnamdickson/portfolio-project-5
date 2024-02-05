@@ -3,7 +3,14 @@
 {% load i18n %}
 {% load account socialaccount %}
 
+{% load i18n %}
+{% block extra_title %}
+{{ block.super }}
+- Login
+{% endblock %}
+
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
+
 
 {% block content %}
 

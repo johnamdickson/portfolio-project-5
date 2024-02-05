@@ -2,6 +2,12 @@
 
 {% load i18n %}
 
+{% load i18n %}
+{% block extra_title %}
+{{ block.super }}
+- Register
+{% endblock %}
+
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}

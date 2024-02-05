@@ -1,6 +1,10 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
+{% block extra_title %}
+{{ block.super }}
+- Logout
+{% endblock %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
