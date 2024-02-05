@@ -6,6 +6,9 @@ class Category(models.Model):
     Category model for the product categories used in the store. Friendly name 
     returns a more natural representation of the category.
     """
+    class Meta:
+        verbose_name_plural = 'Categories'
+        
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
