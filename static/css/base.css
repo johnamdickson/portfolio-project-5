@@ -22,7 +22,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .search-bar {
-    border: 1px solid #F2BFDC;
+    border: 1px solid #f2bfdc;
 }
 
 .btn-custom {
@@ -33,7 +33,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .btn-custom:hover {
-    border: 1px solid #F2BFDC;
+    border: 1px solid #f2bfdc;
     border-radius: 20px;
     color: #f2cbe1;
     background-color: #4d6562;
@@ -95,9 +95,10 @@ header {
 }
 
 .navbar {
-    border-top: 0.5px solid #F2BFDC;
-    border-bottom: 1px solid #F2BFDC;
+    border-top: 0.5px solid transparent;
+    border-bottom: 0.5px solid transparent;
 }
+
 
 .main-logo-link {
     display: flex;
@@ -110,6 +111,7 @@ header {
 }
 
 .lws-logo:hover {
+    color: #f1d5e5;
     opacity: 0.7;
 }
 
@@ -119,29 +121,24 @@ header {
 }
 
 header .nav-link {
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 0.5rem 0;
 }
 
 header .nav-link:hover {
-    color: #FFFFFF95;
+    color: #f1d5e5;
 }
 
 header .nav-link:focus {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .search-bar {
     border-radius: 20px !important;
 }
 
-.nav-container {
-    background-color: #fff;
-    color: #698a85;
-}
-
 .navbar-light .navbar-nav .nav-link {
-    color: #698a85;
+    color: #fff;
     font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
@@ -157,12 +154,12 @@ header .nav-link:focus {
 .home-image-main {
     background: center / cover no-repeat url("/media/crochet-hook.jpg");
     border-radius: 20px;
-    border: 0.5px solid #F2BFDC;
+    border: 0.5px solid #f2bfdc;
 }
 
 .home-image-1, .home-image-2, .home-image-3, .home-image-4 {
     border-radius: 20px;
-    border: 0.5px solid #F2BFDC;
+    border: 0.5px solid #f2bfdc;
 }
 
 .home-image-1 {
@@ -194,16 +191,16 @@ header .nav-link:focus {
 
 .home-image-callout {
     border-radius: 0 20px 0 20px;
-    border-left: 1px solid #F2BFDC;
-    border-bottom: 1px solid #F2BFDC;
+    border-left: 1px solid #f2bfdc;
+    border-bottom: 1px solid #f2bfdc;
     color: #Fff;
     background-color: rgba(77, 101, 98, 0.7);
 }
 
 .small-home-callout {
     border-radius: 20px 0 20px 0;
-    border-left: 1px solid #F2BFDC;
-    border-top: 1px solid #F2BFDC;
+    border-left: 1px solid #f2bfdc;
+    border-top: 1px solid #f2bfdc;
     color: #Fff;
     background-color: rgba(77, 101, 98, 0.8);
 }
