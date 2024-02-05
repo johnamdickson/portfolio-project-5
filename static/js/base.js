@@ -60,6 +60,13 @@ const styleNavBar = () => {
         };
         // style the main navbar links on mouseenter and leave.
         for (const link of navBarLinks) {
+            // increase font size of clicked nav-link
+            link.onmousedown = () => {
+                for (const navLink of navBarLinks) {
+                    navLink.style.fontSize = 'clamp(1rem, 2vw, 1.1rem)';
+                }
+                link.style.fontSize = '1.15rem';
+            }
             link.onmouseenter = () => {
                 navBar.style.borderColor = '#f2bfdc';
                 navBar.style.backgroundColor = '#698a8550';
