@@ -19,7 +19,7 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
-    unique_product_identifier = models.CharField(max_length=254, null=True, blank=True)
+    unique_product_identifier = models.AutoField(primary_key=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
