@@ -95,8 +95,8 @@ header {
 }
 
 .navbar {
-    border-top: 0.5px solid transparent;
-    border-bottom: 0.5px solid transparent;
+    border-top: 0.25px solid transparent;
+    border-bottom: 0.25px solid transparent;
 }
 
 
@@ -125,9 +125,15 @@ header .nav-link {
     padding: 0.5rem 0;
 }
 
-header .nav-link:hover {
-    color: #f1d5e5;
+header .nav-link:active {
+    color: #000;
 }
+
+header .nav-link:hover {
+    color: #f1d5e5 !important;
+}
+
+
 
 header .nav-link:focus {
     color: #ffffff;
