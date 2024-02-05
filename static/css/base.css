@@ -21,10 +21,6 @@ h1,h2,h3,h4,h5,h6 {
     letter-spacing: 2.5px;
 }
 
-.search-bar {
-    border: 1px solid #f2bfdc;
-}
-
 .btn-custom {
     border: 1px solid #4d6562;
     border-radius: 30px;
@@ -94,11 +90,23 @@ header {
     letter-spacing: 2.5px;
 }
 
+.search-bar {
+    color: #698a85;
+    border: 1px solid #f2bfdc;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+}
+
+.form-control:focus {
+    border-color: #f2bfdc;
+    box-shadow: 0 0 0 0.25rem rgba(242, 191, 220, 0.75);
+}
+
 .navbar {
     border-top: 0.25px solid transparent;
     border-bottom: 0.25px solid transparent;
 }
-
 
 .main-logo-link {
     display: flex;
@@ -132,8 +140,6 @@ header .nav-link:active {
 header .nav-link:hover {
     color: #f1d5e5 !important;
 }
-
-
 
 header .nav-link:focus {
     color: #ffffff;
