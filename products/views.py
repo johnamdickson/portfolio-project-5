@@ -7,7 +7,7 @@ def products(request):
     A function to obtain all products and perform sorting, search and
     categorisation.
     """
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('category')
 
     context = {
         'products': products,
