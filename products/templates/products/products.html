@@ -18,7 +18,7 @@
     <div class="row w-100 justify-content-around">
       {% for product in products %}
 
-      <div class="col-md-4 col-lg-3 p-4 m-4 product-card shadow rounded border-success d-flex flex-column justify-content-between position-relative">
+      <div class="col-md-4 col-lg-3 p-4 m-4 product-card shadow rounded d-flex flex-column justify-content-between position-relative">
         {% if product.learn_product %}
         <div class="learn-banner rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute translate-middle">
           <i class="fa-solid fa-graduation-cap fa-xl d-block mt-2 mb-3"></i>  
@@ -30,8 +30,11 @@
           
           <div class="col-12 product-image overflow-hidden mx-auto rounded">
             <div class="w-100 position-relative">
-              <img class="" src="{{ product.image.url }}" alt="">
- 
+              {% if product.image %}
+              <img class="" src="{{ product.image.url }}" alt="{{ product.name}}">
+              {% else %}
+              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available" alt="{{ product.name}}">
+              {% endif %}
             </div>
           </div>
         </div>
