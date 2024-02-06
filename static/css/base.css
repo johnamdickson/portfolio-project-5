@@ -100,7 +100,7 @@ header {
 
 .form-control:focus {
     border-color: #f2bfdc;
-    box-shadow: 0 0 0 0.25rem rgba(242, 191, 220, 0.75);
+    box-shadow: 0 0 0 0.125rem rgba(242, 191, 220, 0.55);
 }
 
 .main-logo-link {
@@ -133,7 +133,7 @@ header .nav-link:active {
 }
 
 header .nav-link:hover {
-    color: #f1d5e5 !important;
+    color: #eddfe7 !important;
 }
 
 header .nav-link:focus {
@@ -208,7 +208,7 @@ header .nav-link:focus {
     border-radius: 20px 0 20px 0;
     border-left: 1px solid #f2bfdc;
     border-top: 1px solid #f2bfdc;
-    color: #Fff;
+    color: #fff;
     background-color: rgba(77, 101, 98, 0.8);
 }
 
@@ -220,8 +220,42 @@ header .nav-link:focus {
     font-size: 0.75em;;
 }
 
+/* ----------------------------------- Products Page Styling ----------------------------------- */
 
+.main-hr {
+    color: transparent;
+    width: 33%;
+    height: 1px !important;
+    opacity: 1;
+    background-image: linear-gradient(to right, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0));
+}
 
+.main-title {
+    color: #fff;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 0.5px solid #698a85
+
+}
+
+.product-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.learn-banner {
+    background-color: #f2bfdc;
+    color: #4d6562;
+    width: 75px;
+    height: 75px;
+    z-index: 99;
+    top: 20px;
+    border: 1px solid #698a85;
+    font-size: 0.6rem;
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */
