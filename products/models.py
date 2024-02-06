@@ -20,6 +20,11 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    Product model containing all product fields. Unique product id updates automatically
+    by iterating from last sequential number. The other fields are self explanatory in terms
+    of their intent.
+    """
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     unique_product_identifier = models.AutoField(primary_key=True)
