@@ -27,8 +27,9 @@ const styleNavBar = () => {
                     navLink.classList.remove('show');
                 }
                 };
-            dropdown.style.backgroundImage = 'linear-gradient(180deg, #81A8A3 0%, #8aa8a4 25%, #8aa8a4 75%, #81A8A3 100%)';
+            dropdown.style.backgroundColor = '#81a8a3';
             dropdown.style.color = '#fff'
+            dropdown.classList.add('shadow');
             let links = dropdown.getElementsByClassName('dropdown-item');
             for (let link of links) {
                 // access the nav-link that is parent of the links in dropdown to persist
@@ -68,8 +69,8 @@ const styleNavBar = () => {
                 link.style.fontSize = '1.15rem';
             }
             link.onmouseenter = () => {
-                navBar.style.borderColor = '#f2bfdc';
-                navBar.style.backgroundColor = '#698a8550';
+                navBar.style.backgroundColor = '#81a8a3';
+                navBar.classList.add('shadow-sm');
                 link.style.color = '#f1d5e5';
                 link.style.fontWeight = '300';
                 };
@@ -79,8 +80,8 @@ const styleNavBar = () => {
                 };
           };
         navBar.onmouseleave = () => {
-            navBar.style.borderColor = 'transparent';
             navBar.style.backgroundColor = 'transparent';
+            navBar.classList.remove('shadow-sm');
         };
     };
 };

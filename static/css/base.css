@@ -103,11 +103,6 @@ header {
     box-shadow: 0 0 0 0.25rem rgba(242, 191, 220, 0.75);
 }
 
-.navbar {
-    border-top: 0.25px solid transparent;
-    border-bottom: 0.25px solid transparent;
-}
-
 .main-logo-link {
     display: flex;
     align-items: center;
