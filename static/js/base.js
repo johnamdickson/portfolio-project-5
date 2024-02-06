@@ -27,7 +27,7 @@ const styleNavBar = () => {
                     navLink.classList.remove('show');
                 }
                 };
-            dropdown.style.backgroundColor = '#81a8a3';
+            dropdown.style.backgroundColor = 'rgba(129,168,166,0.97)';
             dropdown.style.color = '#fff'
             dropdown.classList.add('shadow');
             let links = dropdown.getElementsByClassName('dropdown-item');
@@ -69,7 +69,6 @@ const styleNavBar = () => {
                 link.style.fontSize = '1.15rem';
             }
             link.onmouseenter = () => {
-                navBar.style.backgroundColor = '#81a8a3';
                 navBar.classList.add('shadow-sm');
                 link.style.color = '#f1d5e5';
                 link.style.fontWeight = '300';
@@ -80,7 +79,6 @@ const styleNavBar = () => {
                 };
           };
         navBar.onmouseleave = () => {
-            navBar.style.backgroundColor = 'transparent';
             navBar.classList.remove('shadow-sm');
         };
     };
