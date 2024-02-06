@@ -40,11 +40,12 @@ const styleNavBar = () => {
                 // style background link on mouseover along with the parent navlink.
                 link.onmouseover = (event) => {
                 for (let navLink of navLinks){
-                    navLink.style.color = '#f1d5e5';
-                    navLink.style.fontSize = '1.15rem';
+                    navLink.style.color = '#eddfe7';
+                    navLink.style.fontSize = '1.25rem';
+                    navLink.style.fontWeight = '400';
                     }
-                link.style.color = '#f1d5e5';
-                link.style.fontWeight = '300';
+                link.style.color = '#eddfe7';
+                link.style.fontWeight = '400';
                 event.target.style.backgroundColor = '#4d6562';
                 };
                 // return style to normal on mouseleave event.
@@ -65,13 +66,15 @@ const styleNavBar = () => {
             link.onmousedown = () => {
                 for (const navLink of navBarLinks) {
                     navLink.style.fontSize = 'clamp(1rem, 2vw, 1.1rem)';
+                    link.style.lineHeight = 'inherit';
                 }
-                link.style.fontSize = '1.15rem';
+                link.style.fontSize = '1.25rem';
+                link.style.lineHeight = '1.5rem';
             }
             link.onmouseenter = () => {
                 navBar.classList.add('shadow-sm');
                 link.style.color = '#f1d5e5';
-                link.style.fontWeight = '300';
+                link.style.fontWeight = '400';
                 };
             link.onmouseleave = () => {
                     link.style.color = '#fff';
