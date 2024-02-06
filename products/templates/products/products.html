@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load i18n %}
+{% block extra_title %}
+{{ block.super }}
+- Products
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid home-container mt-4 w-100">
+    <div class="row h-100 pt-lg-2" >
+      {{ products }}
+    </div>
+  </div>
+{% endblock %}
