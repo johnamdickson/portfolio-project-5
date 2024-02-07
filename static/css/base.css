@@ -225,7 +225,7 @@ header .nav-link:focus {
     font-size: 0.75em;;
 }
 
-/* ----------------------------------- Products Page Styling ----------------------------------- */
+/* ----------------------------------- Products and Product Detail Pages Styling ----------------------------------- */
 
 .main-hr {
     color: transparent;
@@ -239,43 +239,63 @@ header .nav-link:focus {
     color: #fff;
 }
 
-.product-card {
+.product-card, .product-detail-card {
   background-color: #fff;
   color: #4d6562;
   border: 1px solid #f2bfdc;
   border-radius: 10px;
+  cursor: pointer;
 }
 
-.product-card p {
-    font-size: clamp(0.75rem, 1.35vw, 0.9rem);
-  }
 
 .product-card h4 {
     font-size: clamp(0.9rem, 1.75vw, 1.3rem);
+    text-decoration: none;
   }
 
-.product-image img {
+.product-image img, .product-detail-image img {
     object-fit: cover;
     width: 100%;
-    height: 220px;
+    height: 300px;
     border-radius: 5px;
 }
 
-.learn-banner {
+.product-detail-image img {
+    height: 500px;
+}
+
+.product-detail-card p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    text-decoration: none;
+  }
+
+  .product-detail-card h5 {
+    font-size: clamp(1rem, 3vw, 2rem);
+  }
+
+  .product-detail-card a {
+    font-size: clamp(1rem, 2vw, 1.7rem);
+  }
+
+.learn-banner, .learn-banner-detail {
     background-color: #f1d5e5;
     color: #4d6562;
     width: 75px;
     height: 75px;
     z-index: 99;
-    top: -5px;
-    left:5px;
+    top: 20px;
+    left: 20px;
     border: 1px solid #698a85;
-
 }
 
-.learn-banner p {
+.learn-banner-detail {
+    top: 6px;
+    left: 8px;
+}
+.learn-banner p, .learn-banner-detail p {
     font-size: 0.6rem;
 }
+
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */
