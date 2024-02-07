@@ -7,30 +7,32 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container-fluid products-container mt-2 w-100">
-    <div class="row pt-lg-2" >
-      <div class="col-12">
-        <h2 class="text-center main-title">All Products</h2>
-        <hr class="mx-auto main-hr">
-      </div>
+<div class="container-fluid products-container mt-2 w-100">
+  <div class="row pt-lg-2">
+    <div class="col-12">
+      <h2 class="text-center main-title">All Products</h2>
+      <hr class="mx-auto main-hr">
     </div>
-    <div class="row w-100 justify-content-center">
-      {% for product in products %}
-      <div class="col-md-4 col-lg-3 p-3 mb-4 d-flex flex-column justify-content-between position-relative">
-        {% if product.learn_product %}
-        <div class="learn-banner rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute">
-          <i class="fa-solid fa-graduation-cap fa-xl d-block mt-2 mb-3"></i>  
-          <p class="text-center m-0">{{product.category.friendly_name}}</p>
-        </div>
-        {% endif %}
-        <div class="container product-card h-100 d-flex flex-column justify-content-between">
+  </div>
+  <div class="row w-100 justify-content-center">
+    {% for product in products %}
+    <div class="col-md-4 col-lg-3 p-3 mb-4 d-flex flex-column justify-content-between position-relative">
+      {% if product.learn_product %}
+      <div
+        class="learn-banner rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute">
+        <i class="fa-solid fa-graduation-cap fa-xl d-block mt-2 mb-3"></i>
+        <p class="text-center m-0">{{product.category.friendly_name}}</p>
+      </div>
+      {% endif %}
+      <div class="container product-card h-100 d-flex flex-column justify-content-between" onclick="location.href='{% url 'product_detail' product.pk %}';" aria-label="Product Detail page {{product.name}}">
         <div class="row w-100 g-0">
           <div class="col-12 product-image pt-4 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
               <img class="" src="{{ product.image.url }}" alt="{{ product.name}}">
               {% else %}
-              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available" alt="{{ product.name}}">
+              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+                alt="{{ product.name}}">
               {% endif %}
             </div>
           </div>
@@ -40,24 +42,9 @@
             <h4>{{ product.name }}</h4>
           </div>
         </div>
-        <div class="row w-100 g-0">
-          <div class="col-12 mt-2 product-description mx-auto">
-            <p>
-              {{ product.description }}
-            </p>
-          </div>
-        </div>
-        <div class="row w-100 g-0 align-items-center pb-4">
-          <div class="col-6 mt-2 product-price mx-auto">
-            <h5 class="text-center m-0">€{{product.price}}</h5>
-          </div>
-          <div class="col-6 mt-2 product-price mx-auto d-flex justify">
-            <a href="{% url 'product_detail' product.pk %}" class="btn btn-custom text-center">Buy Now</a>
-          </div>
-        </div>
       </div>
     </div>
-      {% endfor %}
-    </div>
+    {% endfor %}
   </div>
+</div>
 {% endblock %}
