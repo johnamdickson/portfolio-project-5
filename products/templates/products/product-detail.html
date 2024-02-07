@@ -27,7 +27,9 @@
           <div class="col-6 product-detail-image p-3 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
-              <img class="" src="{{ product.image.url }}" alt="{{ product.name}}">
+              <a href="{{ product.image.url }}" target="_blank">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </a>
               {% else %}
               <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available" alt="{{ product.name}}">
               {% endif %}
