@@ -35,6 +35,11 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #4d6562;
 }
 
+.btn:focus {
+    border-color: #f2bfdc;
+    box-shadow: 0 0 0 0.125rem rgba(242, 191, 220, 0.55);
+}
+
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 
@@ -236,24 +241,39 @@ header .nav-link:focus {
 
 .product-card {
   background-color: #fff;
-  border: 0.5px solid #698a85
-
+  color: #4d6562;
+  border: 1px solid #f2bfdc;
+  border-radius: 10px;
 }
+
+.product-card p {
+    font-size: clamp(0.75rem, 1.35vw, 0.9rem);
+  }
+
+.product-card h4 {
+    font-size: clamp(0.9rem, 1.75vw, 1.3rem);
+  }
 
 .product-image img {
     object-fit: cover;
     width: 100%;
-    height: 250px;
+    height: 220px;
+    border-radius: 5px;
 }
 
 .learn-banner {
-    background-color: #f2bfdc;
+    background-color: #f1d5e5;
     color: #4d6562;
     width: 75px;
     height: 75px;
     z-index: 99;
-    top: 20px;
+    top: -5px;
+    left:5px;
     border: 1px solid #698a85;
+
+}
+
+.learn-banner p {
     font-size: 0.6rem;
 }
 /* ----------------------------------- Responsive Styling ----------------------------------- */
