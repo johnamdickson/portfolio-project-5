@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
         'image',
         'learn_product',
         'has_sizes',
+        'pk',
     )
 
     ordering = ('unique_product_identifier',)
