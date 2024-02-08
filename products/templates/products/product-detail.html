@@ -7,52 +7,79 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container-fluid products-container mt-2 w-100">
-    <div class="row pt-lg-2" >
-      <div class="col-12">
-        <h2 class="text-center main-title">{{product.name}}</h2>
-        <hr class="mx-auto main-hr">
-      </div>
+<div class="container-fluid products-container mt-2 w-100">
+  <div class="row pt-lg-2">
+    <div class="col-12">
+      <h2 class="text-center main-title">{{product.name}} </h2>
+      <hr class="mx-auto main-hr">
     </div>
-    <div class="row w-100 justify-content-center mt-3 mx-auto">
-      <div class="col-12 col-lg-10 mb-4 d-flex flex-column justify-content-between ">
-        <div class="container product-detail-card h-100 d-flex justify-content-between position-relative">
-          {% if product.learn_product %}
-          <div class="learn-banner-detail rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute">
-            <i class="fa-solid fa-graduation-cap fa-xl d-block mt-2 mb-3"></i>  
-            <p class="text-center m-0">{{product.category.friendly_name}}</p>
-          </div>
-          {% endif %}
+  </div>
+  <div class="row w-100 justify-content-center mt-3 mx-auto">
+    <div class="col-12 col-lg-10 mb-4 d-flex flex-column justify-content-between ">
+      <div class="container product-detail-card h-100 d-flex justify-content-between position-relative">
         <div class="row w-100 g-0">
-          <div class="col-6 product-detail-image p-3 overflow-hidden mx-auto">
+          <div class="col-6 product-detail-image p-3 overflow-hidden mx-auto mt-auto">
             <div class="w-100">
               {% if product.image %}
               <a href="{{ product.image.url }}" target="_blank">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            </a>
+              </a>
               {% else %}
-              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available" alt="{{ product.name}}">
+              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+                alt="{{ product.name}}">
               {% endif %}
             </div>
           </div>
-       <div class="col-6 d-flex justify-content-center align-items-center flex-column">
-          <div class="col-10 offset-1 mb-3 product-description mx-auto">
-            <p>
-              {{ product.description }}
-            </p>
+          <div class="col-6 d-flex pe-5 pt-5 align-items-center flex-column">
+            <div class="col-10 offset-1 mb-2 product-description mx-auto">
+              <p>
+                {{ product.description }}
+              </p>
+            </div>
+            <div class="col-12 mt-2 product-price mx-auto mb-4">
+              <h5 class="text-center m-0">€{{product.price}}</h5>
+            </div>
+            <div class="col-12 mt-2 mb-4 w-100 product-price mx-auto d-flex justify-content-center">
+              <a href="#" class="btn btn-custom text-center w-50">Buy Now</a>
+            </div>
+            {% if sizes or colours %}
+            <div class="row w-100 mt-2 justify-content-center">
+              {% if sizes %}
+              <div class="col-2 d-flex justify-content-center">
+                <a tabindex="0"
+                  class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+                  role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
+                  data-bs-sanitize="false" title="Available Sizes" data-bs-content='
+              <ul class="m-0">{% for size in sizes %}<li class="m-1">{{size.get_size_display}}</li> {% endfor %}</ul>
+                <div class="text-center"><a href="#">Size Chart</a></div>
+              '>
+                  <i class="fa-solid fa-ruler-horizontal d-block"></i>
+                  <p class="text-center m-0">Sizes</p>
+                </a>
+              </div>
+              {% endif %}
+              {% if colours %}
+              <div class="col-2 d-flex justify-content-center">
+                <a tabindex="0"
+                  class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+                  role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
+                  data-bs-sanitize="false" title="Available Colours" data-bs-content='
+               <ul class="m-0">{% for colour in colours %}<li class="m-1">{{colour.get_colour_display}}</li> {% endfor %}</ul>
+               '>
+                  <i class="fa-solid fa-palette d-block"></i>
+                  <p class="text-center m-0">Colours</p>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+
         </div>
-          <div class="col-12 mt-2 product-price mx-auto mb-4">
-            <h5 class="text-center m-0">€{{product.price}}</h5>
-          </div>
-          <div class="col-12 mt-2 w-100 product-price mx-auto d-flex justify-content-center">
-            <a href="#" class="btn btn-custom text-center w-50">Buy Now</a>
-          </div>
-      </div>
-      </div>
-        
+
       </div>
     </div>
   </div>
-    </div>
-  </div>
+</div>
+</div>
 {% endblock %}
