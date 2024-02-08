@@ -332,7 +332,7 @@ header .nav-link:focus {
 }
 
 .attributes-button {
-    background-color: #f1d5e5;
+    background-color: #f2cbe1;;
     color: #4d6562;
     width: 40px;
     height: 40px;
@@ -346,12 +346,9 @@ header .nav-link:focus {
     background-color: #4d6562;
 }
 
-.attributes-button p {
-    font-size: 0.35rem;
-}
 
 .attributes-button i {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
