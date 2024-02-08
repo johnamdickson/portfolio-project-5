@@ -383,4 +383,8 @@ header .nav-link:focus {
     .home-image-callout button {
         font-size: clamp(0.55rem, 3vw, 0.75rem);
     }
+
+    .product-detail-image img {
+        height: 250px;
+    }
 }

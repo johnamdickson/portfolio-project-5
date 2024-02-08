@@ -7,18 +7,18 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid products-container mt-2 w-100">
+<div class="container-fluid products-container mt-md-2 w-100">
   <div class="row pt-lg-2">
     <div class="col-12">
       <h2 class="text-center main-title">{{product.name}} </h2>
       <hr class="mx-auto main-hr">
     </div>
   </div>
-  <div class="row w-100 justify-content-center mt-3 mx-auto">
-    <div class="col-12 col-lg-10 mb-4 d-flex flex-column justify-content-between ">
-      <div class="container product-detail-card h-100 d-flex justify-content-between position-relative">
+  <div class="row w-100 justify-content-center mx-auto">
+    <div class="col-12 col-lg-10 mb-4 d-flex g-0 gx-lg-3 flex-column justify-content-between ">
+      <div class="container-fluid product-detail-card h-100 d-flex justify-content-between position-relative">
         <div class="row w-100 g-0">
-          <div class="col-6 product-detail-image p-3 overflow-hidden mx-auto mt-auto">
+          <div class="col-12 col-md-6 product-detail-image px-3 overflow-hidden mx-auto mt-auto">
             <div class="w-100">
               {% if product.image %}
               <a href="{{ product.image.url }}" target="_blank">
@@ -30,16 +30,16 @@
               {% endif %}
             </div>
           </div>
-          <div class="col-6 d-flex pe-5 pt-5 align-items-center flex-column">
-            <div class="col-10 offset-1 mb-2 product-description mx-auto">
+          <div class="col-12 col-md-6 d-flex pe-md-5 pt-md-5 align-items-center flex-column">
+            <div class="col-11 offset-1 col-md-10 p-md-0 mt-2 mt-md-0 offset-md-1 mb-md-2 product-description mx-auto">
               <p>
                 {{ product.description }}
               </p>
             </div>
-            <div class="col-12 mt-2 product-price mx-auto mb-4">
+            <div class="col-12 mt-md-2 product-price mx-auto mb-md-4">
               <h5 class="text-center m-0">€{{product.price}}</h5>
             </div>
-            <div class="col-12 mt-2 mb-4 w-100 product-price mx-auto d-flex justify-content-center">
+            <div class="col-12 mt-2 mb-md-4 w-100 product-price mx-auto d-flex justify-content-center">
               <a href="#" class="btn btn-custom text-center w-50">Buy Now</a>
             </div>
             {% if sizes or colours %}
