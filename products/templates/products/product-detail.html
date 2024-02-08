@@ -3,7 +3,7 @@
 
 {% block extra_title %}
 {{ block.super }}
-- Products
+- {{product.name}}
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
   </div>
   <div class="row w-100 justify-content-center mx-auto">
     <div class="col-12 col-lg-10 mb-4 d-flex g-0 gx-lg-3 flex-column justify-content-between ">
-      <div class="container-fluid product-detail-card h-100 d-flex justify-content-between position-relative">
+      <div class="container-fluid product-detail-card h-100 mt-2 d-flex justify-content-between position-relative">
         <div class="row w-100 g-0">
           <div class="col-12 col-md-6 product-detail-image px-3 overflow-hidden mx-auto mt-auto">
             <div class="w-100">
@@ -39,8 +39,8 @@
             <div class="col-12 mt-md-2 product-price mx-auto mb-md-4">
               <h5 class="text-center m-0">€{{product.price}}</h5>
             </div>
-            <div class="col-12 mt-2 mb-md-4 w-100 product-price mx-auto d-flex justify-content-center">
-              <a href="#" class="btn btn-custom text-center w-50">Buy Now</a>
+            <div class="col-12 col-lg-8 mt-2 mb-md-4 product-price mx-auto d-flex justify-content-center">
+              <a href="#" class="btn btn-custom text-center w-100">Buy Now</a>
             </div>
             {% if sizes or colours %}
             <div class="row w-100 mt-2 justify-content-center">
