@@ -51,10 +51,9 @@
                   role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                   data-bs-sanitize="false" title="Available Sizes" data-bs-content='
               <ul class="m-0">{% for size in sizes %}<li class="m-1">{{size.get_size_display}}</li> {% endfor %}</ul>
-                <div class="text-center"><a href="#">Size Chart</a></div>
+                <div class="text-center"><a href="/media/hat-size-guide.png"  target="_blank" rel="noreferrer noopener">Size Chart</a></div>
               '>
                   <i class="fa-solid fa-ruler-horizontal d-block"></i>
-                  <p class="text-center m-0">Sizes</p>
                 </a>
               </div>
               {% endif %}
@@ -67,7 +66,6 @@
                <ul class="m-0">{% for colour in colours %}<li class="m-1">{{colour.get_colour_display}}</li> {% endfor %}</ul>
                '>
                   <i class="fa-solid fa-palette d-block"></i>
-                  <p class="text-center m-0">Colours</p>
                 </a>
               </div>
               {% endif %}
