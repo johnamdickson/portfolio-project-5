@@ -82,3 +82,6 @@ a table query result with data showing in various rows
 
 Take a moment to add, commit and push your project to GitHub if you haven’t done so already.
 
+
+- Django Tips and Tricks
+* get_ITEM_display to render the human readable aspect of choices tuple in template, where ITEM is the name of the model property. See ProductSizes and Colours rendering in product detail template.
