@@ -10,11 +10,10 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'image',
         'learn_product',
-        'has_sizes',
         'pk',
     )
 
-    ordering = ('unique_product_identifier',)
+    ordering = ('category',)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
