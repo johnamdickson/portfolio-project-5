@@ -33,6 +33,9 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
+    # use of many to many relationship as a means of returning a list of options for size or colour.
+    # solution from stack overflow:
+    # https://stackoverflow.com/questions/45947457/django-how-can-i-get-a-model-that-store-a-listlike-in-python-or-anyway-of-a-s
     sizes = models.ManyToManyField('ProductSize', blank=True)
     colours = models.ManyToManyField('ProductColour', blank=True)
     learn_product = models.BooleanField(default=False, blank=True)
@@ -43,7 +46,10 @@ class Product(models.Model):
         return self.name
 
 class ProductSize(models.Model):
-
+    """
+    Product size model containing all available sizes imported from constants file and
+    returned as choice in charfield.
+    """
     class Meta:
         verbose_name_plural = 'Sizes'
 
@@ -56,7 +62,10 @@ class ProductSize(models.Model):
 
 
 class ProductColour(models.Model):
-
+    """
+    Product colour model containing all available colours imported from constants file and
+    returned as choice in charfield.
+    """
     class Meta:
         verbose_name_plural = 'Colours'
 
