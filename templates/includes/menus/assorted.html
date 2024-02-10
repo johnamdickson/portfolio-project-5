@@ -1,5 +1,5 @@
 {% load static %}
-<a href="" class="dropdown-item">New Collection</a>
-<a href="" class="dropdown-item">Gift Sets</a>
-<a href="" class="dropdown-item">Clearance</a>
-<a href="" class="dropdown-item">All Assorted</a>
+<a href="{% url 'products' %}?category=new_collection" class="dropdown-item">New Collection</a>
+<a href="{% url 'products' %}?category=gift_sets" class="dropdown-item">Gift Sets</a>
+<a href="{% url 'products' %}?category=clearance" class="dropdown-item">Clearance</a>
+<a href="{% url 'products' %}?category=assorted" class="dropdown-item">All Assorted</a>

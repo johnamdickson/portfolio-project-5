@@ -11,8 +11,22 @@ def products(request):
     """
     products = Product.objects.all().order_by('category')
     query = None
+    categories = None
+    title = "All Products"
+
 
     if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+            # code to return category as title or return "All Products"
+            # otherwise
+            if categories:
+                title = categories[0].friendly_name
+            else:
+                title = "All Products"
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -26,6 +40,8 @@ def products(request):
     context = {
         'products': products,
         'search_term': query,
+        'current_categories': categories,
+        'title': title
     }
 
     return render(request, 'products/products.html', context)
