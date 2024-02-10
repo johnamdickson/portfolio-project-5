@@ -1,5 +1,8 @@
 {% load static %}
-<a href="" class="dropdown-item">Simple Baby Hat</a>
-<a href="" class="dropdown-item">Soft Blankie</a>
-<a href="" class="dropdown-item">Cute Bear Hat</a>
-<a href="{% url 'products' %}?category=learn_to_crochet" class="dropdown-item">All Learning</a>
+{% for product in products %}
+    {% if product.category.name == "learn_to_crochet" %}
+        <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
+    {% endif %}
+{% endfor %}
+<hr class="mx-auto">
+<a href="{% url 'products' %}?category=learn_to_crochet" class="dropdown-item dropdown-category">All Learning</a>

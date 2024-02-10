@@ -1,4 +1,8 @@
 {% load static %}
-<a href="" class="dropdown-item">Baby Blanket</a>
-<a href="" class="dropdown-item">Photo Shoot Blanket</a>
-<a href="{% url 'products' %}?category=blankets" class="dropdown-item">All Blankets</a>
+{% for product in products %}
+    {% if product.category.name == "blankets" %}
+        <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
+    {% endif %}
+{% endfor %}
+<hr class="mx-auto">
+<a href="{% url 'products' %}?category=blankets" class="dropdown-item dropdown-category">All Blankets</a>

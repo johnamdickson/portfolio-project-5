@@ -50,10 +50,12 @@ def products(request):
 def product_detail(request, product_pk):
     """ A view to show individual product details """
 
+    products = Product.objects.all()
     product = get_object_or_404(Product, pk=product_pk)
     sizes = product.sizes.all()
     colours = product.colours.all()
     context = {
+        'products' : products,
         'product': product,
         'sizes': sizes,
         'colours': colours,

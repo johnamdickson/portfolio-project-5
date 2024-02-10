@@ -158,6 +158,18 @@ header .nav-link:focus {
     font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
+.dropdown-menu hr {
+    color: #fff;
+    width: 80%;
+    margin: 0.5em 0;
+    height: 1px !important;
+    opacity: 1;
+}
+
+.dropdown-category {
+    font-size: 1.2em;
+}
+
 .dropdown-item {
     color: #698a85;
 }
@@ -239,16 +251,16 @@ header .nav-link:focus {
 /* ----------------------------------- Products and Product Detail Pages Styling ----------------------------------- */
 
 .main-hr {
-    color: transparent;
-    width: 33%;
-    height: 1px !important;
+    color: #fff;
+    width: 25%;
+    height: 2px !important;
     opacity: 1;
-    background-image: linear-gradient(to right, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0));
 }
 
 .main-title {
     color: #fff;
 }
+
 
 .product-card {
     cursor: pointer;
@@ -392,6 +404,7 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
     border: 1px solid #698a85;
     border-radius: 20px;
 }
+
 
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 

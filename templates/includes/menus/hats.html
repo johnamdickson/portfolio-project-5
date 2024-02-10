@@ -1,6 +1,8 @@
 {% load static %}
-<a href="" class="dropdown-item">Beanie Hat</a>
-<a href="" class="dropdown-item">Bobble Hat</a>
-<a href="" class="dropdown-item">Bear Hat</a>
-<a href="" class="dropdown-item">Love Heart Hat</a>
-<a href="{% url 'products' %}?category=hats" class="dropdown-item">All Hats</a>
+{% for product in products %}
+    {% if product.category.name == "hats" %}
+        <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
+    {% endif %}
+{% endfor %}
+<hr class="mx-auto">
+<a href="{% url 'products' %}?category=hats" class="dropdown-item dropdown-category">All Hats</a>
