@@ -273,9 +273,12 @@ header .nav-link:focus {
     color: #4d6562;
 }
 
-.product-card p {
-    font-size: clamp(0.9rem, 1.75vw, 1.3rem);
-    text-decoration: none;
+.product-title p {
+    font-size: clamp(1.3rem, 2.75vw, 1.5rem);
+}
+
+.product-price p {
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
 }
 
 .product-image img,

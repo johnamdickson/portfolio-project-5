@@ -24,7 +24,7 @@
         <p class="text-center m-0">{{product.category.friendly_name}}</p>
       </div>
       {% endif %}
-      <div class="container product-card h-100 d-flex flex-column justify-content-between" onclick="location.href='{% url 'product_detail' product.pk %}';" aria-label="Product Detail page {{product.name}}">
+      <div class="container product-card h-100 d-flex flex-column" onclick="location.href='{% url 'product_detail' product.pk %}';" aria-label="Product Detail page {{product.name}}">
         <div class="row w-100 g-0">
           <div class="col-12 product-image pt-4 overflow-hidden mx-auto">
             <div class="w-100">
@@ -38,8 +38,11 @@
           </div>
         </div>
         <div class="row w-100 g-0">
-          <div class="col-12 product-title text-center mt-3">
-            <p>{{ product.name }}</p>
+          <div class="col-12 product-title text-center mt-2">
+            <p class="mb-1">{{ product.name }}</p>
+          </div>
+          <div class="col-12 product-price text-center">
+            <p>€{{ product.price }}</p>
           </div>
         </div>
       </div>
