@@ -13,9 +13,23 @@ def products(request):
     query = None
     categories = None
     title = "All Products"
-
+    sort = None
+    direction = None
 
     if request.GET:
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -33,18 +47,20 @@ def products(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(category__friendly_name__icontains=query)
             # query to be rendered in the template searchbar placeholder
             placeholder = query
             products = products.filter(queries)
-
+      
+    current_sorting = f'{sort}_{direction}'
 
     context = {
         'placeholder': query,
         'products': products,
         'search_term': query,
         'current_categories': categories,
-        'title': title
+        'title': title,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
