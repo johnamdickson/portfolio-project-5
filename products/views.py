@@ -34,10 +34,13 @@ def products(request):
                 return redirect(reverse('products'))
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
+            # query to be rendered in the template searchbar placeholder
+            placeholder = query
             products = products.filter(queries)
 
 
     context = {
+        'placeholder': query,
         'products': products,
         'search_term': query,
         'current_categories': categories,
