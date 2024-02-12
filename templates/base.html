@@ -31,7 +31,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>    
         <!-- Fontawesome js -->
         <script src="https://kit.fontawesome.com/f99ce6eeee.js" crossorigin="anonymous"></script>
-        <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -142,6 +141,7 @@
     {% endblock %}
 
     {% block postloadjs %}
+    <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
    
   </body>
