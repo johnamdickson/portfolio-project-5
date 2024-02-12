@@ -255,7 +255,7 @@ header .nav-link:focus {
 
 .main-hr {
     color: #fff;
-    width: 25%;
+    width: 45%;
     height: 2px !important;
     opacity: 1;
 }
@@ -411,7 +411,23 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
     border-radius: 20px;
 }
 
+.form-select:focus {
+    border-color: #f2bfdc;
+    box-shadow: 0 0 0 0.125rem rgba(242, 191, 220, 0.55);
+}
 
+.sort-select-wrapper {
+    width: 75%;
+}
+
+.select-sorting {
+    border : 2px solid #f2bfdc;
+}
+
+.custom-link {
+    color:#fff;
+    opacity: 0.9;
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */

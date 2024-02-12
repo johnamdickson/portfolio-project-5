@@ -9,14 +9,36 @@
 {% block content %}
 <div class="container-fluid products-container mt-2 w-100">
   <div class="row pt-lg-2">
-    <div class="col-12">
+    <div class="col-12 col-md-4">
       <h2 class="text-center main-title">{{title}}</h2>
       <hr class="mx-auto main-hr">
     </div>
-  </div>
+
+  <div class="col-12 col-md-4 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+    <div class="sort-select-wrapper mx-auto">
+        <select aria-label="Default select example" class=" form-select rounded-3 {% if current_sorting != 'None_None' %}select-sorting{% else %}black{% endif %}">
+            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+            <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+            <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+        </select>
+    </div>
+</div>
+<div class="col-12 col-md-4 order-md-first">
+    <p class="text-muted mt-3 text-center text-md-left">
+        {% if search_term or current_categories or current_sorting != 'None_None' %}
+            <span class="small"><a href="{% url 'products' %}" class="custom-link">Products Home</a> | </span>
+        {% endif %}
+        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+    </p>
+</div>
+</div>
   <div class="row w-100 justify-content-center">
     {% for product in products %}
-    <div class="col-md-4 col-lg-3 p-3 mb-4 d-flex flex-column justify-content-between position-relative">
+    <div class="col-md-4 col-lg-3 p-1 mb-2 d-flex flex-column justify-content-between position-relative">
       {% if product.learn_product %}
       <div
         class="learn-banner rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute">
@@ -26,7 +48,7 @@
       {% endif %}
       <div class="container product-card h-100 d-flex flex-column" onclick="location.href='{% url 'product_detail' product.pk %}';" aria-label="Product Detail page {{product.name}}">
         <div class="row w-100 g-0">
-          <div class="col-12 product-image pt-4 overflow-hidden mx-auto">
+          <div class="col-12 product-image pt-2 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
               <img class="" src="{{ product.image.url }}" alt="{{ product.name}}">
@@ -42,8 +64,15 @@
             <p class="mb-1">{{ product.name }}</p>
           </div>
           <div class="col-12 product-price text-center">
-            <p>€{{ product.price }}</p>
+            <p class="m-0">€{{ product.price }}</p>
           </div>
+          {% if product.category %}
+          <div class="col-12 text-center small">
+            <i class="fa-solid fa-layer-group d-inline"></i>
+            <p class="m-0 d-inline">{{ product.category.friendly_name }}</p>
+          </div>
+          {% else %}
+          {% endif %}
         </div>
       </div>
     </div>
