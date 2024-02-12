@@ -46,6 +46,7 @@ h6 {
 .search-bar::placeholder {
     opacity: 0.7;
 }
+
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 
@@ -306,8 +307,8 @@ header .nav-link:focus {
     font-size: clamp(1rem, 2vw, 1.7rem);
 }
 
-.learn-banner,
-.learn-banner-detail {
+.circle-banner,
+.circle-banner-detail {
     background-color: #f1d5e5;
     color: #4d6562;
     width: 75px;
@@ -318,13 +319,13 @@ header .nav-link:focus {
     border: 1px solid #698a85;
 }
 
-.learn-banner-detail {
+.circle-banner-detail {
     top: 6px;
     left: 8px;
 }
 
-.learn-banner p,
-.learn-banner-detail p {
+.circle-banner p,
+.circle-banner-detail p {
     font-size: 0.6rem;
 }
 
