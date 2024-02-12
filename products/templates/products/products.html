@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container-fluid products-container mt-2 w-100">
   <div class="row pt-lg-2">
     <div class="col-12 col-md-4">
@@ -16,7 +17,7 @@
 
   <div class="col-12 col-md-4 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
     <div class="sort-select-wrapper mx-auto">
-        <select aria-label="Default select example" class=" form-select rounded-3 {% if current_sorting != 'None_None' %}select-sorting{% else %}black{% endif %}">
+        <select id="selector" aria-label="Default select example" class=" form-select rounded-3 {% if current_sorting != 'None_None' %}select-sorting{% else %}black{% endif %}">
             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -79,4 +80,9 @@
     {% endfor %}
   </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'products/js/products.js' %}"></script>
 {% endblock %}
