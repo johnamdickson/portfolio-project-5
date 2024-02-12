@@ -1,5 +1,5 @@
 {% load static %}
-{% for product in products %}
+{% for product in unfiltered_products %}
     {% if product.category.name == "learn_to_crochet" %}
         <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
     {% endif %}
