@@ -1,21 +1,17 @@
 window.addEventListener('load', function () {
    styleNavBar();
-   iniatilisePopover();
    iniatiliseTooltips();
+   iniatilisePopover();
+
 })
 
-
+// BS boilerplate for initailising popover functionality
 const iniatilisePopover = () => {
-    
     
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
       return new bootstrap.Popover(popoverTriggerEl)
     })
-
-    var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-        trigger: 'focus'
-      })
 }
 
 const iniatiliseTooltips = () => {
