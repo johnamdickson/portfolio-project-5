@@ -184,10 +184,6 @@ header .nav-link:focus {
     opacity: 1;
 }
 
-.dropdown-category {
-    font-size: 1.2em;
-}
-
 .dropdown-item {
     color: #698a85;
 }
