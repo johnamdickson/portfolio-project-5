@@ -2,7 +2,6 @@ window.addEventListener('load', function () {
    styleNavBar();
    iniatiliseTooltips();
    iniatilisePopover();
-
 })
 
 // BS boilerplate for initailising popover functionality
@@ -105,4 +104,11 @@ const styleNavBar = () => {
 };
 
 
-
+window.onscroll = () => {
+    let topButton = document.getElementById('back-to-top')
+    if (window.scrollY<=125) {
+        topButton.style.visibility = 'hidden'
+    } else {
+        topButton.style.visibility = 'visible'
+    }
+};
