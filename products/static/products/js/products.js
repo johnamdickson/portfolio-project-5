@@ -1,9 +1,12 @@
 window.addEventListener('load', function () {
-
   setUpSelect()
 })
 
 const setUpSelect = () => {
+  /**
+ * Function to query URL search parameters and update on change of
+ * select input.
+ */
   // solution to obtaining and setting new url parameters from here:
   // https://www.sitepoint.com/get-url-parameters-with-javascript/
     const selector = document.getElementById('selector');
@@ -20,6 +23,16 @@ const setUpSelect = () => {
         currentUrl.set("direction", direction);
         window.location.URLSearchParams = null
         window.location.replace('?' + currentUrl);
+      }
+      else {
+          currentUrl.delete("sort")
+          currentUrl.delete("direction")
+          if (currentUrl) {
+            window.location.replace('?' + currentUrl)
+          }
+          else {
+            window.location.replace(currentUrl)
+          }
       }
 
     }
