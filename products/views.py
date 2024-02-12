@@ -15,7 +15,7 @@ def products(request):
     unfiltered_products = Product.objects.all()
     query = None
     categories = None
-    title = "All Products"
+    title = "Products"
     sort = None
     direction = None
 
@@ -23,13 +23,16 @@ def products(request):
 
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
-            print(sortkey)
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
+                title = "Products by Name"
             if sortkey == 'category':
                 sortkey = 'category__name'
+                title = "Products by Category"
+            if sortkey == 'price':
+                title = "Products by Price"
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -45,8 +48,8 @@ def products(request):
             # otherwise
             if categories:
                 title = categories[0].friendly_name
-            else:
-                title = "All Products"
+            else :
+                title = "Products"
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -58,6 +61,7 @@ def products(request):
             # query to be rendered in the template searchbar placeholder
             placeholder = query
             products = products.filter(queries)
+            title = "Search Products"
       
     current_sorting = f'{sort}_{direction}'
 
