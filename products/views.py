@@ -54,7 +54,7 @@ def products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "Please enter search criteria.")
                 return redirect(reverse('products'))
             
             queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(category__friendly_name__icontains=query)
@@ -62,7 +62,7 @@ def products(request):
             placeholder = query
             products = products.filter(queries)
             title = "Search Products"
-            messages.error(request, "You didn't enter any search criteria!")
+            messages.success(request, "You searched!")
       
     current_sorting = f'{sort}_{direction}'
 

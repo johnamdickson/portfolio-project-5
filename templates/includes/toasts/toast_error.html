@@ -1,9 +1,9 @@
-<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header toast-error-header">
+<div class="toast position-absolute" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-animation="true">
+    <div class="toast-header text-white bg-danger bg-gradient">
       <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
       <strong class="me-auto">Error</strong>
       <small class=""></small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
       {% for message in messages %}
