@@ -2,151 +2,183 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
     {% block extra_meta %}
     {% endblock %}
 
     {% block corecss %}
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">        
-        <!-- Base CSS Link -->
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <!-- Google Fonts Links -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@100;200;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
-        {% endblock %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Base CSS Link -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Google Fonts Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitter:wght@100;200;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&family=Sacramento&display=swap"
+        rel="stylesheet">
+    {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
-        <!-- Bootstrap js -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>    
-        <!-- Fontawesome js -->
-        <script src="https://kit.fontawesome.com/f99ce6eeee.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <!-- Fontawesome js -->
+    <script src="https://kit.fontawesome.com/f99ce6eeee.js" crossorigin="anonymous"></script>
     {% endblock %}
 
     {% block extra_js %}
     {% endblock %}
 
     <title>LWS {% block extra_title %}{% endblock %}</title>
-  </head>
+</head>
 
-  <body>
+<body>
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
 
     <header class="container-fluid my-2 my-md-3">
-      <div class="row">
-          <!-- logo -->
-          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center">
-              <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                  <img src="/media/logo-transparent-background.png" alt="" class="lws-logo d-inline me-3">
-                  <h2 class="lws-logo-font my-0 d-inline">Little Woolly Snuggles</h2>
-              </a>
-          </div>
-          <!-- search bar -->
-          <div class="col-12 col-md-6 ps-md-4 col-lg-4 my-auto py-1 py-lg-0">
-              <form method="GET" action="{% url 'products' %}">
-                  <div class="input-group w-100">
-                      <input class="form-control search-bar" type="text" name="q" placeholder='{% if placeholder %}Showing results for "{{ placeholder }}"{% else %}Search our site{% endif %}'>
-                      <div class="input-group-append">
-                          <button class="form-control btn bg-transparent" type="submit">
-                              <span class="icon">
-                                  <i class="fas fa-search text-white"></i>
-                              </span>
-                          </button>
-                      </div>
-                  </div>
-              </form>
-          </div>
-          <!-- header for small screens -->
-          <div class="col-12 d-md-none my-auto py-1">
-            {% include 'includes/header-sm-screen.html' %}
-          </div>
-          <!-- header for medium and above -->
-          <div class="d-none d-md-block col-6 col-lg-4 my-auto py-1 py-lg-0">
-            <div class="container-fluid">
-                <div class="row flex justify-content-evenly">
-                    <div class="col-4">
-                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-account" role="button" aria-controls="offcanvas-menu-">
-                            <div class="text-center">
-                                <i class="fas fa-user fa-lg"></i>
-                                <p class="my-0">Account</p>
-                            </div>
-                        </a>
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-account" aria-labelledby="offcanvas-menuLabel-account">
-                            {% include 'includes/offcanvas/account-offcanvas.html' %}
+        <div class="row">
+            <!-- logo -->
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <img src="/media/logo-transparent-background.png" alt="" class="lws-logo d-inline me-3">
+                    <h2 class="lws-logo-font my-0 d-inline">Little Woolly Snuggles</h2>
+                </a>
+            </div>
+            <!-- search bar -->
+            <div class="col-12 col-md-6 ps-md-4 col-lg-4 my-auto py-1 py-lg-0">
+                <form method="GET" action="{% url 'products' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control search-bar" type="text" name="q"
+                            placeholder='{% if placeholder %}Showing results for "{{ placeholder }}"{% else %}Search our site{% endif %}'>
+                        <div class="input-group-append">
+                            <button class="form-control btn bg-transparent" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search text-white"></i>
+                                </span>
+                            </button>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-weight-light{% endif %} nav-link" href="">
-                            <div class="text-center">
-                                <i class="fas fa-cart-shopping fa-lg"></i>
-                                <p class="my-0">
-                                    {% if grand_total %}
+                </form>
+            </div>
+            <!-- header for small screens -->
+            <div class="col-12 d-md-none my-auto py-1">
+                {% include 'includes/header-sm-screen.html' %}
+            </div>
+            <!-- header for medium and above -->
+            <div class="d-none d-md-block col-6 col-lg-4 my-auto py-1 py-lg-0">
+                <div class="container-fluid">
+                    <div class="row flex justify-content-evenly">
+                        <div class="col-4">
+                            <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-account" role="button"
+                                aria-controls="offcanvas-menu-">
+                                <div class="text-center">
+                                    <i class="fas fa-user fa-lg"></i>
+                                    <p class="my-0">Account</p>
+                                </div>
+                            </a>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-account"
+                                aria-labelledby="offcanvas-menuLabel-account">
+                                {% include 'includes/offcanvas/account-offcanvas.html' %}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-weight-light{% endif %} nav-link"
+                                href="">
+                                <div class="text-center">
+                                    <i class="fas fa-cart-shopping fa-lg"></i>
+                                    <p class="my-0">
+                                        {% if grand_total %}
                                         €{{ grand_total|floatformat:2 }}
-                                    {% else %}
+                                        {% else %}
                                         €0.00
-                                    {% endif %}
-                                </p>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-about" role="button"
+                                aria-controls="offcanvas-menu-about">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-book-open fa-lg"></i>
+                                    <p class="my-0">About</p>
+                                </div>
+                            </a>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-about"
+                                aria-labelledby="offcanvas-menuLabel-about">
+                                {% include 'includes/offcanvas/about-offcanvas.html' %}
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-4">
-                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-about" role="button" aria-controls="offcanvas-menu-about">
-                            <div class="text-center">
-                            <i class="fa-solid fa-book-open fa-lg"></i>
-                            <p class="my-0">About</p>
-                            </div>
-                        </a>
-                          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-about" aria-labelledby="offcanvas-menuLabel-about">
-                              {% include 'includes/offcanvas/about-offcanvas.html' %}
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
-          </div>
-      </div>
-  </header>
+        </div>
+    </header>
 
-  {% if request.path != "/" %}
+    {% if request.path != "/" %}
 
-  <div class="row mb-2 nav-container d-none d-md-block">
-    <nav class="navbar navbar-expand-md navbar-light w-100">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        {% include 'includes/main-nav.html' %}  
-    </nav>
-</div>
+    <div class="row mb-2 nav-container d-none d-md-block">
+        <nav class="navbar navbar-expand-md navbar-light w-100">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+                aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% include 'includes/main-nav.html' %}
+        </nav>
+    </div>
 
-  {% endif %}
-  <a href="#"
-  id="back-to-top"class="rounded-circle d-flex flex-column align-items-center justify-content-center position-fixed">
-  <i class="fa-solid fa-chevron-up d-block m-0"></i>
-  <p class="text-center m-0">Back To Top</p>
-</a>
+    {% endif %}
+    <a href="#" id="back-to-top"
+        class="rounded-circle d-flex flex-column align-items-center justify-content-center position-fixed">
+        <i class="fa-solid fa-chevron-up d-block m-0"></i>
+        <p class="text-center m-0">Back To Top</p>
+    </a>
 
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
-    
     {% block page_header %}
     {% endblock %}
-    
+
     {% block content %}
     {% endblock %}
 
     {% block postloadjs %}
     <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
-   
-  </body>
+
+</body>
+
 </html>

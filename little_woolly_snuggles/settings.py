@@ -94,6 +94,8 @@ TEMPLATES = [
     },
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 WSGI_APPLICATION = 'little_woolly_snuggles.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [

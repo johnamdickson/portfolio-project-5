@@ -61,6 +61,16 @@ h6 {
     font-weight: 500;
     visibility: hidden;
 }
+
+.toast-logo{
+    width: 30px;
+    height: 30px;
+}
+
+.toast-error-header {
+    color: #fff;
+    background-color: #ff000080;
+}
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 

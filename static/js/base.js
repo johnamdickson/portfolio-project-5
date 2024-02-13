@@ -2,7 +2,17 @@ window.addEventListener('load', function () {
    styleNavBar();
    iniatiliseTooltips();
    iniatilisePopover();
+   initialiseToast();
 })
+
+// BS Boilerplate for initialising toasts.
+
+const initialiseToast = () => {
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    var toastList = toastElList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl)
+    });
+};
 
 // BS boilerplate for initailising popover functionality
 const iniatilisePopover = () => {

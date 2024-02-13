@@ -62,6 +62,7 @@ def products(request):
             placeholder = query
             products = products.filter(queries)
             title = "Search Products"
+            messages.error(request, "You didn't enter any search criteria!")
       
     current_sorting = f'{sort}_{direction}'
 
