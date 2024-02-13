@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+{{ block.super }}
+- Cart
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid products-container mt-2 w-100">
+  <div class="row pt-lg-2">
+    <div class="col-12 col-md-4 mx-auto">
+      <h2 class="text-center main-title">Cart</h2>
+      <hr class="mx-auto main-hr">
+    </div>
+</div>
+  <div class="row w-100 justify-content-center">
+    
+
+  </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'products/js/products.js' %}"></script>
+{% endblock %}
