@@ -62,7 +62,6 @@ def products(request):
             placeholder = query
             products = products.filter(queries)
             title = "Search Products"
-            messages.success(request, "You searched!")
       
     current_sorting = f'{sort}_{direction}'
 
