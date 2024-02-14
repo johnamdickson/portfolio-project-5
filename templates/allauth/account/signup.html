@@ -11,6 +11,12 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+
+{% if form.errors %}
+<div class="message-container">
+  {% include 'includes/toasts/toast_error.html' %}
+</div>
+{% endif %}
 <h1>{% trans "Sign Up" %}</h1>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>

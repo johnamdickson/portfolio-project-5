@@ -72,6 +72,32 @@ h6 {
     height: 30px;
 }
 
+.toast-header-error {
+    background-color:#c23a22;
+}
+
+.toast-header-success {
+    background-color: #437200;
+}
+
+.toast-header-info {
+    background-color: #005a92;
+}
+
+.toast-header-warning {
+    background-color: #ffc110;
+}
+
+.login-error ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0.2em;
+}
+
+.toast-body ul {
+    padding-left: 0.8em;
+    margin-bottom: 0;
+}
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 
