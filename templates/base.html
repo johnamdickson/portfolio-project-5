@@ -48,9 +48,6 @@
 </head>
 
 <body>
-    {% if messages %}
-    <div class="message-container"></div>
-    {% endif %}
 
     <header class="container-fluid my-2 my-md-3">
         <div class="row">
@@ -66,7 +63,7 @@
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
                         <input class="form-control search-bar" type="text" name="q"
-                            placeholder='{% if placeholder %}Showing results for "{{ placeholder }}"{% else %}Search our site{% endif %}'>
+                            placeholder='Search our site...'>
                         <div class="input-group-append">
                             <button class="form-control btn bg-transparent" type="submit">
                                 <span class="icon">
