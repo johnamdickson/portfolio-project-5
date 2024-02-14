@@ -73,19 +73,19 @@ h6 {
 }
 
 .toast-header-error {
-    background-color:#c23a22;
+    background-color: rgba(194,58,34,0.8);
 }
 
 .toast-header-success {
-    background-color: #437200;
+    background-color: rgba(67,114,0,0.8);
 }
 
 .toast-header-info {
-    background-color: #005a92;
+    background-color: rgba(0,90,146,0.8);
 }
 
 .toast-header-warning {
-    background-color: #ffc110;
+    background-color: rgba(255,193,16,0.8);
 }
 
 .login-error ul {
