@@ -10,11 +10,38 @@
 
 <div class="container-fluid products-container mt-2 w-100">
   <div class="row pt-lg-2">
-    <div class="col-12 col-md-4">
-      <h2 class="text-center main-title">{{title}}</h2>
-      <hr class="mx-auto main-hr">
+    <div class="col-12 col-md-4 mx-auto">
+      <div class="d-flex justify-content-center">
+        <div class="d-inline me-3">
+          {% if title == 'Hats' %}
+            {% include 'includes/svgs/hat-icon.html' %}
+          {% elif title == 'Learn to Crochet' %}
+            {% include 'includes/svgs/learn-icon.html' %}
+          {% elif  title == 'Blankets' %}
+            {% include 'includes/svgs/blanket-icon.html' %}
+          {% elif  title == 'Gift Sets' %}
+            {% include 'includes/svgs/gift-sets-icon.html' %}
+          {% elif  title == 'Search Products' %}
+            {% include 'includes/svgs/search-icon.html' %}
+          {% else %}
+            {% include 'includes/svgs/product-icon.html' %}
+          {% endif %}
+        </div>
+        <div class="flex-shrink-1 d-inline">
+          <h2 class="text-center main-title">
+            {{title}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <col-12>
+         <hr class="mx-auto main-hr">
+        </col-12>
+      </div>
     </div>
-
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    
   <div class="col-12 col-md-4 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
     <div class="sort-select-wrapper mx-auto">
         <select id="selector" aria-label="Default select example" class=" form-select rounded-3 {% if current_sorting != 'None_None' %}select-sorting{% else %}black{% endif %}">

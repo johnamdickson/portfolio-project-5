@@ -98,6 +98,12 @@ h6 {
     padding-left: 0.8em;
     margin-bottom: 0;
 }
+
+svg {
+    fill: #fff;
+    width: 35px;
+    height: 35px;
+}
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 
