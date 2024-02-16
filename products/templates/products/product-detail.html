@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="row w-100 justify-content-center mx-auto">
-    <div class="col-12 col-lg-8 mb-4 d-flex g-0 gx-lg-3 flex-column justify-content-between ">
+    <div class="col-12 col-lg-9 mb-4 d-flex g-0 gx-lg-3 flex-column justify-content-between ">
       <div class="container-fluid product-detail-card h-100 mt-2 d-flex justify-content-between position-relative">
         <div class="row w-100 g-0">
           <div class="col-12 col-md-6 product-detail-image px-3 overflow-hidden mx-auto mt-auto">
@@ -40,7 +40,7 @@
               <h5 class="text-center m-0">€{{product.price}}</h5>
             </div>
 
-            <form class="form" action="" method="POST">
+            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
               {% csrf_token %}
               <div class="form-row row mt-2">
                   <div class="col-3 offset-2">
@@ -53,15 +53,15 @@
                         </div>
                     </div>
                   </div>
-                  <div class="col-10 col-md-6 mb-3 mx-auto">
+                  <div class="col-10 col-md-6 mb-2 mx-auto">
                       <input type="submit" class="btn btn-custom rounded-4 text-uppercase mt-4 w-100" value="Add to Cart">
                   </div>
                   <div class="col-12 mx-auto text-center product-detail-return">
-                    <a href="{% url 'products' %}" class="btn rounded-0 mt-3">
+                    <a href="{% url 'products' %}" class="btn rounded-0 mb-3">
                       <span class="icon">
                           <i class="fas fa-chevron-left"></i>
                       </span>
-                      <span>Keep Shopping</span>
+                      <span>Back to Products</span>
                   </a>
                   </div>
                   <input type="hidden" name="redirect_url" value="{{ request.path }}">
