@@ -39,40 +39,7 @@
             <div class="col-12 product-price mx-auto mb-md-3">
               <h5 class="text-center m-0">€{{product.price}}</h5>
             </div>
-            {% if sizes or colours %}
-            <div class="row w-100 mt-2 justify-content-center">
-              {% if sizes %}
-              <div class="col-2 d-flex justify-content-center">
-                <a tabindex="0"
-                  class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
-                  role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
-                  data-bs-sanitize="false" title="Available Sizes" data-bs-content='
-              <ul class="m-0">{% for size in sizes %}<li class="m-1">{{size.get_size_display}}</li> {% endfor %}</ul>
-                <div class="text-center"><a href="/media/hat-size-guide.png"  target="_blank" rel="noreferrer noopener">
-                  <div class="size-chart-div">                 
-                     <img src="/media/hat-size-guide.png" alt="">
-                    <p class="size-chart-p">Size Chart</p>
-                  </div>
-                </a></div>
-              '>
-                  <i class="fa-solid fa-ruler-horizontal d-block"></i>
-                </a>
-              </div>
-              {% endif %}
-              {% if colours %}
-              <div class="col-2 d-flex justify-content-center">
-                <a tabindex="0"
-                  class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
-                  role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
-                  data-bs-sanitize="false" title="Available Colours" data-bs-content='
-               <ul class="m-0">{% for colour in colours %}<li class="m-1">{{colour.get_colour_display}}</li> {% endfor %}</ul>
-               '>
-                  <i class="fa-solid fa-palette d-block"></i>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% endif %}
+
             <form class="form" action="" method="POST">
               {% csrf_token %}
               <div class="form-row row mt-2">
@@ -89,8 +56,8 @@
                   <div class="col-12 col-md-6 mx-auto">
                       <input type="submit" class="btn btn-custom rounded-4 text-uppercase mt-4 w-100" value="Add to Cart">
                   </div>
-                  <div class="col-12 mx-auto text-center">
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-3">
+                  <div class="col-12 mx-auto text-center product-detail-return">
+                    <a href="{% url 'products' %}" class="btn rounded-0 mt-3">
                       <span class="icon">
                           <i class="fas fa-chevron-left"></i>
                       </span>
@@ -100,6 +67,40 @@
                   <input type="hidden" name="redirect_url" value="{{ request.path }}">
               </div>
           </form>
+          {% if sizes or colours %}
+          <div class="row w-100 mt-2 justify-content-center">
+            {% if sizes %}
+            <div class="col-2 d-flex justify-content-center">
+              <a tabindex="0"
+                class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+                role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
+                data-bs-sanitize="false" title="Available Sizes" data-bs-content='
+            <ul class="m-0">{% for size in sizes %}<li class="m-1">{{size.get_size_display}}</li> {% endfor %}</ul>
+              <div class="text-center"><a href="/media/hat-size-guide.png"  target="_blank" rel="noreferrer noopener">
+                <div class="size-chart-div">                 
+                   <img src="/media/hat-size-guide.png" alt="">
+                  <p class="size-chart-p">Size Chart</p>
+                </div>
+              </a></div>
+            '>
+                <i class="fa-solid fa-ruler-horizontal d-block"></i>
+              </a>
+            </div>
+            {% endif %}
+            {% if colours %}
+            <div class="col-2 d-flex justify-content-center">
+              <a tabindex="0"
+                class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+                role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
+                data-bs-sanitize="false" title="Available Colours" data-bs-content='
+             <ul class="m-0">{% for colour in colours %}<li class="m-1">{{colour.get_colour_display}}</li> {% endfor %}</ul>
+             '>
+                <i class="fa-solid fa-palette d-block"></i>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
           </div>
 
         </div>

@@ -358,6 +358,10 @@ header .nav-link:focus {
 
 .product-detail-card a {
     font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+.product-detail-return a {
+    font-size: clamp(0.8rem, 2vw, 1rem);
     text-decoration: underline;
     color: #fff;
 }
