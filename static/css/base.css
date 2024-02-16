@@ -349,7 +349,7 @@ header .nav-link:focus {
 }
 
 .product-detail-card p {
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
 }
 
 .product-detail-card h5 {
@@ -357,7 +357,9 @@ header .nav-link:focus {
 }
 
 .product-detail-card a {
-    font-size: clamp(1rem, 2vw, 1.7rem);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    text-decoration: underline;
+    color: #fff;
 }
 
 .circle-banner,
