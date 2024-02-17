@@ -331,9 +331,6 @@ header .nav-link:focus {
     font-size: clamp(1.3rem, 2.75vw, 1.5rem);
 }
 
-.product-price p {
-    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-}
 
 .product-image img,
 .product-detail-image img {
@@ -352,8 +349,9 @@ header .nav-link:focus {
     font-size: clamp(0.8rem, 1.5vw, 1rem);
 }
 
-.product-detail-card h5 {
+.product-price p {
     font-size: clamp(1rem, 3vw, 2rem);
+    font-weight: 400;
 }
 
 .product-detail-card a {
@@ -487,6 +485,12 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
 .custom-link {
     color:#fff;
     opacity: 0.9;
+}
+
+.svg-small svg {
+    width: 20px;
+    height: 20px;
+    fill: #4d6562;
 }
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 

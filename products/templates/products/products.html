@@ -58,7 +58,7 @@
 <div class="col-12 col-md-4 order-md-first">
     <p class="text-muted mt-3 text-center text-md-left">
         {% if search_term or current_categories or current_sorting != 'None_None' %}
-            <span class="small"><a href="{% url 'products' %}" class="custom-link">Products Home</a> | </span>
+            <span class="small"><a href="{% url 'products' %}" class="custom-link">All Products</a> | </span>
         {% endif %}
         {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
     </p>
@@ -79,10 +79,10 @@
           <div class="col-12 product-image pt-2 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
-              <img class="" src="{{ product.image.url }}" alt="{{ product.name}}">
+              <img class="" src="{{ product.image.url }}" alt="Image of {{product.name}}">
               {% else %}
               <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
-                alt="{{ product.name}}">
+                alt="No image for this product">
               {% endif %}
             </div>
           </div>
@@ -95,9 +95,24 @@
             <p class="m-0">€{{ product.price }}</p>
           </div>
           {% if product.category %}
-          <div class="col-12 text-center small">
-            <i class="fa-solid fa-layer-group d-inline"></i>
-            <p class="m-0 d-inline">{{ product.category.friendly_name }}</p>
+          <div class="col-12 mt-2 text-center svg-small small d-flex justify-content-center align-items-center">
+            {% with product.category.friendly_name as name%}
+            {% if name == 'Hats' %}
+                {% include 'includes/svgs/hat-icon.html' %}
+              {% elif name == 'Learn to Crochet' %}
+                {% include 'includes/svgs/learn-icon.html' %}
+              {% elif  name == 'Blankets' %}
+                {% include 'includes/svgs/blanket-icon.html' %}
+              {% elif  name == 'Gift Sets' %}
+                {% include 'includes/svgs/gift-sets-icon.html' %}
+              {% elif  name == 'Search Products' %}
+                {% include 'includes/svgs/search-icon.html' %}
+            {% else %}
+              {% include 'includes/svgs/product-icon.html' %}
+            {% endif %}
+          {% endwith %}
+            <p class="m-0 ms-2 d-inline">
+              {{ product.category.friendly_name }}</p>
           </div>
           {% else %}
           {% endif %}
