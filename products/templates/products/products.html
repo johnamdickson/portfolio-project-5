@@ -94,7 +94,7 @@
           <div class="col-12 product-price text-center">
             <p class="m-0">€{{ product.price }}</p>
           </div>
-          {% if product.category %}
+          {% if product.category and current_categories == None %} 
           <div class="col-12 mt-2 text-center svg-small small d-flex justify-content-center align-items-center">
             {% with product.category.friendly_name as name%}
             {% if name == 'Hats' %}
