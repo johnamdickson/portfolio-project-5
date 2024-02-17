@@ -488,9 +488,15 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
 }
 
 .svg-small svg {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     fill: #4d6562;
+}
+
+/* ----------------------------------- Cart Page Styling ----------------------------------- */
+
+.cart-table-row{
+    color: #4d6562;
 }
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
