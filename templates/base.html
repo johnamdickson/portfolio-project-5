@@ -96,8 +96,8 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-weight-light{% endif %} nav-link"
-                                href="">
+                            <a class="{% if grand_total %}font-weight-bold{% else %}font-weight-light{% endif %} nav-link"
+                                href="{% url 'view_cart' %}">
                                 <div class="text-center">
                                     <i class="fas fa-cart-shopping fa-lg"></i>
                                     <p class="my-0">
