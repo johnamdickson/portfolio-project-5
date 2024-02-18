@@ -15,6 +15,12 @@
             <hr class="mx-auto main-hr">
         </div>
     </div>
+    {{cart_items}}
+    <br>
+    <br>
+    {{request.session.cart}}
+    <br>
+    {{size}}
     <div class="row w-100 justify-content-center">
         <div class="row">
             <div class="col-md-8 col-lg-7 mx-auto">
@@ -63,6 +69,9 @@
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
+                                {{item.size}}
+                                {{item.colour}}
+                                {{item.secondary_colour}}
                             </td>
                         </tr>
                         {% endfor %}

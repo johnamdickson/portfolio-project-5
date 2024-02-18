@@ -11,15 +11,40 @@ def cart_contents(request):
     product_count = 0
     cart = request.session.get('cart', {})
 
-    for item_id, quantity in cart.items():
-        product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
-        product_count += quantity
-        cart_items.append({
-            'item_id': item_id,
-            'quantity': quantity,
-            'product': product,
-        })
+    for item_id, item_data in cart.items():
+        if isinstance(item_data, int):
+            product = get_object_or_404(Product, pk=item_id)
+            total += item_data * product.price
+            product_count += item_data
+            cart_items.append({
+                'item_id': item_id,
+                'quantity': item_data,
+                'product': product,
+            })
+        else:
+            product = get_object_or_404(Product, pk=item_id)
+            for properties, quantity in item_data['items_by_size_and_colour'].items():
+                property_list = properties.split(',')
+                size = property_list[0]
+                colour = property_list[1]
+                print(property_list)
+                if len(property_list) == 3:
+                    secondary_colour = property_list[2]
+                else:
+                    secondary_colour = None
+                print(size)
+                print(colour)
+                total += quantity * product.price
+                product_count += quantity
+                cart_items.append({
+                    'item_id': item_id,
+                    # 'quantity': item_data,
+                    'product': product,
+                    'size': size,
+                    'colour': colour,
+                    'secondary_colour': secondary_colour,
+                })
+
 
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
@@ -39,6 +64,7 @@ def cart_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
+        
     }
 
     return context
