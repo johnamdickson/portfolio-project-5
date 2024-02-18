@@ -507,6 +507,10 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
 .cart-table-row{
     color: #4d6562;
 }
+
+.total-cols {
+    color: #4d6562;
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */
