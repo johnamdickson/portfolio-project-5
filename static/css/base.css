@@ -327,6 +327,9 @@ header .nav-link:focus {
     color: #4d6562;
 }
 
+.product-card:hover {
+    opacity: 0.6;
+}
 
 .product-title p {
     font-size: clamp(1.3rem, 2.75vw, 1.5rem);
