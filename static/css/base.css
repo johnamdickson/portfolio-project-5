@@ -332,19 +332,22 @@ header .nav-link:focus {
     from {  background-color: rgba(77,101,98,0);
             border: 0.5px solid rgba(242, 191, 220, 0);
             box-shadow: none;
+            scale: 1;
         }
     to {    background-color: rgba(77,101,98,1);
             border: 1.5px solid #f1d5e5;
-            box-shadow: 0 0.5rem 1rem rgba(242,191,220,0.15);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            scale: 1.02;
         }
 }
 .product-card:hover  {
     color: #f1d5e5;
     background-color: #4d6562;
     border: 1.5px solid #f1d5e5;
-    box-shadow: 0 0.5rem 1rem rgba(242,191,220,0.15);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
     animation-name: product-card-hover;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
+    scale: 1.02;
 }
 
 .product-title p {

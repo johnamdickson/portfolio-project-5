@@ -135,26 +135,35 @@ window.onscroll = () => {
 
 
 const styleProductCardSvg = () => {
-    let productCards = document.getElementsByClassName('product-card');
+    let productCards = Array.from(document.getElementsByClassName('product-card'));
     if (productCards) {
-        for (let card of productCards) {
-            card.onmouseenter = () => {
+        console.log(productCards)
+        for (let [i, card] of productCards.entries()) {
+            card.onmouseenter = () => {                
                 let svgs = card.getElementsByClassName('svg-hover');
                 for (let svg of svgs) {
+                    svg.style.transition = 'all 1.5s'
                     svg.style.fill = '#f1d5e5';
                 };
                 let images = card.getElementsByClassName('product-image');
                 for (let image of images) {
-                    image.style.transition = 'all 2s'
+                    image.style.transition = 'all 1.5s'
                     image.style.scale = '1.1 1.05';
                     let img = image.getElementsByTagName('img')[0]
-                    img.style.transition = 'all 2s'
+
                     img.style.borderRadius = '0';
+                }
+                let attButtons = document.getElementsByClassName('size-colour-row')[i];
+                if (attButtons){
+                    attButtons.style.transition = 'all 1s'
+                    attButtons.style.top = '10px'
+                    attButtons.style.left = '30px'
                 }
             };
             card.onmouseleave = () => {
                 let svgs = card.getElementsByClassName('svg-hover');
                 for (let svg of svgs) {
+                    svg.style.transition = 'all 1s'
                     svg.style.fill = '#4d6562';
                 };
                 let images = card.getElementsByClassName('product-image');
@@ -164,6 +173,12 @@ const styleProductCardSvg = () => {
                     let img = image.getElementsByTagName('img')[0]
                     img.style.transition = 'all 0.5s'
                     img.style.borderRadius = '20px';
+                }
+                let attButtons = document.getElementsByClassName('size-colour-row')[i];
+                if (attButtons) {
+                    attButtons.style.transition = 'all 0.5s'
+                    attButtons.style.top = '15px'
+                    attButtons.style.left = '35px'
                 }
             };
         }
