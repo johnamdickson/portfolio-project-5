@@ -14,17 +14,17 @@
       <div class="row mb-2">
         <div class="col-12 d-flex justify-content-center">
           {% if title == 'Hats' %}
-            {% include 'includes/svgs/hat-icon.html' %}
+          {% include 'includes/svgs/hat-icon.html' %}
           {% elif title == 'Learn to Crochet' %}
-            {% include 'includes/svgs/learn-icon.html' %}
+          {% include 'includes/svgs/learn-icon.html' %}
           {% elif  title == 'Blankets' %}
-            {% include 'includes/svgs/blanket-icon.html' %}
+          {% include 'includes/svgs/blanket-icon.html' %}
           {% elif  title == 'Gift Sets' %}
-            {% include 'includes/svgs/gift-sets-icon.html' %}
+          {% include 'includes/svgs/gift-sets-icon.html' %}
           {% elif  title == 'Search Products' %}
-            {% include 'includes/svgs/search-icon.html' %}
+          {% include 'includes/svgs/search-icon.html' %}
           {% else %}
-            {% include 'includes/svgs/product-icon.html' %}
+          {% include 'includes/svgs/product-icon.html' %}
           {% endif %}
         </div>
       </div>
@@ -34,39 +34,86 @@
             {{title}}</h3>
         </div>
         <div class="col-12 d-flex">
-        <hr class="mx-auto m-2 main-hr">
+          <hr class="mx-auto m-2 main-hr">
         </div>
       </div>
     </div>
     <?xml version="1.0" encoding="utf-8"?>
     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    
-  <div class="col-12 col-md-4 order-md-last d-flex justify-content-center justify-content-md-end">
-    <div class="sort-select-wrapper mx-auto mt-2">
-        <select id="selector" aria-label="Default select example" class=" form-select rounded-3 {% if current_sorting != 'None_None' %}select-sorting{% else %}black{% endif %}">
-            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-            <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
-            <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+
+    <div class="col-12 col-md-4 order-md-last d-flex justify-content-center justify-content-md-end">
+      <div class="sort-select-wrapper mx-auto mt-2">
+        <select id="selector" aria-label="Default select example"
+          class=" form-select rounded-3 {% if current_sorting != 'None_None' %}select-sorting{% else %}black{% endif %}">
+          <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+          <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)
+          </option>
+          <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)
+          </option>
+          <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+          <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+          <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)
+          </option>
+          <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)
+          </option>
         </select>
+      </div>
     </div>
-</div>
-<div class="col-12 col-md-4 order-md-first">
-    <p class="text-muted mt-3 text-center text-md-left">
+    <div class="col-12 col-md-4 order-md-first">
+      <p class="text-muted mt-3 text-center text-md-left">
         {% if search_term or current_categories or current_sorting != 'None_None' %}
-            <span class="small"><a href="{% url 'products' %}" class="custom-link">All Products</a> | </span>
+        <span class="small"><a href="{% url 'products' %}" class="custom-link">All Products</a> | </span>
         {% endif %}
         {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
-    </p>
-</div>
-</div>
+      </p>
+    </div>
+  </div>
   <div class="row w-100 justify-content-center">
     {% for product in products %}
+
     <div class="col-md-4 col-lg-3 p-1 mb-2 d-flex flex-column justify-content-between position-relative">
+      <div class="size-colour-row row w-75 mt-2 justify-content-end mx-auto position-absolute">
+        {% if product.sizes.all%}
+        <div class="col-12 mb-1">
+        <div class="row">
+        <div class="col-2 d-flex justify-content-center">
+          <a tabindex="0"
+            class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+            role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true" data-bs-sanitize="false"
+            title="Available Sizes" data-bs-content='
+            <ul class="m-0">{% for size in product.sizes.all %}<li class="m-1">{{size.get_size_display}}</li> {% endfor %}</ul>
+              <div class="text-center"><a href="/media/hat-size-guide.png"  target="_blank" rel="noreferrer noopener">
+                <div class="size-chart-div">                 
+                  <img src="/media/hat-size-guide.png" alt="">
+                  <p class="size-chart-p">Size Chart</p>
+                </div>
+              </a></div>
+            '>
+            <i class="fa-solid fa-ruler-horizontal d-block"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+        {% endif %}
+        {% if product.colours.all %}
+        <div class="col-12">
+          <div class="row"> 
+            <div class="col-2 d-flex justify-content-center">
+              <a tabindex="0"
+                class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+                role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true" data-bs-sanitize="false"
+                title="Available Colours" data-bs-content='
+                  <ul class="m-0">{% for colour in product.colours.all %}<li class="m-1">{{colour.get_colour_display}}</li> {% endfor %}</ul>
+                  '>
+                <i class="fa-solid fa-palette d-block"></i>
+              </a>
+            </div>
+           </div>
+        </div>
+
+      </div>
+      {% endif %}
       {% if product.learn_product %}
       <div
         class="circle-banner rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute">
@@ -74,8 +121,10 @@
         <p class="text-center m-0">{{product.category.friendly_name}}</p>
       </div>
       {% endif %}
-      <div class="container product-card h-100 d-flex flex-column" onclick="location.href='{% url 'product_detail' product.pk %}';" aria-label="Product Detail page {{product.name}}">
-        <div class="row w-100 g-0">
+      <div class="container product-card h-100 d-flex flex-column"
+        onclick="location.href='{% url 'product_detail' product.pk %}';"
+        aria-label="Product Detail page {{product.name}}">
+        <div class="container-fluid g-0 position-relative">
           <div class="col-12 product-image pt-2 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
@@ -94,23 +143,23 @@
           <div class="col-12 product-price text-center">
             <p class="m-0">€{{ product.price }}</p>
           </div>
-          {% if product.category and current_categories == None %} 
+          {% if product.category and current_categories == None %}
           <div class="col-12 mt-2 text-center svg-small small d-flex justify-content-center align-items-center">
             {% with product.category.friendly_name as name%}
             {% if name == 'Hats' %}
-                {% include 'includes/svgs/hat-icon.html' %}
-              {% elif name == 'Learn to Crochet' %}
-                {% include 'includes/svgs/learn-icon.html' %}
-              {% elif  name == 'Blankets' %}
-                {% include 'includes/svgs/blanket-icon.html' %}
-              {% elif  name == 'Gift Sets' %}
-                {% include 'includes/svgs/gift-sets-icon.html' %}
-              {% elif  name == 'Search Products' %}
-                {% include 'includes/svgs/search-icon.html' %}
+            {% include 'includes/svgs/hat-icon.html' %}
+            {% elif name == 'Learn to Crochet' %}
+            {% include 'includes/svgs/learn-icon.html' %}
+            {% elif  name == 'Blankets' %}
+            {% include 'includes/svgs/blanket-icon.html' %}
+            {% elif  name == 'Gift Sets' %}
+            {% include 'includes/svgs/gift-sets-icon.html' %}
+            {% elif  name == 'Search Products' %}
+            {% include 'includes/svgs/search-icon.html' %}
             {% else %}
-              {% include 'includes/svgs/product-icon.html' %}
+            {% include 'includes/svgs/product-icon.html' %}
             {% endif %}
-          {% endwith %}
+            {% endwith %}
             <p class="m-0 ms-2 d-inline">
               {{ product.category.friendly_name }}</p>
           </div>
@@ -125,6 +174,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script src="{% static 'products/js/products.js' %}"></script>
+{{ block.super }}
+<script src="{% static 'products/js/products.js' %}"></script>
 {% endblock %}

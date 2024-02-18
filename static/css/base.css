@@ -327,6 +327,7 @@ header .nav-link:focus {
     color: #4d6562;
 }
 
+
 .product-title p {
     font-size: clamp(1.3rem, 2.75vw, 1.5rem);
 }
@@ -424,8 +425,8 @@ header .nav-link:focus {
 .attributes-button {
     background-color: #f2cbe1;;
     color: #4d6562;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border: 1px solid #698a85;
     text-decoration: none;
 }
@@ -437,7 +438,7 @@ header .nav-link:focus {
 }
 
 .attributes-button i {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .size-chart-div {
@@ -493,6 +494,11 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
     fill: #4d6562;
 }
 
+.size-colour-row {
+    z-index:999;
+    top:10px;
+    left:25px;
+}
 /* ----------------------------------- Cart Page Styling ----------------------------------- */
 
 .cart-table-row{
