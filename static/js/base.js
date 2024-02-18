@@ -1,5 +1,6 @@
 window.addEventListener('load', function () {
    styleNavBar();
+   styleProductCardSvg();
    iniatiliseTooltips();
    iniatilisePopover();
    initialiseToast();
@@ -131,3 +132,24 @@ window.onscroll = () => {
         topButton.style.visibility = 'visible'
     }
 };
+
+
+const styleProductCardSvg = () => {
+    let productCards = document.getElementsByClassName('product-card');
+    if (productCards) {
+        for (let card of productCards) {
+            card.onmouseenter = () => {
+                let svgs = card.getElementsByClassName('svg-hover');
+                for (let svg of svgs) {
+                    svg.style.fill = '#f1d5e5';
+                };
+            };
+            card.onmouseleave = () => {
+                let svgs = card.getElementsByClassName('svg-hover');
+                for (let svg of svgs) {
+                    svg.style.fill = '#4d6562';
+                };
+            };
+        }
+    }
+}

@@ -325,13 +325,26 @@ header .nav-link:focus {
 
 .product-card {
     color: #4d6562;
-    /* border-radius: 10px; */
+    border-radius: 5px;
 }
 
-.product-card:hover {
-    background-color: #81a8a3;
-    border: 0.5px solid #f1d5e5;
+@keyframes product-card-hover {
+    from {  background-color: rgba(77,101,98,0);
+            border: 0.5px solid rgba(242, 191, 220, 0);
+            box-shadow: none;
+        }
+    to {    background-color: rgba(77,101,98,1);
+            border: 1.5px solid #f1d5e5;
+            box-shadow: 0 0.5rem 1rem rgba(242,191,220,0.15);
+        }
+}
+.product-card:hover  {
+    color: #f1d5e5;
+    background-color: #4d6562;
+    border: 1.5px solid #f1d5e5;
     box-shadow: 0 0.5rem 1rem rgba(242,191,220,0.15);
+    animation-name: product-card-hover;
+    animation-duration: 1s;
 }
 
 .product-title p {
