@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
    styleNavBar();
-   styleProductCardSvg();
+   styleProductCards();
    iniatiliseTooltips();
    iniatilisePopover();
    initialiseToast();
@@ -35,6 +35,8 @@ const iniatiliseTooltips = () => {
     return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 }
+
+
 const styleNavBar = () => {
 /**
  * Dynamic styling of the navbar where the background color changes if the links are
@@ -125,6 +127,11 @@ const styleNavBar = () => {
 
 
 window.onscroll = () => {
+ /**
+ * use of onscroll function to adjust visibility of back to top
+ * button. Once window scrolls down to and past 5px the button is visible and
+ * hidden once the window scrolls back above 5px.
+ */
     let topButton = document.getElementById('back-to-top')
     if (window.scrollY<=5) {
         topButton.style.visibility = 'hidden'
@@ -134,11 +141,25 @@ window.onscroll = () => {
 };
 
 
-const styleProductCardSvg = () => {
+const styleProductCards = () => {
+/**
+ * This function performs animation and styling otherwise difficult to
+ * administer in CSS. The main purpose is to style elements based on hover
+ * over parent element further up the DOM. 
+ * Create an area of product cards 
+ * button. Once window scrolls down to and past 5px the button is visible and
+ * hidden once the window scrolls back above 5px.
+ */
+    // Create an array of product cards instead of class list so that it can be indexed
+    // and used to locate the attribute buttons row. The solution to this was found in 
+    // Stack Overflow:
+    // https://stackoverflow.com/questions/63122180/using-entries-in-a-for-of-loop-iterating-over-an-htmlcollection
     let productCards = Array.from(document.getElementsByClassName('product-card'));
     if (productCards) {
-        console.log(productCards)
         for (let [i, card] of productCards.entries()) {
+            // use of mousenter into div to replicate the hover pseudo class.
+            // style svg and images by getting elements by class name in the declared
+            // card variable.
             card.onmouseenter = () => {                
                 let svgs = card.getElementsByClassName('svg-hover');
                 for (let svg of svgs) {
@@ -150,9 +171,10 @@ const styleProductCardSvg = () => {
                     image.style.transition = 'all 1.5s'
                     image.style.scale = '1.1 1.05';
                     let img = image.getElementsByTagName('img')[0]
-
                     img.style.borderRadius = '0';
                 }
+                // use of index to determine which card the attribute buttons belong to.
+                // before adjusting position.
                 let attButtons = document.getElementsByClassName('size-colour-row')[i];
                 if (attButtons){
                     attButtons.style.transition = 'all 1s'
@@ -160,6 +182,7 @@ const styleProductCardSvg = () => {
                     attButtons.style.left = '30px'
                 }
             };
+            // this function reverses the styling above in an identical manner.
             card.onmouseleave = () => {
                 let svgs = card.getElementsByClassName('svg-hover');
                 for (let svg of svgs) {
