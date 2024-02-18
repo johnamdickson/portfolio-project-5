@@ -125,7 +125,7 @@ const styleNavBar = () => {
 
 window.onscroll = () => {
     let topButton = document.getElementById('back-to-top')
-    if (window.scrollY<=125) {
+    if (window.scrollY<=5) {
         topButton.style.visibility = 'hidden'
     } else {
         topButton.style.visibility = 'visible'
