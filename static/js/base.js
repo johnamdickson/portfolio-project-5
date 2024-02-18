@@ -143,12 +143,28 @@ const styleProductCardSvg = () => {
                 for (let svg of svgs) {
                     svg.style.fill = '#f1d5e5';
                 };
+                let images = card.getElementsByClassName('product-image');
+                for (let image of images) {
+                    image.style.transition = 'all 2s'
+                    image.style.scale = '1.1 1.05';
+                    let img = image.getElementsByTagName('img')[0]
+                    img.style.transition = 'all 2s'
+                    img.style.borderRadius = '0';
+                }
             };
             card.onmouseleave = () => {
                 let svgs = card.getElementsByClassName('svg-hover');
                 for (let svg of svgs) {
                     svg.style.fill = '#4d6562';
                 };
+                let images = card.getElementsByClassName('product-image');
+                for (let image of images) {
+                    image.style.transition = 'all 0.5s'
+                    image.style.scale = '1 1';
+                    let img = image.getElementsByTagName('img')[0]
+                    img.style.transition = 'all 0.5s'
+                    img.style.borderRadius = '20px';
+                }
             };
         }
     }

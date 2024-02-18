@@ -515,8 +515,9 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
 
 .size-colour-row {
     z-index:999;
-    top:10px;
-    left:25px;
+    top:15px;
+    left:35px;
+    width: 15%;
 }
 /* ----------------------------------- Cart Page Styling ----------------------------------- */
 
