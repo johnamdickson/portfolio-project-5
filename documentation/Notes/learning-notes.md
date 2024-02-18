@@ -1,7 +1,7 @@
-PROJECT SET UP -
+## PROJECT SET UP -
 Use `pip3 install 'django<4'` for Django installation if following structure of this project.
 
-ALL AUTH -
+## ALL AUTH
 * Reminder to add `import os` to settings
 * Use `pip3 install django-allauth==0.41.0`
 * Change the domain name and display name in the Django admin panel.
@@ -10,13 +10,13 @@ ALL AUTH -
 * To check the python version, hit tab as typing python into the directory string which will return the correct 
 version of python used in the IDE.
 
-HOME/BASE - 
+## HOME/BASE
 * Add this to base.html head to allow for backwards compatability:
     `<meta http-equiv="X-UA-Compatible" content="ie=edge">`
 * `mkdir -p` with directory structure e.g. home/templates/home to create structure in main project directory.
 
 
-CREATING ENV.PY -
+## CREATING ENV.PY
 
 In your project workspace, create a file called env.py. It’s a good idea to check that this file is included in the .gitignore file too. If you are using the Code Institute provided GitHub template, then the env.py file is already in the .gitignore file.
 
@@ -24,64 +24,67 @@ a gitignore file with a line reading env.py
 
 In your env.py file add the following line of code.
 
- import os
+`import os`
+
 Next we need to set some environment variables. First, add a blank line, then set a DATABASE_URL variable, with the value you just copied from ElephantSQL as follows
 
     
- os.environ["DATABASE_URL"]="<copiedURL>"
-Replace <copiedURL> with the relevant string from ElephantSQL.
+ `os.environ["DATABASE_URL"]="<copiedURL>"`
+Replace `<copiedURL>` with the relevant string from ElephantSQL.
 
 As this is a Django application it has a SECRET_KEY, which it uses to encrypt session cookies. The secret key can be whatever you like.
 
 We need to include this string in the env.py file. So, just like before, add the variable by pasting in the string as follows
 
- os.environ["SECRET_KEY"]="my_super^secret@key"
-We don't want to share our secrets either, so this documentation shows you a made up key. Just replace my_super^secret@key with your key.
+ `os.environ["SECRET_KEY"]="my_super^secret@key"`
 
-CREATING DATABASE AND LINKING UP
+We don't want to share our secrets either, so this documentation shows you a made up key. Just replace `my_super^secret@key` with your key.
+
+## CREATING DATABASE AND LINKING UP
 
 Now you have created an env.py file, you need to make your Django project aware of it. Open up your settings.py file and add the following code below your Path import
 
- import os
- import dj_database_url
- if os.path.isfile('env.py'):
-     import env
+ `import os`<br>
+ `import dj_database_url`<br>
+ `if os.path.isfile('env.py'):`<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;`import env`
+
 The if statement here acts as a little protection for the application in case you try to run it without an env.py file present. You will use the other import in a moment.
 
 A little further down, remove the insecure secret key provided by Django. Instead, we will reference the variable in the env.py file, so change your SECRET_KEY variable to the following
 
- SECRET_KEY = os.environ.get('SECRET_KEY')
+` SECRET_KEY = os.environ.get('SECRET_KEY')`
+
 Now that is taken care of, we need to hook up your database. We are going to use the dj_database_url import for this, so scroll down in your settings file to the database section.
 
 Comment out the original DATABASES variable and add the code below, as shown
 
- # DATABASES = {
- #     'default': {
- #         'ENGINE': 'django.db.backends.sqlite3',
- #         'NAME': BASE_DIR / 'db.sqlite3',
- #     }
- # }
+
+ `# DATABASES = {`<br>
+ `#     'default': {`
+ `#         'ENGINE': 'django.db.backends.sqlite3',`<br>
+ `#         'NAME': BASE_DIR / 'db.sqlite3',`<br>
+ `#     }`<br>
+ `# }`<br>
     
- DATABASES = {
-     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
- }
+ `DATABASES = { `<br>
+     `'default': dj_database_url.parse(os.environ.get`<br>`("DATABASE_URL"))`<br>
+ `}`
+ 
 The code that has been commented out connects your Django application to the created db.sqlite3 database within your repo. However, as we know, that database is not suitable for production. This line of code separates the database URL stored by your env.py file into the relevant name and password etc.
 
 With those changes in place, make sure to save your file. Your application will now connect to your remote database hosted on ElephantSQL. Not convinced? Let’s prove it.
 
 Run the migration command in your terminal to migrate your database structure to the newly-connected ElephantSQL database
 
- python manage.py migrate
-Once the migrations have completed, head back over to your ElephantSQL dashboard, select your database instance and then select the “Browser” tab on the left.
+ `python manage.py migrate`
 
-the browser tab shown in the left hand menu of a database on elephant s q l
+Once the migrations have completed, head back over to your ElephantSQL dashboard, select your database instance and then select the “Browser” tab on the left.
 
 Click “Table queries” to reveal a dropdown list, you can see your database structure here. You may not recognise all of the tables in the list, many are generated by the authorisation apps used, the important thing is that this list has been populated from your Django migrations.
 
-a table query result with data showing in various rows
-
 Take a moment to add, commit and push your project to GitHub if you haven’t done so already.
 
-
-- Django Tips and Tricks
-* get_ITEM_display to render the human readable aspect of choices tuple in template, where ITEM is the name of the model property. See ProductSizes and Colours rendering in product detail template.
+## Django Tips and Tricks
+- get_ITEM_display to render the human readable aspect of choices tuple in template, where ITEM is the name of the model property. See ProductSizes and Colours rendering in product detail template.
+- `manage.py shell` command to enable db changes from the terminal. ![shell](shell.png) To exit shell use the `exit()` function.
