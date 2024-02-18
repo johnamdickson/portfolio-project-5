@@ -325,10 +325,13 @@ header .nav-link:focus {
 
 .product-card {
     color: #4d6562;
+    /* border-radius: 10px; */
 }
 
 .product-card:hover {
-    opacity: 0.6;
+    background-color: #81a8a3;
+    border: 0.5px solid #f1d5e5;
+    box-shadow: 0 0.5rem 1rem rgba(242,191,220,0.15);
 }
 
 .product-title p {
