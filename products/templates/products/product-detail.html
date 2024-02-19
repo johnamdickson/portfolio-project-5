@@ -43,8 +43,8 @@
             <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
               {% csrf_token %}
               <div class="form-row row mt-2">
-                <div class="col-3 offset-2">
-                  <p class="mt-3 text-center"><strong>Quantity:</strong></p>
+                <div class="col-5">
+                  <p class="mt-3 text-end"><strong>Quantity:</strong></p>
                 </div>
                 <div class="col-5">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
@@ -55,8 +55,8 @@
                   </div>
                 </div>
                 {% if sizes %}
-                <div class="col-3 offset-2">
-                  <p class="mt-3 text-center"><strong>Size:</strong></p>
+                <div class="col-5">
+                  <p class="mt-3 text-end"><strong>Size:</strong></p>
                 </div>
                 <div class="col-5">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
@@ -71,8 +71,8 @@
                 </div>
                 {% endif %}
                 {% if colours %}
-                <div class="col-3 offset-2">
-                  <p class="mt-3 text-center"><strong>Primary Colour:</strong></p>
+                <div class="col-5">
+                  <p class="mt-3 text-end"><strong>Primary Colour:</strong></p>
                 </div>
                 <div class="col-5">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
@@ -85,8 +85,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-3 offset-2">
-                  <p class="mt-3 text-center"><strong>Secondary Colour:</strong></p>
+                {% if product.secondary_colour %}
+                <div class="col-5">
+                  <p class="mt-3 text-end"><strong>Secondary Colour:</strong></p>
                 </div>
                 <div class="col-5">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
@@ -99,6 +100,7 @@
                     </div>
                   </div>
                 </div>
+                {% endif %}
                 {% endif %}
                 <div class="col-10 col-md-6 mb-2 mx-auto">
                   <input type="submit" class="btn btn-custom rounded-4 text-uppercase mt-4 w-100" value="Add to Cart">

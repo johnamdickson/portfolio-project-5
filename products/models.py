@@ -37,6 +37,7 @@ class Product(models.Model):
     # https://stackoverflow.com/questions/45947457/django-how-can-i-get-a-model-that-store-a-listlike-in-python-or-anyway-of-a-s
     sizes = models.ManyToManyField('ProductSize', blank=True)
     colours = models.ManyToManyField('ProductColour', blank=True)
+    secondary_colour = models.BooleanField(default=False, blank=True)
     learn_product = models.BooleanField(default=False, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
