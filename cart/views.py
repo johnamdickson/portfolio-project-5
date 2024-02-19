@@ -28,24 +28,44 @@ def add_to_cart(request, item_id):
     if 'secondary_product_colour' in request.POST:
         secondary_colour = request.POST['secondary_product_colour']
     cart = request.session.get('cart', {})
-
+    colour_only = f"{colour}"
+    two_colours = f"{colour},{secondary_colour}"
+    size_colour = f"{size},{colour}"
+    size_two_colours= f"{size},{colour},{secondary_colour}"
+    item_id_key = 'items_size_and_or_colour'
     
     if size and colour and secondary_colour:
         if item_id in list(cart.keys()):
-            if f"{size},{colour},{secondary_colour}" in cart[item_id]['items_by_size_and_colour'].keys():
-                cart[item_id]['items_by_size_and_colour'][f"{size},{colour},{secondary_colour}"] += quantity
+            if size_two_colours in cart[item_id][item_id_key].keys():
+                cart[item_id][item_id_key][size_two_colours] += quantity
             else:
-                cart[item_id]['items_by_size_and_colour'][f"{size},{colour},{secondary_colour}"] = quantity
+                cart[item_id][item_id_key][size_two_colours] = quantity
         else:
-            cart[item_id] = {'items_by_size_and_colour': {f"{size},{colour},{secondary_colour}": quantity}}
+            cart[item_id] = {item_id_key: {size_two_colours: quantity}}
     elif size and colour:
         if item_id in list(cart.keys()):
-            if f"{size},{colour}" in cart[item_id]['items_by_size_and_colour'].keys():
-                cart[item_id]['items_by_size_and_colour'][f"{size},{colour}"] += quantity
+            if size_colour in cart[item_id][item_id_key].keys():
+                cart[item_id][item_id_key][size_colour] += quantity
             else:
-                cart[item_id]['items_by_size_and_colour'][f"{size},{colour}"] = quantity
+                cart[item_id][item_id_key][size_colour] = quantity
         else:
-            cart[item_id] = {'items_by_size_and_colour': {f"{size},{colour}": quantity}}
+            cart[item_id] = {item_id_key: {size_colour: quantity}}
+    elif colour and secondary_colour:
+        if item_id in list(cart.keys()):
+            if two_colours in cart[item_id][item_id_key].keys():
+                cart[item_id][item_id_key][two_colours] += quantity
+            else:
+                cart[item_id][item_id_key][two_colours] = quantity
+        else:
+            cart[item_id] = {item_id_key: {two_colours: quantity}}
+    elif colour:
+        if item_id in list(cart.keys()):
+            if colour_only in cart[item_id][item_id_key].keys():
+                cart[item_id][item_id_key][colour_only] += quantity
+            else:
+                cart[item_id][item_id_key][colour_only] = quantity
+        else:
+            cart[item_id] = {item_id_key: {colour_only: quantity}}
 
     else:
         if item_id in list(cart.keys()):

@@ -21,9 +21,9 @@ def cart_contents(request):
                 'quantity': item_data,
                 'product': product,
             })
-        else:
+        else :
             product = get_object_or_404(Product, pk=item_id)
-            for properties, quantity in item_data['items_by_size_and_colour'].items():
+            for properties, quantity in item_data['items_size_and_or_colour'].items():
                 property_list = properties.split(',')
                 size = property_list[0]
                 colour = property_list[1]
@@ -32,8 +32,6 @@ def cart_contents(request):
                     secondary_colour = property_list[2]
                 else:
                     secondary_colour = None
-                print(size)
-                print(colour)
                 total += quantity * product.price
                 product_count += quantity
                 cart_items.append({
@@ -44,7 +42,6 @@ def cart_contents(request):
                     'colour': colour,
                     'secondary_colour': secondary_colour,
                 })
-
 
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
