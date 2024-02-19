@@ -1,5 +1,7 @@
 window.addEventListener('load', function () {
-  setUpSelect()
+  setUpSelect();
+  styleProductCards();
+
 })
 
 const setUpSelect = () => {
