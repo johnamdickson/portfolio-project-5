@@ -66,10 +66,14 @@ h6 {
     top:10px;
     right: 10px;
 }
-
+.toast-header {
+    font-family: 'Bitter', serif;
+    font-weight: 200;
+    letter-spacing: 2.5px;
+}
 .toast-logo{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 .toast-header-error {
@@ -86,6 +90,11 @@ h6 {
 
 .toast-header-warning {
     background-color: rgba(255,193,16,0.8);
+}
+
+.toast .btn-close {
+    width: 15px;
+    height: 15px;
 }
 
 .login-error ul {
