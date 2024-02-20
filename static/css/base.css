@@ -66,6 +66,11 @@ h6 {
     top:10px;
     right: 10px;
 }
+
+.toast-container {
+    top:10px;
+    right: 10px;
+}
 .toast-header {
     font-family: 'Bitter', serif;
     font-weight: 200;

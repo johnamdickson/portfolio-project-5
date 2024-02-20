@@ -95,6 +95,7 @@
                   <div class="form-group mx-auto w-100 mt-2 px-2">
                     <div class="input-group">
                       <select class="form-control" name="secondary_product_colour" id='id_secondary_product_colour'>
+                        <option disabled selected>Please choose a colour</option>
                         {% for c in colours%}
                         <option value="{{c.get_colour_display}}">{{c.get_colour_display}}</option>
                         {% endfor %}
@@ -126,7 +127,7 @@
 </div>
 </div>
 
-<div id="toast-container">
+<div class="toast-container position-absolute">
 
 </div>
 
