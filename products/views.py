@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+
 # Create your views here.
 
 def products(request):
@@ -86,13 +87,16 @@ def product_detail(request, product_pk):
     sizes = product.sizes.all()
     colours = product.colours.all()
     unfiltered_products = Product.objects.all()
-
+    sizes_data = list(sizes.values())
+    colours_data = list(colours.values())
     context = {
         'products' : products,
         'product': product,
         'sizes': sizes,
         'colours': colours,
         'unfiltered_products': unfiltered_products,
+        'sizes_data': sizes_data,
+        'colours_data': colours_data,
     }
 
     return render(request, 'products/product-detail.html', context)

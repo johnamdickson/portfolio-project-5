@@ -40,13 +40,13 @@
               <p class="text-center m-0">€{{product.price}}</p>
             </div>
 
-            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST" id="product-form">
               {% csrf_token %}
               <div class="form-row row mt-2">
                 <div class="col-5">
                   <p class="mt-3 text-end"><strong>Quantity:</strong></p>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
                     <div class="input-group">
                       <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99"
@@ -58,11 +58,12 @@
                 <div class="col-5">
                   <p class="mt-3 text-end"><strong>Size:</strong></p>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
                     <div class="input-group">
                       <select class="form-control" name="product_size" id='id_product_size'>
-                        {% for s in sizes%}
+                        <option disabled selected >Please choose a size</option>
+                        {% for s in sizes %}
                         <option value="{{s.get_size_display}}">{{s.get_size_display}}</option>
                         {% endfor %}
                       </select>
@@ -74,11 +75,12 @@
                 <div class="col-5">
                   <p class="mt-3 text-end"><strong>Primary Colour:</strong></p>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
                     <div class="input-group">
-                      <select class="form-control" name="product_colour" id='id_product_colour'>
-                        {% for c in colours%}
+                      <select class="form-control" name="product_colour" id='id_product_colour' required>
+                        <option disabled selected>Please choose a colour</option>
+                        {% for c in colours %}
                         <option value="{{c.get_colour_display}}">{{c.get_colour_display}}</option>
                         {% endfor %}
                       </select>
@@ -89,7 +91,7 @@
                 <div class="col-5">
                   <p class="mt-3 text-end"><strong>Secondary Colour:</strong></p>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
                     <div class="input-group">
                       <select class="form-control" name="secondary_product_colour" id='id_secondary_product_colour'>
@@ -103,7 +105,7 @@
                 {% endif %}
                 {% endif %}
                 <div class="col-10 col-md-6 mb-2 mx-auto">
-                  <input type="submit" class="btn btn-custom rounded-4 text-uppercase mt-4 w-100" value="Add to Cart">
+                  <input type="submit" class="btn btn-custom rounded-4 text-uppercase mt-4 w-100" value="Add to Cart" id="product-submit">
                 </div>
                 <div class="col-12 mx-auto text-center product-detail-return">
                   <a href="{% url 'products' %}" class="btn rounded-0 mb-3">
@@ -123,4 +125,16 @@
   </div>
 </div>
 </div>
+
+<div id="toast-container">
+
+</div>
+
+{{ sizes_data|json_script:'sizes' }}
+{{ colours_data|json_script:'colours' }}
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'products/js/products.js' %}"></script>
 {% endblock %}
