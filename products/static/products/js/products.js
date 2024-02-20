@@ -108,42 +108,23 @@ const styleProductCards = () => {
   }
 }
 
-const addToast = (availableSizes, availableColours) => {
+const addToast = (availableSizes, availableColours, coloursRequired) => {
   // how to pass parameters into event listener function:
   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#:~:text=Getting%20data%20into%20an%20event%20listener%20using%20%22this%22
-  let toastContainer = document.getElementById("toast-container");
-  let toastHeader = ``
+  let toastContainer = document.getElementsByClassName("toast-container")[0];
+  toastContainer.innerHTML = ``
   let toastBody = ``
-
-  if (availableSizes || availableColours) {
-    toastHeader = `NO SIZE OR COLOUR SELECTED`
-  } else if (availableSizes){
-    toastHeader = `NO SIZE SELECTED`
-  } else if (availableColours){
-    toastHeader = `NO COLOUR SELECTED`
-  }
-
   if (availableSizes) {
-    toastBody += `<strong><p class="mt-2 mb-1">Please select a size from the following</p></strong> <ul>`
+    toastBody = `<strong><p class="mb-2">Please select a size from the following:</p></strong> <ul>`
     for (parameter of availableSizes) {
       toastBody += `<li>${parameter}</li>`
     }
     toastBody += `</ul>`
-  }
-
-  if (availableColours) {
-    toastBody += `<strong><p class="mt-2 mb-1">Please select a colour from the following</p></strong> <ul>`
-    for (parameter of availableColours) {
-      toastBody += `<li>${parameter}</li>`
-    }
-    toastBody += `</ul>`
-  }
-
-  toastContainer.innerHTML = `
-    <div class="toast position-absolute" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000" data-bs-animation="true">
+    toastContainer.innerHTML += `
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000" data-bs-animation="true">
       <div class="toast-header text-white toast-header-error p-2">
         <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
-        <span class="me-auto">${toastHeader}</span>
+        <span class="me-auto">NO SIZE SELECTED</span>
         <small class=""></small>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
@@ -152,11 +133,39 @@ const addToast = (availableSizes, availableColours) => {
       </div>
     </div>
     `
-  const toastShow = document.querySelector('.toast')
-  if (toastShow) {
-    const toast = new bootstrap.Toast(toastShow)
+  }
+
+  if (availableColours) {
+    toastBody = `<strong><p class="mb-2">Please select a colour from the following</p></strong> <ul>`
+    for (parameter of availableColours) {
+      toastBody += `<li>${parameter}</li>`
+    }
+    toastBody += `</ul>`
+    toastContainer.innerHTML += `
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000" data-bs-animation="true">
+      <div class="toast-header text-white toast-header-error p-2">
+        <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
+        <span class="me-auto">NO ${coloursRequired} SELECTED</span>
+        <small class=""></small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        ${toastBody}
+      </div>
+    </div>
+    `
+    // const toastShow = document.querySelector('.toast')
+    // if (toastShow) {
+    //   const toast = new bootstrap.Toast(toastShow)
+    //   toast.show()
+    // }
+  }
+  let toasts = document.getElementsByClassName('toast');
+  for (let toast of toasts) {
+    toast = new bootstrap.Toast(toast)
     toast.show()
   }
+
 }
 
 const sizeSelectCheck = () => {
@@ -173,51 +182,11 @@ const sizeSelectCheck = () => {
   let secColourSelector = document.getElementById('id_secondary_product_colour');
   let colourSelectorValue = null
   let secColourSelectorValue = null
-
-  // __________________________ Sizes and colours code ____________________________________
-    // creating an array from HTML:
-  // https://stackoverflow.com/questions/26316536/javascript-array-and-innerhtml
-  if (sizesJson && coloursJson){
-    setUpSizes();
-    setUpColours()
-  if (sizeSelectorValue === "Please choose a size" && colourSelectorValue === "Please choose a colour") {
-    submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours))
-    form.onsubmit = () => {
-      return false
-    }
-  } 
-  
-  sizeSelector.onchange = () => {
-    sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
-    colourSelectorValue  = colourSelector.options[colourSelector.selectedIndex].value;
-    if (sizeSelectorValue !== "Please choose a size" && colourSelectorValue === "Please choose a colour"){
-    submitButton.addEventListener("click", addToast.bind(null, null, availableColours))
-    form.onsubmit = () => {
-      return false
-    } 
-    } else if (sizeSelectorValue !== "Please choose a size" && colourSelectorValue !== "Please choose a colour"){
-            submitButton.removeEventListener("click", addToast)
-      form.onsubmit = () => {
-        return true
-    }
-  }
-  }
-  
-    colourSelector.onchange = () => {
-    sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
-    colourSelectorValue  = colourSelector.options[colourSelector.selectedIndex].value;
-    if (sizeSelectorValue === "Please choose a size" && colourSelectorValue !== "Please choose a colour"){
-    submitButton.addEventListener("click", addToast.bind(null, availableSizes, null))
-    form.onsubmit = () => {
-      return false
-    } 
-    } else if (sizeSelectorValue !== "Please choose a size" && colourSelectorValue !== "Please choose a colour"){
-            submitButton.removeEventListener("click", addToast)
-      form.onsubmit = () => {
-        return true
-    }
-  }
-  }
+  let primaryOnlyString = "PRIMARY COLOUR"
+  let secondaryOnlyString = "SECONDARY COLOUR"
+  let primaryAndSecondary = "PRIMARY NOR SECONDARY COLOURS"
+  let sizeOption = "Please choose a size"
+  let colourOption = "Please choose a colour"
 
   function setUpSizes() {
     sizesJson.forEach(element => {
@@ -230,40 +199,120 @@ const sizeSelectCheck = () => {
     coloursJson.forEach(element => {
       availableColours.push(element.name)
     });
-    colourSelectorValue  = colourSelector.options[colourSelector.selectedIndex].value;
-    if (secColourSelectorValue) {
-      secColourSelectorValue  = secColourSelector.options[secColourSelector.selectedIndex].value;
+    colourSelectorValue = colourSelector.options[colourSelector.selectedIndex].value;
+    if (secColourSelector) {
+      secColourSelectorValue = secColourSelector.options[secColourSelector.selectedIndex].value;
     }
   }
 
-
-    // __________________________ Colours code ____________________________________
-    // creating an array from HTML:
+  function selectorChange(selector) {
+    selector.onchange = () => {
+      sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
+      colourSelectorValue = colourSelector.options[colourSelector.selectedIndex].value;
+      if (secColourSelector) {
+        secColourSelectorValue = secColourSelector.options[secColourSelector.selectedIndex].value;
+      }
+      if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, secondaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, null))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue !== colourOption) {
+        submitButton.removeEventListener("click", addToast)
+        form.onsubmit = () => {
+          return true
+        }
+      }else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption) {
+        submitButton.removeEventListener("click", addToast)
+        form.onsubmit = () => {
+          return true
+        }
+      } 
+    }
+  }
+  // __________________________ Sizes and colours code ____________________________________
+  // creating an array from HTML:
   // https://stackoverflow.com/questions/26316536/javascript-array-and-innerhtml
 
+  // first if statement checks that the two JSON arrays are not empty.
+  if (sizesJson.length > 0 && coloursJson.length > 0) {
+    setUpSizes();
+    setUpColours();
 
+    if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+      submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryAndSecondary))
+      form.onsubmit = () => {
+        return false
+      }
+    } else if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption) {
+      submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryOnlyString))
+      form.onsubmit = () => {
+        return false
+      }
+    }
+    selectorChange(sizeSelector)
+    selectorChange(colourSelector)
+    if (secColourSelector) {
+      selectorChange(secColourSelector)
+    }
+  } else if (sizesJson.length > 0 && coloursJson.length === 0) {
+    setUpSizes();
+    if (sizeSelectorValue === sizeOption) {
+      submitButton.addEventListener("click", addToast.bind(null, availableSizes, null))
+      form.onsubmit = () => {
+        return false
+      }
+    }
+    sizeSelector.onchange = () => {
+      submitButton.removeEventListener("click", addToast)
+      form.onsubmit = () => {
+        return true
+      }
+    }
+  } else if (sizesJson.length === 0 && coloursJson.length > 0) {
+    setUpColours();
+    if (colourSelectorValue === colourOption) {
+      submitButton.addEventListener("click", addToast.bind(null, null, availableColours))
+      form.onsubmit = () => {
+        return false
+      }
+    }
+    colourSelector.onchange = () => {
 
-  // if (colourSelectorValue === "Please choose a colour" || secColourSelectorValue === "Please choose a colour") {
-  //   submitButton.addEventListener("click", addToast.bind(null, "colour", availableColours))
-  //   form.onsubmit = () => {
-  //     return false
-  //   }
-  // }
-  // colourSelector.onchange = () => {
-  //   colourSelectorValue  = colourSelector.options[colourSelector.selectedIndex].value;
-  //   secColourSelectorValue  = secColourSelector.options[secColourSelector.selectedIndex].value;
-  //   if (colourSelectorValue === "Please choose a colour" || secColourSelectorValue === "Please choose a colour") {
-  //     submitButton.addEventListener("click", addToast.bind(null, "colour", availableColours))
-  //     form.onsubmit = () => {
-  //       return false
-  //     }
-  //   } else {
-  //     submitButton.removeEventListener("click", addToast)
-  //     form.onsubmit = () => {
-  //       return true
-  //     }
-  //   }
-  // }
+      submitButton.removeEventListener("click", addToast)
+      form.onsubmit = () => {
+        return true
+      }
+    }
+  }
 }
-}
-
