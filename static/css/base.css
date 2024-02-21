@@ -538,6 +538,19 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
     left:35px;
     width: 15%;
 }
+/* solution to hiding input arrow buttons:
+https://www.w3docs.com/snippets/css/how-to-hide-the-html5-number-inputs-arrow-buttons.html#:~:text=If%20you%20want%20to%20hide,to%20hide%20the%20arrow%20buttons.
+ */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
 /* ----------------------------------- Cart Page Styling ----------------------------------- */
 
 .cart-table-row{

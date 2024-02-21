@@ -2,6 +2,7 @@ window.addEventListener('load', function () {
   setUpSelect();
   styleProductCards();
   sizeSelectCheck();
+  quantitySelectButtons();
 })
 
 const setUpSelect = () => {
@@ -321,4 +322,29 @@ const sizeSelectCheck = () => {
     selectorChange(colourSelector)
     selectorChange(secColourSelector)
   }
+}
+
+const quantitySelectButtons = () => {
+  let minusButton = document.getElementById('minus-button');
+  let plusButton = document.getElementById('plus-button');
+  let quantityInput = document.getElementById('id_qty_selector');
+  let inputValue = parseInt(quantityInput.value);
+
+  minusButton.addEventListener('click', function(){
+    if (inputValue === 1){
+      return
+    } else {
+      inputValue -= 1
+      quantityInput.value = inputValue
+    }
+  }) 
+
+  plusButton.addEventListener('click', function(){
+    if (inputValue === 99){
+      return
+    } else {
+      inputValue += 1
+      quantityInput.value = inputValue
+    }
+  }) 
 }
