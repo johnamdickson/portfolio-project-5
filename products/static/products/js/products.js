@@ -214,9 +214,10 @@ const sizeSelectCheck = () => {
       }
 
 
+
 // Size and two colour options, typically hats.
 
-      if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+        if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
         form.onsubmit = () => {
           return false
@@ -232,7 +233,6 @@ const sizeSelectCheck = () => {
           return false
         }
       } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-        console.log("WE're HERE")
         submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, secondaryOnlyString))
         form.onsubmit = () => {
           return false
@@ -242,7 +242,19 @@ const sizeSelectCheck = () => {
         form.onsubmit = () => {
           return false
         }
-
+// Two colour options with no sizes, typically blankets.
+      } else if (colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
+  console.log("primary colour selected, secondary not")
+  submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
+  form.onsubmit = () => {
+    return false
+  }
+} else if (colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
+  console.log("secondary colour selected, primary not")
+  submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+  form.onsubmit = () => {
+    return false
+  }
 // Size and one colour option, typically hats.
       } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
@@ -251,24 +263,6 @@ const sizeSelectCheck = () => {
         }
       } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, null))
-        form.onsubmit = () => {
-          return false
-        }
-// Two colour options with no sizes, typically blankets.
-      } 
-      else if (colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-//  One colour options with no sizes, typically blankets.
-      }  else if (colourSelectorValue !== colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
         form.onsubmit = () => {
           return false
         }
