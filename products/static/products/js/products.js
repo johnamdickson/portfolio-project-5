@@ -207,12 +207,22 @@ const sizeSelectCheck = () => {
 
   function selectorChange(selector) {
     selector.onchange = () => {
-      sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
-      colourSelectorValue = colourSelector.options[colourSelector.selectedIndex].value;
+      if (sizeSelector) {
+        sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
+      }
+      if(colourSelector) {
+        colourSelectorValue = colourSelector.options[colourSelector.selectedIndex].value;
+      }
       if (secColourSelector) {
         secColourSelectorValue = secColourSelector.options[secColourSelector.selectedIndex].value;
       }
-      if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+      if (colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+      
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
         form.onsubmit = () => {
           return false
@@ -257,6 +267,11 @@ const sizeSelectCheck = () => {
         form.onsubmit = () => {
           return true
         }
+      } else if (sizeSelectorValue !== sizeOption) {
+        submitButton.removeEventListener("click", addToast)
+        form.onsubmit = () => {
+          return true
+        }
       } 
     }
   }
@@ -268,7 +283,6 @@ const sizeSelectCheck = () => {
   if (sizesJson.length > 0 && coloursJson.length > 0) {
     setUpSizes();
     setUpColours();
-
     if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
       submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryAndSecondary))
       form.onsubmit = () => {
@@ -293,12 +307,8 @@ const sizeSelectCheck = () => {
         return false
       }
     }
-    sizeSelector.onchange = () => {
-      submitButton.removeEventListener("click", addToast)
-      form.onsubmit = () => {
-        return true
-      }
-    }
+  selectorChange(sizeSelector)
+
   } else if (sizesJson.length === 0 && coloursJson.length > 0) {
     setUpColours();
     if (colourSelectorValue === colourOption) {
@@ -308,7 +318,6 @@ const sizeSelectCheck = () => {
       }
     }
     colourSelector.onchange = () => {
-
       submitButton.removeEventListener("click", addToast)
       form.onsubmit = () => {
         return true
