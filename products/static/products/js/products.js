@@ -126,7 +126,7 @@ const addToast = (availableSizes, availableColours, coloursRequired) => {
         <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
         <span class="me-auto">NO SIZE SELECTED</span>
         <small class=""></small>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white me-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         ${toastBody}
@@ -147,18 +147,13 @@ const addToast = (availableSizes, availableColours, coloursRequired) => {
         <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
         <span class="me-auto">NO ${coloursRequired} SELECTED</span>
         <small class=""></small>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white me-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         ${toastBody}
       </div>
     </div>
     `
-    // const toastShow = document.querySelector('.toast')
-    // if (toastShow) {
-    //   const toast = new bootstrap.Toast(toastShow)
-    //   toast.show()
-    // }
   }
   let toasts = document.getElementsByClassName('toast');
   for (let toast of toasts) {
@@ -207,6 +202,7 @@ const sizeSelectCheck = () => {
 
   function selectorChange(selector) {
     selector.onchange = () => {
+      // First check if selectors are present before checking value and assigning to variable.
       if (sizeSelector) {
         sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
       }
@@ -216,13 +212,11 @@ const sizeSelectCheck = () => {
       if (secColourSelector) {
         secColourSelectorValue = secColourSelector.options[secColourSelector.selectedIndex].value;
       }
-      if (colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
-      
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+
+
+// Size and two colour options, typically hats.
+
+      if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
         form.onsubmit = () => {
           return false
@@ -238,15 +232,18 @@ const sizeSelectCheck = () => {
           return false
         }
       } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, secondaryOnlyString))
+        console.log("WE're HERE")
+        submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, secondaryOnlyString))
         form.onsubmit = () => {
           return false
         }
       } else if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, primaryOnlyString))
+        submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryOnlyString))
         form.onsubmit = () => {
           return false
         }
+
+// Size and one colour option, typically hats.
       } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
         form.onsubmit = () => {
@@ -257,22 +254,31 @@ const sizeSelectCheck = () => {
         form.onsubmit = () => {
           return false
         }
-      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue !== colourOption) {
-        submitButton.removeEventListener("click", addToast)
-        form.onsubmit = () => {
-          return true
-        }
-      }else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption) {
-        submitButton.removeEventListener("click", addToast)
-        form.onsubmit = () => {
-          return true
-        }
-      } else if (sizeSelectorValue !== sizeOption) {
-        submitButton.removeEventListener("click", addToast)
-        form.onsubmit = () => {
-          return true
-        }
+// Two colour options with no sizes, typically blankets.
       } 
+      else if (colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+//  One colour options with no sizes, typically blankets.
+      }  else if (colourSelectorValue !== colourOption) {
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+// In event all selectors have selected a valid option, remove event listener and allow form to be submitted.
+      } else {
+        submitButton.removeEventListener("click", addToast)
+        form.onsubmit = () => {
+          return true
+        }
+      }
     }
   }
   // __________________________ Sizes and colours code ____________________________________
@@ -296,6 +302,7 @@ const sizeSelectCheck = () => {
     }
     selectorChange(sizeSelector)
     selectorChange(colourSelector)
+    
     if (secColourSelector) {
       selectorChange(secColourSelector)
     }
@@ -311,17 +318,13 @@ const sizeSelectCheck = () => {
 
   } else if (sizesJson.length === 0 && coloursJson.length > 0) {
     setUpColours();
-    if (colourSelectorValue === colourOption) {
-      submitButton.addEventListener("click", addToast.bind(null, null, availableColours))
+    if (colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+      submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
       form.onsubmit = () => {
         return false
       }
     }
-    colourSelector.onchange = () => {
-      submitButton.removeEventListener("click", addToast)
-      form.onsubmit = () => {
-        return true
-      }
-    }
+    selectorChange(colourSelector)
+    selectorChange(secColourSelector)
   }
 }
