@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
   setUpSelect();
   styleProductCards();
   sizeSelectCheck();
-  quantitySelectButtons();
+  productQuantitySelect();
 })
 
 const setUpSelect = () => {
@@ -324,7 +324,7 @@ const sizeSelectCheck = () => {
   }
 }
 
-const quantitySelectButtons = () => {
+const productQuantitySelect = () => {
   let minusButton = document.getElementById('minus-button');
   let plusButton = document.getElementById('plus-button');
   let quantityInput = document.getElementById('id_qty_selector');
@@ -347,4 +347,15 @@ const quantitySelectButtons = () => {
       quantityInput.value = inputValue
     }
   }) 
+
+  quantityInput.onchange = () => {
+    inputValue = parseInt(quantityInput.value);
+    if (inputValue > 99) {
+      inputValue = 99
+      quantityInput.value = inputValue;
+    } else if (inputValue < 1) {
+      inputValue = 1
+      quantityInput.value = inputValue;
+    }
+  } 
 }
