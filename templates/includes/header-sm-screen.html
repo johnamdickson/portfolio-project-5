@@ -1,6 +1,6 @@
 {% load static %}
 <div class="container-fluid">
-    <div class="row flex justify-content-evenly">
+    <div class="row flex justify-content-evenly header-sm">
         {% if request.path != "/" %}
         <div class="col-3">
             <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvas-menu-nav" role="button" aria-controls="offcanvas-menu-nav">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-3 col-md">
-            <a class="{% if grand_total %}text-info font-weight-bold{% else %}font-weight-light{% endif %} nav-link" href="">
+            <a class="{% if grand_total %} fw-bold{% else %}font-weight-light{% endif %} nav-link" href="{% url 'view_cart' %}">
                 <div class="text-center">
                     <i class="fas fa-cart-shopping fa-lg"></i>
                     <p class="my-0">

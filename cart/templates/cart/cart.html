@@ -15,24 +15,17 @@
             <hr class="mx-auto main-hr">
         </div>
     </div>
-    {{cart_items}}
-    <br>
-    <br>
-    {{request.session.cart}}
-    <br>
-    {{size}}
-    <div class="row w-100 justify-content-center">
-        <div class="row">
-            <div class="col-md-8 col-lg-7 mx-auto">
-                {% if cart_items %}
+    <div class="container-fluid g-0 justify-content-center">
+        {% if cart_items %}
+        <div class="row ms-md-2">
+            <div class="col-md-8">
                 <div class="table-responsive rounded">
-                    <table class="table table-sm table-borderless">
+                    <table class="table product-table table-borderless">
                         <thead class="text-white">
                             <tr>
-                                <th scope="col">
-                                    <h5 class="m-0 text-end">Product Info</h5>
+                                <th scope="col" colspan="2">
+                                    <h5 class="m-0 text-center">Product Info</h5>
                                 </th>
-                                <th scope="col"></th>
                                 <th scope="col">
                                     <h5 class="m-0 text-center">Price</h5>
                                 </th>
@@ -69,62 +62,66 @@
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
-                                {{item.size}}
-                                {{item.colour}}
-                                {{item.secondary_colour}}
                             </td>
                         </tr>
                         {% endfor %}
                     </table>
                 </div>
             </div>
-            <div class="col-12 col-md-4 mt-1">
-                <div class="sticky-top">
-                    <div class="row total-cols">
-                        <div class="col-12 mt-5 ">
-                            <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
-                        </div>
-                        <div class="col-12">
-                            <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
-                        </div>
-                        <div class="col-12">
-                            <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
-                            {% if free_delivery_delta > 0 %}
-                            <p class="mb-1 text-danger">
-                                You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong>
-                                more!
-                            </p>
-                            {% endif %}
-                        </div>
-                        <div class="col-12">
-                            <a href="" class="btn btn-custom btn-lg">
-                                <span>Secure Checkout</span>
-                                <span class="icon">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="col-12">
-                            <a href="{% url 'products' %}" class="btn rounded-0 mb-3 text-white">
-                                <span class="icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span>Back to Products</span>
-                            </a>
-                        </div>
+        </div>
+    </div>
+    <div class="container g-0 checkout-summary position-fixed shadow mt-2">
+        <div class="row px-3">
+            <div class="col-6 col-md-12 pt-2 pt-md-3">
+                <div class="row w-100">
+                    <div class="col-12">
+                        <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
+                    </div>
+                    <div class="col-12 ">
+                        <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
                     </div>
                 </div>
-                {% else %}
-                <p class="lead mb-5">Your cart is empty.</p>
-                <a href="{% url 'products' %}" class="btn rounded-0 mb-3">
+            </div>
+
+            <div class="col-6 col-md-12 ">
+                <h4 class="mt-3 mt-md-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
+                {% if free_delivery_delta > 0 %}
+                <p class="mb-1 text-danger">
+                    You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong>
+                    more!
+                </p>
+                {% endif %}
+            </div>
+            <div class="col-12 my-md-3 d-flex justify-content-center">
+                <a href="" class="btn btn-custom btn-lg">
+                    <span>Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </a>
+            </div>
+            <div class="col-12 mt-1 mt-md-0 pb-2 pb-md-3 cart-back-a d-flex justify-content-center">
+                <a href="{% url 'products' %}" class="btn rounded-0">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>
                     </span>
                     <span>Back to Products</span>
                 </a>
-                {% endif %}
             </div>
         </div>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-12 d-flex flex-column align-items-center">
+        <p class="lead mb-5 mt-4">Your cart is empty.</p>
+        <a href="{% url 'products' %}" class="btn rounded-0 mb-3">
+            <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+            <span>Back to Products</span>
+        </a>
+        {% endif %}
     </div>
 </div>
 </div>
