@@ -554,6 +554,16 @@ input[type=number] {
   /* Firefox */
 }
 
+#minus-button {
+    border-radius: 5px 0 0 5px;
+    border: none;
+}
+
+#plus-button {
+    border-radius: 0 5px 5px 0;
+    border: none;
+}
+
 /* ----------------------------------- Cart Page Styling ----------------------------------- */
 
 .cart-table-row{

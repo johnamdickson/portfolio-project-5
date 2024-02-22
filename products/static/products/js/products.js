@@ -329,33 +329,53 @@ const productQuantitySelect = () => {
   let plusButton = document.getElementById('plus-button');
   let quantityInput = document.getElementById('id_qty_selector');
   let inputValue = parseInt(quantityInput.value);
+  checkInput()
+
+  function checkInput (){
+    if (inputValue === 1) {
+      minusButton.disabled = true;
+      plusButton.disabled = false;
+    } else if (inputValue === 99)  {
+      plusButton.disabled = true;
+      minusButton.disabled = false;
+    } else {
+      minusButton.disabled = false;
+      plusButton.disabled = false;
+    }
+  }
 
   minusButton.addEventListener('click', function(){
     if (inputValue === 1){
-      return
+      checkInput()
     } else {
       inputValue -= 1
       quantityInput.value = inputValue
+      checkInput()
     }
   }) 
 
   plusButton.addEventListener('click', function(){
     if (inputValue === 99){
-      return
+      checkInput()
     } else {
       inputValue += 1
       quantityInput.value = inputValue
+      checkInput()
+
     }
   }) 
 
   quantityInput.onchange = () => {
+    checkInput()
     inputValue = parseInt(quantityInput.value);
-    if (inputValue > 99) {
+    if (inputValue >= 99) {
       inputValue = 99
       quantityInput.value = inputValue;
+      checkInput()
     } else if (inputValue < 1) {
       inputValue = 1
       quantityInput.value = inputValue;
-    }
+      checkInput()
+    } 
   } 
 }
