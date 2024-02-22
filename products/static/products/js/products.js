@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
-  setUpSelect();
-  styleProductCards();
-  sizeSelectCheck();
+  // setUpSelect();
+  // styleProductCards();
+  // sizeSelectCheck();
   productQuantitySelect();
 })
 
@@ -325,57 +325,65 @@ const sizeSelectCheck = () => {
 }
 
 const productQuantitySelect = () => {
-  let minusButton = document.getElementById('minus-button');
-  let plusButton = document.getElementById('plus-button');
-  let quantityInput = document.getElementById('id_qty_selector');
-  let inputValue = parseInt(quantityInput.value);
-  checkInput()
+  let minusButtons = document.getElementsByClassName('minus-button');
+  let plusButtons = document.getElementsByClassName('plus-button');
+  let quantityInput = document.getElementsByClassName('qty-input')
+  let quantityInputArray = Array.from(quantityInput);
 
-  function checkInput (){
-    if (inputValue === 1) {
-      minusButton.disabled = true;
-      plusButton.disabled = false;
-    } else if (inputValue === 99)  {
-      plusButton.disabled = true;
-      minusButton.disabled = false;
-    } else {
-      minusButton.disabled = false;
-      plusButton.disabled = false;
+  for ([i, input] of quantityInputArray.entries()) {
+    let inputValue = parseInt(input.value);
+    let minusButton = minusButtons[i];
+    let plusButton = plusButtons[i];
+
+    checkInput()
+  
+    function checkInput (){
+      if (inputValue === 1) {
+        minusButton.disabled = true;
+        plusButton.disabled = false;
+      } else if (inputValue === 99)  {
+        plusButton.disabled = true;
+        minusButton.disabled = false;
+      } else {
+        minusButton.disabled = false;
+        plusButton.disabled = false;
+      }
     }
+  
+    minusButton.addEventListener('click', function(){
+      if (inputValue === 1){
+        checkInput()
+      } else {
+        inputValue -= 1
+        quantityInput[i].value = inputValue
+        checkInput()
+      }
+    }) 
+  
+    plusButton.addEventListener('click', function(){
+      if (inputValue === 99){
+        checkInput()
+      } else {
+        inputValue += 1
+        quantityInput[i].value = inputValue
+        checkInput()
+  
+      }
+    }) 
+  
+    quantityInput.onchange = () => {
+      checkInput()
+      inputValue = parseInt(quantityInput.value);
+      if (inputValue >= 99) {
+        inputValue = 99
+        quantityInput[i].value = inputValue;
+        checkInput()
+      } else if (inputValue < 1) {
+        inputValue = 1
+        quantityInput[i].value = inputValue;
+        checkInput()
+      } 
+    } 
   }
 
-  minusButton.addEventListener('click', function(){
-    if (inputValue === 1){
-      checkInput()
-    } else {
-      inputValue -= 1
-      quantityInput.value = inputValue
-      checkInput()
-    }
-  }) 
-
-  plusButton.addEventListener('click', function(){
-    if (inputValue === 99){
-      checkInput()
-    } else {
-      inputValue += 1
-      quantityInput.value = inputValue
-      checkInput()
-
-    }
-  }) 
-
-  quantityInput.onchange = () => {
-    checkInput()
-    inputValue = parseInt(quantityInput.value);
-    if (inputValue >= 99) {
-      inputValue = 99
-      quantityInput.value = inputValue;
-      checkInput()
-    } else if (inputValue < 1) {
-      inputValue = 1
-      quantityInput.value = inputValue;
-      checkInput()
-    } 
-  } 
 }
