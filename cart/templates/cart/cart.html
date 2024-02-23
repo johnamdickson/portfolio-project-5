@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
 - Cart
@@ -58,13 +63,16 @@
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
                             </td>
                             <td class="py-3 w-25">
-                                <div class="form-group mx-auto w-100 mt-2 px-2">
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                <div class="form-group mx-auto w-100 px-2">
                                     <div class="input-group">
-                                      <button class="btn btn-custom w-25" type="button" id="minus-button-{{ forloop.counter0 }}" disabled><i class="fa-solid fa-square-minus" ></i></button>
-                                      <input class="form-control text-center qty-input" type="number" name="quantity" value="1"  id="input-button-{{ forloop.counter0 }}" min="1" max="99">
-                                        <button class="btn btn-custom w-25" type="button" id="plus-button-{{ forloop.counter0 }}"><i class="fa-solid fa-square-plus " ></i></button>
+                                      <button class="btn btn-custom order-2 order-lg-1 minus-button cart-minus-button" type="button" id="minus-button-{{ forloop.counter0 }}" disabled><i class="fa-solid fa-square-minus" ></i></button>
+                                      <input class="form-control text-center qty-input cart-qty-input order-1 order-lg-2" type="number" name="quantity" value="{{ item.quantity }}"  id="input-button-{{ forloop.counter0 }}" min="1" max="99">
+                                        <button class="btn btn-custom order-3 plus-button cart-plus-button" type="button" id="plus-button-{{ forloop.counter0 }}"><i class="fa-solid fa-square-plus " ></i></button>
                                     </div>
                                 </div>
+                                </form>
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
@@ -76,7 +84,7 @@
             </div>
         </div>
     </div>
-    <div class="container g-0 checkout-summary position-fixed shadow mt-2">
+    <div class="container g-0 checkout-summary position-fixed shadow my-2">
         <div class="row px-3">
             <div class="col-6 col-md-12 pt-2 pt-md-3">
                 <div class="row w-100">
