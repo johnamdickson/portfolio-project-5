@@ -1,8 +1,8 @@
 window.addEventListener('load', function () {
-  productQuantitySelect();
+  cartProductQuantitySelect();
 })
 
-const productQuantitySelect = () => {
+const cartProductQuantitySelect = () => {
 
   let quantityInputs = document.getElementsByClassName('qty-input');
   let quantityInputArray = Array.from(quantityInputs)
