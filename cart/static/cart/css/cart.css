@@ -2,6 +2,7 @@
 
 .cart-table-row{
     color: #4d6562;
+    border-bottom: 0.5px solid #ffffff90;
 }
 
 .checkout-summary {
@@ -9,28 +10,51 @@
     border-radius: 20px;
     background-color: #fff;
     color: #4d6562;
-    right: 30px;
+    right: 15px;
     top: 230px;
-    width: 25%;
+    width: 23%;
 }
 
 .cart-back-a .btn{
     color: #4d6562;
-    font-size: clamp(0.8rem, 1.3vw, 1.25rem);
+    font-size: clamp(0.8rem, 1.2vw, 1.15rem);
+}
+
+.cart-image-td {
+    width: 33%;
 }
 
 .checkout-summary h4 {
-    font-size: clamp(0.8rem, 1.75vw, 1.5rem);
+    font-size: clamp(0.8rem, 1.65vw, 1.4rem);
 }
 
 .checkout-summary h6 {
-    font-size: clamp(0.7rem, 1.5vw, 1.3rem);
+    font-size: clamp(0.7rem, 1.3vw, 1.2rem);
+}
+
+.details-col {
+    width: 25%;
 }
 
 .btn-lg {
-    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    font-size: clamp(0.9rem, 1.4vw, 1.15rem);
 }
 
+.cart-form .form-control {
+    font-size: 0.9rem;
+}
+
+.cart-minus-button {
+    border-radius: 0;
+}
+
+.cart-qty-input {
+    border-radius: 5px 0 0 5px !important;
+}
+
+.cart-minus-button i, .cart-plus-button i{
+    font-size: 0.8rem;
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 
@@ -44,13 +68,29 @@
         width: 100% !important;
     }
 
+    .details-col {
+        width: 45%;
+    }
+
+    .cart-image-td {
+        width: 50%;
+    }
+
+    .cart-form .form-control {
+        font-size: 0.75rem;
+    }
+
     .cart-minus-button, .cart-plus-button {
         width: 50%;
         border-radius: 0;
         padding: 0.2rem;
     }
     .cart-minus-button i, .cart-plus-button i{
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .cart-qty-input {
+        border-radius: 0 !important;
     }
 }
 
@@ -69,7 +109,9 @@
     .product-table h5, .product-table p{
         font-size: 0.8rem;
     }
-
+    .product-table h6{
+        font-size: 0.7rem;
+    }
     .product-table td {
         padding: 0.1rem 0.1rem;
     }
