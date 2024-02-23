@@ -97,6 +97,10 @@
 /* transition to small screens */
 @media (max-width: 768px) {
 
+    .product-table td {
+        vertical-align: middle;
+    }
+
     .checkout-summary{
         position: inherit !important;
         width: 100%;

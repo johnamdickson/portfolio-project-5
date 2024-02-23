@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="table-responsive rounded ms-md-2">
-                    <table class="table product-table table-borderless">
+                    <table class="table product-table">
                         <thead class="text-white">
                             <tr>
                                 <th scope="col">
@@ -45,16 +45,23 @@
 
                         {% for item in cart_items %}
                         <tr class="cart-table-row">
-                            <td class="py-3 pe-3 cart-image-td">
-                                {% if item.product.image %}
-                                <img class="img-fluid rounded" src="{{ item.product.image.url }}"
-                                    alt="{{ product.name }}">
-                                {% else %}
-                                <img class="img-fluid rounded"
-                                    src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
-                                    alt="{{ product.name}}">
-                                {% endif %}
-                                <p class="mt-2 text-center"><strong>{{ item.product.name }}</strong></p>
+                            <td class="py-3 pe-3 cart-image-td align-middle">
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        {% if item.product.image %}
+                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}"
+                                            alt="{{ product.name }}">
+                                        {% else %}
+                                        <img class="img-fluid rounded"
+                                            src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+                                            alt="{{ product.name}}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="mt-2 text-center"><strong>{{ item.product.name }}</strong></p>
+                                    </div>
+                                </div>
+
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
