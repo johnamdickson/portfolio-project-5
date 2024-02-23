@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
-  // setUpSelect();
-  // styleProductCards();
-  // sizeSelectCheck();
+  setUpSelect();
+  styleProductCards();
+  sizeSelectCheck();
   productQuantitySelect();
 })
 
