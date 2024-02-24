@@ -21,13 +21,14 @@
         </div>
     </div>
     <div class="container-fluid g-0 justify-content-center">
+        {{cart_items}}
         {% if cart_items %}
         <div class="row">
             <div class="col-md-9">
                 <div class="table-responsive rounded ms-md-2">
                     <table class="table product-table">
-                        <thead class="text-white">
-                            <tr>
+                        <thead class="text-white position-relative">
+                            <tr class="sticky-top">
                                 <th scope="col">
                                     <h5 class="m-0 text-center">Product Info</h5>
                                 </th>
@@ -42,7 +43,6 @@
                                 </th>
                             </tr>
                         </thead>
-
                         {% for item in cart_items %}
                         <tr class="cart-table-row">
                             <td class="py-3 pe-3 cart-image-td align-middle">
@@ -61,7 +61,6 @@
                                         <p class="mt-2 text-center"><strong>{{ item.product.name }}</strong></p>
                                     </div>
                                 </div>
-
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
@@ -72,81 +71,67 @@
                                         <h6>Quantity</h6>
                                     </div>
                                 </div>
-                                <form method="POST" action="" class="cart-form" >
+                                <form method="POST" action="{% url 'adjust_cart' item.item_id %}"
+                                    class="cart-update-form">
                                     {% csrf_token %}
-                                <div class="form-group mx-auto w-100 px-2">
-                                    <div class="input-group">
-                                      <button class="btn btn-custom order-1 order-lg-2 minus-button cart-minus-button" type="button" id="minus-button-{{ forloop.counter0 }}" disabled><i class="fa-solid fa-square-minus" ></i></button>
-                                      <input class="form-control text-center qty-input cart-qty-input order-3 order-lg-1" type="number" name="quantity" value="{{ item.quantity }}"  id="input-button-{{ forloop.counter0 }}" min="1" max="99">
-                                        <button class="btn btn-custom order-2 order-lg-3 plus-button cart-plus-button" type="button" id="plus-button-{{ forloop.counter0 }}"><i class="fa-solid fa-square-plus " ></i></button>
-                                    </div>
-                                    {% if item.size %}
-                                    <div class="row justify-content-center">
-                                        <div class="col-3 text-center text-white mt-2">
-                                            <h6>Size</h6>
+                                    <div class="form-group mx-auto w-100 px-2">
+                                        <div class="input-group">
+                                            <button
+                                                class="btn btn-custom order-1 order-lg-2 minus-button cart-minus-button"
+                                                type="button" id="minus-button-{{ forloop.counter0 }}" disabled><i
+                                                    class="fa-solid fa-square-minus"></i></button>
+                                            <input
+                                                class="form-control text-center qty-input cart-qty-input order-3 order-lg-1"
+                                                type="number" name="quantity" value="{{ item.quantity }}"
+                                                id="input-button-{{ forloop.counter0 }}" min="0" max="99">
+                                            <button
+                                                class="btn btn-custom order-2 order-lg-3 plus-button cart-plus-button"
+                                                type="button" id="plus-button-{{ forloop.counter0 }}"><i
+                                                    class="fa-solid fa-square-plus "></i></button>
                                         </div>
-                                        <div class="input-group col-6">
-                                            <select class="form-control" name="product_size" id='id_product_size'>
-                                              <option>{{item.size}}</option>
-                                              {% for size in item.product.sizes.all %}
-                                              {% if size.get_size_display != item.size %}
-                                              <option value="{{size}}">{{size}}</option>
-                                              {% endif %}
-                                              {% endfor %}
-                                            </select>
-                                          </div>
-                                    </div>
-                                    {% endif %}
-                                    {% if item.colour %}
-                                    <div class="row justify-content-center">
-                                        {% if item.secondary_colour %}
-                                        <div class="col-12">
-                                            <div class="row mt-2">
-                                                <div class="col-12 col-lg-6 order-1">
-                                                    <h6 class="text-white small text-center">Primary Colour</h6>
-                                                </div>
-                                                <div class="col-12 col-lg-6 order-3 order-lg-2">
-                                                    <h6 class="text-white small text-center">Secondary Colour</h6>
-                                                </div>
-                                                <div class="col-12 col-lg-6 order-2 order-lg-3">
-                                                    <select class="form-control" name="cart_product_colour" id='id_cart_product_colour'>
-                                                      <option>{{item.colour}}</option>
-                                                      {% for colour in item.product.colours.all %}
-                                                      {% if colour.get_colour_display != item.colour %}
-                                                      <option value="{{colour}}">{{colour}}</option>
-                                                      {% endif %}
-                                                      {% endfor %}
-                                                    </select>
-                                                  </div>
-                                                  <div class="col-12 col-lg-6 order-4">
-                                                    <select class="form-control" name="cart_product_secondary_colour" id='id_cart_product_secondary_colour'>
-                                                      <option>{{item.secondary_colour}}</option>
-                                                      {% for colour in item.product.colours.all %}
-                                                      {% if colour.get_colour_display != item.secondary_colour %}
-                                                      <option value="{{colour}}">{{colour}}</option>
-                                                      {% endif %}
-                                                      {% endfor %}
-                                                    </select>
-                                                  </div>
+                                        <div class="row justify-content-center">
+                                            {% if item.size %}
+                                            <div class="col-12 mt-2">
+                                                <p>Size: {{item.size}}</p>
+                                                <input type="hidden" name="product_size" value="{{ item.size }}">
                                             </div>
+                                            {% endif %}
+                                            {% if item.secondary_colour %}
+                                            <div class="col-12">
+                                                <p>Primary Colour: {{item.colour}}</p>
+                                                <input type="hidden" name="product_colour" value="{{ item.colour }}">
+                                            </div>
+                                            <div class="col-12">
+                                                <p>Secondary Colour: {{item.secondary_colour}}</p>
+                                                <input type="hidden" name="secondary_product_colour" value="{{ item.secondary_colour }}">
+                                            </div>
+                                            {% else %}
+                                            <div class="col-12">
+                                                <p>Primary Colour: {{item.colour}}</p>
+                                                <input type="hidden" name="product_colour" value="{{ item.colour }}">
+                                            </div>
+                                        
                                         </div>
-                                        {% else %}
-                                        {% endif %}
                                     </div>
                                     {% endif %}
-                                </div>
                                 </form>
-                                <div class="row">
-                                    <div class="col-6">
-                                        Update
-                                    </div>
-                                    <div class="col-6">
-                                        Remove
-                                    </div>
-                                </div>
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
+                                <div class="row text-center mt-2 justify-content-center update-button"
+                                    id="update-item-{{item.item_id}}">
+                                    <div class="col-12 col-lg-7">
+                                        <div class="btn-custom item-button m-2 p-1">
+                                            Update<br>Item
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-7">
+                                        <div class="btn-custom item-button mx-2 p-1 remove-button"
+                                            id="remove-item-{{item.item_id}}">
+                                            Remove<br>Item{% if item.quantity > 1%}s{% endif %}
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         {% endfor %}
