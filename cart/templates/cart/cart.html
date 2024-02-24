@@ -89,25 +89,25 @@
                                                 type="button" id="plus-button-{{ forloop.counter0 }}"><i
                                                     class="fa-solid fa-square-plus "></i></button>
                                         </div>
-                                        <div class="row justify-content-center">
+                                        <div class="row justify-content-center attributes-info">
                                             {% if item.size %}
-                                            <div class="col-12 mt-2">
-                                                <p>Size: {{item.size}}</p>
+                                            <div class="col-12 ms-1 mt-1">
+                                                <p class="m-0">Size: {{item.size}}</p>
                                                 <input type="hidden" name="product_size" value="{{ item.size }}">
                                             </div>
                                             {% endif %}
                                             {% if item.secondary_colour %}
-                                            <div class="col-12">
-                                                <p>Primary Colour: {{item.colour}}</p>
+                                            <div class="col-12 ms-1 mt-1">
+                                                <p class="m-0">Primary Colour: {{item.colour}}</p>
                                                 <input type="hidden" name="product_colour" value="{{ item.colour }}">
                                             </div>
-                                            <div class="col-12">
-                                                <p>Secondary Colour: {{item.secondary_colour}}</p>
+                                            <div class="col-12 ms-1 mt-1">
+                                                <p class="m-0">Secondary Colour: {{item.secondary_colour}}</p>
                                                 <input type="hidden" name="secondary_product_colour" value="{{ item.secondary_colour }}">
                                             </div>
                                             {% else %}
-                                            <div class="col-12">
-                                                <p>Primary Colour: {{item.colour}}</p>
+                                            <div class="col-12 ms-1 mt-1">
+                                                <p class="m-0">Primary Colour: {{item.colour}}</p>
                                                 <input type="hidden" name="product_colour" value="{{ item.colour }}">
                                             </div>
                                         

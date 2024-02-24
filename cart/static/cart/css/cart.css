@@ -24,6 +24,20 @@
     width: 33%;
 }
 
+.product-table h6{
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.item-button {
+    border-radius: 5px;
+    font-size: 0.75rem;
+}
+
+.item-button:hover {
+    border-radius: 5px;
+}
+
 .checkout-summary h4 {
     font-size: clamp(0.8rem, 1.65vw, 1.4rem);
 }
@@ -40,7 +54,7 @@
     font-size: clamp(0.9rem, 1.4vw, 1.15rem);
 }
 
-.cart-form .form-control {
+.cart-update-form .form-control {
     font-size: 0.9rem;
 }
 
@@ -54,6 +68,14 @@
 
 .cart-minus-button i, .cart-plus-button i{
     font-size: 0.8rem;
+}
+
+.update-btn {
+    font-size: 0.8rem;
+}
+
+.attributes-info {
+    font-size: 0.75rem;
 }
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
@@ -76,7 +98,7 @@
         width: 50%;
     }
 
-    .cart-form .form-control {
+    .cart-update-form .form-control {
         font-size: 0.75rem;
     }
 
@@ -97,9 +119,6 @@
 /* transition to small screens */
 @media (max-width: 768px) {
 
-    .product-table td {
-        vertical-align: middle;
-    }
 
     .checkout-summary{
         position: inherit !important;
@@ -114,7 +133,7 @@
         font-size: 0.8rem;
     }
     .product-table h6{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
     .product-table td {
         padding: 0.1rem 0.1rem;
