@@ -26,12 +26,11 @@ def cart_contents(request):
             for properties, quantity in item_data['items_size_and_or_colour'].items():
                 property_list = properties.split(',')
                 size = property_list[0]
+                size = None if size == 'None' else size
                 colour = property_list[1]
-                print(property_list)
-                if len(property_list) == 3:
-                    secondary_colour = property_list[2]
-                else:
-                    secondary_colour = None
+                colour = None if colour == 'None' else colour
+                secondary_colour = property_list[2]
+                secondary_colour = None if secondary_colour == 'None' else secondary_colour               
                 total += quantity * product.price
                 product_count += quantity
                 cart_items.append({
