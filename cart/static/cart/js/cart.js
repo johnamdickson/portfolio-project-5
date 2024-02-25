@@ -71,16 +71,56 @@ const cartProductQuantitySelect = () => {
 
 const updateOrRemoveItems = () => {
   let updateButtons = document.getElementsByClassName('update-button');
-  let removeButton = document.getElementsByClassName('remove-button');
+  let removeButtons = document.getElementsByClassName('remove-button');
   let forms = document.getElementsByClassName('cart-update-form');
-  let buttonsArray = Array.from(updateButtons)
-  for (let [i, button] of buttonsArray.entries()) {
-    button.addEventListener('click', function(event) {
+  let sizes = document.getElementsByName('product_size');
+  let primaryColours = document.getElementsByName('product_colour');
+  let secondaryColours = document.getElementsByName('secondary_product_colour');
+  
+  let updateButtonsArray = Array.from(updateButtons)
+  for (let [i, button] of updateButtonsArray.entries()) {
+    button.addEventListener('click', function() {
       let form = forms[i]
       form.submit()
-      // console.log(document.querySelector('.update-button').previousElementSibling('.cart-update-form'))
-      // console.log(this.previousElementSibling('.cart-update-form'))
     })
   }
 
+  let removeButtonsArray = Array.from(removeButtons)
+  for (let [i, button] of removeButtonsArray.entries()) {
+    button.addEventListener('click', function() {
+// solution to submiting form using vanilla js.
+      let csrfToken = document.getElementsByName('csrfmiddlewaretoken')[i].value;
+      let itemId = this.getAttribute('id').slice(-1)
+
+      let itemSize = null
+      if (sizes[i]) {
+        itemSize = sizes[i].value
+      } else {
+        itemSize = 'None'
+      }
+
+      let itemPrimaryColour = null
+      if (primaryColours[i]) {
+        itemPrimaryColour = primaryColours[i].value
+      } else {
+        itemPrimaryColour = 'None'
+      }
+
+      let itemSecondaryColour = null
+      if (secondaryColours[i]) {
+        itemSecondaryColour = secondaryColours[i].value
+      } else {
+        itemSecondaryColour = 'None'
+      }
+
+      var http = new XMLHttpRequest();
+      var url = `/cart/remove/${itemId}/`;
+      http.open('POST', url, true);
+      http.setRequestHeader('X-CSRFToken', csrfToken)
+      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      // solution to sending data in http request:
+      // https://stackoverflow.com/questions/9713058/send-post-data-using-xmlhttprequest
+      http.send(`&product_size=${itemSize}&product_colour=${itemPrimaryColour}&secondary_product_colour=${itemSecondaryColour}`);
+    })
+  }
 }

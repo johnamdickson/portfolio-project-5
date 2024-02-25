@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="container-fluid g-0 justify-content-center">
-        {{cart_items}}
+        {{cart.items}}
         {% if cart_items %}
         <div class="row">
             <div class="col-md-9">
@@ -91,37 +91,42 @@
                                         </div>
                                         <div class="row justify-content-center attributes-info">
                                             {% if item.size %}
-                                            <div class="col-12 ms-1 mt-1">
-                                                <p class="m-0">Size: {{item.size}}</p>
-                                                <input type="hidden" name="product_size" value="{{ item.size }}">
+                                            <div class="col-12 ms-1 mt-1 me-1">
+                                                <i class="fa-solid fa-ruler-horizontal d-inline"></i>
+                                                <p class="m-0 d-inline">Size: {{item.size}}</p>
                                             </div>
                                             {% endif %}
                                             {% if item.secondary_colour %}
                                             <div class="col-12 ms-1 mt-1">
-                                                <p class="m-0">Primary Colour: {{item.colour}}</p>
-                                                <input type="hidden" name="product_colour" value="{{ item.colour }}">
+                                                <i class="fa-solid fa-palette d-inline me-1"></i>
+                                                <p class="m-0 d-inline">Primary Colour: {{item.colour}}</p>
                                             </div>
                                             <div class="col-12 ms-1 mt-1">
-                                                <p class="m-0">Secondary Colour: {{item.secondary_colour}}</p>
-                                                <input type="hidden" name="secondary_product_colour" value="{{ item.secondary_colour }}">
+                                                <i class="fa-solid fa-palette d-inline me-1"></i>
+                                                <p class="m-0 d-inline">Secondary Colour: {{item.secondary_colour}}</p>
                                             </div>
-                                            {% else %}
+                                            {% elif item.colour and not item.secondary_colour %}
                                             <div class="col-12 ms-1 mt-1">
-                                                <p class="m-0">Primary Colour: {{item.colour}}</p>
-                                                <input type="hidden" name="product_colour" value="{{ item.colour }}">
+                                                <i class="fa-solid fa-palette d-inline me-1"></i>
+                                                <p class="m-0 d-inline">Primary Colour: {{item.colour}}</p>
                                             </div>
                                         
                                         </div>
                                     </div>
                                     {% endif %}
+                                    <input type="hidden" name="product_size" value="{{ item.size }}">
+                                    <input type="hidden" name="product_colour" value="{{ item.colour }}">
+                                    <input type="hidden" name="secondary_product_colour" value="{{ item.secondary_colour }}">
+
+
                                 </form>
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
-                                <div class="row text-center mt-2 justify-content-center update-button"
+                                <div class="row text-center mt-2 justify-content-center "
                                     id="update-item-{{item.item_id}}">
                                     <div class="col-12 col-lg-7">
-                                        <div class="btn-custom item-button m-2 p-1">
+                                        <div class="btn-custom item-button m-2 p-1 update-button">
                                             Update<br>Item
                                         </div>
                                     </div>
@@ -195,6 +200,7 @@
     </div>
 </div>
 </div>
+
 {% endblock %}
 
 {% block postloadjs %}

@@ -106,7 +106,10 @@ def adjust_cart(request, item_id):
     size_colour = f"{size},{colour},{None}"
     size_two_colours= f"{size},{colour},{secondary_colour}"
     item_id_key = 'items_size_and_or_colour'
-    print(size_two_colours)
+
+    # checks for size, colour and secondary colour key in the items_id_key
+    # and then checks quantity. If greater than 0 and update is made. If 
+    # 0 then item is deleted.
     if size and colour and secondary_colour:
         if quantity > 0:
             cart[item_id][item_id_key][size_two_colours] = quantity
@@ -126,6 +129,8 @@ def adjust_cart(request, item_id):
                               f' {colour.upper()} and  '
                               f'{secondary_colour.upper()} colours'
                               ' from cart.'))
+
+    # performs similar action to above but only if product has a size and colour.
     elif size and colour:
         if quantity > 0:
             cart[item_id][item_id_key][size_colour] = quantity
@@ -144,6 +149,8 @@ def adjust_cart(request, item_id):
                               f'in {size.upper()} size, with '
                               f' {colour.upper()} '
                               'colour from cart.'))
+
+    # performs action for items with two colours.
     elif colour and secondary_colour:
         if quantity > 0:
             cart[item_id][item_id_key][two_colours] = quantity
@@ -161,15 +168,98 @@ def adjust_cart(request, item_id):
                               f'in {colour.upper()} and  '
                               f'{secondary_colour.upper()} colours'
                               ' from cart.'))
-    # else:
-    #     if quantity > 0:
-    #         cart[item_id] = quantity
+    
+    # performs action for items with size only.
+    elif size:
+        if quantity > 0:
+            cart[item_id][item_id_key][size_only] = quantity
+            messages.success(request,
+                             (f'Updated item {product.name.upper()} '
+                              f'in {size.upper()} size quantity to '
+                              f'{cart[item_id][item_id_key][size_only]}'))
+        else:   
+            del cart[item_id][item_id_key][size_only]
+            if not cart[item_id][item_id_key]:
+                cart.pop(item_id)
+            messages.info(request,
+                            (f'Removed item {product.name.upper()} '
+                              f'in {size.upper()} size '
+                              ' from cart.'))
+
+    # performs action for items with one colour only.
+    elif colour and not secondary_colour:
+        if quantity > 0:
+            cart[item_id][item_id_key][colour_only] = quantity
+            messages.success(request,
+                             (f'Updated item {product.name.upper()} '
+                              f'in {colour.upper()} colour quantity to '
+                              f'{cart[item_id][item_id_key][colour_only]}'))
+        else:   
+            del cart[item_id][item_id_key][colour_only]
+            if not cart[item_id][item_id_key]:
+                cart.pop(item_id)
+            messages.info(request,
+                            (f'Removed item {product.name.upper()} '
+                              f'in {colour.upper()} colour '
+                              ' from cart.'))
+
+    # capturing all other products without size or colour.
+    else:
+        if quantity > 0:
+            cart[item_id] = quantity
+            messages.success(request,
+                             (f'Updated {product.name} '
+                              f'quantity to {cart[item_id]}'))
+        else:
+            cart.pop(item_id)
+            messages.success(request,
+                             (f'Removed {product.name} '
+                              f'from your cart'))
+
+    request.session['cart'] = cart
+    return redirect(reverse('view_cart'))
+
+
+def remove_from_cart(request, item_id):
+    """Remove the item from the shopping cart"""
+
+    product = get_object_or_404(Product, pk=item_id)
+    size = None
+    colour = None
+    secondary_colour = None
+    print(request.POST)
+    if 'product_size' in request.POST:
+        size = request.POST['product_size']
+        print("yes")
+    if 'product_colour' in request.POST:
+        colour = request.POST['product_colour']
+    if 'secondary_product_colour' in request.POST:
+        secondary_colour = request.POST['secondary_product_colour']
+    
+    print(size, colour, secondary_colour)
+    print('tried to delete ', item_id)
+    return redirect(reverse('view_cart'))
+    # try:
+    #     product = get_object_or_404(Product, pk=item_id)
+    #     size = None
+    #     if 'product_size' in request.POST:
+    #         size = request.POST['product_size']
+    #     cart = request.session.get('cart', {})
+
+    #     if size:
+    #         del cart[item_id]['items_by_size'][size]
+    #         if not cart[item_id]['items_by_size']:
+    #             cart.pop(item_id)
     #         messages.success(request,
-    #                          (f'Updated {product.name} '
-    #                           f'quantity to {cart[item_id]}'))
+    #                          (f'Removed size {size.upper()} '
+    #                           f'{product.name} from your cart'))
     #     else:
     #         cart.pop(item_id)
-    #         messages.success(request,
-    #                          (f'Removed {product.name} '
-    #                           f'from your cart'))
-    return redirect(reverse('view_cart'))
+    #         messages.success(request, f'Removed {product.name} from your cart')
+
+    #     request.session['cart'] = cart
+    #     return HttpResponse(status=200)
+
+    # except Exception as e:
+    #     messages.error(request, f'Error removing item: {e}')
+    #     return HttpResponse(status=500)
