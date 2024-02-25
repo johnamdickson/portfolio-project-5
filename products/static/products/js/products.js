@@ -320,7 +320,9 @@ const sizeSelectCheck = () => {
       }
     }
     selectorChange(colourSelector)
-    selectorChange(secColourSelector)
+    if (secColourSelector){
+      selectorChange(secColourSelector)
+    }
   }
 }
 
