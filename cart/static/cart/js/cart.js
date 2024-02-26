@@ -1,6 +1,13 @@
 window.addEventListener('load', function () {
   cartProductQuantitySelect();
   updateOrRemoveItems();
+  // delay to scroll to top after reload. Without delay the window scrolls to 
+  // top but then returns to position of removed item.
+  var delayInMilliseconds = 500;
+  setTimeout(function() {
+    window.scrollTo(0, 0);
+    }, delayInMilliseconds);
+
 })
 
 const cartProductQuantitySelect = () => {
@@ -121,6 +128,11 @@ const updateOrRemoveItems = () => {
       // solution to sending data in http request:
       // https://stackoverflow.com/questions/9713058/send-post-data-using-xmlhttprequest
       http.send(`&product_size=${itemSize}&product_colour=${itemPrimaryColour}&secondary_product_colour=${itemSecondaryColour}`);
+      
+      var delayInMilliseconds = 500;
+      setTimeout(function() {
+        location.reload()
+      }, delayInMilliseconds);
     })
   }
 }
