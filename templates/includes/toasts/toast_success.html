@@ -1,7 +1,14 @@
-<div class="toast position-absolute" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-animation="true">
+<div class="toast position-fixed" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-animation="true">
     <div class="toast-header text-white toast-header-success">
       <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
-      <strong class="me-auto">Success</strong>
+      <strong class="me-auto">
+        {% for message in messages %}
+          {% if message.extra_tags %}
+            {{ message.extra_tags }}
+          {% else %}
+            Success
+          {% endif %}
+        {% endfor %}</strong>
       <small class=""></small>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
