@@ -182,9 +182,9 @@ def adjust_cart(request, item_id):
             if not cart[item_id][item_id_key]:
                 cart.pop(item_id)
             messages.info(request,
-                            (f'Removed item {product.name.upper()} '
-                              f'in {size.upper()} size '
-                              ' from cart.'))
+                                (f'Removed item {product.name.upper()} '
+                                f'in {size.upper()} size '
+                                ' from cart.'))
 
     # performs action for items with one colour only.
     elif colour and not secondary_colour:
@@ -199,9 +199,9 @@ def adjust_cart(request, item_id):
             if not cart[item_id][item_id_key]:
                 cart.pop(item_id)
             messages.info(request,
-                            (f'Removed item {product.name.upper()} '
-                              f'in {colour.upper()} colour '
-                              ' from cart.'))
+                                (f'Removed item {product.name.upper()} '
+                                f'in {colour.upper()} colour '
+                                ' from cart.'))
 
     # capturing all other products without size or colour.
     else:
@@ -250,7 +250,7 @@ def remove_from_cart(request, item_id):
                 del cart[item_id][item_id_key][size_two_colours]
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
-                messages.success(request,
+                messages.info(request,
                                 (f'Removed item {product.name.upper()} '
                                 f'in {size.upper()} size, with '
                                 f' {colour.upper()} and  '
@@ -260,12 +260,15 @@ def remove_from_cart(request, item_id):
                 messages.error(request, f'Error removing item: {e}')
                 return HttpResponse(status=500)
 
-        if size and colour:
+            request.session['cart'] = cart                
+            return HttpResponse(status=200)
+
+        elif size and colour:
             try:
                 del cart[item_id][item_id_key][size_colour]
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
-                messages.success(request,
+                messages.info(request,
                                 (f'Removed item {product.name.upper()} '
                                 f'in {size.upper()} size, with '
                                 f' {colour.upper()} '
@@ -273,13 +276,62 @@ def remove_from_cart(request, item_id):
             except Exception as e:
                 messages.error(request, f'Error removing item: {e}')
                 return HttpResponse(status=500)
+                
+            request.session['cart'] = cart
+            return HttpResponse(status=200)
 
+        elif colour and secondary_colour:
+            try:
+                del cart[item_id][item_id_key][two_colours]
+                if not cart[item_id][item_id_key]:
+                    cart.pop(item_id)
+                messages.info(request,
+                                (f'Removed item {product.name.upper()} '
+                                f'in {colour.upper()} and  '
+                                f'{secondary_colour.upper()} colours'
+                                ' from cart.'))
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
+                
+            request.session['cart'] = cart
+            return HttpResponse(status=200)
+
+        elif size:
+            try:
+                del cart[item_id][item_id_key][size_only]
+                if not cart[item_id][item_id_key]:
+                    cart.pop(item_id)
+                messages.info(request,
+                                (f'Removed item {product.name.upper()} '
+                                f'in {size.upper()} size '
+                                ' from cart.'))
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
+                
+            request.session['cart'] = cart
+            return HttpResponse(status=200)
+
+        elif colour and not secondary_colour:
+            try:
+                del cart[item_id][item_id_key][colour_only]
+                if not cart[item_id][item_id_key]:
+                    cart.pop(item_id)
+                messages.info(request,
+                             (f'Removed item {product.name.upper()} '
+                              f'in {colour.upper()} colour '
+                              ' from cart.'))
+                              
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
+                
+            request.session['cart'] = cart
+            return HttpResponse(status=200)
         else:
             cart.pop(item_id)
             messages.success(request, f'Removed {product.name} from your cart')
-
-        request.session['cart'] = cart
-        return HttpResponse(status=200)
 
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
