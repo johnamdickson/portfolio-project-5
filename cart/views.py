@@ -251,11 +251,12 @@ def remove_from_cart(request, item_id):
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
                 messages.info(request,
-                                (f'Removed item {product.name.upper()} '
-                                f'in {size.upper()} size, with '
+                                (f'{product.name.upper()} '
+                                f'in {size.upper()} size with '
                                 f' {colour.upper()} and  '
                                 f'{secondary_colour.upper()} colours'
-                                ' from cart.'))
+                                ' removed from cart.'),
+                                extra_tags = 'Item Removed')
             except Exception as e:
                 messages.error(request, f'Error removing item: {e}')
                 return HttpResponse(status=500)
@@ -269,10 +270,11 @@ def remove_from_cart(request, item_id):
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
                 messages.info(request,
-                                (f'Removed item {product.name.upper()} '
-                                f'in {size.upper()} size, with '
+                                (f'{product.name.upper()} '
+                                f'in {size.upper()} size and'
                                 f' {colour.upper()} '
-                                'colour from cart.'))
+                                'colour removed from cart.'),
+                                extra_tags = 'Item Removed')
             except Exception as e:
                 messages.error(request, f'Error removing item: {e}')
                 return HttpResponse(status=500)
@@ -286,10 +288,11 @@ def remove_from_cart(request, item_id):
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
                 messages.info(request,
-                                (f'Removed item {product.name.upper()} '
+                                (f'{product.name.upper()} '
                                 f'in {colour.upper()} and  '
                                 f'{secondary_colour.upper()} colours'
-                                ' from cart.'))
+                                ' removed from cart.'),
+                                extra_tags = 'Item Removed')
             except Exception as e:
                 messages.error(request, f'Error removing item: {e}')
                 return HttpResponse(status=500)
@@ -303,9 +306,10 @@ def remove_from_cart(request, item_id):
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
                 messages.info(request,
-                                (f'Removed item {product.name.upper()} '
+                                (f'{product.name.upper()} '
                                 f'in {size.upper()} size '
-                                ' from cart.'))
+                                'removed from cart.'),
+                                extra_tags = 'Item Removed')
             except Exception as e:
                 messages.error(request, f'Error removing item: {e}')
                 return HttpResponse(status=500)
@@ -319,9 +323,10 @@ def remove_from_cart(request, item_id):
                 if not cart[item_id][item_id_key]:
                     cart.pop(item_id)
                 messages.info(request,
-                             (f'Removed item {product.name.upper()} '
-                              f'in {colour.upper()} colour '
-                              ' from cart.'))
+                             (f'{product.name.upper()} in'
+                              f' {colour.upper()} colour '
+                              'removed from cart.'),
+                              extra_tags = 'Item Removed')
                               
             except Exception as e:
                 messages.error(request, f'Error removing item: {e}')
@@ -330,9 +335,11 @@ def remove_from_cart(request, item_id):
             request.session['cart'] = cart
             return HttpResponse(status=200)
         else:
-            print('here')
             cart.pop(item_id)
-            messages.info(request, f'Removed {product.name} from your cart')
+            messages.info(request, 
+                         f'{product.name.upper()} '
+                         ' removed from your cart',
+                         extra_tags = 'Item Removed')
 
             request.session['cart'] = cart
             return HttpResponse(status=200)
