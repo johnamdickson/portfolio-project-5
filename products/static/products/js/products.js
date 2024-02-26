@@ -245,16 +245,16 @@ const sizeSelectCheck = () => {
         }
 // Two colour options with no sizes, typically blankets.
       } else if (colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-  console.log("primary colour selected, secondary not")
-  submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
-  form.onsubmit = () => {
-    return false
-  }
-} else if (colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
-  console.log("secondary colour selected, primary not")
-  submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
-  form.onsubmit = () => {
-    return false
+        console.log("primary colour selected, secondary not")
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      } else if (colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
+        console.log("secondary colour selected, primary not")
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
   }
 // Size and one colour option, typically hats.
       } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption) {
@@ -264,6 +264,13 @@ const sizeSelectCheck = () => {
         }
       } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption) {
         submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, null))
+        form.onsubmit = () => {
+          return false
+        }
+// one colour option, typically blankets.
+      } else if (colourSelectorValue === colourOption) {
+        console.log('here')
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
         form.onsubmit = () => {
           return false
         }
@@ -319,6 +326,13 @@ const sizeSelectCheck = () => {
         return false
       }
     }
+    else if (colourSelectorValue === colourOption) {
+        console.log('here')
+        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        form.onsubmit = () => {
+          return false
+        }
+      }
     selectorChange(colourSelector)
     if (secColourSelector){
       selectorChange(secColourSelector)
