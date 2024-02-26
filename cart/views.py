@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from products.models import Product
 
@@ -222,44 +222,67 @@ def adjust_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
-
-    product = get_object_or_404(Product, pk=item_id)
-    size = None
-    colour = None
-    secondary_colour = None
-    print(request.POST)
-    if 'product_size' in request.POST:
-        size = request.POST['product_size']
-        print("yes")
-    if 'product_colour' in request.POST:
-        colour = request.POST['product_colour']
-    if 'secondary_product_colour' in request.POST:
-        secondary_colour = request.POST['secondary_product_colour']
     
-    print(size, colour, secondary_colour)
-    print('tried to delete ', item_id)
+    try:
+        product = get_object_or_404(Product, pk=item_id)
+        size = None
+        colour = None
+        secondary_colour = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+            size = None if size == 'None' else size
+        if 'product_colour' in request.POST:
+            colour = request.POST['product_colour']
+            colour = None if colour == 'None' else colour
+        if 'secondary_product_colour' in request.POST:
+            secondary_colour = request.POST['secondary_product_colour']
+            secondary_colour = None if secondary_colour == 'None' else secondary_colour
+        cart = request.session.get('cart', {})
+        size_only = f"{size},{None},{None}"
+        colour_only = f"{None},{colour},{None}"
+        two_colours = f"{None},{colour},{secondary_colour}"
+        size_colour = f"{size},{colour},{None}"
+        size_two_colours= f"{size},{colour},{secondary_colour}"
+        item_id_key = 'items_size_and_or_colour'
+
+        if size and colour and secondary_colour:
+            try:
+                del cart[item_id][item_id_key][size_two_colours]
+                if not cart[item_id][item_id_key]:
+                    cart.pop(item_id)
+                messages.success(request,
+                                (f'Removed item {product.name.upper()} '
+                                f'in {size.upper()} size, with '
+                                f' {colour.upper()} and  '
+                                f'{secondary_colour.upper()} colours'
+                                ' from cart.'))
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
+
+        if size and colour:
+            try:
+                del cart[item_id][item_id_key][size_colour]
+                if not cart[item_id][item_id_key]:
+                    cart.pop(item_id)
+                messages.success(request,
+                                (f'Removed item {product.name.upper()} '
+                                f'in {size.upper()} size, with '
+                                f' {colour.upper()} '
+                                'colour from cart.'))
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
+
+        else:
+            cart.pop(item_id)
+            messages.success(request, f'Removed {product.name} from your cart')
+
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
+    
     return redirect(reverse('view_cart'))
-    # try:
-    #     product = get_object_or_404(Product, pk=item_id)
-    #     size = None
-    #     if 'product_size' in request.POST:
-    #         size = request.POST['product_size']
-    #     cart = request.session.get('cart', {})
-
-    #     if size:
-    #         del cart[item_id]['items_by_size'][size]
-    #         if not cart[item_id]['items_by_size']:
-    #             cart.pop(item_id)
-    #         messages.success(request,
-    #                          (f'Removed size {size.upper()} '
-    #                           f'{product.name} from your cart'))
-    #     else:
-    #         cart.pop(item_id)
-    #         messages.success(request, f'Removed {product.name} from your cart')
-
-    #     request.session['cart'] = cart
-    #     return HttpResponse(status=200)
-
-    # except Exception as e:
-    #     messages.error(request, f'Error removing item: {e}')
-    #     return HttpResponse(status=500)
