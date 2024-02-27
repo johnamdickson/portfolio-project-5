@@ -203,7 +203,7 @@ def adjust_cart(request, item_id):
             cart[item_id][item_id_key][colour_only] = quantity
             messages.success(request,
                              (f'{product.name.upper()} in {colour.upper()}'
-                              'colour quantity changed to '
+                              ' colour quantity changed to '
                               f'{cart[item_id][item_id_key][colour_only]}'),
                               extra_tags = "Item Updated")
         else:   
