@@ -102,6 +102,7 @@ const cartProductQuantitySelect = () => {
 const updateOrRemoveItems = () => {
   let updateButtons = document.getElementsByClassName('update-button');
   let removeButtons = document.getElementsByClassName('remove-button');
+  let quantityInputs = document.getElementsByClassName('qty-input');
   let forms = document.getElementsByClassName('cart-update-form');
   let sizes = document.getElementsByName('product_size');
   let primaryColours = document.getElementsByName('product_colour');
@@ -109,10 +110,17 @@ const updateOrRemoveItems = () => {
   
   let updateButtonsArray = Array.from(updateButtons)
   for (let [i, button] of updateButtonsArray.entries()) {
+    let form = forms[i]
     button.style.cursor = 'pointer'
     button.addEventListener('click', function() {
-      let form = forms[i]
-      form.submit()
+      
+      if ( parseInt(quantityInputs[i].value) === 0) {
+        if (confirm("Are you sure you want to remove item from cart?")){
+          form.submit()
+        }
+      } else {
+        form.submit()
+      }
     })
   }
 
