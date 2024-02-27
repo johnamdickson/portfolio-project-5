@@ -78,7 +78,7 @@
                                         <div class="input-group">
                                             <button
                                                 class="btn btn-custom order-1 order-lg-2 minus-button cart-minus-button"
-                                                type="button" id="minus-button-{{ forloop.counter0 }}" disabled><i
+                                                type="button" id="minus-button-{{ forloop.counter0 }}"><i
                                                     class="fa-solid fa-square-minus"></i></button>
                                             <input
                                                 class="form-control text-center qty-input cart-qty-input order-3 order-lg-1"
@@ -125,13 +125,21 @@
                                 <p class="my-0 text-center">€{{ item.product.price }}</p>
                                 <div class="row text-center mt-2 justify-content-center "
                                     id="update-item-{{item.item_id}}">
-                                    <div class="col-12 col-lg-7">
-                                        <div class="btn-custom item-button m-2 p-1 update-button">
+                                    <div class="col-12 col-lg-6 z-3 m-2 update-button-popover-container"  role="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
+                                    title="Change Quantity" data-bs-content='
+                                        <div class="size-chart-div">                 
+                                          <p class="p-2">You have <strong>{{item.quantity}}</strong> of <strong>{{item.product.name}}</strong> in your cart.<br> To update the item quantity, please use the <i
+                                            class="fa-solid fa-square-minus"></i> or <i
+                                            class="fa-solid fa-square-plus "></i> buttons.</p>
+                                        </div>
+                                    
+                                    '>
+                                        <div class="btn-custom item-button p-1 update-button">
                                             Update<br>Item
                                         </div>
                                     </div>
-                                    <div class="col-12 col-lg-7">
-                                        <div class="btn-custom item-button mx-2 p-1 remove-button"
+                                    <div class="col-12 col-lg-6 m-2">
+                                        <div class="btn-custom item-button p-1 remove-button"
                                             id="remove-item-{{item.item_id}}">
                                             Remove<br>Item{% if item.quantity > 1%}s{% endif %}
                                         </div>

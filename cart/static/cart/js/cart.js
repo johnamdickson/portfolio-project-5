@@ -17,57 +17,80 @@ const cartProductQuantitySelect = () => {
 
 
   for (let [i, input] of quantityInputArray.entries()) {
-  
-    let inputValue = parseInt(input.value);
+    let updateButton = document.getElementsByClassName('update-button')[i];
+    let updateButtonPopover = document.getElementsByClassName('update-button-popover-container')[i];
+    let staticInputValue = parseInt(input.value);
+    let dynamicInputValue = parseInt(input.value);
     let minusButton = document.getElementById(`minus-button-${i}`);
     let plusButton = document.getElementById(`plus-button-${i}`);
+    let popover =  new bootstrap.Popover(updateButtonPopover) 
 
     function checkInput (){
-      if (inputValue === 0) {
+      console.log(dynamicInputValue, staticInputValue)
+      if (dynamicInputValue === staticInputValue) {
+        updateButton.style.pointerEvents = 'none';
+        updateButton.style.opacity = '0.5';
+        // enabling and disabling popover from JS:
+        // https://www.geeksforgeeks.org/bootstrap-5-popovers-disable-method/        
+        popover.enable()
+      }
+      else if (dynamicInputValue === 0) {
         minusButton.disabled = true;
         plusButton.disabled = false;
-      } else if (inputValue === 99)  {
+        updateButton.style.pointerEvents = 'auto'; 
+        updateButton.style.cursor = 'pointer';
+        updateButton.style.opacity = '1';
+        popover.disable()
+      } else if (dynamicInputValue === 99)  {
         plusButton.disabled = true;
         minusButton.disabled = false;
+        updateButton.style.pointerEvents = 'auto'; 
+        updateButton.style.cursor = 'pointer';
+        updateButton.style.opacity = '1';
+        popover.disable()
       } else {
         minusButton.disabled = false;
         plusButton.disabled = false;
-      }
+        updateButton.style.pointerEvents = 'auto'; 
+        updateButton.style.cursor = 'pointer';
+        updateButton.style.opacity = '1';
+        popover.disable()
+        }
     }
 
     checkInput()
 
     if (minusButton && plusButton) {
       minusButton.addEventListener('click', function(){
-        if (inputValue === 0){
+        if (dynamicInputValue === 0){
           checkInput()
         } else {
-          inputValue -= 1
-          quantityInputs[i].value = inputValue
+          dynamicInputValue -= 1
+          quantityInputs[i].value = dynamicInputValue
           checkInput()
         }
       }) 
     
       plusButton.addEventListener('click', function(){
-        if (inputValue === 99){
+        if (dynamicInputValue === 99){
           checkInput()
         } else {
-          inputValue += 1
-          quantityInputs[i].value = inputValue
+          dynamicInputValue += 1
+          quantityInputs[i].value = dynamicInputValue
           checkInput()
         }
       }) 
     
       quantityInputs[i].onchange = () => {
         checkInput()
-        inputValue = parseInt(quantityInputs[i].value);
-        if (inputValue >= 99) {
-          inputValue = 99
-          quantityInputs[i].value = inputValue;
+        dynamicInputValue = parseInt(quantityInputs[i].value);
+        if (dynamicInputValue >= 99) {
+          dynamicInputValue = 99
+          quantityInputs[i].value = dynamicInputValue;
           checkInput()
-        } else if (inputValue < 0) {
-          inputValue = 0
-          quantityInputs[i].value = inputValue;
+        } else if (dynamicInputValue < 0) {
+          dynamicInputValue = 0
+          quantityInputs[i].value = dynamicInputValue;
           checkInput()
         } 
       } 
@@ -86,6 +109,7 @@ const updateOrRemoveItems = () => {
   
   let updateButtonsArray = Array.from(updateButtons)
   for (let [i, button] of updateButtonsArray.entries()) {
+    button.style.cursor = 'pointer'
     button.addEventListener('click', function() {
       let form = forms[i]
       form.submit()
@@ -94,11 +118,11 @@ const updateOrRemoveItems = () => {
 
   let removeButtonsArray = Array.from(removeButtons)
   for (let [i, button] of removeButtonsArray.entries()) {
+    button.style.cursor = 'pointer'
     button.addEventListener('click', function() {
 // solution to submiting form using vanilla js.
       let csrfToken = document.getElementsByName('csrfmiddlewaretoken')[i].value;
       let itemId = this.getAttribute('id').slice(-1)
-
       let itemSize = null
       if (sizes[i]) {
         itemSize = sizes[i].value
