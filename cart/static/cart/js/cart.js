@@ -29,7 +29,7 @@ const cartProductQuantitySelect = () => {
       console.log(dynamicInputValue, staticInputValue)
       if (dynamicInputValue === staticInputValue) {
         updateButton.style.pointerEvents = 'none';
-        updateButton.style.opacity = '0.5';
+        updateButton.style.opacity = '0.4';
         // enabling and disabling popover from JS:
         // https://www.geeksforgeeks.org/bootstrap-5-popovers-disable-method/        
         popover.enable()
@@ -143,20 +143,22 @@ const updateOrRemoveItems = () => {
       } else {
         itemSecondaryColour = 'None'
       }
+      if (confirm("Are you sure you want to remove from cart?")) {
+        var http = new XMLHttpRequest();
+        var url = `/cart/remove/${itemId}/`;
+        http.open('POST', url, true);
+        http.setRequestHeader('X-CSRFToken', csrfToken)
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // solution to sending data in http request:
+        // https://stackoverflow.com/questions/9713058/send-post-data-using-xmlhttprequest
+        http.send(`&product_size=${itemSize}&product_colour=${itemPrimaryColour}&secondary_product_colour=${itemSecondaryColour}`);
+        ;
+        var delayInMilliseconds = 500;
+        setTimeout(function() {
+          location.reload()
+        }, delayInMilliseconds);
+      }
 
-      var http = new XMLHttpRequest();
-      var url = `/cart/remove/${itemId}/`;
-      http.open('POST', url, true);
-      http.setRequestHeader('X-CSRFToken', csrfToken)
-      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      // solution to sending data in http request:
-      // https://stackoverflow.com/questions/9713058/send-post-data-using-xmlhttprequest
-      http.send(`&product_size=${itemSize}&product_colour=${itemPrimaryColour}&secondary_product_colour=${itemSecondaryColour}`);
-      
-      var delayInMilliseconds = 500;
-      setTimeout(function() {
-        location.reload()
-      }, delayInMilliseconds);
     })
   }
 }
