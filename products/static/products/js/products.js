@@ -109,61 +109,6 @@ const styleProductCards = () => {
   }
 }
 
-const addToast = (availableSizes, availableColours, coloursRequired) => {
-  // how to pass parameters into event listener function:
-  // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#:~:text=Getting%20data%20into%20an%20event%20listener%20using%20%22this%22
-  let toastContainer = document.getElementsByClassName("toast-container")[0];
-  toastContainer.innerHTML = ``
-  let toastBody = ``
-  if (availableSizes) {
-    toastBody = `<strong><p class="mb-2">Please select a size from the following:</p></strong> <ul>`
-    for (parameter of availableSizes) {
-      toastBody += `<li>${parameter}</li>`
-    }
-    toastBody += `</ul>`
-    toastContainer.innerHTML += `
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000" data-bs-animation="true">
-      <div class="toast-header text-white toast-header-error p-2">
-        <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
-        <span class="me-auto">NO SIZE SELECTED</span>
-        <small class=""></small>
-        <button type="button" class="btn-close btn-close-white me-1" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        ${toastBody}
-      </div>
-    </div>
-    `
-  }
-
-  if (availableColours) {
-    toastBody = `<strong><p class="mb-2">Please select a colour from the following</p></strong> <ul>`
-    for (parameter of availableColours) {
-      toastBody += `<li>${parameter}</li>`
-    }
-    toastBody += `</ul>`
-    toastContainer.innerHTML += `
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000" data-bs-animation="true">
-      <div class="toast-header text-white toast-header-error p-2">
-        <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
-        <span class="me-auto">NO ${coloursRequired} SELECTED</span>
-        <small class=""></small>
-        <button type="button" class="btn-close btn-close-white me-1" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        ${toastBody}
-      </div>
-    </div>
-    `
-  }
-  let toasts = document.getElementsByClassName('toast');
-  for (let toast of toasts) {
-    toast = new bootstrap.Toast(toast)
-    toast.show()
-  }
-
-}
-
 const sizeSelectCheck = () => {
 
   let sizesJson = JSON.parse(document.getElementById('sizes').innerHTML);
@@ -178,12 +123,36 @@ const sizeSelectCheck = () => {
   let secColourSelector = document.getElementById('id_secondary_product_colour');
   let colourSelectorValue = null
   let secColourSelectorValue = null
-  let primaryOnlyString = "PRIMARY COLOUR"
-  let secondaryOnlyString = "SECONDARY COLOUR"
-  let primaryAndSecondary = "PRIMARY NOR SECONDARY COLOURS"
   let sizeOption = "Please choose a size"
   let colourOption = "Please choose a colour"
 
+  // instantiate popovers on size, primary colour and secondary colour inputs
+  let sizePopoverContainer = document.getElementById('size-popover');
+  let sizePopover = null;
+  if (sizePopoverContainer) {
+    sizePopover = new bootstrap.Popover(sizePopoverContainer, {
+      customClass: 'popover-error'
+    });
+  }
+  let primaryColourPopoverContainer = document.getElementById('primary-colour-popover');
+  let primaryColourPopover = null;
+  if (primaryColourPopoverContainer) {
+    primaryColourPopover = new bootstrap.Popover(primaryColourPopoverContainer, {
+      customClass: 'popover-error'
+    });
+  }
+
+  let secondaryColourPopover = null;
+  let secondaryColourPopoverContainer = document.getElementById('secondary-colour-popover');
+  if (secondaryColourPopoverContainer) {
+    secondaryColourPopover = new bootstrap.Popover(secondaryColourPopoverContainer, {
+      customClass: 'popover-error'
+    })
+  }
+
+
+  // access the list of available sizes for the product from the sizes json passed
+  // into the template and add to an array.
   function setUpSizes() {
     sizesJson.forEach(element => {
       availableSizes.push(element.name)
@@ -191,6 +160,8 @@ const sizeSelectCheck = () => {
     sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
   }
 
+  // access the list of available colours for the product from the colours json passed
+  // into the template and add to an array.
   function setUpColours() {
     coloursJson.forEach(element => {
       availableColours.push(element.name)
@@ -207,81 +178,80 @@ const sizeSelectCheck = () => {
       if (sizeSelector) {
         sizeSelectorValue = sizeSelector.options[sizeSelector.selectedIndex].value;
       }
-      if(colourSelector) {
+      if (colourSelector) {
         colourSelectorValue = colourSelector.options[colourSelector.selectedIndex].value;
       }
       if (secColourSelector) {
         secColourSelectorValue = secColourSelector.options[secColourSelector.selectedIndex].value;
       }
+  
+      if (sizeSelectorValue === sizeOption) {
+        submitButton.addEventListener("click", function () {
+          sizePopover.show()
+          hidePopover(sizePopover)
+        })
+      } else if (sizeSelectorValue !== sizeOption) {
+        submitButton.addEventListener("click", function () {
+          sizePopover.hide()
+        })
+      }
 
-
-
-// Size and two colour options, typically hats.
-
-        if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, secondaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-// Two colour options with no sizes, typically blankets.
-      } else if (colourSelectorValue !== colourOption && secColourSelectorValue === colourOption) {
-        console.log("primary colour selected, secondary not")
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, secondaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (colourSelectorValue === colourOption && secColourSelectorValue !== colourOption) {
-        console.log("secondary colour selected, primary not")
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
-        form.onsubmit = () => {
-          return false
-  }
-// Size and one colour option, typically hats.
-      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue === colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
-        form.onsubmit = () => {
-          return false
-        }
-      } else if (sizeSelectorValue === sizeOption && colourSelectorValue !== colourOption) {
-        submitButton.addEventListener("click", addToast.bind(null, availableSizes, null, null))
-        form.onsubmit = () => {
-          return false
-        }
-// one colour option, typically blankets.
-      } else if (colourSelectorValue === colourOption) {
+      if (colourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", function () {
+          primaryColourPopover.show()
+          hidePopover(primaryColourPopover)
+        })
+      } else if (colourSelectorValue !== colourOption) {
         console.log('here')
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+        submitButton.addEventListener("click", function () {
+          primaryColourPopover.hide()
+        })
+      }
+      if (secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", function () {
+          secondaryColourPopover.show()
+          hidePopover(secondaryColourPopover)
+        })
+      } else if (secColourSelectorValue !== colourOption) {
+        submitButton.addEventListener("click", function () {
+          secondaryColourPopover.hide()
+        })
+      }
+
+      if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption && secColourSelectorValue !== colourOption) {
         form.onsubmit = () => {
-          return false
+          return true
         }
-// In event all selectors have selected a valid option, remove event listener and allow form to be submitted.
-      } else {
-        submitButton.removeEventListener("click", addToast)
+      } else if (sizeSelectorValue !== sizeOption && colourSelectorValue !== colourOption && !secColourSelector) {
+        form.onsubmit = () => {
+          return true
+        }
+      } else if (!sizeSelector && colourSelectorValue !== colourOption && secColourSelectorValue !== colourOption) {
+        form.onsubmit = () => {
+          return true
+        }
+      } else if (sizeSelectorValue !== sizeOption && !colourSelector && !secColourSelector) {
+        form.onsubmit = () => {
+          return true
+        }
+      } else if (!sizeSelector && colourSelectorValue !== colourOption && !secColourSelector) {
         form.onsubmit = () => {
           return true
         }
       }
+
+
+      setTimeout(function () {
+        sizePopover.hide()
+        primaryColourPopover.hide()
+      }, 5000);
     }
+  }
+
+  function hidePopover(popover) {
+    setTimeout(function () {
+      popover.hide()
+    }, 4000);
   }
   // __________________________ Sizes and colours code ____________________________________
   // creating an array from HTML:
@@ -291,51 +261,78 @@ const sizeSelectCheck = () => {
   if (sizesJson.length > 0 && coloursJson.length > 0) {
     setUpSizes();
     setUpColours();
-    if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
-      submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryAndSecondary))
-      form.onsubmit = () => {
-        return false
-      }
-    } else if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption) {
-      submitButton.addEventListener("click", addToast.bind(null, availableSizes, availableColours, primaryOnlyString))
-      form.onsubmit = () => {
-        return false
-      }
-    }
-    selectorChange(sizeSelector)
-    selectorChange(colourSelector)
-    
-    if (secColourSelector) {
-      selectorChange(secColourSelector)
-    }
-  } else if (sizesJson.length > 0 && coloursJson.length === 0) {
-    setUpSizes();
-    if (sizeSelectorValue === sizeOption) {
-      submitButton.addEventListener("click", addToast.bind(null, availableSizes, null))
-      form.onsubmit = () => {
-        return false
-      }
-    }
-  selectorChange(sizeSelector)
-
-  } else if (sizesJson.length === 0 && coloursJson.length > 0) {
-    setUpColours();
-    if (colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
-      submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryAndSecondary))
-      form.onsubmit = () => {
-        return false
-      }
-    }
-    else if (colourSelectorValue === colourOption) {
-        console.log('here')
-        submitButton.addEventListener("click", addToast.bind(null, null, availableColours, primaryOnlyString))
+    if (sizeSelectorValue && colourSelectorValue && secColourSelectorValue) {
+      if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", function () {
+          sizePopover.show()
+          hidePopover(sizePopover)
+          primaryColourPopover.show()
+          hidePopover(primaryColourPopover)
+          secondaryColourPopover.show()
+          hidePopover(secondaryColourPopover)
+        })
         form.onsubmit = () => {
           return false
         }
+        selectorChange(sizeSelector)
+        selectorChange(colourSelector)
+        selectorChange(secColourSelector)
       }
-    selectorChange(colourSelector)
-    if (secColourSelector){
-      selectorChange(secColourSelector)
+    } else if (sizeSelectorValue && colourSelectorValue) {
+      if (sizeSelectorValue === sizeOption && colourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", function () {
+          sizePopover.show()
+          hidePopover(sizePopover)
+          primaryColourPopover.enable()
+          primaryColourPopover.show()
+          hidePopover(primaryColourPopover)
+        })
+        form.onsubmit = () => {
+          return false
+        }
+        selectorChange(sizeSelector)
+        selectorChange(colourSelector)
+      }
+    }
+  } else if (sizesJson.length === 0 && coloursJson.length > 0) {
+    setUpColours();
+    if (colourSelectorValue && secColourSelectorValue) {
+      if (colourSelectorValue === colourOption && secColourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", function () {
+          primaryColourPopover.show()
+          hidePopover(primaryColourPopover)
+          secondaryColourPopover.show()
+          hidePopover(secondaryColourPopover)
+        })
+        form.onsubmit = () => {
+          return false
+        }
+        selectorChange(colourSelector)
+        selectorChange(secColourSelector)
+      }
+    } else if (colourSelectorValue) {
+      if (colourSelectorValue === colourOption) {
+        submitButton.addEventListener("click", function () {
+          primaryColourPopover.show()
+          hidePopover(primaryColourPopover)
+        })
+        form.onsubmit = () => {
+          return false
+        }
+        selectorChange(colourSelector)
+      }
+    }
+  }  else if (sizesJson.length > 0 && coloursJson.length === 0) {
+    setUpSizes();
+    if (sizeSelectorValue === sizeOption) {
+      submitButton.addEventListener("click", function () {
+        sizePopover.show()
+        hidePopover(sizePopover)
+      })
+      form.onsubmit = () => {
+        return false
+      }
+      selectorChange(sizeSelector)
     }
   }
 }
@@ -352,12 +349,12 @@ const productQuantitySelect = () => {
     let plusButton = plusButtons[i];
 
     checkInput()
-  
-    function checkInput (){
+
+    function checkInput() {
       if (inputValue === 1) {
         minusButton.disabled = true;
         plusButton.disabled = false;
-      } else if (inputValue === 99)  {
+      } else if (inputValue === 99) {
         plusButton.disabled = true;
         minusButton.disabled = false;
       } else {
@@ -365,28 +362,28 @@ const productQuantitySelect = () => {
         plusButton.disabled = false;
       }
     }
-  
-    minusButton.addEventListener('click', function(){
-      if (inputValue === 1){
+
+    minusButton.addEventListener('click', function () {
+      if (inputValue === 1) {
         checkInput()
       } else {
         inputValue -= 1
         quantityInput[i].value = inputValue
         checkInput()
       }
-    }) 
-  
-    plusButton.addEventListener('click', function(){
-      if (inputValue === 99){
+    })
+
+    plusButton.addEventListener('click', function () {
+      if (inputValue === 99) {
         checkInput()
       } else {
         inputValue += 1
         quantityInput[i].value = inputValue
         checkInput()
-  
+
       }
-    }) 
-  
+    })
+
     quantityInput.onchange = () => {
       checkInput()
       inputValue = parseInt(quantityInput.value);
@@ -398,8 +395,8 @@ const productQuantitySelect = () => {
         inputValue = 1
         quantityInput[i].value = inputValue;
         checkInput()
-      } 
-    } 
+      }
+    }
   }
 
 }

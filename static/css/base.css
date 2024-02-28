@@ -78,6 +78,7 @@ h6 {
     font-weight: 200;
     letter-spacing: 2.5px;
 }
+
 .toast-logo{
     width: 20px;
     height: 20px;
@@ -436,7 +437,7 @@ header .nav-link:focus {
     font-size: clamp(0.7rem, 2vw, 0.9rem);
 }
 .popover {
-    max-width: 200px;
+    max-width: 300px;
 }
 
 .popover-header {
@@ -454,8 +455,20 @@ header .nav-link:focus {
     font-size: 0.9em;
 }
 
+.popover-logo {
+    width: 20px;
+    height: 20px;
+    float:inline-start;
+}
+
+.popover-error .popover-header {
+    color: #fff;
+    background-color: rgba(194,58,34,0.8);
+
+}
+
 .popover-body li {
-    margin-left: 200px;
+    /* margin-left: 200px; */
 }
 
 .popover-body img {
