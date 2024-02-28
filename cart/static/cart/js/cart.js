@@ -129,6 +129,7 @@ const updateOrRemoveItems = () => {
     button.style.cursor = 'pointer'
     button.addEventListener('click', function() {
 // solution to submiting form using vanilla js.
+// https://stackoverflow.com/questions/70842319/vanilla-javascript-ajax-form-submit
       let csrfToken = document.getElementsByName('csrfmiddlewaretoken')[i].value;
       let itemId = this.getAttribute('id').slice(-1)
       let itemSize = null
