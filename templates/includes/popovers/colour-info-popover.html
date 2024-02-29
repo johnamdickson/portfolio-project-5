@@ -1,0 +1,7 @@
+<ul class="m-0">
+    {% for colour in product.colours.all %}
+    <li class="m-1">
+        {{colour.get_colour_display}}
+
+    </li> {% endfor %}
+</ul>

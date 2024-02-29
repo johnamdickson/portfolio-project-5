@@ -81,6 +81,12 @@
 .attributes-info {
     font-size: 0.75rem;
 }
+
+.popover-info .popover-header {
+    color: #fff;
+    background-color: rgba(0,90,146,0.8);
+
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 

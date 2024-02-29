@@ -122,18 +122,11 @@
                                 </form>
                             </td>
                             <td class="py-3">
-                                <p class="my-0 text-center">€{{ item.product.price }}</p>
+                                <p class="my-0 text-center">€{{ item.product.price}}</p>
                                 <div class="row text-center mt-2 justify-content-center "
                                     id="update-item-{{item.item_id}}">
                                     <div class="col-12 col-lg-6 z-3 m-2 update-button-popover-container"  role="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
-                                    title="Change Quantity" data-bs-content='
-                                        <div class="size-chart-div">                 
-                                          <p class="p-2">You have <strong>{{item.quantity}}</strong> of <strong>{{item.product.name}}</strong> in your cart.<br> To update the item quantity, please use the <i
-                                            class="fa-solid fa-square-minus"></i> or <i
-                                            class="fa-solid fa-square-plus "></i> buttons.</p>
-                                        </div>
-                                    
-                                    '>
+                                    title="<img src='/media/logo-transparent-background.png' class='rounded me-2 popover-logo'>Change Quantity" data-bs-content= '{% include "includes/popovers/update-button-popover.html" %}'>
                                         <div class="btn-custom item-button p-1 update-button">
                                             Update<br>Item
                                         </div>

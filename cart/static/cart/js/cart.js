@@ -23,7 +23,9 @@ const cartProductQuantitySelect = () => {
     let dynamicInputValue = parseInt(input.value);
     let minusButton = document.getElementById(`minus-button-${i}`);
     let plusButton = document.getElementById(`plus-button-${i}`);
-    let popover =  new bootstrap.Popover(updateButtonPopover) 
+    let popover =  new bootstrap.Popover(updateButtonPopover, {
+      customClass: 'popover-info'
+    })
 
     function checkInput (){
       console.log(dynamicInputValue, staticInputValue)
