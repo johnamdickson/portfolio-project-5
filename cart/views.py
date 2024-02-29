@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from products.models import Product
+from num2words import num2words
 
 # Create your views here.
 
@@ -17,6 +18,7 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """ Add a quantity of the specified product to the shopping cart """
 
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
@@ -40,26 +42,80 @@ def add_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             if size_two_colours in cart[item_id][item_id_key].keys():
                 cart[item_id][item_id_key][size_two_colours] += quantity
+                messages.success(request,                              
+                                (f'{product.name.upper()} '
+                                f'in {size.upper()} size, with '
+                                f' {colour.upper()} and {secondary_colour.upper()}'
+                                f' colours quantity changed to '
+                                f'{cart[item_id][item_id_key][size_two_colours]}'),
+                                extra_tags = "Item Added to Cart")
             else:
                 cart[item_id][item_id_key][size_two_colours] = quantity
+                messages.success(request,                              
+                                (f'{num2words(cart[item_id][item_id_key][size_two_colours]).upper()}'
+                                f' {product.name.upper()} in {size.upper()} size, with '
+                                f' {colour.upper()} and {secondary_colour.upper()}'
+                                f' colours added to cart.'),
+                                extra_tags = "Item Added to Cart")
         else:
             cart[item_id] = {item_id_key: {size_two_colours: quantity}}
+            messages.success(request,                              
+                            (f'{num2words(cart[item_id][item_id_key][size_two_colours]).upper()}'
+                            f' {product.name.upper()} in {size.upper()} size, with '
+                            f' {colour.upper()} and {secondary_colour.upper()}'
+                            f' colours added to cart.'),
+                            extra_tags = "Item Added to Cart")
     elif size and colour:
         if item_id in list(cart.keys()):
             if size_colour in cart[item_id][item_id_key].keys():
                 cart[item_id][item_id_key][size_colour] += quantity
+                messages.success(request,                              
+                                (f'{product.name.upper()} '
+                                f'in {size.upper()} size, with '
+                                f'{colour.upper()} colour quantity changed to '
+                                f'{cart[item_id][item_id_key][size_colour]}'),
+                                extra_tags = "Item Added to Cart")
             else:
                 cart[item_id][item_id_key][size_colour] = quantity
+                messages.success(request,                              
+                                (f'{num2words(cart[item_id][item_id_key][size_colour]).upper()}'
+                                f' {product.name.upper()} in {size.upper()} size, with '
+                                f' {colour.upper()}  colour added to cart.'),
+                                extra_tags = "Item Added to Cart")
         else:
             cart[item_id] = {item_id_key: {size_colour: quantity}}
+            messages.success(request,                              
+                            (f'{num2words(cart[item_id][item_id_key][size_colour]).upper()}'
+                            f' {product.name.upper()} in {size.upper()} size, with '
+                            f' {colour.upper()}  colour added to cart.'),
+                            extra_tags = "Item Added to Cart")
+
     elif colour and secondary_colour:
         if item_id in list(cart.keys()):
             if two_colours in cart[item_id][item_id_key].keys():
                 cart[item_id][item_id_key][two_colours] += quantity
+                messages.success(request,                              
+                                (f'{product.name.upper()} '
+                                f'in {colour.upper()} and {secondary_colour.upper()}'
+                                f' colours quantity changed to '
+                                f'{cart[item_id][item_id_key][two_colours]}'),
+                                extra_tags = "Item Added to Cart")
             else:
                 cart[item_id][item_id_key][two_colours] = quantity
+                messages.success(request,                              
+                                (f'{num2words(cart[item_id][item_id_key][two_colours]).upper()}'
+                                f' {product.name.upper()} in {colour.upper()} '
+                                f'and {secondary_colour.upper()}'
+                                f' colours added to cart.'),
+                                extra_tags = "Item Added to Cart")
         else:
             cart[item_id] = {item_id_key: {two_colours: quantity}}
+            messages.success(request,                              
+                            (f'{num2words(cart[item_id][item_id_key][two_colours]).upper()}'
+                            f' {product.name.upper()} in {colour.upper()} '
+                            f'and {secondary_colour.upper()}'
+                            f' colours added to cart.'),
+                            extra_tags = "Item Added to Cart")
     elif colour:
         if item_id in list(cart.keys()):
             if colour_only in cart[item_id][item_id_key].keys():
