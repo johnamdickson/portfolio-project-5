@@ -1,14 +1,14 @@
 import json
 from django import template
-
+from num2words import num2words
 
 register = template.Library()
 
 @register.filter
-def json_loads(value):
-    return json.loads(value)
-    
-
-@register.filter(name='calc_subtotal')
 def calc_subtotal(price, quantity):
     return price * quantity
+
+
+@register.filter
+def num_to_words(number):
+    return num2words(number).upper()

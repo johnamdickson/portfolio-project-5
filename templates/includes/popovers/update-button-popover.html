@@ -1,3 +1,13 @@
-<p class="p-2">You already have <strong>{{item.quantity}}</strong> of <strong>{{item.product.name}}</strong> in your cart.<br> To update the item quantity, please use the <i
+{% load cart_tools %}
+<p class="p-2">You already have <strong>{{item.quantity|num_to_words}} </strong>
+    <strong>{% if item.size %} {{item.size}} </strong>size <strong>{% endif %}{{item.product.name}}{% if item.quantity > 1%}s{% endif %}</strong>
+    {% if item.colour %} in <strong>{{item.colour}} </strong>
+        {% if item.secondary_colour %} and <strong>{{ item.secondary_colour}} </strong>colours
+        {% else %} colour 
+        {% endif %}
+    {% endif %}
+    in your cart.<br> To update the item quantity, please use the <i
     class="fa-solid fa-square-minus"></i> or <i
-    class="fa-solid fa-square-plus "></i> buttons.</p>
+    class="fa-solid fa-square-plus "></i> buttons.
+</p>
+  
