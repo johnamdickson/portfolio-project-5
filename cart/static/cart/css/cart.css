@@ -85,7 +85,10 @@
 .popover-info .popover-header {
     color: #fff;
     background-color: rgba(0,90,146,0.8);
+}
 
+.popover-header .popover-content {
+    color: #4d6562;
 }
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
