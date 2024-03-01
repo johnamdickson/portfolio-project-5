@@ -120,23 +120,64 @@ def add_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             if colour_only in cart[item_id][item_id_key].keys():
                 cart[item_id][item_id_key][colour_only] += quantity
+                messages.success(request,                              
+                                (f'{product.name.upper()} '
+                                f'in {colour.upper()} colour'
+                                f' quantity changed to '
+                                f'{cart[item_id][item_id_key][colour_only]}'),
+                                extra_tags = "Item Added to Cart")
             else:
                 cart[item_id][item_id_key][colour_only] = quantity
+                messages.success(request,                              
+                                (f'{num2words(cart[item_id][item_id_key][colour_only]).upper()}'
+                                f' {product.name.upper()} in {colour.upper()} '
+                                f' colour added to cart.'),
+                                extra_tags = "Item Added to Cart")
         else:
             cart[item_id] = {item_id_key: {colour_only: quantity}}
+            messages.success(request,                              
+                            (f'{num2words(cart[item_id][item_id_key][colour_only]).upper()}'
+                            f' {product.name.upper()} in {colour.upper()} '
+                            f' colour added to cart.'),
+                            extra_tags = "Item Added to Cart")
     elif size:
         if item_id in list(cart.keys()):
             if size_only in cart[item_id][item_id_key].keys():
                 cart[item_id][item_id_key][size_only] += quantity
+                messages.success(request,                              
+                                (f'{product.name.upper()} '
+                                f'in {size.upper()} size quantity changed to '
+                                f'{cart[item_id][item_id_key][size_only]}'),
+                                extra_tags = "Item Added to Cart")
             else:
                 cart[item_id][item_id_key][size_only] = quantity
+                messages.success(request,                              
+                                (f'{num2words(cart[item_id][item_id_key][size_only]).upper()}'
+                                f' {product.name.upper()} in {size.upper()} size'
+                                f' added to cart.'),
+                                extra_tags = "Item Added to Cart")
         else:
             cart[item_id] = {item_id_key: {size_only: quantity}}
+            messages.success(request,                              
+                            (f'{num2words(cart[item_id][item_id_key][size_only]).upper()}'
+                            f' {product.name.upper()} in {size.upper()} size'
+                            f' added to cart.'),
+                            extra_tags = "Item Added to Cart")
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
+            messages.success(request,                              
+                            (f'{product.name.upper()} '
+                            'quantity changed to '
+                            f'{cart[item_id]}'),
+                            extra_tags = "Item Added to Cart")
         else:
             cart[item_id] = quantity
+            messages.success(request,                              
+                            (f'{num2words(cart[item_id]).upper()}'
+                            f' {product.name.upper()}'
+                            f' added to cart.'),
+                            extra_tags = "Item Added to Cart")
 
     request.session['cart'] = cart
     return redirect(redirect_url)
