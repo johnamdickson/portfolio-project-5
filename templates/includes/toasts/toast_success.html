@@ -22,13 +22,13 @@
           {% for item in cart_items %}
               <div class="row">
                   <div class="col-3 my-1">
-                    {% if product.image %}
-                    <a href="{{ product.image.url }}" target="_blank">
-                      <img class="w-100" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% if item.product.image %}
+                    <a href="{{ item.product.image.url }}" target="_blank">
+                      <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                     </a>
                     {% else %}
                     <img class="w-100"  src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
-                      alt="{{ product.name}}">
+                      alt="{{ item.product.name}}">
                     {% endif %}
                   </div>
                   <div class="col-9">
