@@ -1,7 +1,9 @@
 
 # <img src=""  width="40" height="40">  &nbsp;*Add title and icon here*
 
-*Add high level summary here*
+Little Woolly Snuggles is a business-to-consumer e-commerce website, selling hand crafted crocheted goods along with a learning environment for individuals to learn how to crochet themselves.
+
+This site is my Portfolio Project 5 submission showcasing full stack frameworks, search engine optimisation and web marketing skills. 
 
 *Add link to deployed project here* [link.]()
 
