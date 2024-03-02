@@ -53,14 +53,13 @@ def cart_contents(request):
     grand_total = delivery + total
     
     context = {
-        'cart_items': cart_items,
+        'cart_items': reversed(cart_items),
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
-        
     }
 
     return context
