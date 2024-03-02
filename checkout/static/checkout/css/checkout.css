@@ -1,0 +1,17 @@
+.checkout-summary-row {
+    color: #4d6562;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-left: 16.66667%;
+    margin-right: 12%;
+    justify-content: space-between;
+}
+
+.checkout-a {
+    color: #fff;
+}
+
+.summary-container {
+    max-height: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
