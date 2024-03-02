@@ -88,3 +88,8 @@ Take a moment to add, commit and push your project to GitHub if you haven’t do
 ## Django Tips and Tricks
 - get_ITEM_display to render the human readable aspect of choices tuple in template, where ITEM is the name of the model property. See ProductSizes and Colours rendering in product detail template.
 - `manage.py shell` command to enable db changes from the terminal. ![shell](shell.png) To exit shell use the `exit()` function.
+- When using context processors, data is stored in a sessionid variable. When making changes during development, there may come a time that this will need to be deleted to correct errors or reset processor quickly without having to manually delete everything one at a time. This can be completed in the inspector in the Applications tab.
+![session id](session-id.png)
+- `startapp` followed by app name to create a new app in the project.
+- To view the db from the shell, follow steps in image below. Note some commands require `;` to signify end of input.
+![sqlite-shell](sqlite-shell.png)
