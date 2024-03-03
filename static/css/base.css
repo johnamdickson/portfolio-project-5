@@ -151,7 +151,11 @@ svg {
 }
 
 #offcanvas-menu-login {
-    width: 500px;
+    width: 550px;
+}
+
+#offcanvas-menu-logout {
+    width: 400px;
 }
 
 .btn-close {

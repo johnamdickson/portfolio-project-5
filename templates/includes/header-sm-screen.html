@@ -33,6 +33,10 @@
             aria-labelledby="offcanvas-menuLabel-login">
             {% include 'includes/offcanvas/login-offcanvas-sm.html' %}
         </div>
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvas-menu-logout-sm"
+        aria-labelledby="offcanvas-menuLabel-logout">
+        {% include 'includes/offcanvas/logout-offcanvas.html' %}
+    </div>
         <div class="col-3 col-md">
             <a class="{% if grand_total %} fw-bold{% else %}font-weight-light{% endif %} nav-link"
                 href="{% url 'view_cart' %}">

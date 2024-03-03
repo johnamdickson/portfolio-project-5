@@ -1,0 +1,26 @@
+<div class="offcanvas-header">
+  <h5 class="offcanvas-title" id="offcanvas-menuLabel">Logout</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<hr>
+<div class="offcanvas-body">
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {{ redirect_field_name }}
+    {{ redirect_field_value }}
+    {% endif %}
+    <div class="row">
+      <div class="col-12 mt-3 mb-2 mx-auto text-center">
+        <p>Are you sure you want to sign out?</p>
+      </div>
+      <div class="col-5 mt-3 mx-auto">
+        <button type="submit" value="Log out" class="btn-custom w-100 p-2"> 
+          <p class="d-inline me-2">Log Out</p> <i class='fa-solid fa-right-from-bracket fa-lg d-inline'></i>
+        </button>
+        <input type="hidden" name="next" value="" />
+      </div>
+    </div>
+</div>
+</form>

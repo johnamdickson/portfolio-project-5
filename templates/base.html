@@ -62,8 +62,7 @@
             <div class="col-12 col-md-6 ps-md-4 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
-                        <input class="form-control search-bar" type="text" name="q"
-                            placeholder='Search our site...'>
+                        <input class="form-control search-bar" type="text" name="q" placeholder='Search our site...'>
                         <div class="input-group-append">
                             <button class="form-control btn bg-transparent" type="submit">
                                 <span class="icon">
@@ -95,9 +94,13 @@
                                 {% include 'includes/offcanvas/account-offcanvas.html' %}
                             </div>
                             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-login"
-                            aria-labelledby="offcanvas-menuLabel-login">
-                            {% include 'includes/offcanvas/login-offcanvas.html' %}
-                        </div>
+                                aria-labelledby="offcanvas-menuLabel-login">
+                                {% include 'includes/offcanvas/login-offcanvas.html' %}
+                            </div>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-logout"
+                                aria-labelledby="offcanvas-menuLabel-logout">
+                                {% include 'includes/offcanvas/logout-offcanvas.html' %}
+                            </div>
                         </div>
                         <div class="col-4">
                             <a class="{% if grand_total %}font-weight-bold{% else %}font-weight-light{% endif %} nav-link"
@@ -155,17 +158,17 @@
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
         {% endfor %}
     </div>
     {% endif %}
