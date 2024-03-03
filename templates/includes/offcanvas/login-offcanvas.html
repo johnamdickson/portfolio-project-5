@@ -5,7 +5,10 @@
   <hr>
 
   <div class="offcanvas-body">
-<form method="post" action="{% url 'account_login' %}">
+    <!-- redirection to page user was on rather than home on login
+    https://stackoverflow.com/questions/42389168/django-login-user-after-successful-login-user-stay-on-same-page
+   -->
+<form method="post" action="{% url 'account_login' %}?next={{request.path}}">
   {% csrf_token %}
     <div class="row">
       <div class="col-4 mt-2 text-end">    
