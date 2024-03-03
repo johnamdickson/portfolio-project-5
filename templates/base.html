@@ -94,6 +94,10 @@
                                 aria-labelledby="offcanvas-menuLabel-account">
                                 {% include 'includes/offcanvas/account-offcanvas.html' %}
                             </div>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-login"
+                            aria-labelledby="offcanvas-menuLabel-login">
+                            {% include 'includes/offcanvas/login-offcanvas.html' %}
+                        </div>
                         </div>
                         <div class="col-4">
                             <a class="{% if grand_total %}font-weight-bold{% else %}font-weight-light{% endif %} nav-link"

@@ -3,6 +3,7 @@ window.addEventListener('load', function () {
    iniatiliseTooltips();
    iniatilisePopover();
    initialiseToast();
+   offCanvasMethods();
 })
 
 // BS Boilerplate for initialising toasts.
@@ -139,4 +140,43 @@ window.onscroll = () => {
     }
 };
 
+
+const offCanvasMethods = () => {
+
+    // solutions to showing offcanvas and hiding existing off canvas from SO:
+    // https://stackoverflow.com/questions/66816000/how-to-open-offcanvas-programmatically-in-bootstrap-5
+    // https://stackoverflow.com/questions/67770228/bootstrap-5-offcanvas-how-to-close-it-on-mouse-leave
+
+    const loginOffcanvas = document.getElementById('offcanvas-menu-login')
+    const loginOffcanvasSmall = document.getElementById('offcanvas-menu-login-sm')
+    const accountOffcanvas = document.getElementById('offcanvas-menu-account')
+    const accountOffcanvasSmall = document.getElementById('offcanvas-menu-account-sm')
+    let loginButtons = Array.from(document.getElementsByClassName('offcanvas-login-button'))
+    let usernameInput = document.getElementsByClassName('login-username-input')
+
+    for (let [i, button] of loginButtons.entries()) {
+        const delayInMilliseconds = 500;
+
+        button.onclick = () => {
+            if (i == 0) {
+                const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
+                account.hide()
+                const login = new bootstrap.Offcanvas(loginOffcanvasSmall)
+                login.show()
+                setTimeout(function() {
+                    usernameInput[i].focus()
+                  }, delayInMilliseconds);
+            } else {
+                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
+                account.hide()
+                const login = new bootstrap.Offcanvas(loginOffcanvas)
+                login.show()
+                setTimeout(function() {
+                    usernameInput[i].focus()
+                  }, delayInMilliseconds);
+            }
+        }
+    }
+
+}
 
