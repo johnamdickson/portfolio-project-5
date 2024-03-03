@@ -143,14 +143,14 @@ svg {
     background-color: #fff;
     color: #698a85;
     width: 100%;
-    height: 75%;
+    height: 85%;
 }
 
 #offcanvas-menu-nav p {
     font-size: 1.25rem;
 }
 
-#offcanvas-menu-login {
+#offcanvas-menu-login, #offcanvas-menu-register {
     width: 550px;
 }
 
