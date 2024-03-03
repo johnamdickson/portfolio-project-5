@@ -153,12 +153,15 @@ const offCanvasMethods = () => {
     // set up log in off canvases from bottom on small screens and from right on medium and above.
     const loginOffcanvas = document.getElementById('offcanvas-menu-login')
     const loginOffcanvasSmall = document.getElementById('offcanvas-menu-login-sm')
-    let loginButtons = Array.from(document.getElementsByClassName('offcanvas-login-button'))
-    let loginUsernameInput = document.getElementsByClassName('login-username-input')
+    const loginButtons = Array.from(document.getElementsByClassName('offcanvas-login-button'))
+    const loginUsernameInput = document.getElementsByClassName('login-username-input')
+    const delayInMilliseconds = 500
 
     for (let [i, button] of loginButtons.entries()) {
         
         button.onclick = () => {
+            
+
             if (i == 0) {
                 const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
                 account.hide()
