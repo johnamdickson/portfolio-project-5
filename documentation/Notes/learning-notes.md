@@ -93,3 +93,5 @@ Take a moment to add, commit and push your project to GitHub if you haven’t do
 - `startapp` followed by app name to create a new app in the project.
 - To view the db from the shell, follow steps in image below. Note some commands require `;` to signify end of input.
 ![sqlite-shell](sqlite-shell.png)
+- A handy trick to access Django objects otherwise not shown in the IDE is to access the shell using command `python3 manage.py shell`. I used this to access the login form HTML for rendering in the offcanvas menu. The solution I found on [Stack Overflow](https://stackoverflow.com/questions/39197723/how-to-move-singup-signin-templates-into-dropdown-menu)
+![default-forms](accessing-default-forms.png)
