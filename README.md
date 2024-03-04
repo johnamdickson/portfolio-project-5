@@ -45,12 +45,11 @@ This site is my Portfolio Project 5 submission showcasing full stack frameworks,
 
 ## UX
 ### Strategy
-The objective of the site is to *ADD*
+The primary objective of our business-to-consumer e-commerce site is to offer consumers a diverse selection of crocheted goods across various categories while providing a user-friendly platform for browsing, selecting, and purchasing these items. Additionally, we aim to enhance user engagement by offering a learning environment where users can access step-by-step walkthroughs to create their own crocheted products. The site employs intuitive navigation, responsive design, and a streamlined purchasing process to deliver an optimal user experience.
 
 #### Agile Methodology
 
-The Agile Project Management approach was used in this project. *ADD* epics were completed each with their own varying number of user stories. The user stories were categorised using MoSCoW prioritisation with Github issue labels of *Must Have*, *Should Have*, *Could Have* and *Won't Have*. Each user story was assigned a timebox value using the [Fibonacci Sequence](https://www.linkedin.com/pulse/why-agile-teams-use-fibonacci-sequence-estimating-corrado-de-sanctis). 
- Over the course of the project, *ADD* sprints were completed selecting user stories based on a timebox value of no more than 8 per sprint. The epics, user stories and also bugs were all tracked and visualised using the Github Project Kanban board feature, which can be found [here.]() *ADD LINK*
+The project followed an Agile Project Management approach, completing *ADD* epics consisting of various user stories. These stories were categorized using MoSCoW prioritization, labeled in GitHub as *Must Have*, *Should Have*, *Could Have*, and *Won't Have*. Each user story was assigned a timebox value using the Fibonacci Sequence. Throughout the project, sprints were conducted, selecting user stories with a timebox value of no more than 8 per sprint. Epics, user stories, and bugs were tracked and visualized using GitHub's Project Kanban board feature, accessible [here.](https://github.com/users/johnamdickson/projects/3/views/1).
 
 #### User Stories
 
