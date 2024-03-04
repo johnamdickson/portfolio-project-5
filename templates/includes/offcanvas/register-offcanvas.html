@@ -43,7 +43,8 @@
       </div>
       <div class="col-6 mt-1">
         <p><input type="password" name="password1" placeholder="Password" required id="id_password1"
-            class="form-control"></p>
+            class="form-control"  role="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
+             data-bs-content='{% include "includes/popovers/password-req-popover.html" %}'></p>
       </div>
     </div>
     <hr>
