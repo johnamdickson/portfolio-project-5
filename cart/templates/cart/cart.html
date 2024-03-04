@@ -13,7 +13,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="container-fluid products-container mt-2 w-100">
     <div class="row pt-lg-2">
         <div class="col-12 col-md-4 mx-auto">
@@ -22,8 +21,7 @@
         </div>
     </div>
     <div class="container-fluid g-0 justify-content-center">
-        {{cart.items}}
-        {% if cart_items %}
+        {% if cart_items|length > 0%}
         <div class="row">
             <div class="col-md-9">
                 <div class="table-responsive rounded ms-md-2">
