@@ -61,7 +61,7 @@ h6 {
     font-weight: 500;
     visibility: hidden;
 }
-
+/* ----------------------------------- Notifications Styling ----------------------------------- */
 .toast {
     top:10px;
     right: 10px;
@@ -129,6 +129,13 @@ svg {
     width: 35px;
     height: 35px;
 }
+
+/* ----------------------------------- Allauth Styling ----------------------------------- */
+
+.login .alert {
+    display: none;
+}
+
 /* ----------------------------------- Off Canvas Sidebar Styling ----------------------------------- */
 
 
@@ -169,6 +176,10 @@ svg {
 .offcanvas .offcanvas-body {
     font-family: 'Quicksand', sans-serif;
     letter-spacing: 1.5px;
+}
+
+.offcanvas-body hr {
+    height: 0.5px;
 }
 
 .offcanvas a {
