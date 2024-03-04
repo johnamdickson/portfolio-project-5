@@ -16,15 +16,16 @@
 
 <div class="container">
   <div class="row mt-3">
-    <div class="col-6 mx-auto">
+    <div class="col-6 offset-3">
       <h3 class="text-center main-title">{% trans "Sign In" %}</h3>
       <hr class="mx-auto main-hr">
     </div>
-  </div>
     <div class="col-md-8 col-lg-6 mx-auto text-center">
       <p>{% blocktrans %}If you have not created an account yet, then please
         <a href="{{ signup_url }}" class="custom-link">sign up</a> first.{% endblocktrans %}</p>
     </div>
+  </div>
+
 
 <div class="row">
   <div class="col-md-8 col-lg-6 mx-auto">
@@ -34,8 +35,16 @@
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-      <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+      <div class="row mt-3">
+        <div class="col-6 col-lg-4 mx-auto">
+          <button type="submit" value="Log in" class="btn-custom w-100 p-2"> 
+            <p class="d-inline me-2">Log In</p> <i class='fa-solid fa-right-to-bracket fa-lg d-inline'></i>
+          </button>
+        </div>
+        <div class="col-12 mt-2 text-center">
+          <a class="button secondaryAction custom-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </div>
+      </div>   
     </form>
   </div>
 </div>
