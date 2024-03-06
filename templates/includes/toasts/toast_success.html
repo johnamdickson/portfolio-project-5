@@ -14,7 +14,7 @@
     </div>
     <div class="toast-body">
       {% for message in messages %}
-        {{ message }}
+        {{ message|safe }}
       {% endfor %}
       {% if grand_total and request.path != "/cart/" %}
       <p class="logo-font bg-white text-black py-1">Your Cart ({{ product_count }})</p>

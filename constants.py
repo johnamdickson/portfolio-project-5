@@ -22,3 +22,7 @@ COLOURS = (
     ('BE', 'Blue'),
     ('TN', 'Tan'),
     )
+
+UPDATE = 2
+ADD = 1
+REMOVE = 0
