@@ -41,13 +41,11 @@ def add_to_cart(request, item_id):
     two_colours = f"{None},{colour},{secondary_colour}"
     size_colour = f"{size},{colour},{None}"
     size_two_colours= f"{size},{colour},{secondary_colour}"
-    item_id_key = 'items_size_and_or_colour'
     handle_item_data = {'product_name' : product_name, 
                         'quantity': quantity,
                         'cart': cart,
                         'id': item_id,
                         }
-
 
     if size and colour and secondary_colour:
         handle_item_action(size_two_colours, k.ADD, handle_item_data, request)
@@ -58,78 +56,12 @@ def add_to_cart(request, item_id):
     elif colour and secondary_colour:
         handle_item_action(two_colours, k.ADD, handle_item_data, request)
 
-        # if item_id in list(cart.keys()):
-        #     if two_colours in cart[item_id][item_id_key].keys():
-        #         cart[item_id][item_id_key][two_colours] += quantity
-        #         messages.success(request,                              
-        #                         (f'{product.name.upper()} '
-        #                         f'in {colour.upper()} and {secondary_colour.upper()}'
-        #                         f' colours quantity changed to '
-        #                         f'{cart[item_id][item_id_key][two_colours]}'),
-        #                         extra_tags = "Item Added to Cart")
-        #     else:
-        #         cart[item_id][item_id_key][two_colours] = quantity
-        #         messages.success(request,                              
-        #                         (f'{num2words(cart[item_id][item_id_key][two_colours]).upper()}'
-        #                         f' {product.name.upper()} in {colour.upper()} '
-        #                         f'and {secondary_colour.upper()}'
-        #                         f' colours added to cart.'),
-        #                         extra_tags = "Item Added to Cart")
-        # else:
-        #     cart[item_id] = {item_id_key: {two_colours: quantity}}
-        #     messages.success(request,                              
-        #                     (f'{num2words(cart[item_id][item_id_key][two_colours]).upper()}'
-        #                     f' {product.name.upper()} in {colour.upper()} '
-        #                     f'and {secondary_colour.upper()}'
-        #                     f' colours added to cart.'),
-        #                     extra_tags = "Item Added to Cart")
     elif colour:
-        if item_id in list(cart.keys()):
-            if colour_only in cart[item_id][item_id_key].keys():
-                cart[item_id][item_id_key][colour_only] += quantity
-                messages.success(request,                              
-                                (f'{product.name.upper()} '
-                                f'in {colour.upper()} colour'
-                                f' quantity changed to '
-                                f'{cart[item_id][item_id_key][colour_only]}'),
-                                extra_tags = "Item Added to Cart")
-            else:
-                cart[item_id][item_id_key][colour_only] = quantity
-                messages.success(request,                              
-                                (f'{num2words(cart[item_id][item_id_key][colour_only]).upper()}'
-                                f' {product.name.upper()} in {colour.upper()} '
-                                f' colour added to cart.'),
-                                extra_tags = "Item Added to Cart")
-        else:
-            cart[item_id] = {item_id_key: {colour_only: quantity}}
-            messages.success(request,                              
-                            (f'{num2words(cart[item_id][item_id_key][colour_only]).upper()}'
-                            f' {product.name.upper()} in {colour.upper()} '
-                            f' colour added to cart.'),
-                            extra_tags = "Item Added to Cart")
+        handle_item_action(colour_only, k.ADD, handle_item_data, request)
+
     elif size:
-        if item_id in list(cart.keys()):
-            if size_only in cart[item_id][item_id_key].keys():
-                cart[item_id][item_id_key][size_only] += quantity
-                messages.success(request,                              
-                                (f'{product.name.upper()} '
-                                f'in {size.upper()} size quantity changed to '
-                                f'{cart[item_id][item_id_key][size_only]}'),
-                                extra_tags = "Item Added to Cart")
-            else:
-                cart[item_id][item_id_key][size_only] = quantity
-                messages.success(request,                              
-                                (f'{num2words(cart[item_id][item_id_key][size_only]).upper()}'
-                                f' {product.name.upper()} in {size.upper()} size'
-                                f' added to cart.'),
-                                extra_tags = "Item Added to Cart")
-        else:
-            cart[item_id] = {item_id_key: {size_only: quantity}}
-            messages.success(request,                              
-                            (f'{num2words(cart[item_id][item_id_key][size_only]).upper()}'
-                            f' {product.name.upper()} in {size.upper()} size'
-                            f' added to cart.'),
-                            extra_tags = "Item Added to Cart")
+        handle_item_action(size_only, k.ADD, handle_item_data, request)
+
     else:
         if item_id in list(cart.keys()):
             cart[item_id] += quantity
@@ -153,7 +85,11 @@ def adjust_cart(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
     product = get_object_or_404(Product, pk=item_id)
+    product_name = (product.name)
     quantity = int(request.POST.get('quantity'))
+    size = None
+    colour = None
+    secondary_colour = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
         size = None if size == 'None' else size
@@ -169,113 +105,38 @@ def adjust_cart(request, item_id):
     two_colours = f"{None},{colour},{secondary_colour}"
     size_colour = f"{size},{colour},{None}"
     size_two_colours= f"{size},{colour},{secondary_colour}"
+    handle_item_data = {'product_name' : product_name, 
+                    'quantity': quantity,
+                    'cart': cart,
+                    'id': item_id,
+                    }
+
     item_id_key = 'items_size_and_or_colour'
+
 
     # checks for size, colour and secondary colour key in the items_id_key
     # and then checks quantity. If greater than 0 and update is made. If 
     # 0 then item is deleted.
     if size and colour and secondary_colour:
-        if quantity > 0:
-            cart[item_id][item_id_key][size_two_colours] = quantity
-            messages.success(request,
-                             (f'{product.name.upper()} '
-                              f'in {size.upper()} size, with '
-                              f' {colour.upper()} and {secondary_colour.upper()}'
-                              f' colours quantity changed to '
-                              f'{cart[item_id][item_id_key][size_two_colours]}'),
-                              extra_tags = "Item Updated")
-        else:   
-            del cart[item_id][item_id_key][size_two_colours]
-            if not cart[item_id][item_id_key]:
-                cart.pop(item_id)
-            messages.info(request,
-                            (f'{product.name.upper()} '
-                            f'in {size.upper()} size with '
-                            f' {colour.upper()} and  '
-                            f'{secondary_colour.upper()} colours'
-                            ' removed from cart.'),
-                            extra_tags = 'Item Removed')
+        handle_item_action(size_two_colours, k.UPDATE, handle_item_data, request)
+
 
     # performs similar action to above but only if product has a size and colour.
     elif size and colour:
-        if quantity > 0:
-            cart[item_id][item_id_key][size_colour] = quantity
-            messages.success(request,
-                             (f'{product.name.upper()} '
-                              f'in {size.upper()} size, with '
-                              f' {colour.upper()} colour'
-                              ' quantity changed to '
-                              f'{cart[item_id][item_id_key][size_colour]}'),
-                              extra_tags = "Item Updated")
-        else:   
-            del cart[item_id][item_id_key][size_colour]
-            if not cart[item_id][item_id_key]:
-                cart.pop(item_id)
-            messages.info(request,
-                            (f'{product.name.upper()} '
-                            f'in {size.upper()} size and'
-                            f' {colour.upper()} '
-                            'colour removed from cart.'),
-                            extra_tags = 'Item Removed')
+        handle_item_action(size_colour, k.UPDATE, handle_item_data, request)
 
     # performs action for items with two colours.
     elif colour and secondary_colour:
-        if quantity > 0:
-            cart[item_id][item_id_key][two_colours] = quantity
-            messages.success(request,
-                             (f'{product.name.upper()} '
-                              f'in {colour.upper()} and {secondary_colour.upper()}'
-                              ' colours quantity changed to '
-                              f'{cart[item_id][item_id_key][size_two_colours]}'),
-                              extra_tags = "Item Updated")
-        else:   
-            del cart[item_id][item_id_key][two_colours]
-            if not cart[item_id][item_id_key]:
-                cart.pop(item_id)
-            messages.info(request,
-                            (f'{product.name.upper()} '
-                            f'in {colour.upper()} and  '
-                            f'{secondary_colour.upper()} colours'
-                            ' removed from cart.'),
-                            extra_tags = 'Item Removed')
-    
+        handle_item_action(two_colours, k.UPDATE, handle_item_data, request)
+
+      
     # performs action for items with size only.
     elif size:
-        if quantity > 0:
-            cart[item_id][item_id_key][size_only] = quantity
-            messages.success(request,
-                             (f'{product.name.upper()} in'
-                              f'{size.upper()} size quantity changed to'
-                              f' {cart[item_id][item_id_key][size_only]}'),
-                              extra_tags = "Item Updated")
-        else:   
-            del cart[item_id][item_id_key][size_only]
-            if not cart[item_id][item_id_key]:
-                cart.pop(item_id)
-            messages.info(request,
-                         (f'{product.name.upper()} '
-                         f'in {size.upper()} size '
-                         'removed from cart.'),
-                         extra_tags = 'Item Removed')
+        handle_item_action(size_only, k.UPDATE, handle_item_data, request)
 
     # performs action for items with one colour only.
     elif colour and not secondary_colour:
-        if quantity > 0:
-            cart[item_id][item_id_key][colour_only] = quantity
-            messages.success(request,
-                             (f'{product.name.upper()} in {colour.upper()}'
-                              ' colour quantity changed to '
-                              f'{cart[item_id][item_id_key][colour_only]}'),
-                              extra_tags = "Item Updated")
-        else:   
-            del cart[item_id][item_id_key][colour_only]
-            if not cart[item_id][item_id_key]:
-                cart.pop(item_id)
-            messages.info(request,
-                            (f'{product.name.upper()} in'
-                            f' {colour.upper()} colour '
-                            'removed from cart.'),
-                            extra_tags = 'Item Removed')
+        handle_item_action(colour_only, k.UPDATE, handle_item_data, request)
 
     # capturing all other products without size or colour.
     else:
@@ -433,7 +294,7 @@ def handle_item_action(key, action, item_data, request):
     """
     Common function for add, adjust and delete cart items to avoid repetition and
     nested if statements. Function takes in requred data from the main functions 
-    and then updates the cart before calling internal function to call message success 
+    and then updates the cart before calling internal function to display message success 
     to user.
     """
     cart = item_data['cart']
@@ -443,48 +304,69 @@ def handle_item_action(key, action, item_data, request):
     id_key = 'items_size_and_or_colour'
 
     def create_message(key, action):
+        if cart[id][id_key][key]:
             quantity_key = cart[id][id_key][key]
-            attributes_list = key.split(',')
-            size_string = (
-                "" if attributes_list[0] == 'None'
-                else f'<li>Size: <strong>{attributes_list[0]}'
-                '</strong></li>'
-                )
-            primary_colour_string = (
-                "" if attributes_list[1] == 'None'
-                else f'<li>Primary Colour: <strong>{attributes_list[1]}'
-                '</strong> </li>'
-                ) 
-            secondary_colour_string = (
-                "" if attributes_list[2] == 'None'
-                else f'<li>Secondary Colour: <strong>{attributes_list[2]}'
-                f'</strong></li>'
-                ) 
-            item_added_tag = "Item Added to Cart"
-            if action == k.UPDATE:
-                messages.success(request,                              
-                                (f'<p class="mb-2">{product_name} '
-                                f'quantity changed to <strong>{quantity_key}'
-                                '</strong></p><ul>'
-                                f'{size_string} {primary_colour_string}'
-                                f' {secondary_colour_string}'),
-                                extra_tags = item_added_tag)
-            elif action == k.ADD:
-                messages.success(request,                              
-                                 (f'<p class="mb-2"><strong>'
-                                f'{num2words(quantity).title()}</strong> of'
-                                f' <strong>{product_name.title()}</strong> added to'
-                                f' cart</p><ul>{size_string} {primary_colour_string}'
-                                f' {secondary_colour_string}'),
-                                extra_tags = item_added_tag)
+        attributes_list = key.split(',')
+        size_string = (
+            "" if attributes_list[0] == 'None'
+            else f'<li>Size: <strong>{attributes_list[0]}'
+            '</strong></li>'
+            )
+        primary_colour_string = (
+            "" if attributes_list[1] == 'None'
+            else f'<li>Primary Colour: <strong>{attributes_list[1]}'
+            '</strong> </li>'
+            ) 
+        secondary_colour_string = (
+            "" if attributes_list[2] == 'None'
+            else f'<li>Secondary Colour: <strong>{attributes_list[2]}'
+            f'</strong></li>'
+            ) 
+        item_added_tag = "Item Added to Cart"
+        item_updated_tag = "Item Updated"
+        item_removed_tag = "Item Removed"
+        if action == k.UPDATE:
+            messages.info(request,                              
+                            (f'<p class="mb-2">{product_name.title()} '
+                            f'quantity changed to <strong>{quantity_key}'
+                            '</strong></p><ul>'
+                            f'{size_string} {primary_colour_string}'
+                            f' {secondary_colour_string}'),
+                            extra_tags = item_updated_tag)
+        elif action == k.ADD:
+            messages.success(request,                              
+                                (f'<p class="mb-2"><strong>'
+                            f'{num2words(quantity).title()}</strong> of'
+                            f' <strong>{product_name.title()}</strong> added to'
+                            f' cart</p><ul>{size_string} {primary_colour_string}'
+                            f' {secondary_colour_string}'),
+                            extra_tags = item_added_tag)
+        elif action == k.REMOVE:
+            messages.info(request,                              
+                            (f'<p class="mb-2">{product_name.title()} '
+                            f'removed from cart </p><ul>'
+                            f'{size_string} {primary_colour_string}'
+                            f' {secondary_colour_string}'),
+                            extra_tags = item_removed_tag)
 
     if id in list(cart.keys()):
+        # If statement checks if the id key exists in cart dictionary. The nested if and elif
+        # statements then check if the size/colour keys exist and either update or add accordingly.
         if key in cart[id][id_key].keys() and action == k.ADD:
             cart[id][id_key][key] += quantity
             create_message(key, k.UPDATE)
         elif action == k.ADD:
             cart[id][id_key][key] = quantity   
             create_message(key, k.ADD)
+        elif action == k.UPDATE and quantity > 0:
+            cart[id][id_key][key] = quantity
+            create_message(key, k.UPDATE)
+        elif action == k.UPDATE and quantity == 0:
+            create_message(key, k.REMOVE)
+            del cart[id][id_key][key]
+            if not cart[id][id_key]:
+                cart.pop(id)
+
     else:
         cart[id] = {id_key: {key: quantity}}
         create_message(key, k.ADD)
