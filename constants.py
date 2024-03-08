@@ -23,6 +23,6 @@ COLOURS = (
     ('TN', 'Tan'),
     )
 
-UPDATE = 2
 ADD = 1
-REMOVE = 0
+UPDATE = 2
+REMOVE = 3
