@@ -50,7 +50,8 @@ def cart_contents(request):
         delivery = 0
         free_delivery_delta = 0
     
-    grand_total = delivery + total
+    grand_total = Decimal(delivery + total)
+    print("grand", grand_total, delivery, total)
     
     context = {
         'cart_items': list(reversed(cart_items)),

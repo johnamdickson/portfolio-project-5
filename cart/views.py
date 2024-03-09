@@ -213,8 +213,9 @@ def remove_from_cart(request, item_id):
 
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
-        return HttpResponse(status=500)
-    
+        return HttpResponse(status=400)   
+        
+    print("MESSAGES", request._messages)
     return redirect(reverse('view_cart'))
 
 
@@ -304,5 +305,3 @@ def handle_item_action(key, action, item_data, request):
     else:
         cart[id] = {id_key: {key: quantity}}
         create_message(key, k.ADD)
-
-    

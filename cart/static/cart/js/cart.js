@@ -28,7 +28,6 @@ const cartProductQuantitySelect = () => {
     })
 
     function checkInput (){
-      console.log(dynamicInputValue, staticInputValue)
       if (dynamicInputValue === staticInputValue) {
         updateButton.style.pointerEvents = 'none';
         updateButton.style.opacity = '0.4';
