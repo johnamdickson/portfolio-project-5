@@ -3,7 +3,7 @@
 const stripe = Stripe("pk_test_51OUWAmJKRSOh7j6OdyFxfXdqNJapSBHzcIkgfOaSyeAKHesIAZnY47q3q9jEfg0SS3PyuTUDaOq6Oy1rrdgMT7K700iyuJHnC6");
 
 // The items the customer wants to buy
-const items = [{ id: "xl-tshirt" }];
+const items = document.getElementsByName('items')[0].value;
 
 let elements;
 
@@ -26,7 +26,10 @@ async function initialize() {
   const appearance = {
     theme: 'minimal',
   };
-  elements = stripe.elements({ appearance, clientSecret });
+  elements = stripe.elements({
+    appearance,
+    clientSecret,
+ });
 
   const paymentElementOptions = {
     layout: "tabs",
@@ -37,17 +40,38 @@ async function initialize() {
   paymentElement.mount("#payment-element");
 }
 
+async function handleFormPost() {
+  const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+  const formData = new FormData();
+  form = document.getElementById('payment-form');
+
+  inputs = form.querySelectorAll('input');
+  for (input of inputs) {
+    formData.append(input.name, input.value)
+  }
+  formData.append('csrfmiddlewaretoken', csrfToken)
+  try {
+    const response = await fetch("/checkout/", {
+      method: "POST",
+      // Set the FormData instance as the request body
+      body: formData,
+    });
+    console.log(await response.json());
+  } catch (e) {
+    console.error(e);
+  }
+}
 async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
-
-  const { error } = await stripe.confirmPayment({
-    elements,
-    confirmParams: {
-      // Make sure to change this to your payment completion page
-      return_url: "http://localhost:4242/checkout.html",
-    },
-  });
+  handleFormPost();
+  // const { error } = await stripe.confirmPayment({
+  //   elements,
+  //   confirmParams: {
+  //     // Make sure to change this to your payment completion page
+  //     return_url: "https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout",
+  //   },
+  // });
 
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
