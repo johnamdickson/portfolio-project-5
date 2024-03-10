@@ -4,6 +4,7 @@ const stripe = Stripe("pk_test_51OUWAmJKRSOh7j6OdyFxfXdqNJapSBHzcIkgfOaSyeAKHesI
 
 // The items the customer wants to buy
 const items = document.getElementsByName('items')[0].value;
+const uniqueNumber = new Date().getTime()
 
 let elements;
 
@@ -43,13 +44,13 @@ async function initialize() {
 async function handleFormPost() {
   const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
   const formData = new FormData();
-  form = document.getElementById('payment-form');
-
-  inputs = form.querySelectorAll('input');
-  for (input of inputs) {
+  let form = document.getElementById('payment-form');
+  let inputs = form.querySelectorAll('input');
+  for (let input of inputs) {
     formData.append(input.name, input.value)
   }
   formData.append('csrfmiddlewaretoken', csrfToken)
+  formData.append('order_number', uniqueNumber)
   try {
     const response = await fetch("/checkout/", {
       method: "POST",
@@ -65,13 +66,13 @@ async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
   handleFormPost();
-  // const { error } = await stripe.confirmPayment({
-  //   elements,
-  //   confirmParams: {
-  //     // Make sure to change this to your payment completion page
-  //     return_url: "https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout",
-  //   },
-  // });
+  const { error } = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      // Make sure to change this to your payment completion page
+      return_url: `https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/checkout-success/${uniqueNumber}`,
+    },
+  });
 
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
