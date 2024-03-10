@@ -4,7 +4,10 @@ const stripe = Stripe("pk_test_51OUWAmJKRSOh7j6OdyFxfXdqNJapSBHzcIkgfOaSyeAKHesI
 
 // The items the customer wants to buy
 const items = document.getElementsByName('items')[0].value;
-const uniqueNumber = new Date().getTime()
+
+// generation of a unique number for order number from Stack Overflow:
+// https://stackoverflow.com/questions/8012002/create-a-unique-number-with-javascript-time
+const uniqueNumber = Date.now() + ((Math.random()*100000).toFixed())
 
 let elements;
 
@@ -51,6 +54,8 @@ async function handleFormPost() {
   }
   formData.append('csrfmiddlewaretoken', csrfToken)
   formData.append('order_number', uniqueNumber)
+  console.log(uniqueNumber)
+
   try {
     const response = await fetch("/checkout/", {
       method: "POST",
