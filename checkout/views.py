@@ -42,11 +42,10 @@ def checkout(request):
             order.original_cart = json.dumps(cart)
             order.save()
             for item_id, item_data in cart.items():
-                print(item_id, item_data)
+                print(item_data)
                 try:
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
-                        print('got here')
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,
@@ -54,15 +53,23 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        # for size, quantity in item_data['items_by_size'].items():
-                        #     order_line_item = OrderLineItem(
-                        #         order=order,
-                        #         product=product,
-                        #         quantity=quantity,
-                        #         product_size=size,
-                        #     )
-                        #     order_line_item.save()
-                        return redirect(reverse('view_cart'))
+                        for properties, quantity in item_data['items_size_and_or_colour'].items():
+                            property_list = properties.split(',')
+                            size = property_list[0]
+                            size = None if size == 'None' else size
+                            colour = property_list[1]
+                            colour = None if colour == 'None' else colour
+                            secondary_colour = property_list[2]
+                            secondary_colour = None if secondary_colour == 'None' else secondary_colour  
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
+                                product_primary_colour = colour,
+                                product_secondary_colour = secondary_colour,
+                            )
+                            order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your bag wasn't "
