@@ -102,3 +102,9 @@
     transform: rotate(360deg);
   }
 }
+
+.order-confirmation-wrapper {
+  border: 1px solid #f2cbe1;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
