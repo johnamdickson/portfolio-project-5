@@ -68,12 +68,14 @@
                       Spend <strong>€{{ free_delivery_delta }}</strong> more to get free next day delivery!
                   </p>
               {% endif %}
-              <a href="{% url 'view_cart' %}" class="btn btn-custom">
-                  <span class="text-uppercase">Go To Secure Checkout</span>
+              <div class="col-11 mt-2 mx-auto">
+                <a href="{% url 'view_cart' %}" class="btn btn-custom w-100">
+                  <span class="text-uppercase">Review Cart</span>
                   <span class="icon">
-                      <i class="fas fa-lock"></i>
+                    <i class="fas fa-cart-shopping fa-lg"></i>
                   </span>
               </a>
+              </div>
           </div>
       </div>
   {% endif %}
