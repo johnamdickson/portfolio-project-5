@@ -117,7 +117,6 @@ def create_payment(request):
     automatic_payment_methods={
         'enabled': True,
     },
-    # return_url='https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/',
     )
     try:
         return JsonResponse({'publishableKey':  
