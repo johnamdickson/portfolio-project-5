@@ -4,10 +4,7 @@ const stripe = Stripe("pk_test_51OUWAmJKRSOh7j6OdyFxfXdqNJapSBHzcIkgfOaSyeAKHesI
 
 // The items the customer wants to buy
 const items = document.getElementsByName('items')[0].value;
-
-// generation of a unique number for order number from Stack Overflow:
-// https://stackoverflow.com/questions/8012002/create-a-unique-number-with-javascript-time
-const uniqueNumber = Date.now() + ((Math.random()*100000).toFixed())
+const uniqueNumber = new Date().getTime()
 
 let elements;
 
@@ -54,15 +51,12 @@ async function handleFormPost() {
   }
   formData.append('csrfmiddlewaretoken', csrfToken)
   formData.append('order_number', uniqueNumber)
-  console.log(uniqueNumber)
-
   try {
-    const response = await fetch("/checkout/", {
+    await fetch("/checkout/", {
       method: "POST",
       // Set the FormData instance as the request body
       body: formData,
     });
-    console.log(await response.json());
   } catch (e) {
     console.error(e);
   }
@@ -86,6 +80,15 @@ async function handleSubmit(e) {
   // redirected to the `return_url`.
   if (error.type === "card_error" || error.type === "validation_error") {
     showMessage(error.message);
+    try {
+      await fetch(`/checkout/payment-declined/${uniqueNumber}/`, {
+        method: "GET",
+        // Set the FormData instance as the request body
+      });
+    } catch (e) {
+      console.error(e);
+    }
+    // Inform the customer that there was an error.
   } else {
     showMessage("An unexpected error occurred.");
   }

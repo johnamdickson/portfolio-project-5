@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
+import time
 import os
 from .forms import OrderForm
 from products.models import Product
@@ -29,18 +30,15 @@ def checkout(request):
         'county': request.POST['county'],
         'order_number': request.POST['order_number'],
         }
-
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            
             # pid = request.POST.get('client_secret').split('_secret')[0]
             # order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             # order.order_number = request.POST('order_number')
             order.save()
             for item_id, item_data in cart.items():
-                print(item_data)
                 try:
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
@@ -76,11 +74,11 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
-
-            # Save the info to the user's profile if all is well
-            request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout-success',
-                                    args=[order.order_number]))
+    
+            # # Save the info to the user's profile if all is well
+            # request.session['save_info'] = 'save-info' in request.POST
+            # return redirect(reverse('checkout-success',
+            #                         args=[order.order_number]))
         else:
             messages.error(request, ('There was an error with your form. '
                                      'Please double check your information.'))
@@ -98,9 +96,6 @@ def checkout(request):
 
     return render(request, template, context)
 
-
-
-# This is your test secret API key.
 
 @csrf_exempt
 def create_payment(request):
@@ -121,6 +116,7 @@ def create_payment(request):
     try:
         return JsonResponse({'publishableKey':  
         'os.environ.get("STRIPE_PUBLISHABLE_KEY")', 'clientSecret': intent.client_secret})
+
     except Exception as e:
         return JsonResponse({'error':str(e)},status= 403)
 
@@ -169,3 +165,12 @@ def checkout_success(request, order_number):
 
     return render(request, template, context)
    
+
+def payment_declined(request, order_number):
+    """
+    Function called when card payment is declined. The order created during the post above is 
+    deleted from the database.
+    """
+    order = Order.objects.get(order_number=order_number)
+    order.delete()
+    return redirect(reverse('checkout'))
