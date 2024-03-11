@@ -62,6 +62,37 @@ async function handleFormPost() {
   }
 }
 async function handleSubmit(e) {
+  let form = document.getElementById('payment-form');
+  let billingData = {}
+  let addressData = {}
+  let inputs = form.querySelectorAll('input');
+  for (let input of inputs) {
+    switch (input.name) {
+      case 'full_name': billingData['name'] = input.value
+      break;
+      case 'email': billingData['email'] = input.value
+      break;
+      case 'phone_number': billingData['phone'] = input.value
+      break;
+      case 'county': addressData['state'] = input.value
+      break;
+      case 'country': addressData['country'] = input.value
+      break;
+      case 'town_or_city': addressData['city'] = input.value
+      break;
+      case 'street_address1': addressData['line1'] = input.value
+      break;
+      case 'street_address2': addressData['line2'] = input.value
+      break;
+      case 'postcode': addressData['postal_code'] = input.value
+      break;
+      default:
+        break;
+    }
+  }
+  billingData['address']= addressData
+
+  console.log(billingData)
   e.preventDefault();
   setLoading(true);
   handleFormPost();
@@ -70,6 +101,9 @@ async function handleSubmit(e) {
     confirmParams: {
       // Make sure to change this to your payment completion page
       return_url: `https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/checkout-success/${uniqueNumber}`,
+      payment_method_data: {
+        billing_details: billingData
+      },
     },
   });
 
@@ -91,6 +125,14 @@ async function handleSubmit(e) {
     // Inform the customer that there was an error.
   } else {
     showMessage("An unexpected error occurred.");
+    try {
+      await fetch(`/checkout/payment-declined/${uniqueNumber}/`, {
+        method: "GET",
+        // Set the FormData instance as the request body
+      });
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   setLoading(false);
