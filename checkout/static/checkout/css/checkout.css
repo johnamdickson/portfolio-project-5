@@ -108,3 +108,8 @@
   border-radius: 10px;
   font-size: 0.9rem;
 }
+
+#payment-message {
+  color: red;
+  font-weight: 700;
+}
