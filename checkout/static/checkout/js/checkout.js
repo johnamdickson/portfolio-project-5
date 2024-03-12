@@ -4,7 +4,10 @@ const stripe = Stripe("pk_test_51OUWAmJKRSOh7j6OdyFxfXdqNJapSBHzcIkgfOaSyeAKHesI
 
 // The items the customer wants to buy
 const items = document.getElementsByName('items')[0].value;
-const uniqueNumber = new Date().getTime()
+
+// generate a unique number to assign to order. Solution found in stack overflow:
+// https://stackoverflow.com/questions/8012002/create-a-unique-number-with-javascript-time
+const uniqueNumber = new Date().getTime() + (Math.random()*100000).toFixed()
 
 let elements;
 
@@ -50,14 +53,18 @@ async function initialize() {
 }
 
 async function handleFormPost() {
-  const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
   const formData = new FormData();
+
+  const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+  formData.append('csrfmiddlewaretoken', csrfToken)
+
   let form = document.getElementById('payment-form');
   let inputs = form.querySelectorAll('input');
   for (let input of inputs) {
     formData.append(input.name, input.value)
   }
-  formData.append('csrfmiddlewaretoken', csrfToken)
+  const country = document.getElementById('id_country').value;
+  formData.append('country', country)
   formData.append('order_number', uniqueNumber)
   try {
     await fetch("/checkout/", {
@@ -103,8 +110,6 @@ async function handleSubmit(e) {
       break;
       case 'county': addressData['state'] = input.value
       break;
-      case 'country': addressData['country'] = input.value
-      break;
       case 'town_or_city': addressData['city'] = input.value
       break;
       case 'street_address1': addressData['line1'] = input.value
@@ -117,12 +122,14 @@ async function handleSubmit(e) {
         break;
     }
   }
-  
-  billingData['address']= addressData
+  const country = document.getElementById('id_country').value;
+  billingData.address = addressData;
+  billingData.address.country = country;
   // how to clone an object:
   // https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/
   var shippingData = Object.assign({}, billingData)
   delete shippingData.email
+  console.log(country)
   e.preventDefault();
   setLoading(true);
   handleFormPost();
@@ -239,5 +246,6 @@ const configurePaymentMessage = () => {
   button.addEventListener('mouseenter', showMessage, false);
   button.addEventListener('click', hideMessage, false);
   button.addEventListener('mouseleave', hideMessage, false);
-
 }
+
+
