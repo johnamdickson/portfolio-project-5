@@ -70,7 +70,7 @@
 
                 {% for item in order.lineitems.all %}
                 <div class="row">
-                    <div class="col-3 col-md-1">
+                    <div class="col-3 col-md-2">
                         {% if item.product.image %}
                         <img class="img-fluid rounded" src="{{ item.product.image.url }}"
                             alt="{{ product.name }}">
@@ -80,7 +80,7 @@
                             alt="{{ product.name}}">
                         {% endif %}
                     </div>
-                    <div class="col-9 col-md-5">
+                    <div class="col-9 col-md-4">
                         <strong><p class="mb-0 text-black font-weight-bold">
                             {{ item.product.name }}
                         </p></strong>
@@ -93,7 +93,7 @@
                             {{ item.product_secondary_colour|upper }}<br>{% endif %}
                         </p>
                     </div>
-                    <div class="col-9 offset-3 col-md-6 offset-md-0 text-md-right mb-sm-3 mb-md-0">
+                    <div class="col-9 offset-3 col-md-5 offset-md-0 text-md-right mb-sm-3 mb-md-0">
                         <p class="small">{{ item.quantity }} @ €{{ item.product.price }} each</p>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                     <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Phone Number</p>
                     </div>
-                    <div class="ccol-6 text-md-right">
+                    <div class="col-6 text-md-right">
                         <p class="mb-0">{{ order.phone_number }}</p>
                     </div>
                 </div>
@@ -202,5 +202,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
