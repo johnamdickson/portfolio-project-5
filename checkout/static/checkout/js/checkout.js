@@ -39,6 +39,12 @@ async function initialize() {
 
   const paymentElement = elements.create("payment", paymentElementOptions);
   paymentElement.mount("#payment-element");
+  // find hidden input for storing client secret and update with actual client secret
+  // for use in cache checkout function.
+  let secretHiddenInput = document.getElementsByName("client_secret")[0]
+  secretHiddenInput.value = clientSecret
+  // update payment intent metadata
+  handleUpdateMetadata();
 }
 
 async function handleFormPost() {
@@ -60,6 +66,25 @@ async function handleFormPost() {
   } catch (e) {
     console.error(e);
   }
+}
+async function handleUpdateMetadata () {
+  const formData = new FormData();
+  const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+  const clientSecret = document.getElementsByName("client_secret")[0].value;
+  formData.append('csrfmiddlewaretoken', csrfToken)
+  formData.append('client_secret', clientSecret)
+  formData.append('save_info', true)
+  formData.append('order_number', uniqueNumber)
+  try {
+    await fetch("/checkout/cache-checkout-data/", {
+      method: "POST",
+      // Set the FormData instance as the request body
+      body: formData,
+    });
+  } catch (e) {
+    console.error(e);
+  }
+  setLoading(false);
 }
 async function handleSubmit(e) {
   let form = document.getElementById('payment-form');
@@ -90,19 +115,24 @@ async function handleSubmit(e) {
         break;
     }
   }
+  
   billingData['address']= addressData
-
-  console.log(billingData)
+  // how to clone an object:
+  // https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/
+  var shippingData = Object.assign({}, billingData)
+  delete shippingData.email
   e.preventDefault();
   setLoading(true);
   handleFormPost();
+
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
       return_url: `https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/checkout-success/${uniqueNumber}`,
+      shipping: shippingData,
       payment_method_data: {
-        billing_details: billingData
+        billing_details: billingData,
       },
     },
   });
@@ -134,7 +164,6 @@ async function handleSubmit(e) {
       console.error(e);
     }
   }
-
   setLoading(false);
 }
 
@@ -143,6 +172,7 @@ async function checkStatus() {
   const clientSecret = new URLSearchParams(window.location.search).get(
     "payment_intent_client_secret"
   );
+  console.log('secret', clientSecret)
 
   if (!clientSecret) {
     return;
