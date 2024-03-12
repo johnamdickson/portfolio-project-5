@@ -47,7 +47,6 @@ class StripeWH_Handler:
         Handle the payment_intent.succeeded webhook from Stripe
         """
         intent = event.data.object
-        print(intent)
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
@@ -88,7 +87,6 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(order_number=order_number)
                 order_exists = True
-                print("ORDER IS HERE!!!", order)
                 break
             except Order.DoesNotExist:
                 attempt += 1
