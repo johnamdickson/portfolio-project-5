@@ -113,3 +113,8 @@
   color: red;
   font-weight: 700;
 }
+
+#card-charge-text {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}

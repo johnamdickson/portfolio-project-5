@@ -11,6 +11,7 @@ let elements;
 initialize();
 checkStatus();
 
+
 document
   .querySelector("#payment-form")
   .addEventListener("submit", handleSubmit);
@@ -45,6 +46,7 @@ async function initialize() {
   secretHiddenInput.value = clientSecret
   // update payment intent metadata
   handleUpdateMetadata();
+  configurePaymentMessage();
 }
 
 async function handleFormPost() {
@@ -222,4 +224,20 @@ function setLoading(isLoading) {
     document.querySelector("#spinner").classList.add("hidden");
     document.querySelector("#button-text").classList.remove("hidden");
   }
+}
+
+
+const configurePaymentMessage = () => {
+  const button = document.getElementById('submit');
+  const message = document.getElementById('card-charge-text');
+  function showMessage () {
+    message.style.opacity = '1'
+  }
+  function hideMessage () {
+    message.style.opacity = '0'
+  }
+  button.addEventListener('mouseenter', showMessage, false);
+  button.addEventListener('click', hideMessage, false);
+  button.addEventListener('mouseleave', hideMessage, false);
+
 }
