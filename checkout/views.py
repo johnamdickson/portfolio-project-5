@@ -52,10 +52,7 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            # pid = request.POST.get('client_secret').split('_secret')[0]
-            # order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
-            # order.order_number = request.POST('order_number')
             order.save()
             for item_id, item_data in cart.items():
                 try:
@@ -92,12 +89,8 @@ def checkout(request):
                         "Please call us for assistance!")
                     )
                     order.delete()
-                    return redirect(reverse('view_cart'))
-    
             # # Save the info to the user's profile if all is well
             # request.session['save_info'] = 'save-info' in request.POST
-            # return redirect(reverse('checkout-success',
-            #                         args=[order.order_number]))
         else:
             messages.error(request, ('There was an error with your form. '
                                      'Please double check your information.'))
