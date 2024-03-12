@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load checkout_tools %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -105,79 +106,80 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Full Name</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
+                    <div class="col-6 text-md-right">
                         <p class="mb-0">{{ order.full_name }}</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Address 1</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
+                    <div class="col-6 text-md-right">
                         <p class="mb-0">{{ order.street_address1 }}</p>
                     </div>
                 </div>
 
                 {% if order.street_address2 %}
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Address 2</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
+                    <div class="col-6 text-md-right">
                         <p class="mb-0">{{ order.street_address1 }}</p>
                     </div>
                 </div>
                 {% endif %}
 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="mb-0 text-black font-weight-bold">Town or City</p>
+                    </div>
+                    <div class="col-6 text-md-right">
+                        <p class="mb-0">{{ order.town_or_city }}</p>
+                    </div>
+                </div>
+
+
                 {% if order.county %}
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">County</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
+                    <div class="col-6 text-md-right">
                         <p class="mb-0">{{ order.county }}</p>
                     </div>
                 </div>
                 {% endif %}
 
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <p class="mb-0 text-black font-weight-bold">Town or City</p>
-                    </div>
-                    <div class="col-12 col-md-6 text-md-right">
-                        <p class="mb-0">{{ order.town_or_city }}</p>
-                    </div>
-                </div>
-
                 {% if order.postcode %}
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Postal Code</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
+                    <div class="col-6 text-md-right">
                         <p class="mb-0">{{ order.postcode }}</p>
                     </div>
                 </div>
                 {% endif %}
 
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Country</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
-                        <p class="mb-0">{{ order.country }}</p>
+                    <div class="col-6 text-md-right">
+                        <p class="mb-0">{{ order.country | return_country}}</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-6">
                         <p class="mb-0 text-black font-weight-bold">Phone Number</p>
                     </div>
-                    <div class="col-12 col-md-6 text-md-right">
+                    <div class="ccol-6 text-md-right">
                         <p class="mb-0">{{ order.phone_number }}</p>
                     </div>
                 </div>
