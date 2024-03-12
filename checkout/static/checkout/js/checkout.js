@@ -31,6 +31,7 @@ async function initialize() {
   const appearance = {
     theme: 'minimal',
   };
+
   elements = stripe.elements({
     appearance,
     clientSecret,
@@ -129,51 +130,60 @@ async function handleSubmit(e) {
   // https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/
   var shippingData = Object.assign({}, billingData)
   delete shippingData.email
-  console.log(country)
   e.preventDefault();
   setLoading(true);
-  handleFormPost();
+
 
   const { error } = await stripe.confirmPayment({
     elements,
+    redirect: "if_required",
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: `https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/checkout-success/${uniqueNumber}`,
+      // return_url: `https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/checkout-success/${uniqueNumber}`,
       shipping: shippingData,
       payment_method_data: {
         billing_details: billingData,
       },
     },
   });
-
+  if (!error) {
+    // if no error is returned from the await func then update db and assign url using
+    // .pathname syntax. Solution along with removing trailing slash from SO and Career Karma blog
+    // https://careerkarma.com/blog/javascript-go-to-url/
+    // https://stackoverflow.com/questions/21944092/how-to-remove-in-javascript-location-pathname-return-value
+      handleFormPost();
+      window.location.pathname = (`/checkout/checkout-success/${uniqueNumber}`).slice(1)
+  }
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
   // your `return_url`. For some payment methods like iDEAL, your customer will
   // be redirected to an intermediate site first to authorize the payment, then
   // redirected to the `return_url`.
-  if (error.type === "card_error" || error.type === "validation_error") {
-    showMessage(error.message);
-    try {
-      await fetch(`/checkout/payment-declined/${uniqueNumber}/`, {
-        method: "GET",
-        // Set the FormData instance as the request body
-      });
-    } catch (e) {
-      console.error(e);
+  if (error){
+    if (error.type === "card_error" || error.type === "validation_error") {
+      showMessage(error.message);
+      try {
+        await fetch(`/checkout/payment-declined/${uniqueNumber}/`, {
+          method: "GET",
+          // Set the FormData instance as the request body
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      // Inform the customer that there was an error.
+    } else {
+      showMessage("An unexpected error occurred.");
+      try {
+        await fetch(`/checkout/payment-declined/${uniqueNumber}/`, {
+          method: "GET",
+          // Set the FormData instance as the request body
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
-    // Inform the customer that there was an error.
-  } else {
-    showMessage("An unexpected error occurred.");
-    try {
-      await fetch(`/checkout/payment-declined/${uniqueNumber}/`, {
-        method: "GET",
-        // Set the FormData instance as the request body
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    setLoading(false);
   }
-  setLoading(false);
 }
 
 // Fetches the payment intent status after payment submission
@@ -181,7 +191,6 @@ async function checkStatus() {
   const clientSecret = new URLSearchParams(window.location.search).get(
     "payment_intent_client_secret"
   );
-  console.log('secret', clientSecret)
 
   if (!clientSecret) {
     return;
