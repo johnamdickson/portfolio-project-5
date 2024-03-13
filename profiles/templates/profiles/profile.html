@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/static/profile.css' %}">
+{% endblock %}
+
+{% block extra_title %}
+{{ block.super }}
+- Profile
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 mx-auto">
+            <h2 class="text-center main-title">
+                Your Profile</h2>
+            <hr class="mx-auto main-hr">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 order-lg-last my-1 mx-auto">
+            <p class="text-black">Your order information is below. A confirmation email will be sent to
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <form action="" method="POST" id="profile-form">
+                {% csrf_token %}
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <div class="m-2">{{ order_form.full_name }}</div>
+                    <div class="m-2">{{ order_form.email }}</div>
+                    <div class="m-2">{{ order_form.phone_number }}</div>        
+                </fieldset>
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                    <div class="m-2">{{ order_form.street_address1 }}</div>
+                    <div class="m-2">{{ order_form.street_address2 }}</div>
+                    <div class="m-2">{{ order_form.town_or_city }}</div>
+                    <div class="m-2">{{ order_form.county }}</div>
+                    <div class="m-2">{{ order_form.postcode }}</div>
+                    <div class="m-2">{{ order_form.country }}</div>
+                </fieldset>
+                <div class="row submit-button text-right mb-2">
+                      <button id="submit" class="btn-custom p-3 col-4 mx-auto" type="submit">
+                        <span id="button-text" class="me-2">Update Profile</span>
+                        <i class="fa-solid fa-user fa-xl d-inline"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
