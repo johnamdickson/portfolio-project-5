@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'profiles/static/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block extra_title %}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             <h2 class="text-center main-title">
@@ -28,38 +28,97 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last my-1 mx-auto">
-            <p class="text-black">Your order information is below. A confirmation email will be sent to
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <form action="" method="POST" id="profile-form">
-                {% csrf_token %}
-                <fieldset class="rounded px-3 mb-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                    <div class="m-2">{{ order_form.full_name }}</div>
-                    <div class="m-2">{{ order_form.email }}</div>
-                    <div class="m-2">{{ order_form.phone_number }}</div>        
-                </fieldset>
-                <fieldset class="rounded px-3 mb-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                    <div class="m-2">{{ order_form.street_address1 }}</div>
-                    <div class="m-2">{{ order_form.street_address2 }}</div>
-                    <div class="m-2">{{ order_form.town_or_city }}</div>
-                    <div class="m-2">{{ order_form.county }}</div>
-                    <div class="m-2">{{ order_form.postcode }}</div>
-                    <div class="m-2">{{ order_form.country }}</div>
-                </fieldset>
-                <div class="row submit-button text-right mb-2">
-                      <button id="submit" class="btn-custom p-3 col-4 mx-auto" type="submit">
-                        <span id="button-text" class="me-2">Update Profile</span>
-                        <i class="fa-solid fa-user fa-xl d-inline"></i>
-                    </button>
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <div class="row">
+                <div class="col-6">
+                  <h6>Delivery Details</h6>
+                  <form method="post" action="{% url 'profile' %}">
+                    {% csrf_token %}
+                    {% if user.is_authenticated %}
+                    {% for input in profile_form %}
+                    <div class="row">
+                      <div class="col-12 m-0">
+                        {{input | as_crispy_field}}
+                      </div>
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                      <div class="col-10 mt-3 mx-auto">
+                        <button type="submit" value="Log in" class="btn-custom w-100 p-2">
+                          <p class="d-inline me-2">Update Profile</p>
+                          <i class="fa-solid fa-user fa-xl d-inline"></i>
+                        </button>
+                        <input type="hidden" name="next" value="" />
+                      </div>
+                    </div>
+                    {% endif %}
+                  </form>
                 </div>
-            </form>
+                <div class="col-6">
+                  <h6>Order History</h6>
+                  <div class="order-history-container-main mt-4 mb-3 p-3">
+                    {% for order in orders %}
+                        <div class="row">
+                          <div class="col-12 small">
+                            <p class="my-1 m-0">Order Number:</p>
+                          </div>
+                          <div class="col-12 small">
+                            <p class="mb-1 m-0">{{order.order_number}}</p>
+                          </div>
+                          <div class="col-12 small">
+                            <p class="my-1 m-0">Order Date:</p>
+                          </div>
+                          <div class="col-12 small">
+                            <p class="mb-1 m-0">{{order.date}}</p>
+                          </div>
+                            {% for item in order.lineitems.all %}
+                            <div class="col-3 my-1">
+                              {% if item.product.image %}
+                              <a href="{{ item.product.image.url }}" target="_blank">
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                              </a>
+                              {% else %}
+                              <img class="w-100"  src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+                                alt="{{ item.product.name}}">
+                              {% endif %}
+                            </div>
+                            <div class="col-9 small">
+                              <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                              {% if item.product_size or item.product_primary_colour %}
+                              <div class="row">
+                                  {% if item.product_size %}
+                                  <div class="col-12 small">
+                                    Size: {{ item.product_size|upper}}
+                                  </div>
+                                  {% endif %}
+                                  {% if item.product_primary_colour %}
+                                  <div class="col-12 small">
+                                    Primary Colour: {{ item.product_primary_colour|upper}}
+                                  </div>
+                                  {% endif %}
+                                  {% if item.product_secondary_colour %}
+                                  <div class="col-12 small">
+                                    Secondary Colour: {{ item.product_secondary_colour|upper}}
+                                  </div>
+                                  {% endif %}
+                              </div>
+                              {% endif %}
+                              <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                          </div>
+                            {% endfor %}
+                            <div class="col-12 small">
+                              <p class="my-1 m-0">Order Grand Total:</p>
+                            </div>
+                            <div class="col-12 small">
+                              <strong><p class="mb-1 m-0">€{{order.grand_total}}</p></strong>
+                            </div>
+                        </div>
+                        <hr class="profile-hr mx-4">
+                    {% endfor %}
+                </div>
+                </div>
+              </div>
         </div>
-    </div>
+
 </div>
 {% endblock %}

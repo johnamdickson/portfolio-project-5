@@ -1,0 +1,8 @@
+.order-history-container-main {
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #efeeee50;
+    border-radius: 5px;
+}
+
