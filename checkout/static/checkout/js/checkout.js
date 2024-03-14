@@ -132,9 +132,7 @@ async function handleSubmit(e) {
   // https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/
   var shippingData = Object.assign({}, billingData)
   delete shippingData.email
-
-
-
+  handleFormPost()
   const { error } = await stripe.confirmPayment({
     elements,
     redirect: "if_required",
@@ -152,8 +150,7 @@ async function handleSubmit(e) {
     // .pathname syntax. Solution along with removing trailing slash from SO and Career Karma blog
     // https://careerkarma.com/blog/javascript-go-to-url/
     // https://stackoverflow.com/questions/21944092/how-to-remove-in-javascript-location-pathname-return-value
-      handleFormPost();
-      window.location.pathname = (`/checkout/checkout-success/${uniqueNumber}`).slice(1)
+     window.location.pathname = (`/checkout/checkout-success/${uniqueNumber}`).slice(1);
   }
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
