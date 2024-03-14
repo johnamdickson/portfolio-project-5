@@ -11,6 +11,9 @@ class UserProfile(models.Model):
     A user profile model for maintaining default
     delivery information and order history
     """
+    class Meta:
+        verbose_name_plural = 'User Profiles'
+
     user = models.OneToOneField(
         User, on_delete=models.CASCADE,
         verbose_name='User')
