@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-h_s8ulrgb#kx#)6*c+y)l^x8)^z6o%z0z(b+-@n&a@9we^_9gf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io']
+ALLOWED_HOSTS = ['8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu109.gitpod.io']
 
 
 # Application definition
@@ -95,6 +95,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
                 'cart.contexts.cart_contents',
+                'profiles.contexts.profile_details',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
