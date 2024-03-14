@@ -97,6 +97,8 @@ async function handleUpdateMetadata () {
   setLoading(false);
 }
 async function handleSubmit(e) {
+  e.preventDefault();
+  setLoading(true);
   let form = document.getElementById('payment-form');
   let billingData = {}
   let addressData = {}
@@ -130,8 +132,7 @@ async function handleSubmit(e) {
   // https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/
   var shippingData = Object.assign({}, billingData)
   delete shippingData.email
-  e.preventDefault();
-  setLoading(true);
+
 
 
   const { error } = await stripe.confirmPayment({
