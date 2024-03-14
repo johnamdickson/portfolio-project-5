@@ -13,7 +13,7 @@ def profile_details(request):
         """ Display the user's profile. """
         profile = get_object_or_404(UserProfile, user=request.user)
         form = UserProfileForm(instance=profile)
-        orders = profile.orders.all()
+        orders = profile.orders.all().order_by('-date')
         template = 'profiles/profile.html'
         context = {
             'profile_form': form,

@@ -27,8 +27,8 @@ def profile(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
-
+    
+    orders = profile.orders.all().order_by('-date')
     template = 'profiles/profile.html'
     context = {
         'form': form,
