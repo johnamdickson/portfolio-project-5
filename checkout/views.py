@@ -4,7 +4,7 @@ import os
 from django.views.decorators.http import require_POST
 from .forms import OrderForm
 from products.models import Product
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, UserProfile
 from cart.contexts import cart_contents
 from django.views.decorators.csrf import csrf_exempt
 import stripe
@@ -33,7 +33,30 @@ def cache_checkout_data(request):
 
 def checkout(request):
     unfiltered_products = Product.objects.all().order_by('category')
-    order_form = OrderForm()
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except:
+        user_profile = None
+
+    if request.user.is_authenticated:
+        if user_profile.default_phone_number:
+            form_data = {
+            'full_name': user_profile.default_full_name,
+            'email' : request.user.email,
+            'phone_number': user_profile.default_phone_number,
+            'country': user_profile.default_country,
+            'postcode': user_profile.default_postcode,
+            'town_or_city': user_profile.default_town_or_city,
+            'street_address1': user_profile.default_street_address1,
+            'street_address2': user_profile.default_street_address2,
+            'county': user_profile.default_county,
+            }
+            order_form = OrderForm(form_data)
+        else:
+            order_form = OrderForm()
+    else:
+        order_form = OrderForm()
+
     cart = request.session.get('cart', {})
 
     if request.method=="POST":
@@ -52,7 +75,6 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            order.original_cart = json.dumps(cart)
             order.save()
             for item_id, item_data in cart.items():
                 try:
@@ -89,8 +111,6 @@ def checkout(request):
                         "Please call us for assistance!")
                     )
                     order.delete()
-            # # Save the info to the user's profile if all is well
-            # request.session['save_info'] = 'save-info' in request.POST
         else:
             messages.error(request, ('There was an error with your form. '
                                      'Please double check your information.'))
