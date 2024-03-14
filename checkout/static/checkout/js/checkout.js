@@ -83,7 +83,6 @@ async function handleUpdateMetadata () {
   const clientSecret = document.getElementsByName("client_secret")[0].value;
   formData.append('csrfmiddlewaretoken', csrfToken)
   formData.append('client_secret', clientSecret)
-  formData.append('save_info', true)
   formData.append('order_number', uniqueNumber)
   try {
     await fetch("/checkout/cache-checkout-data/", {

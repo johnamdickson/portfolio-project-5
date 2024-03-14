@@ -117,18 +117,6 @@
                     <div class="m-2">{{ order_form.county | as_crispy_field }}</div>
                     <div class="m-2">{{ order_form.postcode | as_crispy_field }}</div>
                     <div class="m-2">{{ order_form.country | as_crispy_field }}</div>
-                    <div class="form-check form-check-inline float-right mr-0 mt-2">
-                        {% if user.is_authenticated %}
-                        <label class="form-check-label" for="id-save-info">Save this delivery information to my
-                            profile</label>
-                        <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info"
-                            checked>
-                        {% else %}
-                        <label class="form-check-label" for="id-save-info">
-                            <a class="checkout-a" href="{% url 'account_signup' %}">Create an account</a> or
-                            <a class="checkout-a" href="{% url 'account_login' %}">login</a> to save this information
-                        </label>
-                        {% endif %}
                     </div>
                 </fieldset>
                 <legend class="fieldset-label small text-black ms-3 px-2 w-auto">Payment</legend>
