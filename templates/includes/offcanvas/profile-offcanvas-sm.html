@@ -13,17 +13,17 @@
         {% if user.is_authenticated %}
         <div class="row">
           <div class="col-12 my-2">
-              <div class="form-group">
-                  <label for="id_username" class="">
-                      User
-                  </label>
-                  <div>
-                      <input type="text" name="username" value="{{user.username}}" maxlength="30"
-                          class="textinput textInput form-control" id="id_username" readonly>
-                  </div>
+            <div class="form-group">
+              <label for="id_username" class="">
+                User
+              </label>
+              <div>
+                <input type="text" name="username" value="{{user.username}}" maxlength="30"
+                  class="textinput textInput form-control" id="id_username" readonly>
               </div>
+            </div>
           </div>
-      </div>
+        </div>
         {% for input in profile_form %}
         <div class="row">
           <div class="col-12 my-2">
@@ -46,64 +46,69 @@
     <hr class="my-4">
     <div class="col-12">
       <h6>Order History</h6>
-        {% for order in orders %}
-            <div class="row">
-              <div class="col-12 small">
-                <p class="my-1 m-0">Order Number:</p>
-              </div>
-              <div class="col-12 small">
-                <p class="mb-1 m-0">{{order.order_number}}</p>
-              </div>
-              <div class="col-12 small">
-                <p class="my-1 m-0">Order Date:</p>
-              </div>
-              <div class="col-12 small">
-                <p class="mb-1 m-0">{{order.date}}</p>
-              </div>
-                {% for item in order.lineitems.all %}
-                <div class="col-3 my-1">
-                  {% if item.product.image %}
-                  <a href="{{ item.product.image.url }}" target="_blank">
-                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                  </a>
-                  {% else %}
-                  <img class="w-100"  src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
-                    alt="{{ item.product.name}}">
-                  {% endif %}
-                </div>
-                <div class="col-9 small">
-                  <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                  {% if item.product_size or item.product_primary_colour %}
-                  <div class="row">
-                      {% if item.product_size %}
-                      <div class="col-12 small">
-                        Size: {{ item.product_size|upper}}
-                      </div>
-                      {% endif %}
-                      {% if item.product_primary_colour %}
-                      <div class="col-12 small">
-                        Primary Colour: {{ item.product_primary_colour|upper}}
-                      </div>
-                      {% endif %}
-                      {% if item.product_secondary_colour %}
-                      <div class="col-12 small">
-                        Secondary Colour: {{ item.product_secondary_colour|upper}}
-                      </div>
-                      {% endif %}
-                  </div>
-                  {% endif %}
-                  <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-              </div>
-                {% endfor %}
-                <div class="col-12 small">
-                  <p class="my-1 m-0">Order Grand Total:</p>
-                </div>
-                <div class="col-12 small">
-                  <strong><p class="mb-1 m-0">€{{order.grand_total}}</p></strong>
-                </div>
+      {% for order in orders %}
+      <div class="row">
+        <div class="col-12 small">
+          <p class="my-1 m-0">Order Number:</p>
+        </div>
+        <div class="col-12 small">
+          <p class="mb-1 m-0">{{order.order_number}}</p>
+        </div>
+        <div class="col-12 small">
+          <p class="my-1 m-0">Order Date:</p>
+        </div>
+        <div class="col-12 small">
+          <p class="mb-1 m-0">{{order.date}}</p>
+        </div>
+        <div class="col-12 small">
+          <p class="my-1 m-0">Order Items:</p>
+        </div>
+        {% for item in order.lineitems.all %}
+        <div class="col-3 my-1">
+          {% if item.product.image %}
+          <a href="{{ item.product.image.url }}" target="_blank">
+            <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+          </a>
+          {% else %}
+          <img class="w-100" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+            alt="{{ item.product.name}}">
+          {% endif %}
+        </div>
+        <div class="col-9 small">
+          <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+          {% if item.product_size or item.product_primary_colour %}
+          <div class="row">
+            {% if item.product_size %}
+            <div class="col-12 small">
+              Size: {{ item.product_size|upper}}
             </div>
-            <hr class="profile-hr mx-4">
+            {% endif %}
+            {% if item.product_primary_colour %}
+            <div class="col-12 small">
+              Primary Colour: {{ item.product_primary_colour|upper}}
+            </div>
+            {% endif %}
+            {% if item.product_secondary_colour %}
+            <div class="col-12 small">
+              Secondary Colour: {{ item.product_secondary_colour|upper}}
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+          <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+        </div>
         {% endfor %}
+        <div class="col-12 small">
+          <p class="my-1 m-0">Order Grand Total:</p>
+        </div>
+        <div class="col-12 small">
+          <strong>
+            <p class="mb-1 m-0">€{{order.grand_total}}</p>
+          </strong>
+        </div>
+      </div>
+      <hr class="profile-hr mx-4">
+      {% endfor %}
     </div>
   </div>
 </div>
