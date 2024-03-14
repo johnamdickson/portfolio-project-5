@@ -197,6 +197,10 @@ svg {
     list-style-type: none;
 }
 
+.offcanvas label {
+    font-size: 0.8rem;
+}
+
 #offcanvas-menu-account {
     width: 300px;
 }
@@ -206,6 +210,7 @@ svg {
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #efeeee50;
+    border-radius: 5px;
 }
 
 .profile-hr {
