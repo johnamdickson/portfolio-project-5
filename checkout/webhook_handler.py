@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, UserProfile
 from products.models import Product
 
 import json
@@ -66,10 +66,10 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         # Update profile information if save_info was checked
-        # profile = None
-        # username = intent.metadata.username
-        # if username != 'AnonymousUser':
-        #     profile = UserProfile.objects.get(user__username=username)
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
         #     if save_info:
         #         profile.default_phone_number = shipping_details.phone
         #         profile.default_country = shipping_details.address.country
@@ -102,7 +102,7 @@ class StripeWH_Handler:
                 order = Order.objects.create(
                     order_number=order_number,
                     full_name=shipping_details.name,
-                    # user_profile=profile,
+                    user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
