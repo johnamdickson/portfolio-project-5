@@ -16,10 +16,8 @@ class ProductForm(forms.ModelForm):
         widgets = {
             'sizes': forms.CheckboxSelectMultiple(),
             'colours': forms.CheckboxSelectMultiple(),
+            'description': forms.Textarea(attrs={'rows':8, 'cols':1}),
         }
-    
-
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
