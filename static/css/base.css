@@ -681,15 +681,12 @@ input[type=number] {
 #add-product-button {
     background-color: #f1d5e5;
     color: #4d6562;
-    top: 5px;
-    left: 20px;
-    width: 60px;
-    height: 60px;
     z-index: 99;
     border: 1px solid #698a85;
-    font-size: 0.5em;
+    font-size: 0.7em;
     text-decoration: none;
     font-weight: 500;
+    height: fit-content;
 }
 
 #add-product-button:hover {
