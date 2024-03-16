@@ -45,6 +45,10 @@
         aria-labelledby="offcanvas-menuLabel-register-sm">
         {% include 'includes/offcanvas/profile-offcanvas-sm.html' %}
         </div>
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvas-menu-product-sm"
+        aria-labelledby="offcanvas-menuLabel-register-sm">
+        {% include 'includes/offcanvas/product-management-offcanvas-sm.html' %}
+        </div>
         <div class="col-3 col-md">
             <a class="{% if grand_total %} fw-bold{% else %}font-weight-light{% endif %} nav-link"
                 href="{% url 'view_cart' %}">
