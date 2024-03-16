@@ -142,7 +142,9 @@ window.onscroll = () => {
 
 
 const offCanvasMethods = () => {
-
+    /**
+   * Function to set up BS offcanvas feature for various menu items.
+   */
     // solutions to showing offcanvas and hiding existing off canvas from SO:
     // https://stackoverflow.com/questions/66816000/how-to-open-offcanvas-programmatically-in-bootstrap-5
     // https://stackoverflow.com/questions/67770228/bootstrap-5-offcanvas-how-to-close-it-on-mouse-leave
@@ -150,167 +152,123 @@ const offCanvasMethods = () => {
     const accountOffcanvas = document.getElementById('offcanvas-menu-account')
     const accountOffcanvasSmall = document.getElementById('offcanvas-menu-account-sm')
 
+// set up log in off canvases from bottom on small screens and from right on medium and above.
     const loginOffcanvas = document.getElementById('offcanvas-menu-login')
     const loginOffcanvasSmall = document.getElementById('offcanvas-menu-login-sm')
     const loginUsernameInputSmall = document.getElementById('id_login_1')
     const loginUsernameInput = document.getElementById('id_login')
     let loginButtons = Array.from(document.getElementsByClassName('offcanvas-login-button'))
 
+// set up logout off canvases from bottom on small screens and from right on medium and above.
     const logoutOffcanvas = document.getElementById('offcanvas-menu-logout')
     const logoutOffcanvasSmall = document.getElementById('offcanvas-menu-logout-sm')
     let logoutButtons = Array.from(document.getElementsByClassName('offcanvas-logout-button'))
-
+    
+// set up register off canvases from bottom on small screens and from right on medium and above.
     const registerOffcanvas = document.getElementById('offcanvas-menu-register')
     const registerOffcanvasSmall = document.getElementById('offcanvas-menu-register-sm')
     let registerButtons = Array.from(document.getElementsByClassName('offcanvas-register-button'))
     const registerEmailInput = document.getElementById('id_email')
     const registerEmailInputSmall = document.getElementById('id_email_1')
 
+// set up profile off canvases from bottom on small screens and from right on medium and above.
     const profileOffcanvas = document.getElementById('offcanvas-menu-profile')
     const profileOffcanvasSmall = document.getElementById('offcanvas-menu-profile-sm')
     let profileButtons = Array.from(document.getElementsByClassName('offcanvas-profile-button'))
 
+// set up product off canvases from bottom on small screens and from right on medium and above.
     const productOffcanvas = document.getElementById('offcanvas-menu-product')
-    // const profileOffcanvasSmall = document.getElementById('offcanvas-menu-profile-sm')
+    const productOffcanvasSmall = document.getElementById('offcanvas-menu-product-sm')
     let productButtons = Array.from(document.getElementsByClassName('offcanvas-product-button'))
-    
-    const delayInMilliseconds = 500
 
-    // set up log in off canvases from bottom on small screens and from right on medium and above.
-    for (let [i, button] of loginButtons.entries()) {
-        button.onclick = () => {
-            if (i === 0) {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
-                account.hide()
-                const login = new bootstrap.Offcanvas(loginOffcanvasSmall)
-                login.show()
-                setTimeout(function () {
-                    loginUsernameInputSmall.focus()
-                }, delayInMilliseconds);
-            } else if (i === 1) {
-                const register = bootstrap.Offcanvas.getInstance(registerOffcanvasSmall)
-                register.hide()
-                const login = new bootstrap.Offcanvas(loginOffcanvasSmall)
-                login.show()
-                setTimeout(function () {
-                    loginUsernameInputSmall.focus()
-                }, delayInMilliseconds);
-            } else if (i === 2) {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
-                account.hide()
-                const login = new bootstrap.Offcanvas(loginOffcanvas)
-                login.show()
-                setTimeout(function () {
-                    loginUsernameInput.focus()
-                }, delayInMilliseconds);
+// function call for each offcanvas type and associated buttons.
+    configureOffCanvas(loginButtons, loginOffcanvas, loginOffcanvasSmall, 'login')
+    configureOffCanvas(logoutButtons, logoutOffcanvas, logoutOffcanvasSmall)
+    configureOffCanvas(registerButtons, registerOffcanvas, registerOffcanvasSmall, 'register')
+    configureOffCanvas(profileButtons, profileOffcanvas, profileOffcanvasSmall)
+    configureOffCanvas(productButtons, productOffcanvas, productOffcanvasSmall)
+
+    function configureOffCanvas(buttons, regularOffcanvas, smallOffcanvas, action=null) {
+    /**
+     * Helper function to avoid repetition of assigning onclick functionality and other 
+     * navigational features.
+     */
+        const delayInMilliseconds = 500
+
+        // declare variables to be updated based upon action.
+        let initatingOffcanvasRegular
+        let initiatingOffcanvasSmall
+        let highlightedInputRegular
+        let highlightedInputSmall
+        // check if login or register action and then update variables above accordingly
+        if (action == 'login') {
+            initatingOffcanvasRegular = registerOffcanvas
+            initiatingOffcanvasSmall = registerOffcanvasSmall
+            highlightedInputRegular = loginUsernameInput
+            highlightedInputSmall = loginUsernameInputSmall
+        } else if (action == 'register') {
+            initatingOffcanvasRegular = loginOffcanvas
+            initiatingOffcanvasSmall = loginOffcanvasSmall
+            highlightedInputRegular = registerEmailInput
+            highlightedInputSmall = registerEmailInputSmall
+        }
+        
+        for (let [i, button] of buttons.entries()) {
+            // check length of buttons array and if 4 then configuration of off canvases will be
+            // specific to the users log in status. The code needs to handle sign up or sign in links 
+            // on off canvases and dismissing them if selected. 
+            if (buttons.length == 4) {
+                button.onclick = () => {
+                    if (i === 0) {
+                        const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
+                        account.hide()
+                        const small = new bootstrap.Offcanvas(smallOffcanvas)
+                        small.show()
+                        setTimeout(function () {
+                            highlightedInputSmall.focus()
+                        }, delayInMilliseconds);
+                    } else if (i === 1) {
+                        const initiator = bootstrap.Offcanvas.getInstance(initiatingOffcanvasSmall)
+                        initiator.hide()
+                        const small = new bootstrap.Offcanvas(smallOffcanvas)
+                        small.show()
+                        setTimeout(function () {
+                            highlightedInputSmall.focus()
+                        }, delayInMilliseconds);
+                    } else if (i === 2) {
+                        const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
+                        account.hide()
+                        const regular = new bootstrap.Offcanvas(regularOffcanvas)
+                        regular.show()
+                        setTimeout(function () {
+                            highlightedInputRegular.focus()
+                        }, delayInMilliseconds);
+                    } else {
+                        const initiator = bootstrap.Offcanvas.getInstance(initatingOffcanvasRegular)
+                        initiator.hide()
+                        const regular = new bootstrap.Offcanvas(regularOffcanvas)
+                        regular.show()
+                        setTimeout(function () {
+                            highlightedInputRegular.focus()
+                        }, delayInMilliseconds);
+                    }
+                }
             } else {
-                const register = bootstrap.Offcanvas.getInstance(registerOffcanvas)
-                register.hide()
-                const login = new bootstrap.Offcanvas(loginOffcanvas)
-                login.show()
-                setTimeout(function () {
-                    loginUsernameInput.focus()
-                }, delayInMilliseconds);
+                button.onclick = () => {
+                    if (i == 0) {
+                        const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
+                        account.hide()
+                        const small = new bootstrap.Offcanvas(smallOffcanvas)
+                        small.show()
+                    } else {
+                        const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
+                        account.hide()
+                        const regular = new bootstrap.Offcanvas(regularOffcanvas)
+                        regular.show()
+                    }
+                }
             }
+
         }
     }
-
-    // set up logout off canvases from bottom on small screens and from right on medium and above.
-
-    for (let [i, button] of logoutButtons.entries()) {
-
-        button.onclick = () => {
-            if (i == 0) {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
-                account.hide()
-                const logout = new bootstrap.Offcanvas(logoutOffcanvasSmall)
-                logout.show()
-            } else {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
-                account.hide()
-                const logout = new bootstrap.Offcanvas(logoutOffcanvas)
-                logout.show()
-            }
-        }
-    }
-
-
-    // set up register off canvases from bottom on small screens and from right on medium and above.
-
-    for (let [i, button] of registerButtons.entries()) {
-        button.onclick = () => {
-            if (i == 0) {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
-                account.hide()
-                const register = new bootstrap.Offcanvas(registerOffcanvasSmall)
-                register.show()
-                setTimeout(function () {
-                    registerEmailInputSmall.focus()
-                }, delayInMilliseconds);
-            } else if (i === 1) {
-                const login = bootstrap.Offcanvas.getInstance(loginOffcanvasSmall)
-                login.hide()
-                const register = new bootstrap.Offcanvas(registerOffcanvasSmall)
-                register.show()
-                setTimeout(function () {
-                    registerEmailInputSmall.focus()
-                }, delayInMilliseconds);
-            } else if (i === 2) {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
-                account.hide()
-                const register = new bootstrap.Offcanvas(registerOffcanvas)
-                register.show()
-                setTimeout(function () {
-                    registerEmailInput.focus()
-                }, delayInMilliseconds);
-            } else {
-                const login = bootstrap.Offcanvas.getInstance(loginOffcanvas)
-                login.hide()
-                const register = new bootstrap.Offcanvas(registerOffcanvas)
-                register.show()
-                setTimeout(function () {
-                    registerEmailInput.focus()
-                }, delayInMilliseconds);
-            }
-        }
-    }
-
-    // set up profile off canvases from bottom on small screens and from right on medium and above.
-
-    for (let [i, button] of profileButtons.entries()) {
-
-        button.onclick = () => {
-            if (i == 0) {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
-                account.hide()
-                const profile = new bootstrap.Offcanvas(profileOffcanvasSmall)
-                profile.show()
-            } else {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
-                account.hide()
-                const profile = new bootstrap.Offcanvas(profileOffcanvas)
-                profile.show()
-            }
-        }
-    }
-
-    // set up product off canvases from bottom on small screens and from right on medium and above.
-
-    for (let [i, button] of productButtons.entries()) {
-
-        button.onclick = () => {
-            if (i == 0) {
-                // const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
-                // account.hide()
-                // const profile = new bootstrap.Offcanvas(profileOffcanvasSmall)
-                // profile.show()
-            } else {
-                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
-                account.hide()
-                const product = new bootstrap.Offcanvas(productOffcanvas)
-                product.show()
-            }
-        }
-    }
-
 }
