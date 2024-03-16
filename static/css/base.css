@@ -61,6 +61,31 @@ h6 {
     font-weight: 500;
     visibility: hidden;
 }
+
+#back-to-top:hover {
+    color: #f2cbe1;
+    background-color: #4d6562;
+    border: 1.5px solid #f2bfdc;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    animation-name: round-button-hover;
+    animation-duration: 0.5s;
+    scale: 1.2;
+}
+
+@keyframes round-button-hover {
+    from {  background-color: #f1d5e5;
+            border: 1px solid #698a85;
+            color: #4d6562;
+            box-shadow: none;
+            scale: 1;
+        }
+    to {    border-color:#f2bfdc;
+            color: #f2cbe1;
+            background-color: #4d6562;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            scale: 1.2;
+        }
+}
 /* ----------------------------------- Notifications Styling ----------------------------------- */
 .toast {
     top:10px;
@@ -653,6 +678,29 @@ input[type=number] {
     box-shadow: 0 0 0 0.25rem rgba(77,101,98,0.25);
 }
 
+#add-product-button {
+    background-color: #f1d5e5;
+    color: #4d6562;
+    top: 5px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 99;
+    border: 1px solid #698a85;
+    font-size: 0.5em;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#add-product-button:hover {
+    color: #f2cbe1;
+    background-color: #4d6562;
+    border: 1.5px solid #f2bfdc;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    animation-name: round-button-hover;
+    animation-duration: 0.5s;
+    scale: 1.2;
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */

@@ -39,9 +39,9 @@
         </div>
       </div>
     </div>
-    <?xml version="1.0" encoding="utf-8"?>
+    <!-- <?xml version="1.0" encoding="utf-8"?> -->
     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <!-- <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> -->
 
     <div class="col-12 col-md-4 order-md-last d-flex justify-content-center justify-content-md-end">
       <div class="sort-select-wrapper mx-auto mt-2">
@@ -61,8 +61,15 @@
         </select>
       </div>
     </div>
-    <div class="col-12 col-md-4 order-md-first">
-      <p class="text-muted mt-3 text-center text-md-left">
+    <div class="col-12 col-md-4 order-md-first d-flex justify-content-end position-relative">
+      {% if user.is_superuser %}
+      <a href="{% url 'add_product' %}" id="add-product-button"
+        class="rounded-circle d-flex flex-column align-items-center justify-content-center position-absolute">
+        <p class="text-center m-0">Add Product</p>
+        <i class="fa-solid fa-plus m-0 mt-1"></i>
+      </a>
+      {% endif %}
+      <p class="text-muted mt-3 text-center text-md-left mx-5">
         {% if search_term or current_categories or current_sorting != 'None_None' %}
         <span class="small"><a href="{% url 'products' %}" class="custom-link">All Products</a> | </span>
         {% endif %}
@@ -73,7 +80,8 @@
   <div class="row w-100 justify-content-center">
     {% for product in products %}
 
-    <div class="col-md-4 product-card-hover col-lg-3 p-1 mb-2 d-flex flex-column justify-content-between position-relative">
+    <div
+      class="col-md-4 product-card-hover col-lg-3 p-1 mb-2 d-flex flex-column justify-content-between position-relative">
       <div class="size-colour-row row mt-2 justify-content-end mx-auto position-absolute">
         <!-- 
           Solution to accessing all sizes and colours in many-to-many relationship:
@@ -81,30 +89,34 @@
          -->
         {% if product.sizes.all%}
         <div class="col-12 mb-1">
-        <div class="row">
-        <div class="col-2 d-flex justify-content-center">
-          <a tabindex="0"
-            class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
-            role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true" data-bs-sanitize="false"
-            title="<img src='/media/logo-transparent-background.png' class='rounded me-2 popover-logo'>Available Sizes" data-bs-content='{% include "includes/popovers/size-info-popover.html" %}'>
-            <i class="fa-solid fa-ruler-horizontal d-block"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-        {% endif %}
-        {% if product.colours.all %}
-        <div class="col-12">
-          <div class="row"> 
+          <div class="row">
             <div class="col-2 d-flex justify-content-center">
               <a tabindex="0"
                 class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
-                role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true" data-bs-sanitize="false"
-                title="<img src='/media/logo-transparent-background.png' class='rounded me-2 popover-logo'>Available Colours" data-bs-content= '{% include "includes/popovers/colour-info-popover.html" %}'>
+                role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
+                data-bs-sanitize="false"
+                title="<img src='/media/logo-transparent-background.png' class='rounded me-2 popover-logo'>Available Sizes"
+                data-bs-content='{% include "includes/popovers/size-info-popover.html" %}'>
+                <i class="fa-solid fa-ruler-horizontal d-block"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% if product.colours.all %}
+        <div class="col-12">
+          <div class="row">
+            <div class="col-2 d-flex justify-content-center">
+              <a tabindex="0"
+                class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
+                role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
+                data-bs-sanitize="false"
+                title="<img src='/media/logo-transparent-background.png' class='rounded me-2 popover-logo'>Available Colours"
+                data-bs-content='{% include "includes/popovers/colour-info-popover.html" %}'>
                 <i class="fa-solid fa-palette d-block"></i>
               </a>
             </div>
-           </div>
+          </div>
         </div>
         {% endif %}
       </div>
