@@ -7,6 +7,7 @@
   <div class="row">
     <div class="col-12">
       <h6>Add a Product</h6>
+      {% if user.is_superuser %}
       <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
@@ -61,6 +62,7 @@
             </div>
     </form>
     </div>
+    {% endif %}
     <!-- <div class="col-7">
       <h6>Order History</h6>
       <div class="order-history-container mt-4 p-3">
