@@ -641,6 +641,18 @@ input[type=number] {
 #id_product_size, #id_product_colour, #id_secondary_product_colour {
     border: 0.5px solid #4d6562;
 }
+
+.form-check-input:checked {
+    background-color: #f2cbe1;
+    border-color: #f1d5e5;
+    color: #4d6562;
+}
+
+.form-check-input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(77,101,98,0.25);
+}
+
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */
