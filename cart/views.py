@@ -204,7 +204,7 @@ def remove_from_cart(request, item_id):
         else:
             cart.pop(item_id)
             messages.info(request, 
-                         f'{product.name.upper()} '
+                         f'{product.name.upper()}'
                          ' removed from your cart',
                          extra_tags = 'Item Removed')
 
@@ -214,9 +214,7 @@ def remove_from_cart(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=400)   
-        
-    print("MESSAGES", request._messages)
-    return redirect(reverse('view_cart'))
+
 
 
 
@@ -265,7 +263,7 @@ def handle_item_action(key, action, item_data, request):
                             extra_tags = item_updated_tag)
         elif action == k.ADD:
             messages.success(request,                              
-                                (f'<p class="mb-2"><strong>'
+                            (f'<p class="mb-2"><strong>'
                             f'{num2words(quantity).title()}</strong> of'
                             f' <strong>{product_name.title()}</strong> added to'
                             f' cart</p><ul>{size_string} {primary_colour_string}'
