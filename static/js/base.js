@@ -169,11 +169,14 @@ const offCanvasMethods = () => {
     const profileOffcanvas = document.getElementById('offcanvas-menu-profile')
     const profileOffcanvasSmall = document.getElementById('offcanvas-menu-profile-sm')
     let profileButtons = Array.from(document.getElementsByClassName('offcanvas-profile-button'))
+
+    const productOffcanvas = document.getElementById('offcanvas-menu-product')
+    // const profileOffcanvasSmall = document.getElementById('offcanvas-menu-profile-sm')
+    let productButtons = Array.from(document.getElementsByClassName('offcanvas-product-button'))
     
     const delayInMilliseconds = 500
 
     // set up log in off canvases from bottom on small screens and from right on medium and above.
-    console.log(loginButtons)
     for (let [i, button] of loginButtons.entries()) {
         button.onclick = () => {
             if (i === 0) {
@@ -272,6 +275,8 @@ const offCanvasMethods = () => {
         }
     }
 
+    // set up profile off canvases from bottom on small screens and from right on medium and above.
+
     for (let [i, button] of profileButtons.entries()) {
 
         button.onclick = () => {
@@ -285,6 +290,25 @@ const offCanvasMethods = () => {
                 account.hide()
                 const profile = new bootstrap.Offcanvas(profileOffcanvas)
                 profile.show()
+            }
+        }
+    }
+
+    // set up product off canvases from bottom on small screens and from right on medium and above.
+
+    for (let [i, button] of productButtons.entries()) {
+
+        button.onclick = () => {
+            if (i == 0) {
+                // const account = bootstrap.Offcanvas.getInstance(accountOffcanvasSmall)
+                // account.hide()
+                // const profile = new bootstrap.Offcanvas(profileOffcanvasSmall)
+                // profile.show()
+            } else {
+                const account = bootstrap.Offcanvas.getInstance(accountOffcanvas)
+                account.hide()
+                const product = new bootstrap.Offcanvas(productOffcanvas)
+                product.show()
             }
         }
     }

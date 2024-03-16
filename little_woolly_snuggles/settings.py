@@ -96,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'cart.contexts.cart_contents',
                 'profiles.contexts.profile_details',
+                'products.contexts.add_product_details',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

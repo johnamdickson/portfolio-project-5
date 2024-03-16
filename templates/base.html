@@ -108,9 +108,13 @@
                                 {% include 'includes/offcanvas/register-offcanvas.html' %}
                             </div>
                             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-profile"
-                            aria-labelledby="offcanvas-menuLabel-profile">
-                            {% include 'includes/offcanvas/profile-offcanvas.html' %}
-                        </div>
+                                aria-labelledby="offcanvas-menuLabel-profile">
+                                {% include 'includes/offcanvas/profile-offcanvas.html' %}
+                            </div>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-menu-product"
+                                aria-labelledby="offcanvas-menuLabel-product">
+                                {% include 'includes/offcanvas/product-management-offcanvas.html' %}
+                            </div>
                         </div>
                         <div class="col-4">
                             <a class="{% if grand_total %}font-weight-bold{% else %}font-weight-light{% endif %} nav-link"
