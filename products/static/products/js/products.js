@@ -1,4 +1,5 @@
 window.addEventListener('load', function () {
+  handleProductDelete();
   setUpSelect();
   styleProductCards();
   sizeSelectCheck();
@@ -110,7 +111,7 @@ const styleProductCards = () => {
 }
 
 const sizeSelectCheck = () => {
-
+  
   let sizesJson = JSON.parse(document.getElementById('sizes').innerHTML);
   let coloursJson = JSON.parse(document.getElementById('colours').innerHTML);
   let availableSizes = []
@@ -399,4 +400,18 @@ const productQuantitySelect = () => {
     }
   }
 
+}
+
+const handleProductDelete = () => {
+  let productDeleteButton = document.getElementById('delete-product-button');
+    if (productDeleteButton) {
+        productDeleteButton.addEventListener("click", function(event) {
+          console.log('clicked')
+          if (confirm('Are you sure you want to delete this product?') === true) {
+            return
+          } else {
+            event.preventDefault()
+          }
+        });
+    }
 }

@@ -716,6 +716,22 @@ input[type=number] {
     scale: 1.1;
 }
 
+#delete-product-button {
+    background-color: rgba(229,57,53,0.8 );
+    color: #fff;
+    z-index: 99;
+    border: 1px solid #fff;
+    font-size: 0.7em;
+    text-decoration: none;
+    font-weight: 500;
+    height: fit-content;
+}
+
+#delete-product-button:hover {
+    color: #e53935;
+    background-color: rgba(245, 245, 245, 0.8);
+    border-color: #e53935;
+}
 .edit-image img,
 .product-detail-image img {
     object-fit: cover;
