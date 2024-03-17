@@ -695,6 +695,27 @@ input[type=number] {
     scale: 1.1;
 }
 
+#edit-product-button {
+    background-color: #f1d5e5;
+    color: #4d6562;
+    z-index: 99;
+    border: 1px solid #698a85;
+    font-size: 0.7em;
+    text-decoration: none;
+    font-weight: 500;
+    height: fit-content;
+}
+
+#edit-product-button:hover {
+    color: #f2cbe1;
+    background-color: #4d6562;
+    border: 1.5px solid #f2bfdc;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    animation-name: round-button-hover;
+    animation-duration: 0.5s;
+    scale: 1.1;
+}
+
 .edit-image img,
 .product-detail-image img {
     object-fit: cover;
