@@ -107,8 +107,9 @@
             </div>
         </div>
     </div>
-
 </div>
+{{ sizes_data|json_script:'sizes' }}
+{{ colours_data|json_script:'colours' }}
 {% endblock %}
 
 {% block postloadjs %}

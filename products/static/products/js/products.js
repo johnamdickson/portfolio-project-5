@@ -111,7 +111,7 @@ const styleProductCards = () => {
 }
 
 const sizeSelectCheck = () => {
-  
+
   let sizesJson = JSON.parse(document.getElementById('sizes').innerHTML);
   let coloursJson = JSON.parse(document.getElementById('colours').innerHTML);
   let availableSizes = []

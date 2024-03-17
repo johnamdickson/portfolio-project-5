@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-4 mx-auto my-3">
                     <div class="text-right">
-                        <a class="btn text-white rounded-0" href="{% url 'products' %}">Cancel</a>
+                        <a class="btn text-white rounded-0 text-decoration-underline" href="{% url 'products' %}">Cancel</a>
                         <button class="btn btn-custom p-2" type="submit">Add Product<i
                                 class="fa-solid fa-plus ms-2"></i></button>
                     </div>
@@ -79,6 +79,8 @@
         {% endif %}
     </div>
 </div>
+{{ sizes_data|json_script:'sizes' }}
+{{ colours_data|json_script:'colours' }}
 {% endblock %}
 
 {% block postloadjs %}
