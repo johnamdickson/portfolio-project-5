@@ -9,10 +9,6 @@ class ProductForm(forms.ModelForm):
         exclude = ('image_url',)
         # how to return check boxes for Many to Many fields.
         # https://stackoverflow.com/questions/18048172/django-forms-many-to-many-relationships
-        categories1 = forms.MultipleChoiceField(
-            widget=forms. CheckboxSelectMultiple,
-            choices=[('', 'All'), ] + [ (char .name, char) for char in Category.objects.all()], required=True,
-            )
         widgets = {
             'sizes': forms.CheckboxSelectMultiple(),
             'colours': forms.CheckboxSelectMultiple(),
