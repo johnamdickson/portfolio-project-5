@@ -13,10 +13,8 @@ def add_product_details(request):
         context = {
             'product_form': form,
         }
-        print("context", context)
         return context
 
     else:
-        print('here')
         context = {}
         return context

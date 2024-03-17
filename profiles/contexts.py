@@ -8,8 +8,8 @@ from checkout.models import Order
 
 
 def profile_details(request):
+    
     if request.user.is_authenticated:
-        
         """ Display the user's profile. """
         profile = get_object_or_404(UserProfile, user=request.user)
         form = UserProfileForm(instance=profile)
