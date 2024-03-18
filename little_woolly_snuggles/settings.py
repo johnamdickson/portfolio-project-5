@@ -96,6 +96,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'cart.contexts.cart_contents',
                 'profiles.contexts.profile_details',
                 'products.contexts.add_product_details',
