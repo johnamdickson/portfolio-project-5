@@ -350,15 +350,15 @@ header .nav-link:focus {
 }
 
 .home-image-2 {
-    background: center / cover no-repeat url("/media/balls-of-yarn.jpg");
+    background: center / cover no-repeat url("/static/images/balls-of-yarn.jpg");
 }
 
 .home-image-3 {
-    background: center / cover no-repeat url("/media/teddy-bear-hats.jpg");
+    background: center / cover no-repeat url("/static/images/teddy-bear-hats.jpg");
 }
 
 .home-image-4 {
-    background: center / cover no-repeat url("/media/heart-hat.jpg");
+    background: center / cover no-repeat url("/static/images/heart-hat.jpg");
 }
 
 .home-image-flex {

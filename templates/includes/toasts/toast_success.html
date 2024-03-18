@@ -1,6 +1,6 @@
 <div class="toast position-fixed" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="{% if grand_total %}30000{% else %}5000{% endif %}" data-bs-animation="true">
     <div class="toast-header text-white toast-header-success">
-      <img src="/media/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
+      <img src="/static/images/logo-transparent-background.png" class="rounded me-2 toast-logo" alt="...">
       <strong class="me-auto">
         {% for message in messages %}
           {% if message.extra_tags %}
