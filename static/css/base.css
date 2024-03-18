@@ -394,6 +394,11 @@ header .nav-link:focus {
     ;
 }
 
+.small-home-callout p {
+    font-size: 0.8em;
+    ;
+}
+
 .small-home-callout button {
     font-size: 0.75em;
     ;
