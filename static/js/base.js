@@ -4,6 +4,7 @@ window.addEventListener('load', function () {
     iniatilisePopover();
     initialiseToast();
     offCanvasMethods();
+    errorCountdown();
 })
 
 // BS Boilerplate for initialising toasts.
@@ -272,3 +273,42 @@ const offCanvasMethods = () => {
         }
     }
 }
+
+function goHome() {
+    /**
+     * go home function activated by a button used in HTTP status code
+     * pages.
+     */
+        document.location.href="/";
+    }
+
+    const errorCountdown = () => {
+        /**
+         * Function to countdown and display back to user for status code error
+         * pages. Solution from codepen:
+         * https://codepen.io/joshua-golub/pen/LYYKrKg
+         */
+            let timeLeft = 10;
+            // check if the error-code is 400 or 500 assign 60 to timeLeft based on 
+            // fact that errors are not related to wrong page or forbidden so a 10 second
+            // timer to go back to home page would be excessive.
+            if (document.getElementById("error-heading")) {
+                timeLeft = 60;
+                document.getElementById("error-timer").innerText = '60';
+            }
+            else {
+                timeLeft = 10;
+            }
+            function countdown() {
+                timeLeft--;
+                document.getElementById("error-timer").innerText = String( timeLeft );
+                if (timeLeft > 0) {
+                    setTimeout(countdown, 1000);
+                } else {
+                    goHome();
+                }
+            }
+            if (document.getElementById("error-timer")){
+                setTimeout(countdown, 1000);
+            }
+          };

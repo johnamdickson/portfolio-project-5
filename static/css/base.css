@@ -740,6 +740,26 @@ input[type=number] {
     border-radius: 20px;
 }
 
+/* ----------------------------------- Error Page Styling ----------------------------------- */
+
+#error-timer {
+    font-weight: 900;
+  }
+  
+  .error-redirect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error-redirect p {
+    margin: 0 10px;
+  }
+  
+  .status-code-exception {
+    font-size: 1.2rem;
+  }
+
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */
