@@ -332,7 +332,7 @@ header .nav-link:focus {
 }
 
 .home-image-main {
-    background: center / cover no-repeat url("/media/crochet-hook.jpg");
+    background: center / cover no-repeat url("/static/images/crochet-hook.jpg");
     border-radius: 20px;
     border: 0.5px solid #f2bfdc;
 }
@@ -346,7 +346,7 @@ header .nav-link:focus {
 }
 
 .home-image-1 {
-    background: center / cover no-repeat url("/media/beanies.jpg");
+    background: center / cover no-repeat url("/static/images/beanies.jpg");
 }
 
 .home-image-2 {
