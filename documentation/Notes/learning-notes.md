@@ -114,3 +114,44 @@ In order to automatically apply the correct debug settings, change the following
 ![sqlite-shell](sqlite-shell.png)
 - A handy trick to access Django objects otherwise not shown in the IDE is to access the shell using command `python3 manage.py shell`. I used this to access the login form HTML for rendering in the offcanvas menu. The solution I found on [Stack Overflow](https://stackoverflow.com/questions/39197723/how-to-move-singup-signin-templates-into-dropdown-menu)
 ![default-forms](accessing-default-forms.png)
+
+## Amazon WS S3
+- Open S3 and create a new bucket for storing files.
+- Choose a name for the bucket, preferably matching your Heroku app name for clarity.
+- Select the region closest to you for better performance.
+- Uncheck "Block all public access" and acknowledge that the bucket will be public.
+- The Object Ownership setting needs to be set the ACLs enabled option and Bucket Owner Preferred also checked.
+- Create the bucket.
+- Set up static website hosting on the properties tab to get a new endpoint for internet access.
+- Fill in default values for index and error documents.
+- Save the settings.
+- On the permissions tab, paste a CORS configuration for required access between the Heroku app and S3 bucket.
+- Go to the bucket policy tab, select "Policy Generator," and create a security policy.
+- Set the policy type to "S3 Bucket Policy," allow all principals using a star, and set the action to "Get Object."
+- Copy the ARN from the other tab and paste it into the ARN box.
+- Add a statement, generate the policy, and copy it into the bucket policy editor.
+- Modify the resource key to allow access to all resources in the bucket.
+- Save the policy.
+- Set the "List objects" permission for everyone under the Public Access section in the access control list tab.
+- Finish configuring the bucket, which is now ready to serve files.
+- - With the S3 bucket ready, the next step is to create a user to access it via IAM (Identity and Access Management).
+- Go back to the services menu and open IAM.
+- Start by creating a group for the user to reside in.
+- Click on "User Groups," then "Create New Group," and name it appropriately.
+- Proceed to create the group on the same page.
+- Next, create a policy for accessing the S3 bucket by clicking on "Policies" and then "Create Policy."
+- Import a managed policy for full S3 access, then modify it to restrict access to the specific bucket.
+- Click the button to proceed to the next page to add optional tags, and then review and create the policy.
+- Attach the policy to the group by selecting the group, clicking on "Permissions," and opening the "Add permissions" dropdown.
+- Select "Attach policies," choose the created policy, and click "Add permissions" at the bottom.
+- Create a user to put in the group by clicking "Add User" on the user's page.
+- Provide a username and select "Programmatic Access" for access type.
+- Proceed to the next step, put the user in the group with the attached policy, and create the user.
+- Retrieve the user's access keys by going to IAM, selecting "Users," and choosing the user.
+- Select the "Security Credentials" tab and scroll to "Access Keys."
+- Click "Create access key," choose "Application running outside AWS," and proceed.
+- Leave the "Description tag value" blank and click "Create Access Key."
+- Click the "Download .csv file" button to get the CSV file containing the access keys.
+- Save the CSV file as it contains critical authentication information that cannot be retrieved later.
+- In summary, the process involves creating a group, attaching an access policy allowing S3 access to the bucket, and creating a user with specific access keys.
+- In the next step, configure Django to connect to S3 using these keys and upload static files to S3.
