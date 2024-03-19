@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /cart/
+Sitemap: https://little-woolly-snuggles-4b258af9630a.herokuapp.com/sitemap.xml
