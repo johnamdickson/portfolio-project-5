@@ -765,6 +765,28 @@ input[type=number] {
     font-size: 1.2rem;
   }
 
+/* ----------------------------------- Footer Styling ----------------------------------- */
+
+footer {
+    color: #4d6562;
+}
+
+#mc_embed_signup{
+    width: 100%;
+}
+
+#mc_embed_signup input{
+    width: fit-content;
+}
+
+.footer-text p {
+    margin: 0;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: #4d6562;
+}
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */
