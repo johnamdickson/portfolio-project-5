@@ -346,11 +346,11 @@ header .nav-link:focus {
 }
 
 .home-image-1 {
-    background: center / cover no-repeat url("/static/images/beanies.jpg");
+    background: center / cover no-repeat url("/static/images/gift-set.jpg");
 }
 
 .home-image-2 {
-    background: center / cover no-repeat url("/static/images/balls-of-yarn.jpg");
+    background: center / cover no-repeat url("/static/images/learn.jpg");
 }
 
 .home-image-3 {
@@ -358,7 +358,7 @@ header .nav-link:focus {
 }
 
 .home-image-4 {
-    background: center / cover no-repeat url("/static/images/heart-hat.jpg");
+    background: center / cover no-repeat url("/static/images/blanket.jpg");
 }
 
 .home-image-flex {
