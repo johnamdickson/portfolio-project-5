@@ -202,9 +202,9 @@
 <footer>
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5 col-lg-4">
                 <div id="mc_embed_signup">
-                    <form action="https://littlewoollysnuggles.us11.list-manage.com/subscribe/post?u=f12115b38b27aebcafa6a3068&amp;id=3f310659e8&amp;f_id=0061b6e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <form action="https://littlewoollysnuggles.us11.list-manage.com/subscribe/post?u=f12115b38b27aebcafa6a3068&amp;id=3f310659e8&amp;f_id=0061b6e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate m-0 p-3" target="_blank">
                         <div id="mc_embed_signup_scroll"><h5 class="m-0 fw-light">Subscribe</h5>
                             <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
                         <div id="mce-responses" class="clear foot">
@@ -227,32 +227,32 @@
             </div>
             <div class="offset-md-1 offset-lg-0 col-md-6 d-flex flex-column justify-content-start">
                 <div class="row justify-content-start">
-                    <div class="col-10 col-md-12 mx-auto footer-text p-4">
+                    <div class="col-11 col-md-12 mx-auto footer-text p-3">
                         <h5 class="mb-3 fw-light">Get in Touch</h5>
                         <div class="row">
-                            <div class="col-1 d-flex justify-content-end g-0">
+                            <div class="col-1 d-flex justify-content-end g-0 footer-img">
                                 <img src="{{MEDIA_URL}}transparent-logo.png" class="footer-logo">
                             </div>
                             <div class="col-4 col-md-8 g-0">
                                 <p class="px-2">Little Woolly Snuggles</p>
                                 <p class="px-2 pt-2">County Mayo, Ireland</p>
                             </div>
-                            <div class="col-6 offset-1 offset-md-0 col-md-12">
+                            <div class="col-3 offset-1 offset-md-0 col-md-12">
                                 <div class="row fs-5 mt-md-3">
                                     <div class="col-12 col-md-1 ms-md-2 me-md-3">
-                                        <a href = "mailto: littlewoollysnuggles@gmail.com" class="d-flex align-items-center p-2"><i class="fa-regular fa-envelope me-2"></i></a>
+                                        <a href = "mailto:littlewoollysnuggles@gmail.com" class="d-flex align-items-center p-2" aria-label="Get in touch and send us a mail"><i class="fa-regular fa-envelope me-2"></i></a>
                                     </div>
                                     <div class="col-12 col-md-1 me-md-3">
-                                        <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-facebook-f"></i></a>
+                                        <a href = "www.facebook.com" class="d-flex align-items-center p-2" target="_blank" rel="noopener"
+                                        aria-label="Come and find us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                                     </div>
                                     <div class="col-12 col-md-1 me-md-3">
-                                        <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-youtube"></i></a>
+                                        <a href = "www.youtube.com" class="d-flex align-items-center p-2"target="_blank" rel="noopener"
+                                        aria-label="Come and find us on YouTube"><i class="fa-brands fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -262,7 +262,7 @@
   
 </footer>
     {% block postloadjs %}
-    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
 
