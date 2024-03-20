@@ -771,6 +771,9 @@ footer {
     color: #4d6562;
 }
 
+footer h5, footer input{
+    font-size: 0.8rem;
+}
 #mc_embed_signup{
     width: 100%;
 }
@@ -779,14 +782,22 @@ footer {
     width: fit-content;
 }
 
-.footer-text p {
+footer p, footer label{
     margin: 0;
+    font-size: 0.7rem;
 }
+
 
 .footer-text a {
     text-decoration: none;
     color: #4d6562;
 }
+
+.footer-logo {
+    width: 40px;
+    height: 40px;
+}
+
 /* ----------------------------------- Responsive Styling ----------------------------------- */
 
 /* transition to medium screens */

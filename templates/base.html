@@ -200,12 +200,12 @@
     {% block content %}
     {% endblock %}
 <footer>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-4">
+            <div class="col-md-4">
                 <div id="mc_embed_signup">
                     <form action="https://littlewoollysnuggles.us11.list-manage.com/subscribe/post?u=f12115b38b27aebcafa6a3068&amp;id=3f310659e8&amp;f_id=0061b6e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-                        <div id="mc_embed_signup_scroll"><h2 class="m-0 fw-light">Subscribe</h2>
+                        <div id="mc_embed_signup_scroll"><h5 class="m-0 fw-light">Subscribe</h5>
                             <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
                         <div id="mce-responses" class="clear foot">
                             <div class="response" id="mce-error-response" style="display: none;"></div>
@@ -225,26 +225,34 @@
                 </form>
                 </div>
             </div>
-            <div class="col-6 d-flex flex-column justify-content-start">
+            <div class="offset-md-1 offset-lg-0 col-md-6 d-flex flex-column justify-content-start">
                 <div class="row justify-content-start">
-                    <div class="col-12 footer-text p-4">
+                    <div class="col-10 col-md-12 mx-auto footer-text p-4">
                         <h5 class="mb-3 fw-light">Get in Touch</h5>
-                        <p class="px-2">Little Woolly Snuggles</p>
-                        <p class="px-2 pt-2">County Mayo, Ireland</p>
-                        <div class="row fs-5 mt-3 w-50">
-                            <div class="col-2">
-                                <a href = "mailto: littlewoollysnuggles@gmail.com" class="d-flex align-items-center p-2"><i class="fa-regular fa-envelope me-2"></i></a>
+                        <div class="row">
+                            <div class="col-1 d-flex justify-content-end g-0">
+                                <img src="{{MEDIA_URL}}transparent-logo.png" class="footer-logo">
                             </div>
-                            <div class="col-2">
-                                <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-facebook-f"></i></a>
+                            <div class="col-4 col-md-8 g-0">
+                                <p class="px-2">Little Woolly Snuggles</p>
+                                <p class="px-2 pt-2">County Mayo, Ireland</p>
                             </div>
-                            <div class="col-2">
-                                <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-youtube"></i></a>
-                            </div>
-                            <div class="col-2">
-                                <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-etsy"></i></a>
+                            <div class="col-6 offset-1 offset-md-0 col-md-12">
+                                <div class="row fs-5 mt-md-3">
+                                    <div class="col-12 col-md-1 ms-md-2 me-md-3">
+                                        <a href = "mailto: littlewoollysnuggles@gmail.com" class="d-flex align-items-center p-2"><i class="fa-regular fa-envelope me-2"></i></a>
+                                    </div>
+                                    <div class="col-12 col-md-1 me-md-3">
+                                        <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </div>
+                                    <div class="col-12 col-md-1 me-md-3">
+                                        <a href = "#" class="d-flex align-items-center p-2"><i class="fa-brands fa-youtube"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
