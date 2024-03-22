@@ -29,14 +29,8 @@ class StripeWH_Handler:
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-        # send_mail(
-        #     subject,
-        #     body,
-        #     settings.DEFAULT_FROM_EMAIL,
-        #     [cust_email]
-        # )
         mail = mt.Mail(
-            sender=mt.Address(email="mailtrap@littlewoollysnuggles.com", name="mailtrap"),
+            sender=mt.Address(email="mailtrap@littlewoollysnuggles.com", name="Little Woolly Snuggles"),
             to=[mt.Address(email=cust_email)],
             subject=subject,
             text=body,
