@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 import mailtrap as mt
+import os
 
 from .models import Order, OrderLineItem, UserProfile
 from products.models import Product
@@ -35,13 +36,13 @@ class StripeWH_Handler:
         #     [cust_email]
         # )
         mail = mt.Mail(
-            sender=mt.Address(email="mailtrap@example.com", name="Mailtrap Test"),
+            sender=mt.Address(email="admin@littlewoollysnuggles.com", name="Mailtrap Test"),
             to=[mt.Address(email=cust_email)],
             subject=subject,
             text=body,
             )
 
-        client = mt.MailtrapClient(token="your-api-key")
+        client = mt.MailtrapClient(token=os.environ.get('MAILTRAP_TOKEN'))
         client.send(mail)
 
     def handle_event(self, event):
