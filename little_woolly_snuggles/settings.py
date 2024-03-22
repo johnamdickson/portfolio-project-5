@@ -65,6 +65,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
+
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
@@ -209,12 +210,7 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'localhost'
-    EMAIL_HOST_USER = False
-    EMAIL_HOST_PASSWORD = False
-    EMAIL_PORT = '1025'
-    EMAIL_USE_TLS = False
-    EMAIL_USE_SSL = False
+    DEFAULT_FROM_EMAIL = 'littlewoollysnuggles@example.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'live.smtp.mailtrap.io'
@@ -223,3 +219,4 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_TOKEN')
     EMAIL_USE_TLS = True
     EMAIL_USE_SSL = False
+    EMAIL_SSL_KEYFILE = True
