@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['little-woolly-snuggles-4b258af9630a.herokuapp.com','8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io', 'localhost']
+ALLOWED_HOSTS = ['little-woolly-snuggles-4b258af9630a.herokuapp.com','8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',]
 
 
 # Application definition
