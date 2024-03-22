@@ -78,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'little_woolly_snuggles.urls'
@@ -108,6 +109,13 @@ TEMPLATES = [
             ]
         },
     },
+]
+
+CSRF_COOKIE_DOMAIN ='.ws-eu110.gitpod.io'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',
+    'https://little-woolly-snuggles-4b258af9630a.herokuapp.com'
 ]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
