@@ -220,3 +220,4 @@ else:
     EMAIL_USE_TLS = True
     EMAIL_USE_SSL = False
     EMAIL_SSL_KEYFILE = True
+    EMAIL_SSL_CERTFILE = True
