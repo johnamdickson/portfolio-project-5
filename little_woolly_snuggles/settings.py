@@ -216,14 +216,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-if 'DEVELOPMENT' in os.environ:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'littlewoollysnuggles@example.com'
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'live.smtp.mailtrap.io'
-    EMAIL_PORT = '587'
-    EMAIL_HOST_USER = 'api'
-    EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_TOKEN')
-    EMAIL_USE_TLS = True
-    EMAIL_USE_SSL = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'live.smtp.mailtrap.io'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'api'
+EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_TOKEN')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
