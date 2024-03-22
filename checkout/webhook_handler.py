@@ -36,7 +36,7 @@ class StripeWH_Handler:
         #     [cust_email]
         # )
         mail = mt.Mail(
-            sender=mt.Address(email="admin@littlewoollysnuggles.com", name="Mailtrap Test"),
+            sender=mt.Address(email="mailtrap@littlewoollysnuggles.com", name="mailtrap"),
             to=[mt.Address(email=cust_email)],
             subject=subject,
             text=body,
