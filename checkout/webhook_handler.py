@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
+import mailtrap as mt
 
 from .models import Order, OrderLineItem, UserProfile
 from products.models import Product
@@ -27,12 +28,21 @@ class StripeWH_Handler:
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [cust_email]
-        )
+        # send_mail(
+        #     subject,
+        #     body,
+        #     settings.DEFAULT_FROM_EMAIL,
+        #     [cust_email]
+        # )
+        mail = mt.Mail(
+            sender=mt.Address(email="mailtrap@example.com", name="Mailtrap Test"),
+            to=[mt.Address(email=cust_email)],
+            subject=subject,
+            text=body,
+            )
+
+        client = mt.MailtrapClient(token="your-api-key")
+        client.send(mail)
 
     def handle_event(self, event):
         """

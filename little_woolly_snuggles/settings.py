@@ -208,12 +208,17 @@ FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 
 if 'DEVELOPMENT' in os.environ:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'littlewoollysnuggles@example.com'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'localhost'
+    EMAIL_HOST_USER = False
+    EMAIL_HOST_PASSWORD = False
+    EMAIL_PORT = '1025'
+    EMAIL_USE_TLS = False
+    EMAIL_USE_SSL = False
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'live.smtp.mailtrap.io'
-    EMAIL_PORT = '587'
+    EMAIL_PORT = 587
     EMAIL_HOST_USER = 'api'
     EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_TOKEN')
     EMAIL_USE_TLS = True
