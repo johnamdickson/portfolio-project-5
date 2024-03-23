@@ -15,7 +15,6 @@ def products(request):
     categorisation.
     """
     products = Product.objects.all().order_by('category')
-    unfiltered_products = Product.objects.all()
     query = None
     categories = None
     title = "Products"
@@ -75,7 +74,6 @@ def products(request):
         'current_categories': categories,
         'title': title,
         'current_sorting': current_sorting,
-        'unfiltered_products': unfiltered_products,
     }
 
     return render(request, 'products/products.html', context)
@@ -88,7 +86,6 @@ def product_detail(request, product_pk):
     product = get_object_or_404(Product, pk=product_pk)
     sizes = product.sizes.all()
     colours = product.colours.all()
-    unfiltered_products = Product.objects.all()
     sizes_data = list(sizes.values())
     colours_data = list(colours.values())
     context = {
@@ -96,7 +93,6 @@ def product_detail(request, product_pk):
         'product': product,
         'sizes': sizes,
         'colours': colours,
-        'unfiltered_products': unfiltered_products,
         'sizes_data': sizes_data,
         'colours_data': colours_data,
     }

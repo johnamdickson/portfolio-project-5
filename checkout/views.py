@@ -31,7 +31,6 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
-    unfiltered_products = Product.objects.all().order_by('category')
     try:
         user_profile = UserProfile.objects.get(user=request.user)
     except:
@@ -123,7 +122,6 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'unfiltered_products': unfiltered_products,
     }
 
     return render(request, template, context)
@@ -157,7 +155,6 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    unfiltered_products = Product.objects.all().order_by('category')
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.success(request, f'Order successfully processed! \
@@ -170,7 +167,6 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout-success.html'
     context = {
         'order': order,
-        'unfiltered_products': unfiltered_products,
     }
 
     return render(request, template, context)

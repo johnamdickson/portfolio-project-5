@@ -8,13 +8,8 @@ import constants as k
 
 def view_cart(request):
     """ A view that renders the cart contents page """
-    unfiltered_products = Product.objects.all().order_by('category')
 
-    context = {
-        'unfiltered_products': unfiltered_products,
-      }
-
-    return render(request, 'cart/cart.html', context)
+    return render(request, 'cart/cart.html')
 
 def add_to_cart(request, item_id):
     """ Add a quantity of the specified product to the shopping cart """
