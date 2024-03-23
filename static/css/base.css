@@ -11,6 +11,9 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 200;
     letter-spacing: 1.5px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1,
@@ -770,7 +773,8 @@ input[type=number] {
 /* ----------------------------------- Footer Styling ----------------------------------- */
 
 footer {
-    color: #4d6562;
+    margin-top: auto;
+    color: #fff;
 }
 
 footer h5, footer input{
@@ -780,10 +784,25 @@ footer h5, footer input{
     width: 100%;
 }
 
-#mc_embed_signup input{
+#mc-embedded-subscribe{
     width: fit-content;
+    color: #4d6562;
+    border: 1px solid #4d6562 !important;
+    border-radius: 15px !important;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
 }
 
+#mc-embedded-subscribe:hover{
+    color: #f2bfdc;
+    border-color: #f2bfdc !important;
+}
+
+#mc_embed_signup input:focus {
+    border-color: #f2bfdc !important;
+    box-shadow: 0 0 0 0.125rem rgba(242, 191, 220, 0.55) !important;
+}
 footer p, footer label{
     margin: 0;
     font-size: 0.7rem;
@@ -792,7 +811,7 @@ footer p, footer label{
 
 .footer-text a {
     text-decoration: none;
-    color: #4d6562;
+    color: #fff;
 }
 
 .footer-logo {
