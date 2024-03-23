@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['little-woolly-snuggles-4b258af9630a.herokuapp.com','8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',]
 
@@ -216,11 +216,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-DEFAULT_FROM_EMAIL='mailtrap@littlewoollysnuggles.com' 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'live.smtp.mailtrap.io'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'api'
-EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_TOKEN')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'boutiqueado@example.com'
+else:
+    DEFAULT_FROM_EMAIL='mailtrap@littlewoollysnuggles.com' 
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'live.smtp.mailtrap.io'
+    EMAIL_PORT = '587'
+    EMAIL_HOST_USER = 'api'
+    EMAIL_HOST_PASSWORD = os.environ.get('MAILTRAP_TOKEN')
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
