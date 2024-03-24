@@ -40,7 +40,7 @@ class Product(models.Model):
     colours = models.ManyToManyField('ProductColour', blank=True)
     secondary_colour = models.BooleanField(default=False, blank=True)
     learn_product = models.BooleanField(default=False, blank=True)
-    learn_product_pdf = models.FileField(upload_to='pdfs', null=True, blank=True)
+    learn_product_pdf = models.FileField(upload_to='pdfs', null=True, blank=True, verbose_name="Learn .pdf File")
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
