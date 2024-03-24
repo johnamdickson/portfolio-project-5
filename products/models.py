@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 import constants as k
+import os
 
 # Create your models here.
 class Category(models.Model):
@@ -39,11 +40,17 @@ class Product(models.Model):
     colours = models.ManyToManyField('ProductColour', blank=True)
     secondary_colour = models.BooleanField(default=False, blank=True)
     learn_product = models.BooleanField(default=False, blank=True)
+    learn_product_pdf = models.FileField(upload_to='pdfs', null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    def filename(self):
+        # Method to return filename for sending pdf in email:
+        # https://stackoverflow.com/questions/51459940/filename-only-in-django-form-field
+        return os.path.basename(self.learn_product_pdf.name)
 
 class ProductSize(models.Model):
     """
@@ -75,3 +82,4 @@ class ProductColour(models.Model):
 
     def __str__(self):
         return self.name
+
