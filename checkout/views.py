@@ -157,9 +157,14 @@ def checkout_success(request, order_number):
     """
     order = get_object_or_404(Order, order_number=order_number)
 
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+    messages.success(
+        request,                              
+        (f'<p class="mb-2">Order successfully processed!<br>'
+        f'Your order number is <strong>{order_number}.'
+        f'</strong><br>A confirmation email will be sent to'
+        f' <strong>{order.email}.</strong>'),
+        extra_tags = "Order Processed"
+        )
 
     if 'cart' in request.session:
         del request.session['cart']
