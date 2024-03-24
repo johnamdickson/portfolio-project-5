@@ -1,0 +1,13 @@
+Hello {{order.full_name}},      
+
+Congrats on taking your first/next step towards becoming a crocheter.
+
+We hope you enjoy making your {{product.name}} and if you have any questions please get in touch.
+
+Thanks again for your order!
+
+Sincerely,
+
+
+Little Woolly Snuggles
+

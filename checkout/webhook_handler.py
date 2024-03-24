@@ -4,6 +4,8 @@ from django.template.loader import render_to_string
 from django.conf import settings
 import mailtrap as mt
 import os
+import base64
+from pathlib import Path
 
 from .models import Order, OrderLineItem, UserProfile
 from products.models import Product
@@ -18,6 +20,42 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_learn_pdf_email(self, product, order):
+        """
+        A function which takes in any product that is a learn_product and along with the customer
+        email from the passed in order, the product learn_product_pdf is sent to the customer as 
+        an email attachment.
+        """
+        cust_email = order.email
+        pdf_attachment = Path(product.learn_product_pdf.path).read_bytes()
+        filename = product.filename()
+        text = render_to_string(
+            'checkout/confirmation_emails/learn_product_email_text.txt',
+            {
+                'order': order,
+                'product': product
+                }
+             )
+        mail = mt.Mail(
+            sender=mt.Address(email="mailtrap@littlewoollysnuggles.com", name="Little Woolly Snuggles"),
+            to=[mt.Address(email=cust_email)],
+            subject="Here is your Tutorial!",
+            text=text,
+            attachments=[
+                mt.Attachment(
+                                content=base64.b64encode(pdf_attachment),
+                                filename=filename,
+                                disposition=mt.Disposition.ATTACHMENT,
+                                mimetype="application/pdf",
+                            )
+                        ],
+            headers={"X-MT-Header": "Custom header"},
+            custom_variables={"year": 2024},
+                    )
+
+        client = mt.MailtrapClient(token=os.environ.get('MAILTRAP_TOKEN'))
+        client.send(mail)
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
@@ -75,19 +113,23 @@ class StripeWH_Handler:
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
 
-
         order_exists = False
         attempt = 1
         while attempt <= 5:
             try:
                 order = Order.objects.get(order_number=order_number)
                 order_exists = True
+                for item in order.lineitems.all():
+                    print (item.product.name, item.product.learn_product)
                 break
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
             self._send_confirmation_email(order)
+            for item in order.lineitems.all():
+                if item.product.learn_product:
+                    self._send_learn_pdf_email(item.product, order)
             return HttpResponse(
                 content=(f'Webhook received: {event["type"]} | SUCCESS: '
                          'Verified order already in database'),
@@ -142,6 +184,9 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         self._send_confirmation_email(order)
+        for item in order.lineitems.all():
+            if item.product.learn_product:
+                self._send_learn_pdf_email(item.product, order)
         return HttpResponse(
             content=(f'Webhook received: {event["type"]} | SUCCESS: '
                      'Created order in webhook'),
