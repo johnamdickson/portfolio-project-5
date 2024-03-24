@@ -4,6 +4,7 @@ window.addEventListener('load', function () {
   styleProductCards();
   sizeSelectCheck();
   productQuantitySelect();
+  productImagePreview();
 })
 
 const setUpSelect = () => {
@@ -415,3 +416,15 @@ const handleProductDelete = () => {
         });
     }
 }
+
+const productImagePreview = () => {
+  const imgInput = document.getElementsByName('image')[2]
+  const displayImg = document.querySelector("#display-img")
+  if (imgInput) {
+    imgInput.addEventListener('change',(event)=>{
+      console.log('called again')
+       const imgObject = event.target.files[0]
+       displayImg.src = URL.createObjectURL(imgObject)})
+  };
+}
+

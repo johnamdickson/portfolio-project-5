@@ -10,14 +10,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
+<div class="container-fluid mb-2">
     <div class="row pt-lg-2">
         <div class="col-12">
             <h2 class="text-center main-title">Add Product </h2>
             <hr class="mx-auto main-hr">
         </div>
     </div>
-    <div class="col-12 col-lg-10 mx-auto p-3">
+    <div class="col-12 col-lg-9 mx-auto p-3">
         {% if user.is_superuser %}
         <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
             {% csrf_token %}
@@ -65,6 +65,9 @@
                     <div class="row p-2">
                         <div class="form-group col-md-12">
                             {{ form.image|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6 mx-auto my-2 p-0">
+                            <img id="display-img" class="img-thumbnail"/>
                         </div>
                     </div>
                     <div class="row p-2">
