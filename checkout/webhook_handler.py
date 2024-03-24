@@ -27,9 +27,11 @@ class StripeWH_Handler:
         email from the passed in order, the product learn_product_pdf is sent to the customer as 
         an email attachment.
         """
+        print('function called')
         cust_email = order.email
         pdf_attachment = Path(product.learn_product_pdf.path).read_bytes()
         filename = product.filename()
+        print('got filename', filename)
         text = render_to_string(
             'checkout/confirmation_emails/learn_product_email_text.txt',
             {
@@ -53,7 +55,7 @@ class StripeWH_Handler:
             headers={"X-MT-Header": "Custom header"},
             custom_variables={"year": 2024},
                     )
-
+        print('here is info on the mail', mail)
         client = mt.MailtrapClient(token=os.environ.get('MAILTRAP_TOKEN'))
         client.send(mail)
 
@@ -119,8 +121,6 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(order_number=order_number)
                 order_exists = True
-                for item in order.lineitems.all():
-                    print (item.product.name, item.product.learn_product)
                 break
             except Order.DoesNotExist:
                 attempt += 1
