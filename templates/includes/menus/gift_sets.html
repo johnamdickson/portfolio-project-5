@@ -1,0 +1,9 @@
+{% load static %}
+{% for product in unfiltered_products %}
+    {% if product.category.name == "gift_sets" %}
+        <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
+    {% endif %}
+{% endfor %}
+<hr class="mx-auto">
+<a href="{% url 'products' %}?category=gift_sets" class="dropdown-item">All Gift Sets</a>{% load static %}
+
