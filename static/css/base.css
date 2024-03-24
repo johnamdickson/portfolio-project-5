@@ -628,6 +628,11 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
     fill: #4d6562;
 }
 
+.gift {
+    width: 15px;
+    height: 15px;
+    stroke: #4d6562;
+}
 .size-colour-row {
     z-index:999;
     top:15px;

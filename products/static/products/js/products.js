@@ -69,6 +69,14 @@ const styleProductCards = () => {
           svg.style.transition = 'all 1.5s'
           svg.style.fill = '#f1d5e5';
         };
+        let giftSvgs = card.getElementsByClassName('gift');
+        if (giftSvgs){
+          for (let svg of giftSvgs){
+            svg.style.transition = 'all 1.5s'
+            svg.style.stroke = '#f1d5e5';
+          }
+        }
+
         let images = card.getElementsByClassName('product-image');
         for (let image of images) {
           image.style.transition = 'all 1.5s'
@@ -92,6 +100,11 @@ const styleProductCards = () => {
           svg.style.transition = 'all 1s'
           svg.style.fill = '#4d6562';
         };
+        let giftSvgs = card.getElementsByClassName('gift');
+        for (let svg of giftSvgs){
+          svg.style.transition = 'all 1s'
+          svg.style.stroke = '#4d6562';
+        }
         let images = card.getElementsByClassName('product-image');
         for (let image of images) {
           image.style.transition = 'all 0.5s'
@@ -418,6 +431,8 @@ const handleProductDelete = () => {
 }
 
 const productImagePreview = () => {
+  // How to display image once selected on input:
+  // https://stackoverflow.com/questions/72752673/how-to-show-image-just-after-uploading-in-django-form
   const imgInput = document.getElementsByName('image')[2]
   const displayImg = document.querySelector("#display-img")
   if (imgInput) {
