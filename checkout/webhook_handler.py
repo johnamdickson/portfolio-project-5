@@ -29,7 +29,10 @@ class StripeWH_Handler:
         """
         print('function called')
         cust_email = order.email
-        pdf_attachment = Path(product.learn_product_pdf.path).read_bytes()
+        try:
+            pdf_attachment = Path(product.learn_product_pdf.path).read_bytes()
+        except Exception as e:
+            print("Trying to create path returned this error:", e)
         filename = product.filename()
         print('got filename', filename)
         text = render_to_string(
