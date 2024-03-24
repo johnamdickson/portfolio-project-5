@@ -30,11 +30,10 @@ class StripeWH_Handler:
         print('function called')
         cust_email = order.email
         try:
-            pdf_attachment = Path(product.learn_product_pdf.name).read_bytes()
+            pdf_attachment = product.learn_product_pdf.file.read()
         except Exception as e:
-            print("Trying to create path returned this error:", e)
+            print("Error creating attachment:", e)
         filename = product.filename()
-        print('got filename', filename)
         text = render_to_string(
             'checkout/confirmation_emails/learn_product_email_text.txt',
             {
@@ -58,7 +57,6 @@ class StripeWH_Handler:
             headers={"X-MT-Header": "Custom header"},
             custom_variables={"year": 2024},
                     )
-        print('here is info on the mail', mail)
         client = mt.MailtrapClient(token=os.environ.get('MAILTRAP_TOKEN'))
         client.send(mail)
 
