@@ -17,12 +17,12 @@
   <div class="row">
     <div class="col-12 mt-3">  
         <div class="dropdown">
-            <a class="dropdown-toggle" href="{% url 'products' %}" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="dropdown-toggle" href="{% url 'products' %}" role="button" id="dropdownMenuLinkProducts" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-store fa-xl me-4 d-inline"></i>
                <p class="d-inline">All Products</p> 
             </a>
           
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLinkProducts">
               {% include 'includes/menus/all-products.html' %}
 
             </ul>
@@ -33,12 +33,12 @@
   <div class="row">
     <div class="col-12 mt-3">    
         <div class="dropdown">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkLearn" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-graduation-cap fa-xl me-4 d-inline"></i>
                 <p class="d-inline">Learn to Crochet</p>
             </a>
           
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLinkLearn">
               {% include 'includes/menus/learn-to-crochet.html' %}
             </ul>
           </div>
@@ -47,13 +47,12 @@
   <hr>
 <div class="row">
   <div class="col-12 mt-3">    
-    <a href="">
-      <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+     <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkHats" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-hat-wizard fa-xl me-4 d-inline"></i>
           <p class="d-inline">Hats</p>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLinkHats">
           {% include 'includes/menus/hats.html' %}
         </ul>
       </div>
@@ -62,13 +61,12 @@
 <hr>
 <div class="row">
   <div class="col-12 mt-3">    
-    <a href="{% url 'account_signup' %}">
       <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkBlankets" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-rug fa-xl me-4 d-inline"></i>
           <p class="d-inline">Blankets</p>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLinkBlankets">
           {% include 'includes/menus/blankets.html' %}
         </ul>
       </div>
@@ -77,13 +75,12 @@
   <hr>
   <div class="row">
     <div class="col-12 mt-3">    
-      <a href="">
         <div class="dropdown">
-          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkGiftSets" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-shuffle fa-xl me-4 d-inline"></i>
             <p class="d-inline">Gift Sets</p>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLinkGiftSets">
             {% include 'includes/menus/gift_sets.html' %}
           </ul>
         </div>

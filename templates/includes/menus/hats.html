@@ -1,9 +1,13 @@
-{% load static %}
-
-{% for product in unfiltered_products %}
-    {% if product.category.name == "hats" %}
-        <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
-    {% endif %}
-{% endfor %}
-<hr class="mx-auto">
-<a href="{% url 'products' %}?category=hats" class="dropdown-item">All Hats</a>
+<li>
+    {% for product in unfiltered_products %}
+        {% if product.category.name == "hats" %}
+            <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
+        {% endif %}
+    {% endfor %}
+</li>
+<li>
+    <hr class="mx-auto">
+</li>
+<li>
+    <a href="{% url 'products' %}?category=hats" class="dropdown-item">All Hats</a>
+</li>

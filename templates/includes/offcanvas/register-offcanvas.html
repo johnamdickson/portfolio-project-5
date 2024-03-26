@@ -32,7 +32,7 @@
         <p><label for="id_username">Username:</label></p>
       </div>
       <div class="col-6 mt-2">
-        <p><input type="text" name="username" placeholder="Username" autofocus="autofocus" minlength="4" maxlength="150"
+        <p><input type="text" name="username" placeholder="Username" minlength="4" maxlength="150"
             required id="id_username" class="form-control"></p>
       </div>
     </div>
@@ -41,10 +41,10 @@
       <div class="col-4 mt-2 text-end">
         <p><label for="id_password1">Password:</label></p>
       </div>
-      <div class="col-6 mt-1">
+      <div class="col-6 mt-1" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
+      data-bs-content='{% include "includes/popovers/password-req-popover.html" %}'>
         <p><input type="password" name="password1" placeholder="Password" required id="id_password1"
-            class="form-control"  role="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
-             data-bs-content='{% include "includes/popovers/password-req-popover.html" %}'></p>
+            class="form-control" ></p>
       </div>
     </div>
     <hr>
@@ -61,7 +61,7 @@
     <div class="row">
       <div class="col-5 mt-3 mx-auto">
         <button type="submit" value="Log in" class="btn-custom w-100 p-2">
-          <p class="d-inline me-2">Sign Up</p> <i class='fa-solid fa-file-pen fa-lg d-inline'></i>
+          <span class="d-inline me-2">Sign Up</span> <i class='fa-solid fa-file-pen fa-lg d-inline'></i>
         </button>
         <input type="hidden" name="next" value="" />
       </div>
