@@ -109,23 +109,25 @@
                                                 <i class="fa-solid fa-palette d-inline me-1"></i>
                                                 <p class="m-0 d-inline">Primary Colour: {{item.colour}}</p>
                                             </div>
-                                        
+
                                         </div>
                                     </div>
                                     {% endif %}
                                     <input type="hidden" name="product_size" value="{{ item.size }}">
                                     <input type="hidden" name="product_colour" value="{{ item.colour }}">
-                                    <input type="hidden" name="secondary_product_colour" value="{{ item.secondary_colour }}">
-
-
+                                    <input type="hidden" name="secondary_product_colour"
+                                        value="{{ item.secondary_colour }}">
                                 </form>
                             </td>
                             <td class="py-3">
                                 <p class="my-0 text-center">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                 <div class="row text-center mt-2 justify-content-center "
                                     id="update-item-{{item.item_id}}">
-                                    <div class="col-12 col-lg-6 z-3 m-2 update-button-popover-container"  role="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
-                                    title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>Change Quantity" data-bs-content= '{% include "includes/popovers/update-button-popover.html" %}'>
+                                    <div class="col-12 col-lg-6 z-3 m-2 update-button-popover-container" role="button"
+                                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                        data-bs-sanitize="false" data-bs-placement="top"
+                                        title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>Change Quantity"
+                                        data-bs-content='{% include "includes/popovers/update-button-popover.html" %}'>
                                         <div class="btn-custom item-button p-1 update-button">
                                             Update<br>Item
                                         </div>
@@ -185,7 +187,7 @@
             </div>
         </div>
     </div>
-{% else %}
+    {% else %}
 </div>
 <div class="row">
     <div class="col-12 d-flex flex-column align-items-center">
@@ -200,7 +202,6 @@
     </div>
 </div>
 </div>
-
 {% endblock %}
 
 {% block postloadjs %}
