@@ -155,3 +155,11 @@ In order to automatically apply the correct debug settings, change the following
 - Save the CSV file as it contains critical authentication information that cannot be retrieved later.
 - In summary, the process involves creating a group, attaching an access policy allowing S3 access to the bucket, and creating a user with specific access keys.
 - In the next step, configure Django to connect to S3 using these keys and upload static files to S3.
+
+## Jest Testing
+- Install Jest using command `npm install --save-dev jest@26.6.3`. Note this version may be outdated.
+- Verify in packages.json that the following is included: <br>
+`  "scripts": {`<br>
+`    "test": "jest"`<br>
+`}`
+- Run jest by typing command `npm test` into terminal.
