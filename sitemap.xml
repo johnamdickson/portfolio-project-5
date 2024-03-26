@@ -23,7 +23,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://little-woolly-snuggles-4b258af9630a.herokuapp.com/products/?category=gift-sets</loc>
+  <loc>https://little-woolly-snuggles-4b258af9630a.herokuapp.com/products/?category=gift_sets</loc>
   <lastmod>2024-03-19T10:13:24+00:00</lastmod>
   <priority>0.80</priority>
 </url>
