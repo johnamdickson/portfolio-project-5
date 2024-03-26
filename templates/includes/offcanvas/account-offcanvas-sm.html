@@ -1,0 +1,89 @@
+{% load static %}
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="offcanvas-menuLabel-account-sm">Account</h5>
+<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<hr>
+<div class="offcanvas-body">
+  {% if request.user.is_superuser %}
+  <div class="row">
+    <div class="col-12 mt-2">    
+      <a href="#" class="offcanvas-product-button">
+        <div class="row justify-content-start">
+          <div class="col-2">
+            <i class="fa-solid fa-industry fa-xl d-inline"></i>
+          </div>
+          <div class="col-10">
+            <p class="d-inline">Product Management</p> 
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr>
+  {% endif %}
+  {% if request.user.is_authenticated %}
+  <div class="row">
+    <div class="col-12 mt-3">    
+      <a href="#" class="offcanvas-profile-button">
+        <div class="row justify-content-start">
+          <div class="col-2">
+            <i class="fa-solid fa-user fa-xl d-inline"></i>
+          </div>
+          <div class="col-8">
+            <p class="d-inline">My Profile</p> 
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 mt-3">    
+      <a href="#" class="offcanvas-logout-button">
+        <div class="row justify-content-start">
+          <div class="col-2">
+        <i class="fa-solid fa-right-from-bracket fa-xl d-inline"></i>
+          </div>
+          <div class="col-8">
+            <p class="d-inline">Logout</p> 
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr>
+{% else %}
+<div class="row">
+  <div class="col-12 mt-2">    
+    <a href="#" class="offcanvas-register-button">
+      <div class="row justify-content-start">
+        <div class="col-2">
+          <i class="fa-solid fa-file-pen fa-xl d-inline"></i>
+        </div>
+        <div class="col-4">
+          <p class="d-inline">Register</p> 
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12 mt-3">    
+    <a href="#" class="offcanvas-login-button">
+      <div class="row justify-content-start">
+        <div class="col-2">
+          <i class="fa-solid fa-right-to-bracket fa-xl d-inline"></i>        
+        </div>
+        <div class="col-4">
+          <p class="d-inline">Login</p> 
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<hr>
+{% endif %}
+</div>
+
