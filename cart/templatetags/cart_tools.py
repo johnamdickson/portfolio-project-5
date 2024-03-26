@@ -4,6 +4,7 @@ from num2words import num2words
 
 register = template.Library()
 
+
 @register.filter
 def calc_subtotal(price, quantity):
     return price * quantity

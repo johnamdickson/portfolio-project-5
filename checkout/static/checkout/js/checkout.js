@@ -136,8 +136,6 @@ async function handleSubmit(e) {
     elements,
     redirect: "if_required",
     confirmParams: {
-      // Make sure to change this to your payment completion page
-      // return_url: `https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu108.gitpod.io/checkout/checkout-success/${uniqueNumber}`,
       shipping: shippingData,
       payment_method_data: {
         billing_details: billingData,
