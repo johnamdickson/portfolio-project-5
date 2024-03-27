@@ -4,9 +4,11 @@ window.addEventListener('load', function () {
   styleProductCards();
   sizeSelectCheck();
   productQuantitySelect();
-  productImagePreview();
 })
 
+window.addEventListener('DOMContentLoaded', function() {
+  productImagePreview();
+})
 const setUpSelect = () => {
   /**
    * Function to query URL search parameters and update on change of
@@ -431,15 +433,78 @@ const handleProductDelete = () => {
 }
 
 const productImagePreview = () => {
+  const learnInput = document.getElementById('id_learn_product');
+  const sizeCheckBoxes = document.getElementsByName('sizes');
+  const colourCheckBoxes = document.getElementsByName('colours');
+  console.log(colourCheckBoxes)
+  const secondaryColour = document.getElementById('id_secondary_colour');
+  secondaryColour.disabled = true
+  const learnPdfInput = document.getElementById('div_id_learn_product_pdf');
+  learnPdfInput.style.visibility = 'hidden';
+  learnInput.addEventListener('change', function() {
+    if (this.checked){
+      for (let box of sizeCheckBoxes){
+        box.disabled = true;
+      }
+      for (let box of colourCheckBoxes){
+        box.disabled = true;
+      }
+      secondaryColour.disabled = true;
+      learnPdfInput.style.visibility = 'visible';
+    } else {
+      for (let box of sizeCheckBoxes){
+        box.disabled = false;
+      }
+      for (let box of colourCheckBoxes){
+        box.disabled = false;
+      }
+      secondaryColour.disabled = false;
+      learnPdfInput.style.visibility = 'hidden';
+    }
+  });
+  for (let colourCheck of colourCheckBoxes) {
+    colourCheck.addEventListener('change', function(){
+      if (this.checked){
+        secondaryColour.disabled = false
+      } else {
+        // solution to checking all checkboxes:
+        // https://stackoverflow.com/questions/590018/getting-all-selected-checkboxes-in-an-array
+        let checkAllFalse = Array
+        .from(colourCheckBoxes)
+        .filter(checkbox => checkbox.checked);
+        if(checkAllFalse.length === 0){
+          secondaryColour.disabled = true
+        }      
+      }
+    })
+  }
+  const checkAllColours = () => {
+    Array.from(colourCheckBoxes).filter(function(e){
+      if (e.checked === true){
+        console.log('YAY')
+      }
+      // if(e.checked === true){
+      //   secondaryColour.disabled = false
+      //   console.log('FALSE BABy')
+      // } else {
+      //   secondaryColour.disabled = true
+      //   console.log('THERE TRUTH')
+      // }
+    })
+  }
   // How to display image once selected on input:
   // https://stackoverflow.com/questions/72752673/how-to-show-image-just-after-uploading-in-django-form
-  const imgInput = document.getElementsByName('image')[2]
+  const imgInput = document.getElementById('id_image')
   const displayImg = document.querySelector("#display-img")
   if (imgInput) {
     imgInput.addEventListener('change',(event)=>{
-      console.log('called again')
+      console.log(imgInput.value)
        const imgObject = event.target.files[0]
-       displayImg.src = URL.createObjectURL(imgObject)})
+       if (imgObject) {
+        displayImg.src = URL.createObjectURL(imgObject)}
+       else {
+        displayImg.src = "https://little-woolly-snuggles.s3.amazonaws.com/media/no-image-selected.png"}
+       })
   };
 }
 
