@@ -8,6 +8,7 @@ Contexts in which element p may be used:
 Where flow content is expected.
 Content model for element button:
 Phrasing content, but there must be no interactive content descendant and no descendant with the tabindex attribute specified.
+
 Error: Element p not allowed as child of element button in this context. (Suppressing further errors from this subtree.)
 
 From line 284, column 11; to line 284, column 35
@@ -34,6 +35,7 @@ Contexts in which element p may be used:
 Where flow content is expected.
 Content model for element button:
 Phrasing content, but there must be no interactive content descendant and no descendant with the tabindex attribute specified.
+
 Error: Element p not allowed as child of element button in this context. (Suppressing further errors from this subtree.)
 
 From line 518, column 11; to line 518, column 35
@@ -44,6 +46,7 @@ Contexts in which element p may be used:
 Where flow content is expected.
 Content model for element button:
 Phrasing content, but there must be no interactive content descendant and no descendant with the tabindex attribute specified.
+
 Error: A document must not include more than one autofocus attribute.
 
 From line 562, column 12; to line 563, column 59
@@ -66,6 +69,7 @@ Contexts in which element p may be used:
 Where flow content is expected.
 Content model for element button:
 Phrasing content, but there must be no interactive content descendant and no descendant with the tabindex attribute specified.
+
 Error: Duplicate ID offcanvas-menuLabel-profile.
 
 From line 617, column 3; to line 617, column 63
