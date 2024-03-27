@@ -19,7 +19,7 @@
               </label>
               <div>
                 <input type="text" name="username" value="{{user.username}}" maxlength="30"
-                  class="textinput textInput form-control" id="id_username" readonly>
+                  class="textinput textInput form-control" id="id_username_regular" readonly>
               </div>
             </div>
           </div>
@@ -31,13 +31,13 @@
                 email
               </label>
               <div>
-                <input type="text" name="username" value="{{user.email}}" maxlength="30"
-                  class="textinput textInput form-control" id="id_username" readonly>
+                <input type="text" name="email" value="{{user.email}}" maxlength="30"
+                  class="textinput textInput form-control" id="id_email_regular" readonly>
               </div>
             </div>
           </div>
         </div>
-        {% for input in profile_form %}
+        {% for input in form_regular %}
         <div class="row">
           <div class="col-12 my-0">
             {{input | as_crispy_field}}
@@ -47,7 +47,7 @@
         <div class="row">
           <div class="col-10 mt-3 mx-auto">
             <button type="submit" value="Log in" class="btn-custom w-100 p-2">
-              <p class="d-inline me-2">Update Profile</p>
+              <span class="d-inline me-2">Update Profile</span>
               <i class="fa-solid fa-user fa-xl d-inline"></i>
             </button>
             <input type="hidden" name="next" value="">
@@ -116,7 +116,7 @@
           </div>
           <div class="col-12 small">
             <strong>
-              <p class="mb-1 m-0">€{{order.grand_total}}</p>
+              <span class="mb-1 m-0">€{{order.grand_total}}</span>
             </strong>
           </div>
         </div>

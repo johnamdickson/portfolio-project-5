@@ -55,13 +55,13 @@
                               email
                             </label>
                             <div>
-                              <input type="text" name="username" value="{{user.email}}" maxlength="30"
-                                class="textinput textInput form-control" id="id_username" readonly>
+                              <input type="text" name="email" value="{{user.email}}" maxlength="30"
+                                class="textinput textInput form-control" id="id_email" readonly>
                             </div>
                           </div>
                         </div>
                       </div>
-                    {% for input in profile_form %}
+                    {% for input in form %}
                     <div class="row">
                         <div class="col-12 my-1">
                             {{input | as_crispy_field}}
@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-10 mt-3 mx-auto">
                             <button type="submit" value="Log in" class="btn-custom w-100 p-2">
-                                <p class="d-inline me-2">Update Profile</p>
+                                <span class="d-inline me-2">Update Profile</span>
                                 <i class="fa-solid fa-user fa-xl d-inline"></i>
                             </button>
                             <input type="hidden" name="next" value="">
@@ -90,13 +90,13 @@
                             <p class="my-1 m-0">Order Number:</p>
                         </div>
                         <div class="col-12 small">
-                            <p class="mb-1 m-0">{{order.order_number}}</p>
+                            <span class="mb-1 m-0">{{order.order_number}}</span>
                         </div>
                         <div class="col-12 small">
                             <p class="my-1 m-0">Order Date:</p>
                         </div>
                         <div class="col-12 small">
-                            <p class="mb-1 m-0">{{order.date}}</p>
+                            <span class="mb-1 m-0">{{order.date}}</span>
                         </div>
                         <div class="col-12 small">
                             <p class="my-1 m-0">Order Items:</p>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="col-12 small">
                             <strong>
-                                <p class="mb-1 m-0">€{{order.grand_total}}</p>
+                                <span class="mb-1 m-0">€{{order.grand_total}}</span>
                             </strong>
                         </div>
                     </div>

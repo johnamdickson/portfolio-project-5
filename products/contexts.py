@@ -11,9 +11,11 @@ def add_product_details(request):
 
     if request.user.is_authenticated:
         """ Display the user's profile. """
-        form = ProductForm()
+        form_regular = ProductForm(prefix='offcanvas_regular')
+        form_small = ProductForm(prefix='offcanvas_small')
         context = {
-            'product_form': form,
+            'form_regular': form_regular,
+            'form_small': form_small,
             'unfiltered_products': unfiltered_products,
 
         }

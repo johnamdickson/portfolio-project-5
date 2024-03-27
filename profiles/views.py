@@ -26,7 +26,7 @@ def profile(request):
         # https://stackoverflow.com/questions/70200186/how-to-realise-redirect-to-same-page-in-django-views 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
-        form = UserProfileForm(instance=profile)
+        form = UserProfileForm(instance=profile, prefix="view_form")
     
     orders = profile.orders.all().order_by('-date')
     template = 'profiles/profile.html'

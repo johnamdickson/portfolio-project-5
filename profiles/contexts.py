@@ -12,11 +12,12 @@ def profile_details(request):
     if request.user.is_authenticated:
         """ Display the user's profile. """
         profile = get_object_or_404(UserProfile, user=request.user)
-        form = UserProfileForm(instance=profile)
+        form_regular = UserProfileForm(instance=profile, prefix='offcanvas_form_regular')
+        form_small = UserProfileForm(instance=profile, prefix='offcanvas_form_small')
         orders = profile.orders.all().order_by('-date')
-        template = 'profiles/profile.html'
         context = {
-            'profile_form': form,
+            'form_small': form_small,
+            'form_regular': form_regular,
             'orders': orders,
             'on_profile_page': True
         }
