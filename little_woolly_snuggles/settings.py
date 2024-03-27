@@ -73,8 +73,8 @@ LOGIN_REDIRECT_URL = '/'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -111,10 +111,9 @@ TEMPLATES = [
     },
 ]
 
-CSRF_COOKIE_DOMAIN ='.ws-eu110.gitpod.io'
+CSRF_COOKIE_DOMAIN ='.herokuapp.com'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',
     'https://little-woolly-snuggles-4b258af9630a.herokuapp.com'
 ]
 
