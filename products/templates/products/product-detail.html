@@ -55,7 +55,6 @@
                   <p class="mt-3 text-end"><strong>Quantity:</strong></p>
                 </div>
                 <div class="col-6">
-                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                   <div class="form-group mx-auto w-100 mt-2 px-2">
                     <div class="input-group">
@@ -72,7 +71,7 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
-                    <div class="input-group" id="size-popover"  role="button" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
+                    <div class="input-group" id="size-popover" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="top"
                     title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>No Size Selected" data-bs-content="{% include 'includes/popovers/no-size-popover.html' %}">
                       <select class="form-control" name="product_size" id='id_product_size'>
                         <option disabled selected>Please choose a size</option>
@@ -90,9 +89,9 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
-                    <div class="input-group" id="primary-colour-popover" role="button" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="left"
+                    <div class="input-group" id="primary-colour-popover" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="left"
                     title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>No Primary Colour Selected" data-bs-content="{% include 'includes/popovers/no-primary-colour-popover.html' %}">
-                      <select class="form-control" name="product_colour" id='id_product_colour' required>
+                      <select class="form-control" name="product_colour" id='id_product_colour'>
                         <option disabled selected>Please choose a colour</option>
                         {% for c in colours %}
                         <option value="{{c.get_colour_display}}">{{c.get_colour_display}}</option>
@@ -107,7 +106,7 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group mx-auto w-100 mt-2 px-2">
-                    <div class="input-group" id="secondary-colour-popover" role="button" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="bottom"
+                    <div class="input-group" id="secondary-colour-popover" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-html="true" data-bs-sanitize="false" data-bs-placement="bottom"
                     title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>No Secondary Colour Selected" data-bs-content="{% include 'includes/popovers/no-secondary-colour-popover.html' %}">
                       <select class="form-control" name="secondary_product_colour" id='id_secondary_product_colour'>
                         <option disabled selected>Please choose a colour</option>
@@ -139,7 +138,6 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <div class="toast-container position-fixed">
