@@ -140,9 +140,9 @@
           <div class="col-12 product-image pt-2 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
-              <img class="" src="{{ product.image.url }}" alt="Image of {{product.name}}">
+              <img src="{{ product.image.url }}" alt="Image of {{product.name}}">
               {% else %}
-              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+              <img src="{{MEDIA_URL}}no-image-available.png"
                 alt="No image for this product">
               {% endif %}
             </div>

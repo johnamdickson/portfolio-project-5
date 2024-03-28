@@ -34,8 +34,8 @@
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
               </a>
               {% else %}
-              <img class="" src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
-                alt="{{ product.name}}">
+              <img src="{{MEDIA_URL}}no-image-available.png"
+                alt="No image available for this product.">
               {% endif %}
             </div>
           </div>

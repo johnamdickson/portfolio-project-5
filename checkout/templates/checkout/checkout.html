@@ -50,7 +50,7 @@
                             <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                             {% else %}
                             <img class="w-100"
-                                src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+                                src="{{MEDIA_URL}}no-image-available.png"
                                 alt="{{ product.name}}">
                             {% endif %}
                         </a>
