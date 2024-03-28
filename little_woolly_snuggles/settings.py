@@ -111,8 +111,6 @@ TEMPLATES = [
     },
 ]
 
-# CSRF_COOKIE_DOMAIN ='.herokuapp.com'
-
 CSRF_TRUSTED_ORIGINS = [
     'https://little-woolly-snuggles-4b258af9630a.herokuapp.com'
 ]
