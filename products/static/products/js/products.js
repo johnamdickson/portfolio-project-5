@@ -542,6 +542,7 @@ const setUpAddProduct = () => {
               .filter(checkbox => checkbox.checked);
               if(checkAllColoursFalse.length === 0){
                 secondaryColour.disabled = true;
+                secondaryColour.checked = false;
               }      
               let checkAllSizesFalse = Array
               .from(sizeCheckBoxes)
