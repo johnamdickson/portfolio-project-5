@@ -76,16 +76,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-8 col-md-6 col-lg-3 edit-image my-auto mx-auto">
+                        <div class="col-12 col-md-6 col-lg-3 edit-image my-auto mx-auto">
                             <div class="row">
-                                <div class="col-10 col-md-12 mx-auto">
+                                <div class="col-11 mx-auto mb-3 mb-lg-5">
                                     {% if product.image %}
                                     <img src="{{product.image.url}}" alt="Image if {{product.name}}" id="display-img" class="img-thumbnail p-0">
                                     {% else %}
                                     <img src="{{MEDIA_URL}}no-image-selected.png" id="display-img" class="img-thumbnail p-0" alt="Thumbnail to display product image once selected.">
                                     {% endif %}
                                 </div>
-                                <div class="col-10 col-lg-12 mx-auto my-3">
+                                <div class="col-12 mx-auto my-3">
                                     <div class="row flex-column flex-lg-row">
                                         <div class="col-8 order-lg-2 mx-auto d-flex justify-content-center">
                                             <button class="btn btn-custom p-2" type="submit">Update Product

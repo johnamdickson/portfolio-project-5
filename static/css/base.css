@@ -754,6 +754,9 @@ input[type=number] {
     height: 450px;
     border-radius: 20px;
 }
+.edit-image img{
+    height: 275px;
+}
 
 /* ----------------------------------- Error Page Styling ----------------------------------- */
 
@@ -852,6 +855,10 @@ footer p, footer label{
 
     .home-container {
         height: 800px;
+    }
+
+    .edit-image img{
+        height: 350px;
     }
 }
 
