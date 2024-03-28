@@ -76,7 +76,7 @@
                             alt="{{ product.name }}">
                         {% else %}
                         <img class="img-fluid rounded"
-                            src="https://placeholder.pics/svg/300x300/DEDEDE/555555/No%20Image%20available"
+                            src="{{MEDIA_URL}}no-image-available.png"
                             alt="{{ product.name}}">
                         {% endif %}
                     </div>
@@ -189,13 +189,27 @@
                         <small class="text-muted">Billing Info:</small>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <p class="mb-0 text-black font-weight-bold">Order Total</p>
                     </div>
                     <div class="col-12 col-md-6 text-md-right">
                         <p class="mb-0">€{{ order.order_total }}</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 text-black font-weight-bold">Delivery</p>
+                    </div>
+                    <div class="col-12 col-md-6 text-md-right">
+                        <p class="mb-0">€{{ order.delivery_cost }}</p>
+                    </div>
+                    <div class="col-12 mx-auto">
+                        <hr class="p-0 opacity-25">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 text-black font-weight-bold fs-6"><strong>Grand Total</strong></p>
+                    </div>
+                    <div class="col-12 col-md-6 text-md-right fs-6">
+                        <p class="mb-0"><strong>€{{ order.grand_total }}</strong></p>
                     </div>
                 </div>
             </div>
