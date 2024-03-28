@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
 })
 
 window.addEventListener('DOMContentLoaded', function() {
-  productImagePreview();
+  setUpAddProduct();
 })
 const setUpSelect = () => {
   /**
@@ -432,79 +432,149 @@ const handleProductDelete = () => {
     }
 }
 
-const productImagePreview = () => {
-  const learnInput = document.getElementById('id_learn_product');
-  const sizeCheckBoxes = document.getElementsByName('sizes');
-  const colourCheckBoxes = document.getElementsByName('colours');
-  console.log(colourCheckBoxes)
-  const secondaryColour = document.getElementById('id_secondary_colour');
-  secondaryColour.disabled = true
-  const learnPdfInput = document.getElementById('div_id_learn_product_pdf');
-  learnPdfInput.style.visibility = 'hidden';
-  learnInput.addEventListener('change', function() {
-    if (this.checked){
-      for (let box of sizeCheckBoxes){
-        box.disabled = true;
-      }
-      for (let box of colourCheckBoxes){
-        box.disabled = true;
-      }
-      secondaryColour.disabled = true;
-      learnPdfInput.style.visibility = 'visible';
-    } else {
-      for (let box of sizeCheckBoxes){
-        box.disabled = false;
-      }
-      for (let box of colourCheckBoxes){
-        box.disabled = false;
-      }
-      secondaryColour.disabled = false;
-      learnPdfInput.style.visibility = 'hidden';
-    }
-  });
-  for (let colourCheck of colourCheckBoxes) {
-    colourCheck.addEventListener('change', function(){
-      if (this.checked){
-        secondaryColour.disabled = false
-      } else {
-        // solution to checking all checkboxes:
-        // https://stackoverflow.com/questions/590018/getting-all-selected-checkboxes-in-an-array
-        let checkAllFalse = Array
-        .from(colourCheckBoxes)
-        .filter(checkbox => checkbox.checked);
-        if(checkAllFalse.length === 0){
-          secondaryColour.disabled = true
-        }      
-      }
-    })
+const setUpAddProduct = () => {
+  // declare all variables for the main page.
+  const mainLearnInput = document.getElementById('id_learn_product');
+  const mainSizeCheckBoxes = document.getElementsByName('sizes');
+  const mainColourCheckBoxes = document.getElementsByName('colours');
+  const mainSecondaryColour = document.getElementById('id_secondary_colour');
+  const mainLearnPdfInput = document.getElementById('div_id_learn_product_pdf');
+  const mainImgInput = document.getElementById('id_image')
+  const mainDisplayImg = document.querySelector("#display-img")
+
+  // declare variables for regular off canvas
+  const offcanvasRegularLearnInput = document.getElementById('id_offcanvas_regular-learn_product');
+  const offcanvasRegularSizeCheckBoxes = document.getElementsByName('offcanvas_regular-sizes');
+  const offcanvasRegularColourCheckBoxes = document.getElementsByName('offcanvas_regular-colours');
+  const offcanvasRegularSecondaryColour = document.getElementById('id_offcanvas_regular-secondary_colour');
+  const offcanvasRegularLearnPdfInput = document.getElementById('div_id_offcanvas_regular-learn_product_pdf');
+  const offcanvasRegularImgInput = document.getElementById('id_offcanvas_regular-image')
+  const offcanvasRegularDisplayImg = document.querySelector("#offcanvas-regular-display-img")
+  
+ // declare variables for small off canvas
+ const offcanvasSmallLearnInput = document.getElementById('id_offcanvas_small-learn_product');
+ const offcanvasSmallSizeCheckBoxes = document.getElementsByName('offcanvas_small-sizes');
+ const offcanvasSmallColourCheckBoxes = document.getElementsByName('offcanvas_small-colours');
+ const offcanvasSmallSecondaryColour = document.getElementById('id_offcanvas_small-secondary_colour');
+ const offcanvasSmallLearnPdfInput = document.getElementById('div_id_offcanvas_small-learn_product_pdf');
+ const offcanvasSmallImgInput = document.getElementById('id_offcanvas_small-image')
+ const offcanvasSmallDisplayImg = document.querySelector("#offcanvas-small-display-img")
+
+// check if mainLearnInput exists before calling helper function. Prevents errors on other product pages.
+  if (mainLearnInput){
+    handleAddProductDisplay(
+      mainLearnInput,
+      mainSizeCheckBoxes,
+      mainColourCheckBoxes,
+      mainSecondaryColour,
+      mainLearnPdfInput,
+      mainImgInput,
+      mainDisplayImg
+      )
+  } 
+  // no check required for offcanvas-regular nor small as the context is always present.
+    handleAddProductDisplay(
+        offcanvasRegularLearnInput,
+        offcanvasRegularSizeCheckBoxes,
+        offcanvasRegularColourCheckBoxes,
+        offcanvasRegularSecondaryColour,
+        offcanvasRegularLearnPdfInput,
+        offcanvasRegularImgInput,
+        offcanvasRegularDisplayImg
+        )
+    handleAddProductDisplay(
+      offcanvasSmallLearnInput,
+      offcanvasSmallSizeCheckBoxes,
+      offcanvasSmallColourCheckBoxes,
+      offcanvasSmallSecondaryColour,
+      offcanvasSmallLearnPdfInput,
+      offcanvasSmallImgInput,
+      offcanvasSmallDisplayImg
+      )
+
+  function handleAddProductDisplay (
+    learnInput, 
+    sizeCheckBoxes,
+    colourCheckBoxes,
+    secondaryColour,
+    learnPdfInput,
+    imgInput,
+    displayImg
+      ) {
+        secondaryColour.disabled = true
+        learnPdfInput.style.display = 'none';
+        learnInput.addEventListener('change', function() {
+          if (this.checked){
+            for (let box of sizeCheckBoxes){
+              box.disabled = true;
+              box.checked = false;
+            }
+            for (let box of colourCheckBoxes){
+              box.disabled = true;
+              box.checked = false;
+            }
+            learnPdfInput.style.display = 'block';
+          } else {
+            for (let box of sizeCheckBoxes){
+              box.disabled = false;
+            }
+            for (let box of colourCheckBoxes){
+              box.disabled = false;
+            }
+            learnPdfInput.style.display = 'none';
+          }
+        });
+        for (let colourCheck of colourCheckBoxes) {
+          colourCheck.addEventListener('change', function(){
+            if (this.checked){
+              secondaryColour.disabled = false;
+              learnInput.disabled = true;
+            } else {
+              // solution to checking all checkboxes:
+              // https://stackoverflow.com/questions/590018/getting-all-selected-checkboxes-in-an-array
+              let checkAllColoursFalse = Array
+              .from(colourCheckBoxes)
+              .filter(checkbox => checkbox.checked);
+              if(checkAllColoursFalse.length === 0){
+                secondaryColour.disabled = true;
+              }      
+              let checkAllSizesFalse = Array
+              .from(sizeCheckBoxes)
+              .filter(checkbox => checkbox.checked);
+              if (checkAllColoursFalse.length === 0 && checkAllSizesFalse.length === 0) {
+                learnInput.disabled = false;
+              }
+            }
+          })
+        }
+        for (let sizeCheck of sizeCheckBoxes) {
+          sizeCheck.addEventListener('change', function(){
+            if (this.checked){
+              learnInput.disabled = true;
+            } else {
+              // solution to checking all checkboxes:
+              // https://stackoverflow.com/questions/590018/getting-all-selected-checkboxes-in-an-array
+              let checkAllColoursFalse = Array
+              .from(colourCheckBoxes)
+              .filter(checkbox => checkbox.checked);
+              let checkAllSizesFalse = Array
+              .from(sizeCheckBoxes)
+              .filter(checkbox => checkbox.checked);
+              if (checkAllColoursFalse.length === 0 && checkAllSizesFalse.length === 0) {
+                learnInput.disabled = false;
+              }
+            }
+          })
+        }
+        imgInput.addEventListener('change',(event)=>{
+          // How to display image once selected on input:
+          // https://stackoverflow.com/questions/72752673/how-to-show-image-just-after-uploading-in-django-form
+           const imgObject = event.target.files[0]
+           if (imgObject) {
+            displayImg.src = URL.createObjectURL(imgObject)}
+           else {
+            displayImg.src = "https://little-woolly-snuggles.s3.amazonaws.com/media/no-image-selected.png"}
+           })
   }
-  const checkAllColours = () => {
-    Array.from(colourCheckBoxes).filter(function(e){
-      if (e.checked === true){
-        console.log('YAY')
-      }
-      // if(e.checked === true){
-      //   secondaryColour.disabled = false
-      //   console.log('FALSE BABy')
-      // } else {
-      //   secondaryColour.disabled = true
-      //   console.log('THERE TRUTH')
-      // }
-    })
-  }
-  // How to display image once selected on input:
-  // https://stackoverflow.com/questions/72752673/how-to-show-image-just-after-uploading-in-django-form
-  const imgInput = document.getElementById('id_image')
-  const displayImg = document.querySelector("#display-img")
-  if (imgInput) {
-    imgInput.addEventListener('change',(event)=>{
-      console.log(imgInput.value)
-       const imgObject = event.target.files[0]
-       if (imgObject) {
-        displayImg.src = URL.createObjectURL(imgObject)}
-       else {
-        displayImg.src = "https://little-woolly-snuggles.s3.amazonaws.com/media/no-image-selected.png"}
-       })
-  };
 }
 
