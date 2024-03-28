@@ -78,3 +78,51 @@ Contexts in which element a may be used:
 Where phrasing content is expected.
 Content model for element ul:
 Zero or more li and script-supporting elements.
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1247, column 7; to line 1249, column 50
+
+              <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/7/';"↩        aria-label="Product Detail page Dino Hat">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1373, column 7; to line 1375, column 56
+
+             <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/5/';"↩        aria-label="Product Detail page Classic Beanie">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1479, column 7; to line 1481, column 50
+
+           <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/4/';"↩        aria-label="Product Detail page Bear Hat">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1532, column 7; to line 1534, column 62
+
+         <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/11/';"↩        aria-label="Product Detail page Newborn Hat Tutorial">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1621, column 7; to line 1623, column 60
+
+        <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/10/';"↩        aria-label="Product Detail page Two Colour Blanket">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1729, column 7; to line 1731, column 50
+
+        <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/8/';"↩        aria-label="Product Detail page Tea Cosy">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1865, column 7; to line 1867, column 62
+
+        <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/9/';"↩        aria-label="Product Detail page Baby Hat and Booties">↩     
+
+Warning: Possible misuse of aria-label. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)
+
+From line 1997, column 7; to line 1999, column 54
+
+        <div class="container product-card h-100 py-2 d-flex flex-column"↩        onclick="location.href='/products/6/';"↩        aria-label="Product Detail page Mummy and Me">↩     
