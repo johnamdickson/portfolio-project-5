@@ -501,10 +501,15 @@ const setUpAddProduct = () => {
     imgInput,
     displayImg
       ) {
-        secondaryColour.disabled = true
+        if (secondaryColour.checked === true){
+          secondaryColour.disabled = false
+        } else {
+          secondaryColour.disabled = true
+        }
         learnPdfInput.style.display = 'none';
         learnInput.addEventListener('change', function() {
           if (this.checked){
+            secondaryColour.checked = false;
             for (let box of sizeCheckBoxes){
               box.disabled = true;
               box.checked = false;
