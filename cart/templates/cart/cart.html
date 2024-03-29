@@ -48,7 +48,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-12">
                                         {% if item.product.image %}
-                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}"
+                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}" loading="lazy"
                                             alt="{{ product.name }}">
                                         {% else %}
                                         <img class="img-fluid rounded"
@@ -126,7 +126,7 @@
                                     <div class="col-12 col-lg-6 z-3 m-2 update-button-popover-container" role="button"
                                         data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                         data-bs-sanitize="false" data-bs-placement="top"
-                                        title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>Change Quantity"
+                                        title="<img src='{{MEDIA_URL}}logo-transparent-background.png' alt='Little Woolly Snuggles Logo' class='rounded me-2 popover-logo' loading='lazy'>Change Quantity"
                                         data-bs-content='{% include "includes/popovers/update-button-popover.html" %}'>
                                         <div class="btn-custom item-button p-1 update-button">
                                             Update<br>Item

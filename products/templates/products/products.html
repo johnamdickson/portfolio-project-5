@@ -100,7 +100,7 @@
                 class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
                 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                 data-bs-sanitize="false"
-                title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>Available Sizes"
+                title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo' loading='lazy'>Available Sizes"
                 data-bs-content='{% include "includes/popovers/size-info-popover.html" %}'>
                 <i class="fa-solid fa-ruler-horizontal d-block"></i>
               </a>
@@ -116,7 +116,7 @@
                 class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
                 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                 data-bs-sanitize="false"
-                title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo'>Available Colours"
+                title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo' loading='lazy'>Available Colours"
                 data-bs-content='{% include "includes/popovers/colour-info-popover.html" %}'>
                 <i class="fa-solid fa-palette d-block"></i>
               </a>
@@ -135,12 +135,12 @@
       {% endif %}
       <div class="container product-card h-100 py-2 d-flex flex-column"
         onclick="location.href='{% url 'product_detail' product.pk %}';"
-        aria-labelledby="product-aria-label">
+        aria-labelledby="product-aria-label-{{product.name}}">
         <div class="container-fluid g-0 position-relative">
           <div class="col-12 product-image pt-2 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
-              <img src="{{ product.image.url }}" alt="Image of {{product.name}}">
+              <img src="{{ product.image.url }}" alt="Image of {{product.name}}" loading="lazy">
               {% else %}
               <img src="{{MEDIA_URL}}no-image-available.png"
                 alt="No image for this product">
@@ -150,7 +150,7 @@
         </div>
         <div class="row w-100 g-0">
           <div class="col-12 product-title text-center mt-2">
-            <p class="mb-1" id="product-aria-label">{{ product.name }}</p>
+            <p class="mb-1" id="product-aria-label-{{product.name}}">{{ product.name }}</p>
           </div>
           <div class="col-12 product-price text-center">
             <p class="m-0">€{{ product.price }}</p>

@@ -105,12 +105,13 @@
                         <div class="col-3 my-1">
                             {% if item.product.image %}
                             <a href="{{ item.product.image.url }}" target="_blank">
-                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" loading="lazy">
                             </a>
                             {% else %}
                             <img class="w-100"
                                 src="{{MEDIA_URL}}no-image-available.png"
-                                alt="{{ item.product.name}}">
+                                alt="{{ item.product.name}}"
+                                loading="lazy">
                             {% endif %}
                         </div>
                         <div class="col-9 small">
