@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
+from django.core.cache import cache
 
 # Create your views here.
 
@@ -21,7 +22,6 @@ def products(request):
     direction = None
 
     if request.GET:
-
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -38,10 +38,11 @@ def products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-
+            cache.clear()
             products = products.order_by(sortkey)
 
         if 'category' in request.GET:
+            cache.clear()
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
@@ -53,6 +54,7 @@ def products(request):
                 title = "Products"
 
         if 'q' in request.GET:
+            cache.clear()
             query = request.GET['q']
             if not query:
                 messages.error(request, "Please enter search criteria.")
@@ -63,7 +65,8 @@ def products(request):
             placeholder = query
             products = products.filter(queries)
             title = "Search Products"
-      
+        else: cache.clear()
+        
     current_sorting = f'{sort}_{direction}'
 
     context = {
