@@ -38,11 +38,11 @@ def products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-            cache.clear()
             products = products.order_by(sortkey)
+            cache.clear()
+
 
         if 'category' in request.GET:
-            cache.clear()
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
@@ -52,9 +52,13 @@ def products(request):
                 title = categories[0].friendly_name
             else :
                 title = "Products"
+            cache.clear()
+        
+        if 'products' in request.GET:
+            products = Product.objects.all().order_by('category')
+            cache.clear()
 
         if 'q' in request.GET:
-            cache.clear()
             query = request.GET['q']
             if not query:
                 messages.error(request, "Please enter search criteria.")
@@ -65,9 +69,13 @@ def products(request):
             placeholder = query
             products = products.filter(queries)
             title = "Search Products"
-        else: cache.clear()
+            cache.clear()
         
+
     current_sorting = f'{sort}_{direction}'
+    print("GET SOME!", bool(request.GET))
+    if not current_sorting:
+        cache.clear()
 
     context = {
         'placeholder': query,
