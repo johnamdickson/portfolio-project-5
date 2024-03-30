@@ -30,6 +30,8 @@ class StripeWH_Handler:
         print('function called')
         cust_email = order.email
         try:
+            # Preparing file field for encoding directly from this solution below:
+            # https://stackoverflow.com/questions/49324010/how-to-encode-a-file-in-filefield-using-s3-to-base64-in-django
             pdf_attachment = product.learn_product_pdf.file.read()
         except Exception as e:
             print("Error creating attachment:", e)
