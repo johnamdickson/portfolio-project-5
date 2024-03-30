@@ -1,8 +1,6 @@
 <li>
-    {% for product in unfiltered_products %}
-        {% if product.category.name == "blankets" %}
-            <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
-        {% endif %}
+    {% for blanket in blankets %}
+            <a href="{% url 'product_detail' blanket.pk %}" class="dropdown-item">{{blanket.name}}</a>
     {% endfor %}
 </li>
 <li>

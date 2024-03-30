@@ -1,8 +1,6 @@
 <li>
-    {% for product in unfiltered_products %}
-        {% if product.category.name == "gift_sets" %}
-            <a href="{% url 'product_detail' product.pk %}" class="dropdown-item">{{product.name}}</a>
-        {% endif %}
+    {% for set in gift_sets %}
+            <a href="{% url 'product_detail' set.pk %}" class="dropdown-item">{{set.name}}</a>
     {% endfor %}
 </li>
 <li>

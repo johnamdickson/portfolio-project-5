@@ -51,6 +51,23 @@ class Product(models.Model):
         # Method to return filename for sending pdf in email:
         # https://stackoverflow.com/questions/51459940/filename-only-in-django-form-field
         return os.path.basename(self.learn_product_pdf.name)
+    
+    def svg(self):
+
+        name = self.category.friendly_name
+
+        if name == 'Hats': 
+            return 'includes/svgs/hat-icon.html' 
+        elif name == 'Learn to Crochet':
+            return 'includes/svgs/learn-icon.html' 
+        elif  name == 'Blankets': 
+         return 'includes/svgs/blanket-icon.html' 
+        elif  name == 'Gift Sets': 
+            return 'includes/svgs/gift-sets-icon.html' 
+        elif  name == 'Search Products': 
+            return 'includes/svgs/search-icon.html' 
+        else: 
+            return 'includes/svgs/product-icon.html' 
 
 class ProductSize(models.Model):
     """
