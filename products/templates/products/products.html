@@ -101,7 +101,8 @@
                 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                 data-bs-sanitize="false"
                 title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo' loading='lazy'>Available Sizes"
-                data-bs-content='{% include "includes/popovers/size-info-popover.html" %}'>
+                data-bs-content='{% include "includes/popovers/size-info-popover.html" %}'
+                aria-label="Opens popover with available sizes for product">
                 <i class="fa-solid fa-ruler-horizontal d-block"></i>
               </a>
             </div>
@@ -117,7 +118,8 @@
                 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                 data-bs-sanitize="false"
                 title="<img src='{{MEDIA_URL}}logo-transparent-background.png' class='rounded me-2 popover-logo' loading='lazy'>Available Colours"
-                data-bs-content='{% include "includes/popovers/colour-info-popover.html" %}'>
+                data-bs-content='{% include "includes/popovers/colour-info-popover.html" %}'
+                aria-label="Opens popover with available colours for product">
                 <i class="fa-solid fa-palette d-block"></i>
               </a>
             </div>
@@ -144,8 +146,7 @@
               {% else %}
               <img src="{{MEDIA_URL}}no-image-available.png"
                 alt="No image for this product">
-              {% endif %}
-            </div>
+              {% endif %}            </div>
           </div>
         </div>
         <div class="row w-100 g-0">
