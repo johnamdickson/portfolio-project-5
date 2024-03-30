@@ -1,4 +1,4 @@
-from django.test import TestCase, Client, RequestFactory
+from django.test import TestCase, Client
 from .models import Category, Product, ProductSize, ProductColour
 import constants as k
 from django.urls import reverse
@@ -176,7 +176,6 @@ class TestViews(TestCase):
     # https://stackoverflow.com/questions/72421658/access-a-view-which-is-for-logged-in-users-in-django-testing
     def setUp(self):
         client = Client()
-        self.factory = RequestFactory()
         hat_category = Category.objects.create(name='hats_test')
         z_category = Category.objects.create(name='z')
         blanket_category = Category.objects.create(name='blanket_add_test')
