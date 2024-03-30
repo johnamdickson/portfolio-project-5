@@ -586,7 +586,7 @@ const setUpAddProduct = () => {
            if (imgObject) {
             displayImg.src = URL.createObjectURL(imgObject)}
            else {
-            displayImg.src = "https://little-woolly-snuggles.s3.amazonaws.com/media/no-image-selected.png"}
+            displayImg.src = "https://little-woolly-snuggles.s3.amazonaws.com/media/no-image-selected.webp"}
            })
   }
 }
