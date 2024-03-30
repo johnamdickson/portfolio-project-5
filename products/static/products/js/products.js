@@ -460,7 +460,7 @@ const setUpAddProduct = () => {
  const offcanvasSmallImgInput = document.getElementById('id_offcanvas_small-image')
  const offcanvasSmallDisplayImg = document.querySelector("#offcanvas-small-display-img")
 
-// check if mainLearnInput exists before calling helper function. Prevents errors on other product pages.
+// check if learnInputs exist before calling helper function on each. Prevents errors on other product pages.
   if (mainLearnInput){
     handleAddProductDisplay(
       mainLearnInput,
@@ -472,16 +472,20 @@ const setUpAddProduct = () => {
       mainDisplayImg
       )
   } 
-  // no check required for offcanvas-regular nor small as the context is always present.
+
+  if (offcanvasRegularLearnInput){
     handleAddProductDisplay(
-        offcanvasRegularLearnInput,
-        offcanvasRegularSizeCheckBoxes,
-        offcanvasRegularColourCheckBoxes,
-        offcanvasRegularSecondaryColour,
-        offcanvasRegularLearnPdfInput,
-        offcanvasRegularImgInput,
-        offcanvasRegularDisplayImg
-        )
+      offcanvasRegularLearnInput,
+      offcanvasRegularSizeCheckBoxes,
+      offcanvasRegularColourCheckBoxes,
+      offcanvasRegularSecondaryColour,
+      offcanvasRegularLearnPdfInput,
+      offcanvasRegularImgInput,
+      offcanvasRegularDisplayImg
+      )
+  }
+
+  if (offcanvasSmallLearnInput){
     handleAddProductDisplay(
       offcanvasSmallLearnInput,
       offcanvasSmallSizeCheckBoxes,
@@ -491,6 +495,9 @@ const setUpAddProduct = () => {
       offcanvasSmallImgInput,
       offcanvasSmallDisplayImg
       )
+}
+
+
 
   function handleAddProductDisplay (
     learnInput, 
