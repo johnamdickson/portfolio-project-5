@@ -336,7 +336,7 @@ header .nav-link:focus {
 }
 
 .home-image-main {
-    background: center / cover no-repeat url("/static/images/crochet-hook.jpg");
+    background: center / cover no-repeat url("/static/images/crochet-hook.webp");
     border-radius: 20px;
     border: 0.5px solid #f2bfdc;
 }
@@ -350,19 +350,19 @@ header .nav-link:focus {
 }
 
 .home-image-1 {
-    background: center / cover no-repeat url("/static/images/gift-set.jpg");
+    background: center / cover no-repeat url("/static/images/gift-set.webp");
 }
 
 .home-image-2 {
-    background: center / cover no-repeat url("/static/images/learn.jpg");
+    background: center / cover no-repeat url("/static/images/learn.webp");
 }
 
 .home-image-3 {
-    background: center / cover no-repeat url("/static/images/teddy-bear-hats.jpg");
+    background: center / cover no-repeat url("/static/images/teddy-bear-hats.webp");
 }
 
 .home-image-4 {
-    background: center / cover no-repeat url("/static/images/blanket.jpg");
+    background: center / cover no-repeat url("/static/images/blanket.webp");
 }
 
 .home-image-flex {
