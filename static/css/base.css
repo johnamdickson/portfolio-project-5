@@ -888,4 +888,21 @@ footer p, footer label{
     .refferal_badge {
         width: 175px;
     }
+
+    .home-image-main,
+    .home-image-1,
+    .home-image-2,
+    .home-image-4 {
+        height: 200px !important;
+        background-position: center -60px;
+    }
+
+    .home-image-3 {
+        height: 200px !important;
+        background-position: center -30px;
+    }
+
+    .home-container {
+        height: auto;
+    }
 }
