@@ -2,9 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Product
 from .forms import ProductForm
-from functools import cache
 
-@cache
+
 def add_product_details(request):
 
     hats = Product.objects.filter(category__name='hats')

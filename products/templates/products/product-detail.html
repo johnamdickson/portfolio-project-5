@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load cache %}
 {% block extra_title %}
 {{ block.super }}
 - {{product.name}}
 {% endblock %}
 
 {% block content %}
+{% cache 2000 product_detail_page %}
+
 <div class="container-fluid products-container mt-md-2 w-100">
   <div class="row pt-lg-2">
     <div class="col-12">
@@ -145,6 +147,8 @@
 
 {{ sizes_data|json_script:'sizes' }}
 {{ colours_data|json_script:'colours' }}
+{% endcache %}
+
 {% endblock %}
 
 {% block postloadjs %}

@@ -5,12 +5,9 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
-from functools import cache
-
 
 # Create your views here.
 
-@cache
 def products(request):
     """
     A function to obtain all products and perform sorting, search and

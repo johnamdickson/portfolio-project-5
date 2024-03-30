@@ -9,14 +9,16 @@ from django.contrib import messages
 from products.models import Product
 from num2words import num2words
 import constants as k
+from django.views.decorators.cache import never_cache
 
 # Create your views here.
 
-
+@never_cache
 def view_cart(request):
     """ A view that renders the cart contents page """
-
-    return render(request, 'cart/cart.html')
+    # passing in context as cart was not updating with caching.
+    context = {}
+    return render(request, 'cart/cart.html', context)
 
 
 def add_to_cart(request, item_id):
@@ -214,6 +216,7 @@ def remove_from_cart(request, item_id):
                             'cart': cart,
                             'id': item_id,
                             }
+        print('handle', handle_item_data)
         # call handle item function passing in a parameter to remove
         # the item(s) from cart.
         if size and colour and secondary_colour:

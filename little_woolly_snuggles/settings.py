@@ -73,13 +73,10 @@ LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
-    "django.middleware.cache.UpdateCacheMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.cache.FetchFromCacheMiddleware",
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -141,8 +138,8 @@ AUTHENTICATION_BACKENDS = [
 
 # if 'DATABASE_URL' in os.environ:
 DATABASES = {
-    'default': dj_database_url.parse('postgres://gheayycz:M9JGvIuoA89h5MS-v4819qdDgkIkQVLg@snuffleupagus.db.elephantsql.com/gheayycz')
-}
+        'default': dj_database_url.parse('postgres://gheayycz:M9JGvIuoA89h5MS-v4819qdDgkIkQVLg@snuffleupagus.db.elephantsql.com/gheayycz')
+    }
 # else:
 #     DATABASES = {
 #         'default': {

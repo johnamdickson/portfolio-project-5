@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load cache %}
 {% load i18n %}
 {% block extra_title %}
 {{ block.super }}
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% cache 2000 home_page %}
   <div class="container-fluid home-container mt-4 w-100">
     <div class="row h-100 pt-lg-2" >
         <div class="col-12 pb-3 px-md-4 ps-lg-3 pe-lg-2 pb-lg-0 col-lg-6 ">
@@ -31,4 +31,5 @@
         {% include 'includes/index-image-grid.html' %}
     </div>
   </div>
+  {% endcache %}
 {% endblock %}

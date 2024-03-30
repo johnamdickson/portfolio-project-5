@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load cache %}
 {% block extra_title %}
 {{ block.super }}
 - Products
@@ -83,6 +83,8 @@
     </div>
   </div>
   <div class="row w-100 justify-content-center">
+    {% cache 2000 products_page %}
+
     {% for product in products %}
 
     <div
@@ -168,6 +170,8 @@
       </div>
     </div>
     {% endfor %}
+    {% endcache %}
+
   </div>
 </div>
 {{ sizes_data|json_script:'sizes' }}
