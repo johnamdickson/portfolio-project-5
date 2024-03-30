@@ -1,5 +1,5 @@
 
-# <img src="media/logo-transparent-background.png"  width="40" height="40">  &nbsp;Little Woolly Snuggles
+# <img src="media/logo-transparent-background.webp"  width="40" height="40">  &nbsp;Little Woolly Snuggles
 
 Little Woolly Snuggles is a business-to-consumer e-commerce website, selling hand crafted crocheted goods along with a learning environment for individuals to learn how to crochet themselves.
 
