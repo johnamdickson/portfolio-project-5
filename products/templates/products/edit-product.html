@@ -80,9 +80,9 @@
                             <div class="row">
                                 <div class="col-11 mx-auto mb-3 mb-lg-5">
                                     {% if product.image %}
-                                    <img src="{{product.image.url}}" alt="Image if {{product.name}}" id="display-img" class="img-thumbnail p-0" loading="lazy">
+                                    <img src="{{product.image.url}}" alt="Image if {{product.name}}" id="display-img" class="img-thumbnail p-0">
                                     {% else %}
-                                    <img src="{{MEDIA_URL}}no-image-selected.png" id="display-img" class="img-thumbnail p-0" alt="Thumbnail to display product image once selected." loading="lazy">
+                                    <img src="{{MEDIA_URL}}no-image-selected.png" id="display-img" class="img-thumbnail p-0" alt="Thumbnail to display product image once selected.">
                                     {% endif %}
                                 </div>
                                 <div class="col-12 mx-auto my-3">

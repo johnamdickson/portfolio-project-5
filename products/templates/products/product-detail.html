@@ -31,7 +31,7 @@
             <div class="w-100">
               {% if product.image %}
               <a href="{{ product.image.url }}" target="_blank">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
               </a>
               {% else %}
               <img src="{{MEDIA_URL}}no-image-available.png"

@@ -104,12 +104,12 @@
                         {% for item in order.lineitems.all %}
                         <div class="col-3 my-1">
                             {% if item.product.image %}
-                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" loading="lazy">
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                             {% else %}
                             <img class="w-100"
                                 src="{{MEDIA_URL}}no-image-available.png"
                                 alt="{{ item.product.name}}"
-                                loading="lazy">
+                               >
                             {% endif %}
                         </div>
                         <div class="col-9 small">
