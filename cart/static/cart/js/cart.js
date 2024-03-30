@@ -9,7 +9,6 @@ window.addEventListener('load', function () {
   setTimeout(function() {
     window.scrollTo(0, 0);
     }, delayInMilliseconds);
-
 });
 
 const cartProductQuantitySelect = () => {
@@ -129,6 +128,7 @@ const updateOrRemoveItems = () => {
  * Handles product removal by submitting quantity form or performing an
  * 
  */
+
   let updateButtons = document.getElementsByClassName('update-button');
   let removeButtons = document.getElementsByClassName('remove-button');
   let quantityInputs = document.getElementsByClassName('qty-input');
@@ -143,7 +143,7 @@ const updateOrRemoveItems = () => {
     let form = forms[i];
     button.style.cursor = 'pointer';
     button.addEventListener('click', function() {
-      
+
       if ( parseInt(quantityInputs[i].value) === 0) {
         if (confirm("Are you sure you want to remove item from cart?")){
           form.submit();
@@ -166,7 +166,7 @@ const updateOrRemoveItems = () => {
       // https://stackoverflow.com/questions/70842319/vanilla-javascript-ajax-form-submit
       let csrfToken = document.getElementsByName('csrfmiddlewaretoken')[i].value;
 
-      let itemId = this.getAttribute('id').slice(-1);
+      let itemId = this.getAttribute('id').split("-")[2];
       let itemSize = null;
       if (sizes[i]) {
         itemSize = sizes[i].value;
