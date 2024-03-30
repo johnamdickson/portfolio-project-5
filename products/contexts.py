@@ -2,12 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Product
 from .forms import ProductForm
+from functools import cache
 
-
-
+@cache
 def add_product_details(request):
 
-    unfiltered_products = Product.objects.all()
+    hats = Product.objects.filter(category__name='hats')
+    learn_to_crochet = Product.objects.filter(category__name='learn_to_crochet')
+    blankets = Product.objects.filter(category__name='blankets')
+    gift_sets =  Product.objects.filter(category__name='gift_sets')
 
     if request.user.is_authenticated:
         """ Display the user's profile. """
@@ -16,13 +19,18 @@ def add_product_details(request):
         context = {
             'form_regular': form_regular,
             'form_small': form_small,
-            'unfiltered_products': unfiltered_products,
-
+            'hats': hats,
+            'learn_to_crochet': learn_to_crochet,
+            'blankets': blankets,
+            'gift_sets': gift_sets,
         }
         return context
 
     else:
         context = {
-            'unfiltered_products': unfiltered_products,
+            'hats': hats,
+            'learn_to_crochet': learn_to_crochet,
+            'blankets': blankets,
+            'gift_sets': gift_sets,
         }
         return context
