@@ -63,3 +63,45 @@
       28	bootstrap
 
 ---
+
+## checkout.js
+### Warnings
+      11	Missing semicolon.
+      50	Missing semicolon.
+      51	Missing semicolon.
+      61	Missing semicolon.
+      66	Missing semicolon.
+      69	Missing semicolon.
+      70	Missing semicolon.
+      85	Missing semicolon.
+      86	Missing semicolon.
+      87	Missing semicolon.
+      103	Missing semicolon.
+      104	Missing semicolon.
+      108	['name'] is better written in dot notation.
+      108	Missing semicolon.
+      110	['email'] is better written in dot notation.
+      110	Missing semicolon.
+      112	['phone'] is better written in dot notation.
+      112	Missing semicolon.
+      114	['state'] is better written in dot notation.
+      114	Missing semicolon.
+      116	['city'] is better written in dot notation.
+      116	Missing semicolon.
+      118	['line1'] is better written in dot notation.
+      118	Missing semicolon.
+      120	['line2'] is better written in dot notation.
+      120	Missing semicolon.
+      122	['postal_code'] is better written in dot notation.
+      122	Missing semicolon.
+      133	Missing semicolon.
+      134	Missing semicolon.
+      135	Missing semicolon.
+      166	Value of 'e' may be overwritten in IE 8 and earlier.
+      177	Value of 'e' may be overwritten in IE 8 and earlier.
+      246	Missing semicolon.
+      249	Missing semicolon.
+      254	Missing semicolon.
+
+### Undefined Variables
+      4	Stripe
