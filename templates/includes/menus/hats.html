@@ -1,6 +1,6 @@
 <li>
     {% for hat in hats %}
-            <a href="{% url 'product_detail' hat.pk %}" class="dropdown-item">{{hat.name}}</a>
+            <a href="{% url 'product_detail' hat.pk True %}" class="dropdown-item">{{hat.name}}</a>
     {% endfor %}
 </li>
 <li>

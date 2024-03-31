@@ -1,6 +1,6 @@
 <li>
     {% for set in gift_sets %}
-            <a href="{% url 'product_detail' set.pk %}" class="dropdown-item">{{set.name}}</a>
+            <a href="{% url 'product_detail' set.pk True %}" class="dropdown-item">{{set.name}}</a>
     {% endfor %}
 </li>
 <li>

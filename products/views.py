@@ -86,9 +86,10 @@ def products(request):
     return render(request, 'products/products.html', context)
 
 
-def product_detail(request, product_pk):
+def product_detail(request, product_pk, clear_cache):
     """ A view to show individual product details """
-
+    if clear_cache == 'True':
+        cache.clear()
     products = Product.objects.all()
     product = get_object_or_404(Product, pk=product_pk)
     sizes = product.sizes.all()
@@ -117,7 +118,7 @@ def add_product(request):
         if form.is_valid():
             product = form.save()
             messages.success(request, f'Successfully added product {product.name}')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('product_detail', args=[product.id, 'False']))
         else:
             messages.error(request,
                            ('Failed to add product. '
@@ -145,7 +146,7 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('product_detail', args=[product.id, 'False']))
         else:
             messages.error(request,
                            ('Failed to update product. '

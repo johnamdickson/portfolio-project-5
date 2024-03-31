@@ -138,7 +138,7 @@
       </div>
       {% endif %}
       <div class="container product-card h-100 py-2 d-flex flex-column"
-        onclick="location.href='{% url 'product_detail' product.pk %}';"
+        onclick="location.href='{% url 'product_detail' product.pk False %}';"
         aria-labelledby="product-aria-label-{{product.name}}">
         <div class="container-fluid g-0 position-relative">
           <div class="col-12 product-image pt-2 overflow-hidden mx-auto">

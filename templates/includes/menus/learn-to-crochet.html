@@ -1,6 +1,6 @@
 <li>
     {% for learn in learn_to_crochet %}
-            <a href="{% url 'product_detail' learn.pk %}" class="dropdown-item">{{learn.name}}</a>
+            <a href="{% url 'product_detail' learn.pk True%}" class="dropdown-item">{{learn.name}}</a>
     {% endfor %}
 </li>
 <li>
