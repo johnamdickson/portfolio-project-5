@@ -102,7 +102,7 @@
                 class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
                 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                 data-bs-sanitize="false"
-                title="<img src='{{MEDIA_URL}}logo-transparent-background.webp' class='rounded me-2 popover-logo' loading='lazy'>Available Sizes"
+                title="<img src='{{MEDIA_URL}}logo-transparent-background.webp' class='rounded me-2 popover-logo'>Available Sizes"
                 data-bs-content='{% include "includes/popovers/size-info-popover.html" %}'
                 aria-label="Opens popover with available sizes for product">
                 <i class="fa-solid fa-ruler-horizontal d-block"></i>
@@ -119,7 +119,7 @@
                 class="attributes-button btn rounded-circle d-flex flex-column align-items-center justify-content-center"
                 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-html="true"
                 data-bs-sanitize="false"
-                title="<img src='{{MEDIA_URL}}logo-transparent-background.webp' class='rounded me-2 popover-logo' loading='lazy'>Available Colours"
+                title="<img src='{{MEDIA_URL}}logo-transparent-background.webp' class='rounded me-2 popover-logo'>Available Colours"
                 data-bs-content='{% include "includes/popovers/colour-info-popover.html" %}'
                 aria-label="Opens popover with available colours for product">
                 <i class="fa-solid fa-palette d-block"></i>
@@ -144,7 +144,7 @@
           <div class="col-12 product-image pt-2 overflow-hidden mx-auto">
             <div class="w-100">
               {% if product.image %}
-              <img src="{{ product.image.url }}" alt="Image of {{product.name}}" loading="lazy">
+              <img src="{{ product.image.url }}" alt="Image of {{product.name}}">
               {% else %}
               <img src="{{MEDIA_URL}}no-image-available.webp"
                 alt="No image for this product">
