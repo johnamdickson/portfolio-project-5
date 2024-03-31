@@ -1,4 +1,6 @@
 {% load static %}
+{% load cache%}
+{% cache 2000 home_page_index %}
 
 <div class="col-12 d-md-none pb-3">
     <div class="home-image-1 h-100">
@@ -138,3 +140,4 @@
       </div>
     </div>
 </div>
+{% endcache %}
