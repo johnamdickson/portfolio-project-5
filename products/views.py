@@ -6,8 +6,11 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
 from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+
 
 # Create your views here.
+
 
 def products(request):
     """
@@ -87,7 +90,7 @@ def products(request):
 
     return render(request, 'products/products.html', context)
 
-
+@cache_page(60*30)
 def product_detail(request, product_pk, clear_cache):
     """ A view to show individual product details """
     if clear_cache == 'True':
@@ -109,6 +112,7 @@ def product_detail(request, product_pk, clear_cache):
     return render(request, 'products/product-detail.html', context)
 
 @login_required
+@cache_page(60*30)
 def add_product(request):
     """ Add a product to the store """
     if not request.user.is_superuser:
@@ -136,6 +140,7 @@ def add_product(request):
     return render(request, template, context)
 
 @login_required
+@cache_page(60*30)
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load cache %}
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -9,7 +8,6 @@
 </div>
 {% endblock %}
 
-{% cache 2000 add_product_page %}
 {% block content %}
 <div class="container-fluid mb-2">
     <div class="row pt-lg-2">
@@ -93,7 +91,6 @@
 {{ sizes_data|json_script:'sizes' }}
 {{ colours_data|json_script:'colours' }}
 {% endblock %}
-{% endcache %}
 {% block postloadjs %}
 {{ block.super }}
 <script src="{% static 'products/js/products.js' %}"></script>
