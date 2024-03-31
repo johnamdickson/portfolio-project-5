@@ -73,9 +73,6 @@ def products(request):
         
 
     current_sorting = f'{sort}_{direction}'
-    print("GET SOME!", bool(request.GET))
-    if not current_sorting:
-        cache.clear()
 
     context = {
         'placeholder': query,
