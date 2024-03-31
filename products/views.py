@@ -14,13 +14,15 @@ def products(request):
     A function to obtain all products and perform sorting, search and
     categorisation.
     """
+    request_origin = request.headers['Referer']
     products = Product.objects.all().order_by('category')
     query = None
     categories = None
     title = "Products"
     sort = None
     direction = None
-
+    if 'edit' in request_origin:
+        cache.clear()
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
