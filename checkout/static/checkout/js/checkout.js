@@ -1,3 +1,4 @@
+/*jshint esversion: 8 */ 
 
 // This is your test publishable API key.
 const stripe = Stripe("pk_test_51OUWAmJKRSOh7j6OdyFxfXdqNJapSBHzcIkgfOaSyeAKHesIAZnY47q3q9jEfg0SS3PyuTUDaOq6Oy1rrdgMT7K700iyuJHnC6");
@@ -7,7 +8,7 @@ const items = document.getElementsByName('items')[0].value;
 
 // generate a unique number to assign to order. Solution found in stack overflow:
 // https://stackoverflow.com/questions/8012002/create-a-unique-number-with-javascript-time
-const uniqueNumber = new Date().getTime() + (Math.random()*100000).toFixed()
+const uniqueNumber = new Date().getTime() + (Math.random()*100000).toFixed();
 
 let elements;
 
@@ -28,6 +29,7 @@ async function initialize() {
   });
   const { clientSecret } = await response.json();
 
+  // select desired appearance for payment element.
   const appearance = {
     theme: 'minimal',
   };
@@ -46,27 +48,31 @@ async function initialize() {
   paymentElement.mount("#payment-element");
   // find hidden input for storing client secret and update with actual client secret
   // for use in cache checkout function.
-  let secretHiddenInput = document.getElementsByName("client_secret")[0]
-  secretHiddenInput.value = clientSecret
+  let secretHiddenInput = document.getElementsByName("client_secret")[0];
+  secretHiddenInput.value = clientSecret;
   // update payment intent metadata
   handleUpdateMetadata();
   configurePaymentMessage();
 }
 
 async function handleFormPost() {
+  /**
+ * Handles calling checkout post method from browser taking user data
+ * from the form and passing to the view.
+ */
   const formData = new FormData();
 
   const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
-  formData.append('csrfmiddlewaretoken', csrfToken)
+  formData.append('csrfmiddlewaretoken', csrfToken);
 
   let form = document.getElementById('payment-form');
   let inputs = form.querySelectorAll('input');
   for (let input of inputs) {
-    formData.append(input.name, input.value)
+    formData.append(input.name, input.value);
   }
   const country = document.getElementById('id_country').value;
-  formData.append('country', country)
-  formData.append('order_number', uniqueNumber)
+  formData.append('country', country);
+  formData.append('order_number', uniqueNumber);
   try {
     await fetch("/checkout/", {
       method: "POST",
@@ -78,12 +84,16 @@ async function handleFormPost() {
   }
 }
 async function handleUpdateMetadata () {
+  /**
+ * Handles updating Stripe Metadata by accessing csrf token and creating a FormData 
+ * object before calling the cache-checkout-data function.
+ */
   const formData = new FormData();
   const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
   const clientSecret = document.getElementsByName("client_secret")[0].value;
-  formData.append('csrfmiddlewaretoken', csrfToken)
-  formData.append('client_secret', clientSecret)
-  formData.append('order_number', uniqueNumber)
+  formData.append('csrfmiddlewaretoken', csrfToken);
+  formData.append('client_secret', clientSecret);
+  formData.append('order_number', uniqueNumber);
   try {
     await fetch("/checkout/cache-checkout-data/", {
       method: "POST",
@@ -95,30 +105,36 @@ async function handleUpdateMetadata () {
   }
   setLoading(false);
 }
+
 async function handleSubmit(e) {
+  /**
+ * Stripe boiler plate with additional code to update Stripe billing and
+ * shipping data using the users information.
+ */
   e.preventDefault();
   setLoading(true);
   let form = document.getElementById('payment-form');
-  let billingData = {}
-  let addressData = {}
+  let billingData = {};
+  let addressData = {};
   let inputs = form.querySelectorAll('input');
+  // switch inputs and assign to billingData or addressData in appropriate place.
   for (let input of inputs) {
     switch (input.name) {
-      case 'full_name': billingData['name'] = input.value
+      case 'full_name': billingData.name = input.value;
       break;
-      case 'email': billingData['email'] = input.value
+      case 'email': billingData.email = input.value;
       break;
-      case 'phone_number': billingData['phone'] = input.value
+      case 'phone_number': billingData.phone = input.value;
       break;
-      case 'county': addressData['state'] = input.value
+      case 'county': addressData.state = input.value;
       break;
-      case 'town_or_city': addressData['city'] = input.value
+      case 'town_or_city': addressData.city = input.value;
       break;
-      case 'street_address1': addressData['line1'] = input.value
+      case 'street_address1': addressData.line1 = input.value;
       break;
-      case 'street_address2': addressData['line2'] = input.value
+      case 'street_address2': addressData.line2 = input.value;
       break;
-      case 'postcode': addressData['postal_code'] = input.value
+      case 'postcode': addressData.postal_code = input.value;
       break;
       default:
         break;
@@ -129,10 +145,12 @@ async function handleSubmit(e) {
   billingData.address.country = country;
   // how to clone an object:
   // https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/
-  var shippingData = Object.assign({}, billingData)
-  delete shippingData.email
-  handleFormPost()
+  var shippingData = Object.assign({}, billingData);
+  delete shippingData.email;
+  // call handle form post
+  handleFormPost();
   const { error } = await stripe.confirmPayment({
+    // data sent to stripe for payment.
     elements,
     redirect: "if_required",
     confirmParams: {
@@ -155,6 +173,8 @@ async function handleSubmit(e) {
   // be redirected to an intermediate site first to authorize the payment, then
   // redirected to the `return_url`.
   if (error){
+    // code to handle payment being declined. Calls payment-declined function which
+    // deletes order from db.
     if (error.type === "card_error" || error.type === "validation_error") {
       showMessage(error.message);
       try {
@@ -162,8 +182,8 @@ async function handleSubmit(e) {
           method: "GET",
           // Set the FormData instance as the request body
         });
-      } catch (e) {
-        console.error(e);
+      } catch (paymentDeclineError) {
+        console.error(paymentDeclineError);
       }
       // Inform the customer that there was an error.
     } else {
@@ -173,8 +193,8 @@ async function handleSubmit(e) {
           method: "GET",
           // Set the FormData instance as the request body
         });
-      } catch (e) {
-        console.error(e);
+      } catch (paymentUnexpectedError) {
+        console.error(paymentUnexpectedError);
       }
     }
     setLoading(false);
@@ -208,6 +228,7 @@ async function checkStatus() {
       break;
   }
 }
+// Unadjust Stripe Boiler Plate below:
 
 // ------- UI helpers -------
 
@@ -242,14 +263,14 @@ const configurePaymentMessage = () => {
   const button = document.getElementById('submit');
   const message = document.getElementById('card-charge-text');
   function showMessage () {
-    message.style.opacity = '1'
+    message.style.opacity = '1';
   }
   function hideMessage () {
-    message.style.opacity = '0'
+    message.style.opacity = '0';
   }
   button.addEventListener('mouseenter', showMessage, false);
   button.addEventListener('click', hideMessage, false);
   button.addEventListener('mouseleave', hideMessage, false);
-}
+};
 
 
