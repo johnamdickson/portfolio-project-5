@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    get_object_or_404,
+    HttpResponse
+    )
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -23,14 +29,15 @@ class StripeWH_Handler:
 
     def _send_learn_pdf_email(self, product, order):
         """
-        A function which takes in any product that is a learn_product and along with the customer
-        email from the passed in order, the product learn_product_pdf is sent to the customer as 
+        A function which takes in any product that is a learn_product and
+        along with the customer mail from the passed in order, the product
+        learn_product_pdf is sent to the customer as
         an email attachment.
         """
-        print('function called')
         cust_email = order.email
         try:
-            # Preparing file field for encoding directly from this solution below:
+            # Preparing file field for encoding directly from this
+            # solution below:
             # https://stackoverflow.com/questions/49324010/how-to-encode-a-file-in-filefield-using-s3-to-base64-in-django
             pdf_attachment = product.learn_product_pdf.file.read()
         except Exception as e:
@@ -44,7 +51,10 @@ class StripeWH_Handler:
                 }
              )
         mail = mt.Mail(
-            sender=mt.Address(email="mailtrap@littlewoollysnuggles.com", name="Little Woolly Snuggles"),
+            sender=mt.Address(
+                email="mailtrap@littlewoollysnuggles.com",
+                name="Little Woolly Snuggles"
+            ),
             to=[mt.Address(email=cust_email)],
             subject="Here is your Tutorial!",
             text=text,
@@ -73,7 +83,10 @@ class StripeWH_Handler:
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
         mail = mt.Mail(
-            sender=mt.Address(email="mailtrap@littlewoollysnuggles.com", name="Little Woolly Snuggles"),
+            sender=mt.Address(
+                email="mailtrap@littlewoollysnuggles.com",
+                name="Little Woolly Snuggles"
+                ),
             to=[mt.Address(email=cust_email)],
             subject=subject,
             text=body,
@@ -104,9 +117,9 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        billing_details = stripe_charge.billing_details # updated
+        billing_details = stripe_charge.billing_details  # updated
         shipping_details = intent.shipping
-        grand_total = round(stripe_charge.amount / 100, 2) # updated
+        grand_total = round(stripe_charge.amount / 100, 2)  # updated
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
             if value == "":
@@ -163,21 +176,28 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for properties, quantity in item_data['items_size_and_or_colour'].items():
+                        for properties,\
+                            quantity\
+                                in item_data(
+                                    ['items_size_and_or_colour'].items()
+                                    ):
                             property_list = properties.split(',')
                             size = property_list[0]
                             size = None if size == 'None' else size
                             colour = property_list[1]
                             colour = None if colour == 'None' else colour
                             secondary_colour = property_list[2]
-                            secondary_colour = None if secondary_colour == 'None' else secondary_colour  
+                            secondary_colour = (
+                                None if secondary_colour ==
+                                'None' else secondary_colour
+                                )
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
                                 product_size=size,
-                                product_primary_colour = colour,
-                                product_secondary_colour = secondary_colour,
+                                product_primary_colour=colour,
+                                product_secondary_colour=secondary_colour,
                             )
                         order_line_item.save()
             except Exception as e:
@@ -194,7 +214,6 @@ class StripeWH_Handler:
             content=(f'Webhook received: {event["type"]} | SUCCESS: '
                      'Created order in webhook'),
             status=200)
-            
 
     def handle_payment_intent_payment_failed(self, event):
         """

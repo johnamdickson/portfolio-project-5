@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    get_object_or_404,
+    HttpResponse
+    )
 from django.contrib import messages
 import os
 from django.views.decorators.http import require_POST
@@ -14,6 +20,11 @@ from django.http import JsonResponse
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    Modify stripe payment intent metadata with cart, username
+    and order number. This will be important when relying on WH handler
+    to check if order has been processed in backend.
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
@@ -33,22 +44,40 @@ def cache_checkout_data(request):
 def checkout(request):
     try:
         user_profile = UserProfile.objects.get(user=request.user)
-    except:
+        print(user_profile.__dict__)
+    except UserProfile.DoesNotExist:
         user_profile = None
-        
+
     if request.user.is_authenticated:
-        if user_profile.default_phone_number:
+        # check if user is authenticated and has profile with data in it.
+        # If so, update form in browser with users data.
+        # solution for excluding keys in dict:
+        # https://stackoverflow.com/questions/65975676/is-it-possible-to-iterate-through-all-of-a-dictionarys-keys-except-a-specific-s
+
+        # create a list of all values in user_profile dictionary,
+        # excluding automatically generated keys.
+        data = [
+            user_profile.__dict__[k]
+            for k in user_profile.__dict__.keys()
+            if k not in ['_state', 'id', 'user_id']]
+        # solution for checking if all list values are None:
+        # https://stackoverflow.com/questions/6518394/how-to-check-if-all-items-in-the-list-are-none
+
+        # check if values are all none, if so only update user profile
+        # form if the profile is confirmed not empty.
+        empty_profile = data.count(None) == len(data)
+        if not empty_profile:
             form_data = {
-            'full_name': user_profile.default_full_name,
-            'email' : request.user.email,
-            'phone_number': user_profile.default_phone_number,
-            'country': user_profile.default_country,
-            'postcode': user_profile.default_postcode,
-            'town_or_city': user_profile.default_town_or_city,
-            'street_address1': user_profile.default_street_address1,
-            'street_address2': user_profile.default_street_address2,
-            'county': user_profile.default_county,
-            }
+                'full_name': user_profile.default_full_name,
+                'email': request.user.email,
+                'phone_number': user_profile.default_phone_number,
+                'country': user_profile.default_country,
+                'postcode': user_profile.default_postcode,
+                'town_or_city': user_profile.default_town_or_city,
+                'street_address1': user_profile.default_street_address1,
+                'street_address2': user_profile.default_street_address2,
+                'county': user_profile.default_county,
+                }
             order_form = OrderForm(form_data)
         else:
             order_form = OrderForm()
@@ -57,19 +86,21 @@ def checkout(request):
 
     cart = request.session.get('cart', {})
 
-    if request.method=="POST":
+    if request.method == "POST":
+        # POST signals that the purchase has been successfully completed so
+        # order can be saved to db.
         form_data = {
-        'full_name': request.POST['full_name'],
-        'email': request.POST['email'],
-        'phone_number': request.POST['phone_number'],
-        'country': request.POST['country'],
-        'postcode': request.POST['postcode'],
-        'town_or_city': request.POST['town_or_city'],
-        'street_address1': request.POST['street_address1'],
-        'street_address2': request.POST['street_address2'],
-        'county': request.POST['county'],
-        'order_number': request.POST['order_number'],
-        }
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'county': request.POST['county'],
+            'order_number': request.POST['order_number'],
+            }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -86,21 +117,28 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for properties, quantity in item_data['items_size_and_or_colour'].items():
+                        for properties, \
+                            quantity \
+                                in (
+                                    item_data['items_size_and_or_colour']
+                                    ).items():
                             property_list = properties.split(',')
                             size = property_list[0]
                             size = None if size == 'None' else size
                             colour = property_list[1]
                             colour = None if colour == 'None' else colour
                             secondary_colour = property_list[2]
-                            secondary_colour = None if secondary_colour == 'None' else secondary_colour  
+                            secondary_colour = (
+                                None if secondary_colour ==
+                                'None' else secondary_colour
+                                )
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
                                 product_size=size,
-                                product_primary_colour = colour,
-                                product_secondary_colour = secondary_colour,
+                                product_primary_colour=colour,
+                                product_secondary_colour=secondary_colour,
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
@@ -116,7 +154,10 @@ def checkout(request):
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(
+                request,
+                "There's nothing in your cart at the moment"
+                )
             return redirect(reverse('products'))
 
     template = 'checkout/checkout.html'
@@ -129,6 +170,10 @@ def checkout(request):
 
 @csrf_exempt
 def create_payment(request):
+    """
+    Create payment function triggered from JS during intialisation of
+    stripe payment element with the cart items passed in.
+    """
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
     total = round(current_cart['grand_total'] * 100)
@@ -136,34 +181,39 @@ def create_payment(request):
     data = json.loads(request.body)
     # Create a PaymentIntent with the order amount and currency
     intent = stripe.PaymentIntent.create(
-    amount=total,
-    currency='eur',
-    # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    automatic_payment_methods={
-        'enabled': True,
-    },
+        amount=total,
+        currency='eur',
+        # In the latest version of the API, specifying the
+        # `automatic_payment_methods` parameter is optional because Stripe
+        # enables its functionality by default.
+        automatic_payment_methods={
+            'enabled': True,
+        },
     )
     try:
-        return JsonResponse({'publishableKey':  
-        'os.environ.get("STRIPE_PUBLISHABLE_KEY")', 'clientSecret': intent.client_secret})
+        return JsonResponse(
+            {'publishableKey': 'os.environ.get("STRIPE_PUBLISHABLE_KEY")',
+                'clientSecret': intent.client_secret}
+            )
 
     except Exception as e:
-        return JsonResponse({'error':str(e)},status= 403)
+        return JsonResponse({'error': str(e)}, status=403)
 
 
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handle successful checkouts by passing order details to checkout
+    success
     """
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.success(
-        request,                              
-        (f'<p class="mb-2">Order successfully processed!<br>'
-        f'Your order number is <strong>{order_number}.'
-        f'</strong><br>A confirmation email will be sent to'
-        f' <strong>{order.email}.</strong>'),
-        extra_tags = "Order Processed"
+        request, (
+            f'<p class="mb-2">Order successfully processed!<br>'
+            f'Your order number is <strong>{order_number}.'
+            f'</strong><br>A confirmation email will be sent to'
+            f' <strong>{order.email}.</strong>'),
+        extra_tags="Order Processed"
         )
 
     if 'cart' in request.session:
@@ -175,12 +225,12 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-   
+
 
 def payment_declined(request, order_number):
     """
-    Function called when card payment is declined. The order created during the post above is 
-    deleted from the database.
+    Function called when card payment is declined. The order created during
+    the post above is deleted from the database.
     """
     order = Order.objects.get(order_number=order_number)
     try:
@@ -188,4 +238,4 @@ def payment_declined(request, order_number):
         return HttpResponse(status=200)
     except Exception as e:
         print(request, f'Error removing order: {e}')
-        return HttpResponse(status=400)   
+        return HttpResponse(status=400)
