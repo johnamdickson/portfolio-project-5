@@ -1,5 +1,5 @@
-
-{% load static %}
+{% load cache %}
+{% cache 2000 about-regular-offcanvas %}
 <div class="offcanvas-header">
   <h5 class="offcanvas-title" id="offcanvas-menuLabel-about">About Little Woolly Snuggles</h5>
   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -19,3 +19,4 @@
    Curious about learning the art of crocheting? Little Woolly Snuggles offers resources and guidance for beginners, making it easy to embark on your crochet journey and create your own beautiful pieces. Experience the charm of Irish craftsmanship and shop our collection of handcrafted goods today.
   </p>
 </div>
+{% endcache %}
