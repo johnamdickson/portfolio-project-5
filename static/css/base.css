@@ -352,7 +352,7 @@ header .nav-link:focus {
 }
 
 .home-image-1 {
-    /* background-image: url("/static/images/gift-set.webp"); */
+    background-image: url("/static/images/gift-set.webp");
 }
 
 .home-image-2 {
