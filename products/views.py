@@ -90,7 +90,6 @@ def products(request):
 
     return render(request, 'products/products.html', context)
 
-@cache_page(60*30)
 def product_detail(request, product_pk, clear_cache):
     """ A view to show individual product details """
     if clear_cache == 'True':
