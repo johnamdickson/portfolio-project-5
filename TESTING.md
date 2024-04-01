@@ -167,13 +167,11 @@ Results for all HTML pages can be found in the table below:
  
 ### CSS
 
-The site CSS was checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). There were 220 warnings assoiated with Bootstrap CSS and 6 in static CSS file associated with webkit code. These warnings are unavoidable in the validator because they are vendor extensions. However, looking at feedback given to other students on Slack who had a similar issue, it appears to be safe to ignore these warnings. 
+The site CSS was checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). There remains 228 warnings in total post edit associated with Bootstrap CSS and webkit vendor extensions. These warnings are unavoidable in the validator because they are vendor extensions. In the interests of project delivery timeline, no action was taken to rectify them.
 
-The warnings and errors that are detailed in the table below reflect problems within the static CSS file and were duly corrected.
-
-**First Pass**|**Errors**|**Warnings**|**Second Pass<br><sup><sub>(Post Fix)</sub></sup>**|**Screenshot**
-:-----:|:-----|:-----|:-----:|:-----:
-| ❌|Property opaity doesn't exist. The closest matching property name is opacity : 0 <br>Property size doesn't exist. The closest matching property name is resize : 50px<br>Property size doesn't exist. The closest matching property name is resize : 50px|.go-back-btn	Same color for background-color and color<br> .go-back-button Same color for background-color and border-color|✅|![css_checker](TESTING-files/css-validator/css-validator.png) 
+**First Pass**|**Warnings/Errors**|**Second Pass<br><sup><sub>(Post Fix)</sub></sup>**|**Screenshot**
+:-----:|:-----|:-----:|:-----:
+| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/css-validation/pre-edit-results/css.md)|✅|![css_checker](documentation/TESTING-files/css-validation/post-edit-results/css-post-edit.png) 
 
 ### Javascript
 
