@@ -6,6 +6,15 @@
 - {{product.name}}
 {% endblock %}
 
+{% block corecss %}
+{% if product.image %}
+<link rel="preload" href="{{ product.image.url }}" as="image">
+{% else %}
+<link rel="preload" href="{{MEDIA_URL}}no-image-available.webp" as="image">
+{% endif %}
+{{ block.super }}
+{% endblock %}
+
 {% block content %}
 {% cache 2000 product_detail_page %}
 
