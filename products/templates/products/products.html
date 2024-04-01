@@ -5,6 +5,13 @@
 {{ block.super }}
 - Products
 {% endblock %}
+{% block corecss %}
+{% for product in products %}
+<link rel="preload" href="{{ product.image.url }}" as="image">
+{% endfor %}
+<link rel="preload" href="{{MEDIA_URL}}no-image-available.webp" as="image">
+{{ block.super }}
+{% endblock %}
 
 {% block content %}
 {% cache 2000 products_page %}
