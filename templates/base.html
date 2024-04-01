@@ -23,7 +23,11 @@
     <!-- Base CSS Link -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- Mail Chimp CSS -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+    <!-- load css asynchrously
+    https://www.filamentgroup.com/lab/load-css-simpler/
+     -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css"
+            media="print" onload="this.media='all'">
     <!-- Google Fonts Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
