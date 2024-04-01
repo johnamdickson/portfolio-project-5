@@ -17,7 +17,11 @@ def products(request):
     A function to obtain all products and perform sorting, search and
     categorisation.
     """
-    request_origin = request.headers['Referer']
+    print(request.headers)
+    try:
+        request_origin = request.headers['Referer']
+    except KeyError:
+        request_origin = None
     products = Product.objects.all().order_by('category')
     query = None
     categories = None
