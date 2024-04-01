@@ -21,7 +21,7 @@ def products(request):
     try:
         request_origin = request.headers['Referer']
     except KeyError:
-        request_origin = None
+        request_origin = []
     products = Product.objects.all().order_by('category')
     query = None
     categories = None
