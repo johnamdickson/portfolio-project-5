@@ -633,6 +633,10 @@ https://stackoverflow.com/questions/6910049/on-a-css-hover-event-can-i-change-an
     height: 15px;
     stroke: #4d6562;
 }
+
+.main-icons .gift {
+    stroke: #fff
+}
 .size-colour-row {
     z-index:999;
     top:15px;
