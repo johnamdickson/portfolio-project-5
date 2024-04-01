@@ -335,34 +335,36 @@ header .nav-link:focus {
     height: 700px;
 }
 
-.home-image-main {
-    background: center / cover no-repeat url("/static/images/crochet-hook.webp");
-    border-radius: 20px;
-    border: 0.5px solid #f2bfdc;
-}
-
+.home-image-main,
 .home-image-1,
 .home-image-2,
 .home-image-3,
 .home-image-4 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
     border-radius: 20px;
     border: 0.5px solid #f2bfdc;
 }
 
+.home-image-main {
+    background-image: url("/static/images/crochet-hook.webp");
+}
+
 .home-image-1 {
-    background: center / cover no-repeat url("/static/images/gift-set.webp");
+    background-image: url("/static/images/gift-set.webp");
 }
 
 .home-image-2 {
-    background: center / cover no-repeat url("/static/images/learn.webp");
+    background-image: url("/static/images/learn.webp");
 }
 
 .home-image-3 {
-    background: center / cover no-repeat url("/static/images/teddy-bear-hats.webp");
+    background-image: url("/static/images/teddy-bear-hats.webp");
 }
 
 .home-image-4 {
-    background: center / cover no-repeat url("/static/images/blanket.webp");
+    background-image: url("/static/images/blanket.webp");
 }
 
 .home-image-flex {
@@ -895,15 +897,15 @@ footer p, footer label{
 
     .home-image-main,
     .home-image-1,
-    .home-image-2,
+    .home-image-3,
     .home-image-4 {
         height: 200px !important;
-        background-position: center -60px;
+        background-position: bottom;
     }
 
-    .home-image-3 {
+    .home-image-2 {
         height: 200px !important;
-        background-position: center -30px;
+        background-position: center -50px;
     }
 
     .home-container {
