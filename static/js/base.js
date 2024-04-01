@@ -169,8 +169,8 @@ const offCanvasMethods = () => {
     const registerOffcanvas = document.getElementById('offcanvas-menu-register')
     const registerOffcanvasSmall = document.getElementById('offcanvas-menu-register-sm')
     let registerButtons = Array.from(document.getElementsByClassName('offcanvas-register-button'))
-    const registerEmailInput = document.getElementById('id_email')
-    const registerEmailInputSmall = document.getElementById('id_email_1')
+    const registerEmailInput = document.getElementById('id_email_register_regular')
+    const registerEmailInputSmall = document.getElementById('id_email_register-small')
 
 // set up profile off canvases from bottom on small screens and from right on medium and above.
     const profileOffcanvas = document.getElementById('offcanvas-menu-profile')

@@ -125,17 +125,17 @@
                     <div class="m-2">{{ order_form.postcode | as_crispy_field }}</div>
                     <div class="m-2">{{ order_form.country | as_crispy_field }}</div>
                 </fieldset>
-                <legend class="fieldset-label small text-black ms-3 px-2 w-auto">Payment</legend>
                 <fieldset class="px-4">
+                    <legend class="fieldset-label small text-black w-auto">Payment</legend>
                     <div id="payment-element">
                         <!-- Mount the Payment Element here -->
                       </div>
                 </fieldset>
                 <div class="row submit-button text-right mb-2">
                       <button id="submit" class="btn-custom p-3 col-4 mx-auto" type="submit">
-                        <div class="spinner hidden" id="spinner"></div>
+                        <span class="spinner hidden mx-2" id="spinner"></span>
                         <span id="button-text" class="me-2">Pay Now</span>
-                        <i class="fa-solid fa-money-bill-1-wave"></i>
+                        <i id="button-icon" class="fa-solid fa-money-bill-1-wave"></i>
                       </button>
                       <p class="small text-danger my-0 col-12 text-center" id="card-charge-text">
                         <span class="icon">
@@ -156,7 +156,7 @@
         </div>
     </div>
 </div>
-<input type="hidden" name="items" value="{{ cart_items }}" />
+<input type="hidden" name="items" value="{{ cart_items }}">
 
 {% endblock %}
 
