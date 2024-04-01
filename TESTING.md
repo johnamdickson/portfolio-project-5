@@ -213,6 +213,14 @@ Each of the site Python files containing code over and above a basic import and 
 |apps.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/home/apps-post-edit.png)
 |urls.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/home/home-pre-edit.md#urlspy)|![python-checker](documentation/TESTING-files/python-validation/home/urls-post-edit.png)
 |views.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/home/home-pre-edit.md#viewspy)|![python-checker](documentation/TESTING-files/python-validation/home/views-post-edit.png)
+#### Little Woolly Snuggles Project
+**File**|**Initial Errors/Warnings**|**Screenshot**
+|:-----:|:------|:-----:|
+|asgi.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#asgipy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/asgi-post-edit.png)
+|settings.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#settingspy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/settings-post-edit.png)
+|urls.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#urlspy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/urls-post-edit.png)
+|wsgi.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#wsgipy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/wsgi-post-edit.png)
+
 
 
 

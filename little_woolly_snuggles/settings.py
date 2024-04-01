@@ -29,8 +29,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['little-woolly-snuggles-4b258af9630a.herokuapp.com','8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',]
-
+ALLOWED_HOSTS = [
+    'little-woolly-snuggles-4b258af9630a.herokuapp.com',
+    '8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',
+]
 
 # Application definition
 
@@ -153,19 +155,23 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -179,8 +185,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -227,7 +231,7 @@ if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'boutiqueado@example.com'
 else:
-    DEFAULT_FROM_EMAIL='mailtrap@littlewoollysnuggles.com' 
+    DEFAULT_FROM_EMAIL = 'mailtrap@littlewoollysnuggles.com'
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'live.smtp.mailtrap.io'
     EMAIL_PORT = '587'
