@@ -1,4 +1,4 @@
-# Cart App Python Validation Pre-edit Results
+# Checkout App Python Validation Pre-edit Results
 
 ## checkout_tools.py
 ### Errors
