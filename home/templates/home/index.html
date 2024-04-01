@@ -6,13 +6,13 @@
 {{ block.super }}
 - Welcome
 {% endblock %}
-{% block extra_css %}
-{{ block.super }}
+{% block corecss %}
 <link rel="preload" href="/static/images/crochet-hook.webp" as="image">
 <link rel="preload" href="/static/images/gift-set.webp" as="image">
 <link rel="preload" href="/static/images/learn.webp" as="image">
 <link rel="preload" href="/static/images/teddy-bear-hats.webp" as="image">
 <link rel="preload" href="/static/images/blanket.webp" as="image">
+{{ block.super }}
 {% endblock %}
 
 {% block content %}
