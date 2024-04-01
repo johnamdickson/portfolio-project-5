@@ -44,8 +44,9 @@ def cache_checkout_data(request):
 def checkout(request):
     try:
         user_profile = UserProfile.objects.get(user=request.user)
-        print(user_profile.__dict__)
     except UserProfile.DoesNotExist:
+        user_profile = None
+    except TypeError:
         user_profile = None
 
     if request.user.is_authenticated:

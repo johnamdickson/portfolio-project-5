@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['little-woolly-snuggles-4b258af9630a.herokuapp.com','8000-johnamdicks-portfoliopr-41pgsd24zrp.ws-eu110.gitpod.io',]
 
