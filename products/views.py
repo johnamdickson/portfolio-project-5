@@ -50,7 +50,6 @@ def products(request):
             products = products.order_by(sortkey)
             cache.clear()
 
-
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -59,10 +58,10 @@ def products(request):
             # otherwise
             if categories:
                 title = categories[0].friendly_name
-            else :
+            else:
                 title = "Products"
             cache.clear()
-        
+
         if 'products' in request.GET:
             products = Product.objects.all().order_by('category')
             cache.clear()
@@ -72,14 +71,17 @@ def products(request):
             if not query:
                 messages.error(request, "Please enter search criteria.")
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(category__friendly_name__icontains=query)
+
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(category__friendly_name__icontains=query)
+            )
             # query to be rendered in the template searchbar placeholder
             placeholder = query
             products = products.filter(queries)
             title = "Search Products"
             cache.clear()
-        
 
     current_sorting = f'{sort}_{direction}'
 
@@ -93,6 +95,7 @@ def products(request):
     }
 
     return render(request, 'products/products.html', context)
+
 
 def product_detail(request, product_pk, clear_cache):
     """ A view to show individual product details """
@@ -114,6 +117,7 @@ def product_detail(request, product_pk, clear_cache):
 
     return render(request, 'products/product-detail.html', context)
 
+
 @login_required
 @cache_page(60*30)
 def add_product(request):
@@ -126,8 +130,16 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, f'Successfully added product {product.name}')
-            return redirect(reverse('product_detail', args=[product.id, 'False']))
+            messages.success(
+                request,
+                f'Successfully added product {product.name}'
+            )
+            return redirect(
+                reverse(
+                    'product_detail',
+                    args=[product.id, 'False']
+                    )
+                )
         else:
             messages.error(request,
                            ('Failed to add product. '
@@ -141,6 +153,7 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 @cache_page(60*30)
@@ -156,7 +169,15 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', args=[product.id, 'False']))
+            return redirect(
+                reverse(
+                    'product_detail',
+                    args=[
+                        product.id,
+                        'False'
+                        ]
+                    )
+                )
         else:
             messages.error(request,
                            ('Failed to update product. '
@@ -165,8 +186,8 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
         messages.info(
             request,
-             f'You are editing {product.name}',
-              extra_tags="Edit Product"
+            f'You are editing {product.name}',
+            extra_tags="Edit Product"
               )
 
     template = 'products/edit-product.html'
@@ -177,11 +198,15 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can delete products.')
+        messages.error(
+            request,
+            'Sorry, only store owners can delete products.'
+        )
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)

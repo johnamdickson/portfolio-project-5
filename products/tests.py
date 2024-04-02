@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.sessions.middleware import SessionMiddleware
 import uuid
 from .views import products
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 # Much of the testing methods below were influenced by my pp4 tests:
@@ -25,8 +26,8 @@ class CategoryTest(TestCase):
         category_name = category.name
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
-             f'Assigned category name of "{category_name}"'
-             f' should equal "hats_test"')
+            f'Assigned category name of "{category_name}"'
+            f' should equal "hats_test"')
         self.assertEqual(category_name, 'hats_test')
 
     def test_category_friendly_name(self):
@@ -53,24 +54,32 @@ class ProductTest(TestCase):
             price=19.99,
             category=Category.objects.get(name='hats_test')
             )
-        
+
     def test_product_name_and_category(self):
         """
         Test product name and category assigned in setup is correct.
         """
         product = Product.objects.get(id=1)
-        product.sizes.set([ProductSize.objects.create(name='Test Hat Size', size=k.SIZES[0])])
+        product.sizes.set(
+            [ProductSize.objects.create(
+                name='Test Hat Size',
+                size=k.SIZES[0]
+                )]
+            )
         product.category = Category.objects.get(name='hats_test')
         product_name = product.name
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
-             f'Assigned product name of "{product_name}"'
-             ' should equal "Test Hat".\n'
+            f'Assigned product name of "{product_name}"'
+            ' should equal "Test Hat".\n'
             f' Assigned product category of "{product.category}"'
             f' should equal "{Category.objects.get(name="hats_test")}"'
             )
         self.assertEqual(product_name, 'Test Hat')
-        self.assertEqual(product.category, Category.objects.get(name='hats_test'))
+        self.assertEqual(
+            product.category,
+            Category.objects.get(name='hats_test')
+            )
 
     def test_product_description(self):
         """
@@ -80,31 +89,44 @@ class ProductTest(TestCase):
         product_description = product.description
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
-             f'Assigned product description of "{product_description}"'
-             f' should equal "A hat used for test purposes"')
+            f'Assigned product description of "{product_description}"'
+            f' should equal "A hat used for test purposes"')
         self.assertEqual(product_description, 'A hat used for test purposes')
 
     def test_product_attributes(self):
         """
-        Test product attributes of sizes and colours assigned in test are correct.
+        Test product attributes of sizes and colours assigned in
+        test are correct.
         """
         product = Product.objects.get(id=1)
         # assign sizes to Hat Test
         product.sizes.set([
-            ProductSize.objects.create(name='Test Hat Size 1', size=k.SIZES[0]), 
-            ProductSize.objects.create(name='Test Hat Size 2', size=k.SIZES[1]), 
+            ProductSize.objects.create(
+                name='Test Hat Size 1',
+                size=k.SIZES[0]
+                ),
+            ProductSize.objects.create(
+                name='Test Hat Size 2',
+                size=k.SIZES[1]
+                ),
             ])
         # assign colours to Hat Test
         product.colours.set([
-            ProductColour.objects.create(name='Test Hat Colour 1', colour=k.COLOURS[0]), 
-            ProductColour.objects.create(name='Test Hat Colour 2', colour=k.COLOURS[1]), 
+            ProductColour.objects.create(
+                name='Test Hat Colour 1',
+                colour=k.COLOURS[0]
+                ),
+            ProductColour.objects.create(
+                name='Test Hat Colour 2',
+                colour=k.COLOURS[1]
+                ),
             ])
         first_size = product.sizes.all()[0]
         second_size = product.sizes.all()[1]
         first_colour = product.colours.all()[0]
         second_colour = product.colours.all()[1]
         print(
-            '\n****** ', self._testMethodName.upper(), ' ******\n',
+             '\n****** ', self._testMethodName.upper(), ' ******\n',
              f'Assigned first size name of "{first_size.name}"'
              ' should equal "Test Hat Size 1".\n'
              f' Assigned first size of "{first_size.size}"'
@@ -131,6 +153,7 @@ class ProductTest(TestCase):
         self.assertEqual(first_colour.colour, f"{k.COLOURS[0]}")
         self.assertEqual(second_colour.colour, f"{k.COLOURS[1]}")
 
+
 class ProductSizeTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -146,58 +169,89 @@ class ProductSizeTest(TestCase):
         product_size = eval(ProductSize.objects.get(name='Test Hat Size').size)
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
-             f'Assigned product size of "{product_size}"'
-             f' should equal "{k.SIZES[0]}"')
+            f'Assigned product size of "{product_size}"'
+            f' should equal "{k.SIZES[0]}"')
         self.assertEqual(product_size, k.SIZES[0])
 
 
 class ProductColourTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[0])
+        ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[0]
+            )
 
     def test_product_colour(self):
         """
         Test product colour assigned in setup is correct.
         """
-        product_colour = eval(ProductColour.objects.get(name='Test Hat Colour').colour)
+        product_colour = eval(
+            ProductColour.objects.get(
+                name='Test Hat Colour'
+                ).colour
+            )
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
-             f'Assigned product colour of "{product_colour}"'
-             f' should equal "{k.COLOURS[0]}"')
+            f'Assigned product colour of "{product_colour}"'
+            f' should equal "{k.COLOURS[0]}"')
         self.assertEqual(product_colour, k.COLOURS[0])
 
 
 class TestViews(TestCase):
-    
+
     uuid_for_test = uuid.uuid4()
+    # use of SimpleUploadedFile to simulate an image:
+    # https://stackoverflow.com/questions/63476979/unit-testing-django-model-with-an-image-not-quite-understanding-simpleuploaded
+    image = SimpleUploadedFile(
+            name='test_image.jpg',
+            content=b'',
+            content_type='image/jpeg'
+            )
 
     # testing with users:
     # https://stackoverflow.com/questions/72421658/access-a-view-which-is-for-logged-in-users-in-django-testing
     def setUp(self):
+
         client = Client()
         hat_category = Category.objects.create(name='hats_test')
         z_category = Category.objects.create(name='z')
         blanket_category = Category.objects.create(name='blanket_add_test')
-        admin_user = User.objects.create_superuser(username='test_admin', password='test_admin')
-        regular_user = User.objects.create_user(username='test_regular', password='test_regular')
-
+        admin_user = User.objects.create_superuser(
+            username='test_admin',
+            password='test_admin'
+            )
+        regular_user = User.objects.create_user(
+            username='test_regular',
+            password='test_regular'
+            )
         self.product_1 = Product.objects.create(
             category=hat_category,
             name='Hat Test',
             unique_product_identifier=self.uuid_for_test,
             description='A hat used for test purposes',
             price=19.99,
+            image=self.image,
         )
-        self.product_1.sizes.set([ProductSize.objects.create(name='Test Hat Size', size=k.SIZES[0])])
-        self.product_1.colours.set([ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[0])])
+        self.product_1.sizes.set([ProductSize.objects.create(
+            name='Test Hat Size',
+            size=k.SIZES[0])]
+            )
+        self.product_1.colours.set(
+            [ProductColour.objects.create(
+                name='Test Hat Colour',
+                colour=k.COLOURS[0])]
+            )
 
         self.product_2 = Product.objects.create(
             category=z_category,
             name='Z',
             unique_product_identifier=self.uuid_for_test,
-            description='Last letter in alphabet for name and category with highest price',
+            description=(
+                'Last letter in alphabet for name'
+                ' and category with highest price'),
             price=1999.99,
+            image=self.image,
         )
 
     def test_products_view_GET(self):
@@ -207,7 +261,7 @@ class TestViews(TestCase):
         response = self.client.get(reverse('products'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/products.html')
-    
+
     def test_products_sort_by_name(self):
         """
         Test sorting products by name returns correct sort.
@@ -230,7 +284,10 @@ class TestViews(TestCase):
         url = reverse('products')
         response = self.client.get(url, {'sort': 'category'})
         sorted_products = response.context['products']
-        print_list = [{product.name:product.category.name} for product in sorted_products]
+        print_list = [
+            {product.name: product.category.name}
+            for product in sorted_products
+            ]
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
             f'Products sorted by category:"{print_list}"'
@@ -245,7 +302,10 @@ class TestViews(TestCase):
         url = reverse('products')
         response = self.client.get(url, {'sort': 'price'})
         sorted_products = response.context['products']
-        print_list = [{product.name:product.price} for product in sorted_products]
+        print_list = [
+            {product.name: product.price}
+            for product in sorted_products
+            ]
         print(
             '\n****** ', self._testMethodName.upper(), ' ******\n',
             f'Products sorted by price:"{print_list}"'
@@ -255,18 +315,22 @@ class TestViews(TestCase):
 
     def test_product_detail_view_GET(self):
         """
-        Test get product detail view returns correct url, template and response code.
+        Test get product detail view returns correct url,
+        template and response code.
         """
-        response = self.client.get(reverse('product_detail', args=[1]))
+        response = self.client.get(reverse('product_detail', args=[1, 'True']))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/product-detail.html')
 
     def test_add_product_superuser(self):
         """
-        Test adding product by the superuser adds a new product to DB, and redirects to
-        the new products detail page.
+        Test adding product by the superuser adds a new product to DB,
+        and redirects to the new products detail page.
         """
-        blanket_colour = ProductColour.objects.create(name='Test Blanket Colour', colour=k.COLOURS[2])
+        blanket_colour = ProductColour.objects.create(
+            name='Test Blanket Colour',
+            colour=k.COLOURS[2]
+            )
         self.client.login(username='test_admin', password='test_admin')
         response = self.client.post(reverse('add_product'), {
             'category': Category.objects.get(name='blanket_add_test').id,
@@ -281,17 +345,27 @@ class TestViews(TestCase):
             '\n****** ', self._testMethodName.upper(), ' ******\n',
             f'Added product "{product.name}"'
             f' with description "{product.description}":\n'
-            f' price - "{product.price}"\n'
-            f' colour - "{[product.colour for product in product.colours.all()]}"'
+            f' price - "{product.price}"\ncolour - '
+            f' "{[product.colour for product in product.colours.all()]}"'
             )
-        self.assertRedirects(response, reverse('product_detail', args=[3])) 
+        self.assertRedirects(
+            response,
+            reverse(
+                'product_detail',
+                args=[3, 'False']
+                )
+            )
 
     def test_add_product_regular_user(self):
         """
-        Test adding product by the regular user does not add a new product to DB, and redirects to
-        the home page whilst also instantiating a message to user.
+        Test adding product by the regular user does not add a
+        new product to DB, and redirects to the home page whilst
+        also instantiating a message to user.
         """
-        blanket_colour = ProductColour.objects.create(name='Test Blanket Colour', colour=k.COLOURS[2]) 
+        blanket_colour = ProductColour.objects.create(
+            name='Test Blanket Colour',
+            colour=k.COLOURS[2]
+            )
         self.client.login(username='test_regular', password='test_regular')
         response = self.client.post(reverse('add_product'), {
             'category': Category.objects.get(name='blanket_add_test').id,
@@ -299,7 +373,8 @@ class TestViews(TestCase):
             'unique_product_identifier': uuid.uuid4(),
             'description': 'A blanket used for test purposes',
             'price': 39.00,
-            'colours': [blanket_colour.id]
+            'colours': [blanket_colour.id],
+            'image': self.image,
         })
         messages = list(get_messages(response.wsgi_request))
         message_string = str(messages[0])
@@ -313,15 +388,15 @@ class TestViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(
             message_string,
-            'Sorry, only store owners can add products.' 
+            'Sorry, only store owners can add products.'
             )
-        self.assertRedirects(response, reverse('home')) 
+        self.assertRedirects(response, reverse('home'))
         self.assertFalse(product_exists)
 
     def test_add_product_no_user(self):
         """
-        Test adding product by anonymous user does not add a new product to DB, and redirects to
-        the login page.
+        Test adding product by anonymous user does not add a new
+        product to DB, and redirects to the login page.
         """
         response = self.client.post(reverse('add_product'), {
             'category': Category.objects.get(name='blanket_add_test').id,
@@ -329,6 +404,8 @@ class TestViews(TestCase):
             'unique_product_identifier': uuid.uuid4(),
             'description': 'A blanket used for test purposes',
             'price': 39.00,
+            'image': self.image,
+
         })
         # solution to redirect with next url parameter:
         # https://stackoverflow.com/questions/66449900/django-test-redirect-to-login-with-next-parameter
@@ -338,12 +415,12 @@ class TestViews(TestCase):
             f'User redirected to "{login_url}"'
             ' when attempting to add a product'
             )
-        self.assertRedirects(response, login_url) 
+        self.assertRedirects(response, login_url)
 
     def test_edit_product_superuser(self):
         """
-        Test editing product by the superuser edits product in the DB, and redirects to
-        the new products detail page.
+        Test editing product by the superuser edits product in the DB,
+        and redirects to the new products detail page.
         """
         self.client.login(username='test_admin', password='test_admin')
         product = Product.objects.get(id=1)
@@ -352,12 +429,22 @@ class TestViews(TestCase):
             f'Original product "{product.name}"'
             f' with description "{product.description}":\n'
             f' price - "{product.price}"\n'
-            f' size -"{[product.size for product in product.sizes.all()]}"\n'
-            f' colours - "{[product.colour for product in product.colours.all()]}"'
+            f' size - "{[product.size for product in product.sizes.all()]}"\n'
+            f' colours - '
+            f'"{[product.colour for product in product.colours.all()]}"'
             )
-        new_size = ProductSize.objects.create(name='Test Hat Size Edit', size=k.SIZES[3])
-        first_colour = ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[2])
-        second_colour = ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[1])
+        new_size = ProductSize.objects.create(
+            name='Test Hat Size Edit',
+            size=k.SIZES[3]
+            )
+        first_colour = ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[2]
+            )
+        second_colour = ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[1]
+            )
         response = self.client.post(reverse('edit_product', args=[1]), {
             'name': 'Edited Hat Test',
             'unique_product_identifier': self.uuid_for_test,
@@ -371,14 +458,22 @@ class TestViews(TestCase):
             f' with description "{product.description}":\n'
             f' price - "{product.price}"\n'
             f' size -"{[product.size for product in product.sizes.all()]}"\n'
-            f' colours "{[product.colour for product in product.colours.all()]}"'
+            f' colours - '
+            f' "{[product.colour for product in product.colours.all()]}"'
             )
-        self.assertRedirects(response, reverse('product_detail', args=[1]))
+        self.assertRedirects(
+            response,
+            reverse(
+                'product_detail',
+                args=[1, "False"]
+                )
+            )
 
     def test_edit_product_regular_user(self):
         """
-        Test editing product by the regular user does not edit product in DB, and redirects to
-        the home page whilst also instantiating a message to user.
+        Test editing product by the regular user does not edit product in DB
+        and redirects to the home page whilst also instantiating a message
+        to user.
         """
         self.client.login(username='test_regular', password='test_regular')
         original_product = Product.objects.get(id=1)
@@ -389,11 +484,21 @@ class TestViews(TestCase):
             f' with description "{product.description}":\n'
             f' price - "{product.price}"\n'
             f' size -"{[product.size for product in product.sizes.all()]}"\n'
-            f' colours - "{[product.colour for product in product.colours.all()]}"'
+            f' colours - '
+            f'"{[product.colour for product in product.colours.all()]}"'
             )
-        new_size = ProductSize.objects.create(name='Test Hat Size Edit', size=k.SIZES[3])
-        first_colour = ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[2])
-        second_colour = ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[1])
+        new_size = ProductSize.objects.create(
+            name='Test Hat Size Edit',
+            size=k.SIZES[3]
+            )
+        first_colour = ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[2]
+            )
+        second_colour = ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[1]
+            )
         response = self.client.post(reverse('edit_product', args=[1]), {
             'name': 'Edited Hat Test',
             'unique_product_identifier': self.uuid_for_test,
@@ -408,9 +513,9 @@ class TestViews(TestCase):
             f' with description "{product.description}":\n'
             f' price - "{product.price}"\n'
             f' size -"{[product.size for product in product.sizes.all()]}"\n'
-            f' colours "{[product.colour for product in product.colours.all()]}"\n'
+            f' colours - '
+            f'"{[product.colour for product in product.colours.all()]}"\n'
             )
-        # self.assertRedirects(response, reverse('product_detail', args=[1]))
         messages = list(get_messages(response.wsgi_request))
         message_string = str(messages[0])
         product_equal = product == original_product
@@ -422,19 +527,28 @@ class TestViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(
             message_string,
-            'Sorry, only store owners can edit products.' 
+            'Sorry, only store owners can edit products.'
             )
-        self.assertRedirects(response, reverse('home')) 
+        self.assertRedirects(response, reverse('home'))
         self.assertTrue(product_equal)
 
     def test_edit_product_no_user(self):
         """
-        Test editing product by anonymous user does not edit product on DB, and redirects to
-        the login page.
+        Test editing product by anonymous user does not edit product on DB,
+        and redirects to the login page.
         """
-        new_size = ProductSize.objects.create(name='Test Hat Size Edit', size=k.SIZES[3])
-        first_colour = ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[2])
-        second_colour = ProductColour.objects.create(name='Test Hat Colour', colour=k.COLOURS[1])
+        new_size = ProductSize.objects.create(
+            name='Test Hat Size Edit',
+            size=k.SIZES[3]
+            )
+        first_colour = ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[2]
+            )
+        second_colour = ProductColour.objects.create(
+            name='Test Hat Colour',
+            colour=k.COLOURS[1]
+            )
         response = self.client.post(reverse('edit_product', args=[1]), {
             'name': 'Edited Hat Test',
             'unique_product_identifier': self.uuid_for_test,
@@ -451,12 +565,12 @@ class TestViews(TestCase):
             f'User redirected to "{login_url}"'
             ' when attempting to add a product'
             )
-        self.assertRedirects(response, login_url) 
-        
+        self.assertRedirects(response, login_url)
+
     def test_delete_product_superuser(self):
         """
-        Test deleting product by the superuser deletes the product from the DB, and redirects to
-        the products page.
+        Test deleting product by the superuser deletes the product from the DB,
+        and redirects to the products page.
         """
         # use of exists to check product was deleted:
         # https://stackoverflow.com/questions/64883706/django-how-to-use-exists
@@ -470,16 +584,17 @@ class TestViews(TestCase):
         response = self.client.get(reverse('delete_product', args=[1]))
         self.assertRedirects(response, reverse('products'))
         print(
-            f' After deletion returning {Product.objects.filter(id=1).exists()}'
+            f' After deletion returning '
+            f'{Product.objects.filter(id=1).exists()}'
             )
         self.assertFalse(Product.objects.filter(id=1).exists())
         self.assertRedirects(response, reverse('products'))
 
-
     def test_delete_product_regular_user(self):
         """
-        Test deleting product by the regular user does not delete product from DB, and redirects to
-        the home page whilst also instantiating a message to user.
+        Test deleting product by the regular user does not delete product
+        from DB, and redirects to the home page whilst also instantiating
+        a message to user.
         """
         self.client.login(username='test_regular', password='test_regular')
         product = Product.objects.get(id=1)
@@ -495,15 +610,15 @@ class TestViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(
             message_string,
-            'Sorry, only store owners can delete products.' 
+            'Sorry, only store owners can delete products.'
             )
-        self.assertRedirects(response, reverse('home')) 
+        self.assertRedirects(response, reverse('home'))
         self.assertTrue(Product.objects.filter(id=1).exists())
 
     def test_delete_product_no_user(self):
         """
-        Test deleting product by anonymous user does not delete the product from DB, and redirects to
-        the login page.
+        Test deleting product by anonymous user does not delete the product
+        from DB, and redirects to the login page.
         """
         # use of exists to check product was deleted:
         # https://stackoverflow.com/questions/64883706/django-how-to-use-exists
@@ -516,4 +631,4 @@ class TestViews(TestCase):
             f' returning {Product.objects.filter(id=1).exists()}.'
             )
         self.assertTrue(Product.objects.filter(id=1).exists())
-        self.assertRedirects(response, login_url) 
+        self.assertRedirects(response, login_url)

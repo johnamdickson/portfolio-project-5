@@ -221,10 +221,17 @@ Each of the site Python files containing code over and above a basic import and 
 |settings.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#settingspy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/settings-post-edit.png)
 |urls.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#urlspy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/urls-post-edit.png)
 |wsgi.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/little-woolly-snuggles/lws-pre-edit.md#wsgipy)|![python-checker](documentation/TESTING-files/python-validation/little-woolly-snuggles/wsgi-post-edit.png)
-
-
-
-
+#### Products App
+**File**|**Initial Errors/Warnings**|**Screenshot**
+|:-----:|:------|:-----:|
+|admin.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#adminpy)|![python-checker](documentation/TESTING-files/python-validation/products/apps-post-edit.png)
+|apps.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/products/apps-post-edit.png)
+|contexts.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#contextspy)|![python-checker](documentation/TESTING-files/python-validation/products/contexts-post-edit.png)
+|forms.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#formspy)|![python-checker](documentation/TESTING-files/python-validation/products/forms-post-edit.png)
+|models.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#modelspy)|![python-checker](documentation/TESTING-files/python-validation/products/models-post-edit.png)
+|tests.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#testspy)|![python-checker](documentation/TESTING-files/python-validation/products/tests-post-edit.png)
+|urls.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/products/urls-post-edit.png)
+|views.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#viewspy)|![python-checker](documentation/TESTING-files/python-validation/products/views-post-edit.png)
 
 ### Lighthouse
 
