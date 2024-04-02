@@ -37,6 +37,7 @@ const cartProductQuantitySelect = () => {
       // the button is styled unavailable and popover enabled requesting 
       // user use buttons to change quantity if required.
       if (dynamicInputValue === staticInputValue) {
+        minusButton.disabled = false;
         updateButton.style.pointerEvents = 'none';
         updateButton.style.opacity = '0.4';
         // enabling and disabling popover from JS:
