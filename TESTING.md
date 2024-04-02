@@ -242,6 +242,11 @@ Each of the site Python files containing code over and above a basic import and 
 |models.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#modelspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/models-post-edit.png)
 |urls.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#urlspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/urls-post-edit.png)
 |views.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#viewspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/views-post-edit.png)
+#### Miscellaneous Python Files
+**File**|**Initial Errors/Warnings**|**Screenshot**
+|:-----:|:------|:-----:|
+|custom_storages.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/misc/custom_storages.png)
+|constants.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/misc/constants.png)
 
 ### Lighthouse
 
