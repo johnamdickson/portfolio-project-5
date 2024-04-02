@@ -232,6 +232,16 @@ Each of the site Python files containing code over and above a basic import and 
 |tests.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#testspy)|![python-checker](documentation/TESTING-files/python-validation/products/tests-post-edit.png)
 |urls.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/products/urls-post-edit.png)
 |views.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/products/products-pre-edit.md#viewspy)|![python-checker](documentation/TESTING-files/python-validation/products/views-post-edit.png)
+#### Profiles App
+**File**|**Initial Errors/Warnings**|**Screenshot**
+|:-----:|:------|:-----:|
+|admin.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#adminpy)|![python-checker](documentation/TESTING-files/python-validation/profiles/apps-post-edit.png)
+|apps.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/profiles/apps-post-edit.png)
+|contexts.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#contextspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/contexts-post-edit.png)
+|forms.py|No errors/warnings returned|![python-checker](documentation/TESTING-files/python-validation/profiles/forms-post-edit.png)
+|models.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#modelspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/models-post-edit.png)
+|urls.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#urlspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/urls-post-edit.png)
+|views.py|Errors/warnings returned, click [here](documentation/TESTING-files/python-validation/profiles/profiles-pre-edit.md#viewspy)|![python-checker](documentation/TESTING-files/python-validation/profiles/views-post-edit.png)
 
 ### Lighthouse
 
