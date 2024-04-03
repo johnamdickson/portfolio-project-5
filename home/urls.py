@@ -8,7 +8,7 @@ from django.views.defaults import server_error, bad_request
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('test-500', views.simulate_500_error, name='500'),
-    path('test-400', views.simulate_400_error, name='400'),
-    path('test-403', views.simulate_403_error, name='403'),
+    path('test-500/', views.simulate_500_error, name='500'),
+    path('test-400/', views.simulate_400_error, name='400'),
+    path('test-403/', views.simulate_403_error, name='403'),
 ]
