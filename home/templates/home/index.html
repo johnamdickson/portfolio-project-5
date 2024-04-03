@@ -36,8 +36,147 @@
              </div>
           </div>
         </div>
-        {% include 'includes/index-image-grid.html' %}
-    </div>
+        <!-- image grid for small screens -->
+        <div class="col-12 d-md-none pb-3">
+            <div class="home-image-1 h-100">
+              <div class="row h-100">
+                <div class="col-5 offset-7">
+                    <div class="p-3 home-image-callout d-flex flex-column justify-content-evenly">
+                      <h5 class="text-center">Shop<br>Gift Sets</h5>
+                      <div class="row">
+                        <div class="col-12 mx-auto d-flex justify-content-center">
+                          <a href="{% url 'products' %}?category=gift_sets" class="btn btn-custom text-center">Shop Now</a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+               </div>
+            </div>
+          </div>
+          <div class="col-12 d-md-none pb-3">
+            <div class="home-image-2 h-100">
+              <div class="row h-100">
+                <div class="col-5 offset-7">
+                    <div class="p-3 home-image-callout d-flex flex-column justify-content-evenly">
+                      <h5 class="text-center">Learn to<br>Crochet</h5>
+                      <div class="row">
+                        <div class="col-12 mx-auto d-flex justify-content-center">
+                          <a href="{% url 'products' %}?category=learn_to_crochet" class="btn btn-custom text-center">Learn Now</a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+               </div>
+            </div>
+          </div>
+          <div class="col-12 d-md-none pb-3">
+            <div class="home-image-3 h-100">
+              <div class="row h-100">
+                <div class="col-5 offset-7">
+                    <div class="p-3 home-image-callout d-flex flex-column justify-content-evenly">
+                      <h5 class="text-center">Browse<br>Hats</h5>
+                      <div class="row">
+                        <div class="col-12 mx-auto d-flex justify-content-center">
+                          <a href="{% url 'products' %}?category=hats" class="btn btn-custom text-center">Shop Now</a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+               </div>
+            </div>
+          </div>
+          <div class="col-12 d-md-none pb-3">
+            <div class="home-image-4 h-100">
+              <div class="row h-100">
+                <div class="col-5 offset-7">
+                    <div class="p-3 home-image-callout d-flex flex-column justify-content-evenly">
+                      <h5 class="text-center">Shop<br>Blankets</h5>
+                      <div class="row">
+                        <div class="col-12 mx-auto d-flex justify-content-center">
+                          <a href="{% url 'products' %}?category=blankets" class="btn btn-custom text-center">Shop Now</a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+               </div>
+            </div>
+          </div>
+          <!-- image grid for medium and above screens -->
+          <div class="col-12 d-none px-md-4 mt-4 mt-lg-0 col-lg-6 image-grid mx-auto d-md-block">
+            <div class="row h-50 pb-3 pe-3">
+              <div class="col-6 ps-3 ps-lg-3 g-0">
+                <div class="home-image-1 h-100">
+                  <div class="row h-100 home-image-flex">
+                    <div class="col-8 offset-4">
+                        <div class="p-2 small-home-callout">
+                          <h6 class="text-center">Shop Gift Sets</h6> 
+                          <p class="text-center d-none d-md-block">Looking for an original gift idea? Check out our range of unique Irish gift sets.</p>                    
+                               <div class="row">
+                            <div class="col-12 mx-auto d-flex justify-content-center">
+                              <a href="{% url 'products' %}?category=gift_sets" class="btn btn-custom text-center">Shop Now</a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+              </div>
+              <div class="col-6 ps-4 ps-lg-3 g-0">
+                <div class="home-image-2 h-100">
+                  <div class="row h-100 home-image-flex">
+                    <div class="col-8 offset-4">
+                        <div class="p-2 small-home-callout">
+                          <h6 class="text-center">Learn to Crochet</h6>   
+                          <p class="text-center d-none d-md-block">Want to learn crochet? Look no further, check out our resources here.</p>                                      
+                               <div class="row">
+                            <div class="col-12 mx-auto d-flex justify-content-center">
+                              <a href="{% url 'products' %}?category=learn_to_crochet" class="btn btn-custom text-center">Learn Now</a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="row h-50 pt-3 pe-3">
+              <div class="col-6 ps-3 ps-lg-3 g-0">
+                <div class="home-image-3 h-100">
+                  <div class="row h-100 home-image-flex">
+                    <div class="col-8 offset-4">
+                        <div class="p-2 small-home-callout">
+                          <h6 class="text-center">Browse Hats</h6>      
+                          <p class="text-center d-none d-md-block">Soft and warm crocheted hats for babies, children and adults.</p>                                                     
+                               <div class="row">
+                            <div class="col-12 mx-auto d-flex justify-content-center">
+                              <a href="{% url 'products' %}?category=hats" class="btn btn-custom text-center">Shop Now</a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+              </div>
+              <div class="col-6 ps-4 ps-lg-3 g-0">
+                <div class="home-image-4 h-100">
+                  <div class="row h-100 home-image-flex">
+                    <div class="col-8 offset-4">
+                        <div class="p-2 small-home-callout">
+                          <h6 class="text-center">Shop Blankets</h6> 
+                          <p class="text-center d-none d-md-block">Check out our cosy crocheted baby blankets made from 100% Irish wool.</p>                                                          
+                               <div class="row">
+                            <div class="col-12 mx-auto d-flex justify-content-center">
+                              <a href="{% url 'products' %}?category=blankets" class="btn btn-custom text-center">Shop Now</a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
   </div>
   {% endcache %}
 {% endblock %}
