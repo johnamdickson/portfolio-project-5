@@ -16,7 +16,7 @@
       {% for message in messages %}
         {{ message|safe }}
       {% endfor %}
-      {% if grand_total and request.path != "/cart/" %}
+      {% if grand_total and request.path != "/cart/" and message.extra_tags == "Item Added to Cart"%}
       <p class="logo-font bg-white text-black py-1">Your Cart ({{ product_count }})</p>
       <div class="cart-notification-wrapper p-2">
           {% for item in cart_items %}
