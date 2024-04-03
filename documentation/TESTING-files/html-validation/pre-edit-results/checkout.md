@@ -32,3 +32,14 @@ Info: Trailing slash on void elements has no effect and interacts badly with unq
 From line 1946, column 1; to line 1946, column 280
 
     v>↩</div>↩<input type="hidden" name="items" value="[{&#x27;item_id&#x27;: &#x27;10&#x27;, &#x27;quantity&#x27;… None, &#x27;colour&#x27;: &#x27;Black&#x27;, &#x27;secondary_colour&#x27;: &#x27;Purple&#x27;}]" />↩↩↩   
+
+Error: Element p not allowed as child of element strong in this context. (Suppressing further errors from this subtree.)
+
+From line 4379, column 33; to line 4379, column 76
+
+    <strong><p class="mb-0 text-black font-weight-bold">↩     
+
+Contexts in which element p may be used:
+Where flow content is expected.
+Content model for element strong:
+Phrasing content.
