@@ -7,9 +7,12 @@
 {% endblock %}
 {% block corecss %}
 {% for product in products %}
+{% if product.image %}
 <link rel="preload" href="{{ product.image.url }}" as="image">
-{% endfor %}
+{% else %}
 <link rel="preload" href="{{MEDIA_URL}}no-image-available.webp" as="image">
+{% endif %}
+{% endfor %}
 {{ block.super }}
 {% endblock %}
 
