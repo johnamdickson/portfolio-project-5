@@ -5,7 +5,7 @@ Little Woolly Snuggles is a business-to-consumer e-commerce website, selling han
 
 This site is my Portfolio Project 5 submission showcasing full stack frameworks, search engine optimisation and web marketing skills. 
 
-*Add link to deployed project here* [link.]()
+*Add link to deployed project here* [link.](https://little-woolly-snuggles-4b258af9630a.herokuapp.com/)
 
 ![Responsive Mockup Screenshot]() *Add responsive screenshot here*
 
@@ -14,6 +14,7 @@ This site is my Portfolio Project 5 submission showcasing full stack frameworks,
 
 - [UX](#ux)
   - [Strategy](#strategy)
+    - [Project Goals](#project-goals)
     - [Agile Methodology](#agile-methodology)
     - [User Stories](#user-stories)
   - [Scope](#scope)
@@ -47,13 +48,26 @@ This site is my Portfolio Project 5 submission showcasing full stack frameworks,
 ### Strategy
 The primary objective of our business-to-consumer e-commerce site is to offer consumers a diverse selection of crocheted goods across various categories while providing a user-friendly platform for browsing, selecting, and purchasing these items. Additionally, we aim to enhance user engagement by offering a learning environment where users can access step-by-step walkthroughs to create their own crocheted products. The site employs intuitive navigation, responsive design, and a streamlined purchasing process to deliver an optimal user experience.
 
+#### Project Goals
+
+The following goals were identified for the project:
+- A modern,responsive and stylish website.
+- A user friendly and dynamic website with the best possible user experience.
+- A secure platform for purchasing and user creation.
+- An optimised website for search engines to improve visibility and reach.
+- A series of web marketing strategies both on the website and external to it.
+- Enhanced website accessibility to accommodate users of all abilities.
+- A selection of crocheted products are available for purchase directly in the website.
+- Offer learn products offering users purcahse of crocheting tutorials.
+
 #### Agile Methodology
 
-The project followed an Agile Project Management approach, completing *ADD* epics consisting of various user stories. These stories were categorized using MoSCoW prioritization, labeled in GitHub as *Must Have*, *Should Have*, *Could Have*, and *Won't Have*. Each user story was assigned a timebox value using the Fibonacci Sequence. Throughout the project, sprints were conducted, selecting user stories with a timebox value of no more than 8 per sprint. Epics, user stories, and bugs were tracked and visualized using GitHub's Project Kanban board feature, accessible [here.](https://github.com/users/johnamdickson/projects/3/views/1).
+The project followed an Agile Project Management approach, completing *15* epics consisting of various user stories. These stories were categorized using MoSCoW prioritization, labeled in GitHub as *Must Have*, *Should Have*, *Could Have*, and *Won't Have*. Each user story was assigned a timebox value using the Fibonacci Sequence. Throughout the project, sprints were conducted, selecting user stories with a timebox value of no more than 8 per sprint. Epics, user stories, and bugs were tracked and visualized using GitHub's Project Kanban board feature, accessible [here.](https://github.com/users/johnamdickson/projects/3/views/1)
+
 
 #### User Stories
 
-As stated, the user stories were collated into *ADD* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *ADD* user stories, with *ADD* Must Have (*ADD*%), *ADD* Should Have(*ADD*%), *ADD* Could Have (*ADD*%) and *ADD* Won't Have (*ADD*%). 
+As stated, the user stories were collated into *15* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *54* user stories, with *16* Must Have (*30*%), *23* Should Have(*42*%), *14* Could Have (*26*%) and *1* Won't Have (*2*%). 
 <br>![user-story-breakdown]()*ADD user story breakdown graph*
 The total number of story points assigned to the user stories is *ADD* of which Must Have assigned *ADD* points(*ADD*%), Should Have assigned *ADD* points(*ADD*%), Could Have assigned *ADD* points(*ADD*%) and Won't Have assigned *ADD* points (*ADD*%).
 
