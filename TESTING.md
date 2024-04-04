@@ -272,7 +272,9 @@ For mobile devices, the performance score was in the 60-80 region, much like in 
 
 ### DBeaver
 
-The DBeaver database administration tool was used to verify the database schema and confirm the entity relationships exist as expected within the database and are correct for the project. The images below serve as a comparision between the database schema produced online and the actual database structure as reported by DBeaver.
+The DBeaver database administration tool was used to verify the database schema and confirm the entity relationships exist as expected within the database and are correct for the project. As can be seen in the images below, there are differences between the proposed schema and actual schema but broadly speaking are very similar. Product sizes and colour models were added as the project progressed and the FAQ model was omitted due to the approaching project deadline. 
+
+The images below serve as a comparision between the database schema produced online and the actual database structure as reported by DBeaver.
 
 <table width=90% align="center">
   <tr>
@@ -285,7 +287,7 @@ The DBeaver database administration tool was used to verify the database schema 
   <tr>
     <td>
     
-  ![Schema](README-files/database-schema.png)
+  ![Schema](documentation/TESTING-files/misc-files/database-schema.png)
     </td>
   </tr>
     <tr>
@@ -298,7 +300,7 @@ The DBeaver database administration tool was used to verify the database schema 
   <tr>
     <td>
     
-![DBeaver](README-files/dbeaver-database-schema.png)
+![DBeaver](documentation/TESTING-files/misc-files/dbeaver-db-schema.png)
     </td>
   </tr>
 </table>
