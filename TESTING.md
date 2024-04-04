@@ -163,6 +163,10 @@ Results for all HTML pages can be found in the table below:
 |checkout| ✅ |No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/checkout-page.png) 
 |checkout-success| ✅ |No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/checkout-success-page.png) 
 |profile| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/html-validation/pre-edit-results/profile.md)| ✅ |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/profile-page.png) 
+|400 test page|✅|No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/400-error-page.png)
+|403 test page|✅|No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/403-error-page.png) 
+|404 test page|✅|No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/404-error-page.png) 
+|500 test page|✅|No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/500-error-page.png)  
 
  
 ### CSS
