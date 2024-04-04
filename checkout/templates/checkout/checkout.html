@@ -91,16 +91,16 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="row checkout-summary-row text-right py-2 rounded-2 mt-3 shadow">
+            <div class="row checkout-summary-row text-right py-3 ps-2 pe-4 rounded-2 mt-3 shadow">
                 <div class="col-7">
-                    <p class="my-0">Order Total:</p>
+                    <p class="mt-0 mb-1">Order Total:</p>
                     <p class="my-0">Delivery:</p>
-                    <p class="my-0">Grand Total:</p>
+                    <p class="mt-4 mb-0"><strong>Grand Total:</strong></p>
                 </div>
                 <div class="col-3 text-end">
-                    <p class="my-0">€{{ total | floatformat:2 }}</p>
+                    <p class="mt-0 mb-1">€{{ total | floatformat:2 }}</p>
                     <p class="my-0">€{{ delivery | floatformat:2 }}</p>
-                    <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
+                    <p class="mt-4 mb-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
                 </div>
             </div>
         </div>
