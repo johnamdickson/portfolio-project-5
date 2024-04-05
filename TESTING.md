@@ -5,17 +5,9 @@
 <a name="contents"></a>
 
 - [User Story Testing](#user-story-testing)
-  * [Project Setup Epic](#project-setup-epic)
-  * [Basic Site Navigation Epic](#basic-site-navigation-epic)
-  * [Site Administration Epic](#site-administration-epic)
-  * [Create Home Page Epic](#create-home-page-epic)
-  * [Emissions Display and Interaction Epic](#emissions-display-and-interaction-epic)
-  * [Emission Checks Display and Interaction Epic](#emission-checks-display-and-interaction-epic)
-  * [Emission Detail Page and Interaction Epic](#emission-detail-page-and-interaction-epic)
-  * [Maps API Epic](#maps-api-epic)
-  * [Managing HTTP Status Codes Epic](#managing-http-status-codes-epic)
-  * [Fine Tuning User Experience and Site Admin Epic](#fine-tuning-user-experience-and-site-admin-epic)
-  * [Testing and Documentation Epic](#testing-and-documentation-epic)
+  * [Project Setup and Authorisation Epic](#project-setup-and-authorisation-epic)
+  * [Home Page and Header Epic](#home-page-and-header-epic)
+  * [Products Set Up and Interactions Epic](#products-set-up-and-interactions-epic)
 - [Validator Testing](#validator-testing)
   * [HTML](#html)
   * [CSS](#css)
@@ -52,21 +44,29 @@
 
 ### [Project Setup and Authorisation Epic](https://github.com/johnamdickson/portfolio-project-5/issues/1)
 **User Story**|**Test**|**Result**|**Evidence**|**Project Goal**
-:------|:------|:----:|:-----:|:-----:|
+:------|:------|:----:|:-----:|:------|
 As a **Site Admin** I can **commence the project build** so that **the project can commence in a timely manner.** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/3)|All tasks completed to comply with acceptance criteria. Project build completed and installation confirmed along with superuser creation| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/installation-confirmation.png) | A fully functional, user friendly and dynamic website with the best possible user experience.|
 As a **Site Admin** I can **install a robust authorisation system** so that **user information and the site access is secure** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/4)|All auth added to project and confirmed email verification operational. | ✅|![user_stories](documentation/TESTING-files/user-story-testing/all-auth-evidence.png)| A secure platform for purchasing and user creation.
  As a **Site Owner** I can **review site wireframes and database schemas** so that **the initial proposal for the project is understood and agreed upon** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/6)| Wireframes agreed with client. Database schema  | ✅|[Database Schema](documentation/README-files/database-schema.png)<br> [Desktop Wireframes](documentation/README-files/desktop-wireframes.pdf)<br> [Mobile/Tablet Wireframes](documentation/README-files/mobile-tablet-wireframes.pdf)| A fully functional, user friendly and dynamic website with the best possible user experience.
 
 ### [Home Page and Header Epic](https://github.com/johnamdickson/portfolio-project-5/issues/2)
 **User Story**|**Test**|**Result**|**Evidence**|**Project Goal**
-:------|:------|:----:|:-----:|:-----:|
+:------|:------|:----:|:-----:|:------|
 As a **site admin** I can **connect the home page** so that **the initial page can be confirmed operational** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/5)|Home app created and confirmed operational using temporary test message| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/home-success.png) | A fully functional, user friendly and dynamic website with the best possible user experience.|
 As a **site user** I can **access a functional and styled home page** so that **initial experience of the website is a positive one** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/7)|Styled home page and header added to home app. Mockups agreed with site owner. | ✅|[Mock Ups](documentation/README-files/mockups.pdf) <br><br> ![user_stories](documentation/TESTING-files/user-story-testing/home-page.png)| A fully functional, user friendly and dynamic website with the best possible user experience.
 As a **site user** I can **access secondary information on the site using a sidebar** so that **there is not information overload on the home page and I can access all information in an engaging manner** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/8)| Bootstrap offcanvas added to project working off header links  | ✅|![user_stories](documentation/TESTING-files/user-story-testing/about-offcanvas.png)| A modern,responsive and stylish website.
-As a **user** I can **log in and out of my account** so that **I am able to access all the sites features.** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/16)| Signup, login and logout added and confirmed operational. Links in account offcanvas conditional on user status (logged in or out).  | ✅|![user_stories](documentation/TESTING-files/user-story-testing/account-process.gif)| A secure platform for purchasing and user creation. <br> A fully functional, user friendly and dynamic website with the best possible user experience.|
+As a **user** I can **log in and out of my account** so that **I am able to access all the sites features.** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/16)| Signup, login and logout added and confirmed operational. Links in account offcanvas conditional on user status (logged in or out).  | ✅|![user_stories](documentation/TESTING-files/user-story-testing/account-process.gif)| A secure platform for purchasing and user creation. <br><br> A fully functional, user friendly and dynamic website with the best possible user experience.|
 
-
-
+### [Products Set Up and Interactions Epic](https://github.com/johnamdickson/portfolio-project-5/issues/9)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goal**
+:------|:------|:----:|:-----:|:------|
+As a **Site Admin** I can **add/remove products** so that **the shop inventory can be updated** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/10)|Products app with associated models created and confirmed operational by uploading a list of products to the DB| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/products-setup.jpeg) | A fully functional, user friendly and dynamic website with the best possible user experience.<br><br>A selection of crocheted products are available for purchase directly in the website.|
+As a **Site Admin** I can **view products in the admin page** so that **the business inventory can be checked and amended.**[click here](https://github.com/johnamdickson/portfolio-project-5/issues/11)|Product and Category admin classes added to app and confirmed in admin panel. | ✅| ![user_stories](documentation/TESTING-files/user-story-testing/product-admin.jpeg) | A fully functional, user friendly and dynamic website with the best possible user experience.<br><br>A selection of crocheted products are available for purchase directly in the website.|
+As a **user** I can **browse products on the product page** so that **I can view all of the items the shop has to offer** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/12)|Product template created and listed on products page. | ✅| ![user_stories](documentation/TESTING-files/user-story-testing/products-list.jpeg) | A fully functional, user friendly and dynamic website with the best possible user experience.<br><br>A selection of crocheted products are available for purchase directly in the website.|
+As a **User** I can **review the product details** so that **make and informed decision to buy or not, based on a more detailed description of the product.** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/13)|Product detail template created showing image of product and all details. Link from products page set up and operational | ✅| ![user_stories](documentation/TESTING-files/user-story-testing/product-details.gif) | A fully functional, user friendly and dynamic website with the best possible user experience.<br><br>A selection of crocheted products are available for purchase directly in the website.|
+As a **User** I can **view the products in a visually engaging manner** so that **my experience of the site is a positive one** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/14)|Products and product detail pages styled to site aesthetic. Responsivenes confirmed across all device screen sizes. | ✅| ![user_stories](documentation/TESTING-files/user-story-testing/products-page.png)![user_stories](documentation/TESTING-files/user-story-testing/product-detail-page.png) | A modern,responsive and stylish website.<br><br>A selection of crocheted products are available for purchase directly in the website.|
+As a **user** I can **access the main pages using navigation links** so that **experience of navigating the site is simple and intuitive** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/17)|Navbar and links added to all pages with exception of home page. Added dropdown menu for navigation links on small screens. | ✅| ![user_stories](documentation/TESTING-files/user-story-testing/navbar.gif) |  A fully functional, user friendly and dynamic website with the best possible user experience.|
+As a **user** I can **browse available item sizes and/or colours** so that **I can make an informed decision on product sizing and preferred colours.** [click here](https://github.com/johnamdickson/portfolio-project-5/issues/19)|Size and colour models added to products app. A means of displaying available colours added to products page along with a size chart. | ✅| ![user_stories](documentation/TESTING-files/user-story-testing/size-colour-displays.gif) |  A fully functional, user friendly and dynamic website with the best possible user experience.<br><br>A selection of crocheted products are available for purchase directly in the website.|
 
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 
