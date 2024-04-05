@@ -52,13 +52,13 @@ The primary objective of our business-to-consumer e-commerce site is to offer co
 
 The following goals were identified for the project:
 - A modern,responsive and stylish website.
-- A user friendly and dynamic website with the best possible user experience.
+- A fully functional, user friendly and dynamic website with the best possible user experience.
 - A secure platform for purchasing and user creation.
 - An optimised website for search engines to improve visibility and reach.
 - A series of web marketing strategies both on the website and external to it.
-- Enhanced website accessibility to accommodate users of all abilities.
+- Enhanced website accessibility to accommodate all users.
 - A selection of crocheted products are available for purchase directly in the website.
-- Offer learn products offering users purcahse of crocheting tutorials.
+- Learn products offering users purchase of crocheting tutorials.
 
 #### Agile Methodology
 
