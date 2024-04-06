@@ -17,7 +17,6 @@ def products(request):
     A function to obtain all products and perform sorting, search and
     categorisation.
     """
-    print(request.headers)
     try:
         request_origin = request.headers['Referer']
     except KeyError:
@@ -28,6 +27,8 @@ def products(request):
     title = "Products"
     sort = None
     direction = None
+    # checks if referer was edit product, in instance of delete this 
+    # will be the case which will return to the products page.
     if 'edit' in request_origin:
         cache.clear()
     if request.GET:
@@ -47,8 +48,8 @@ def products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
             cache.clear()
+            products = products.order_by(sortkey)
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
