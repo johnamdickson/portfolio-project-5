@@ -67,7 +67,7 @@ The project followed an Agile Project Management approach, completing *15* epics
 
 #### User Stories
 
-As stated, the user stories were collated into *15* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *54* user stories, with *16* Must Have (*30*%), *23* Should Have(*42*%), *14* Could Have (*26*%) and *1* Won't Have (*2*%). 
+As stated, the user stories were collated into *15* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *56* user stories, with *16* Must Have (*29*%), *23* Should Have(*41*%), *14* Could Have (*25*%) and *3* Won't Have (*5*%). 
 <br>![user-story-breakdown]()*ADD user story breakdown graph*
 The total number of story points assigned to the user stories is *ADD* of which Must Have assigned *ADD* points(*ADD*%), Should Have assigned *ADD* points(*ADD*%), Could Have assigned *ADD* points(*ADD*%) and Won't Have assigned *ADD* points (*ADD*%).
 
