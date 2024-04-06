@@ -22,14 +22,15 @@ const setUpSelect = () => {
   if (selector) {
     const queryString = window.location.search;
     let currentUrl = new URLSearchParams(queryString);
+    console.log(currentUrl.values)
     selector.onchange = () => {
-      // how to clear search parameters prior to executing new search:
-      // https://stackoverflow.com/questions/22753052/remove-url-parameters-without-refreshing-page
-      window.history.replaceState({}, document.title, window.location.pathname);  
       let selectedVal = selector.value;
       if (selectedVal != 'reset') {
         let sort = selectedVal.split("_")[0];
         let direction = selectedVal.split("_")[1];
+        // delete products from search params in case this was selected
+        // in drop down.
+        currentUrl.delete('products')
         currentUrl.set("sort", sort);
         currentUrl.set("direction", direction);       
         window.location.replace('?' + currentUrl);
