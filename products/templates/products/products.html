@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-{% cache 2000 products_page %}
+
 
 
 <div class="container-fluid products-container mt-2 w-100">
@@ -94,7 +94,7 @@
     </div>
   </div>
   <div class="row w-100 justify-content-center">
-
+    {% cache 2000 products_page %}
     {% for product in products %}
 
     <div

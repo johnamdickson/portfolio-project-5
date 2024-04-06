@@ -16,7 +16,6 @@
 {% endblock %}
 
 {% block content %}
-{% cache 2000 product_detail_page %}
 
 <div class="container-fluid products-container mt-md-2 w-100">
   <div class="row pt-lg-2">
@@ -39,6 +38,8 @@
             </a>
             </div>
             {% endif %}
+            {% cache 2000 product_detail_page %}
+
             <div class="w-100">
               {% if product.image %}
               <a href="{{ product.image.url }}" target="_blank">
