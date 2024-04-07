@@ -341,12 +341,14 @@ The app was tested on Chrome, Firefox, Safari and Microsoft Edge. The appearance
 
 
 ### Device Testing
-The responsiveness for simulated devices was tested using Chrome extension Mobile Simulator and confirmed to be satisfactory in all cases. The results are summarised below:
+The responsiveness for simulated devices was tested using Chrome extension Mobile Simulator and confirmed to be satisfactory in all cases. There were minor styling modifications such as font size, margin or position adjustments completed during the testing but were of such an insignificant nature they are not mentioned here. The table below demonstrates the site's responsiveness across physical and simulated devices.
 
-**Device**|**Screenshot**|
-|:-----:|:-----:|
-|iPhone SE<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/iphone-se-responsiveness.gif" height="500px">| 
-iPad Pro 11<sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/ipad-pro-11-responsiveness.gif" height="500px">
+**Device**|**Screenshot**|**Device**|**Screenshot**
+|:-----:|:-----:|:-----:|:-----:|
+|iPhone 12 Pro Max<br><sup><sub>(Physical Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/iphone-12-pro-max.gif" height="500px">|MacBook Pro 13"<br><sup><sub>(Physical Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/macbook-pro.gif" height="500px">
+|iPhone SE<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/iphone-se-responsiveness.gif" height="500px">|Google Pixel 6 Pro<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/google-pixel-6-pro.gif" height="500px">
+|Samsung Galaxy S20<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/samsung-galaxy-s20.gif" height="500px">|iPhone 13Pro Max<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/iphone-13-pro-max.gif" height="500px">
+iPad Pro 11<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/ipad-pro-11-responsiveness.gif" height="500px">|Samsung Galaxy Tab S7<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/TESTING-files/responsiveness-testing/samsung-galaxy-tab-s7.gif" height="500px">
 
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 
