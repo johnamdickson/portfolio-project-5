@@ -176,11 +176,8 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for properties,\
-                            quantity\
-                                in item_data(
-                                    ['items_size_and_or_colour'].items()
-                                    ):
+                        for properties, quantity \
+                             in item_data['items_size_and_or_colour'].items():
                             property_list = properties.split(',')
                             size = property_list[0]
                             size = None if size == 'None' else size
@@ -191,6 +188,7 @@ class StripeWH_Handler:
                                 None if secondary_colour ==
                                 'None' else secondary_colour
                                 )
+
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -201,6 +199,8 @@ class StripeWH_Handler:
                             )
                         order_line_item.save()
             except Exception as e:
+                print(f'Webhook received: {event["type"]} | ERROR: {e}')
+
                 if order:
                     order.delete()
                 return HttpResponse(
