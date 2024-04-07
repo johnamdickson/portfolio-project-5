@@ -14,8 +14,15 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
+        if 'view_form-default_full_name' in request.POST.keys():
+            form = UserProfileForm(request.POST, instance=profile, prefix="view_form")        
+        elif 'profile_offcanvas_form_regular-default_full_name' in request.POST.keys():
+            form = UserProfileForm(request.POST, instance=profile, prefix="profile_offcanvas_form_regular")
+        else:
+            form = UserProfileForm(request.POST, instance=profile, prefix="profile_offcanvas_form_small")
+
         if form.is_valid():
+            print(form.cleaned_data)
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
