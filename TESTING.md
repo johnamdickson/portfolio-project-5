@@ -14,6 +14,8 @@
   * [Checkout Epic](#checkout-epic)
   * [Payment Functionality Epic](#payment-functionality-epic)
   * [User Profiles Epic](#user-profiles-epic)
+  * [Product Management Epic](#product-management-epic)
+  * [Error Pages Epic](#error-pages-epic)
 - [Validator Testing](#validator-testing)
   * [HTML](#html)
   * [CSS](#css)
@@ -121,7 +123,20 @@ As a **user** I can **view and update my profile details** so that **I can keep 
 As a **user** I can **see my order history** so that **I can review purchases that I have already made.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/57)</span>|Order history added to main user profile view.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/order-history.png)| A fully functional, user friendly and dynamic website with the best possible user experience.
 As a **site admin** I can **ensure orders are assigned to user history** so that **the site operates as intended and does not require manual intervention.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/58)</span>|Order history added to main user profile view.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/order-added-to-profile.gif)| A fully functional, user friendly and dynamic website with the best possible user experience.
 As a **site admin** I can **enable automated emails** so that **users receive confirmation of a successful order.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/60)</span>|Automated emails using SMTP via Mailtrap implemented| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/order-for-email.png) ![user_stories](documentation/TESTING-files/user-story-testing/order-email-confirmation.png)| A fully functional, user friendly and dynamic website with the best possible user experience.
+
+### [Product Management Epic](https://github.com/johnamdickson/portfolio-project-5/issues/61)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goals**
+:---|:---|:----:|:----------:|:------|
+ As a **site admin** I can **add products to the store via a site page** so that **new products can be added with ease** <br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/62)</span>|Facility to add products available from button on products page or via product management offcanvas. Functionality only available to superusers| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/add-products.png) ![user_stories](documentation/TESTING-files/user-story-testing/add-products-offcanvas.png) | A fully functional, user friendly and dynamic website with the best possible user experience.<br><br> A selection of crocheted products are available for purchase directly in the website.<br><br>Learn products offering users purchase of crocheting tutorials.
+As a **site admin** I can **edit and delete products within the main site** so that **the product invetory can remain current.** <br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/63)</span>|Facility to edit or delete a product added, accessible from the product detail page of individual products| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/edit-product.png) | A fully functional, user friendly and dynamic website with the best possible user experience.<br><br> A selection of crocheted products are available for purchase directly in the website.<br><br>Learn products offering users purchase of crocheting tutorials.
 |
+
+### [Error Pages Epic](https://github.com/johnamdickson/portfolio-project-5/issues/61)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goals**
+:---|:---|:----:|:----------:|:------|
+As a **Site Admin** I can **ensure users are informed of client error responses (400,403 and 404) in an informative and design friendly manner** so that **they can be made aware of the issue whilst maintaining the site aesthetic** <br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/69)</span>|400 error pages created with test page urls for 400 and 403 for use by superuser. Each page has a back button and timer which automatically returns user to home page once completed.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/400-error.png) ![user_stories](documentation/TESTING-files/user-story-testing/403-error.png) ![user_stories](documentation/TESTING-files/user-story-testing/404-error.png) | A fully functional, user friendly and dynamic website with the best possible user experience.
+As a **Site Admin** I can **ensure users are informed of the server error response (500) in an informative and design friendly manner** so that **they can be made aware of the issue whilst maintaining the site aesthetic** <br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/70)</span>|500 error page created with test page url for use by superuser. The page has a back button and timer which automatically returns user to home page once completed.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/500-error.png)  | A fully functional, user friendly and dynamic website with the best possible user experience.
+
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 
 ## Validator Testing
