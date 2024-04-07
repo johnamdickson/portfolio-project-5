@@ -90,17 +90,17 @@ class OrderLineItem(models.Model):
         on_delete=models.CASCADE
         )
     product_size = models.CharField(
-        max_length=15,
+        max_length=30,
         null=True,
         blank=True
         )
     product_primary_colour = models.CharField(
-        max_length=15,
+        max_length=20,
         null=True,
         blank=True
         )
     product_secondary_colour = models.CharField(
-        max_length=15,
+        max_length=20,
         null=True,
         blank=True
         )
