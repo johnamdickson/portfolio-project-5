@@ -38,7 +38,6 @@
             </a>
             </div>
             {% endif %}
-            {% cache 2000 product_detail_page %}
 
             <div class="w-100">
               {% if product.image %}
@@ -157,7 +156,6 @@
 
 {{ sizes_data|json_script:'sizes' }}
 {{ colours_data|json_script:'colours' }}
-{% endcache %}
 
 {% endblock %}
 
