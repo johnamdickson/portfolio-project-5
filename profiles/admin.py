@@ -6,6 +6,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
     fields = (
         'user',
+        'default_full_name',
         'default_phone_number',
         'default_postcode',
         'default_town_or_city',
