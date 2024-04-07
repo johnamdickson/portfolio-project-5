@@ -17,6 +17,7 @@
   * [Product Management Epic](#product-management-epic)
   * [Error Pages Epic](#error-pages-epic)
   * [Deploy Project to Production Environment Epic](#deploy-project-to-production-environment-epic)
+  * [Search Engine Optimisation Epic](#search-engine-optimisation-epic)
 - [Validator Testing](#validator-testing)
   * [HTML](#html)
   * [CSS](#css)
@@ -146,6 +147,13 @@ As a **Site Admin** I can **ensure users are informed of the server error respon
 As a **site owner** I can **access the site in a production environment** so that **I can verify that customers can access the live site.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/65)</span>|App deployed to Heroku hosting platform.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/deployed-app-heroku.png) | A fully functional, user friendly and dynamic website with the best possible user experience.
 As a **site owner** I can **store media and static files in the cloud** so that **the site operates as intended with correct images and styling in the production environment.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/66)</span>|AWS S3 storage bucket set up with folders for static and media files| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/s3-storage.png)  | A fully functional, user friendly and dynamic website with the best possible user experience.
 As a **user** I can **receive pertinent emails** so that **I know when major operations have been completed such as creating a profile or completing an order** <br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/74)</span>|Mailtrap SMTP service linked to custom domain adopted for project to send mails from the app.| ✅|  ![user_stories](documentation/TESTING-files/user-story-testing/email-verification.gif)| A secure platform for purchasing and user creation.
+
+### [Search Engine Optimisation Epic](https://github.com/johnamdickson/portfolio-project-5/issues/71)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goals**
+:---|:---|:----:|:----------:|:------|
+As a **site owner** I can **optimise the website using established tools and techniques** so that **it ranks highly in the search engines.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/71)</span>|Short and long tail keywords added to key areas in DOM. Meta description updated in html head. Sitemap and robots files added to root directory.| ✅| [SEO and Web Marketing Study](documentation/TESTING-files/user-story-testing/seo-web-marketing-study.pdf)<br><br>![user_stories](documentation/TESTING-files/user-story-testing/seo-ide.png) | An optimised website for search engines to improve visibility and reach. <br><br> A series of web marketing strategies both on the website and external to it.
+As a **site owner** I can **use marketing tools and strategies** so that **I retain customers and attract new ones.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/73)</span>|Facebook business page created. Email marketing service added to footer. Links to socials also added to footer| ✅|![user_stories](documentation/TESTING-files/user-story-testing/footer.png)  ![user_stories](documentation/README-files/fb-business-page.png)| An optimised website for search engines to improve visibility and reach. <br><br> A series of web marketing strategies both on the website and external to it.
+
 
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 
