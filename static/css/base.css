@@ -918,6 +918,10 @@ footer p, footer label{
    .minus-button, .plus-button {
        padding: 0;
    }
+
+   .btn-custom {
+    font-size: 0.8em;
+   }
    .toast {
     right: 0;
     left:0;
