@@ -329,6 +329,13 @@ header .nav-link:focus {
     color: #698a85;
 }
 
+.dropdown-svg svg{
+    fill:  #698a85 !important;
+}
+
+.offcanvas-button-sm {
+    font-size: 1.2rem;
+}
 /* ----------------------------------- Home Page Styling ----------------------------------- */
 
 .home-container {
@@ -880,7 +887,7 @@ footer p, footer label{
     }
 
     .header-sm {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .product-detail-image img {
