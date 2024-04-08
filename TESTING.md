@@ -439,21 +439,25 @@ Each feature and action on every page of the app was tested manually to verify t
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
 |:-----|:------|:------|:-----|:------:|
-Navbar Menu Items Styling|The home navbar link should be a bolder font on page load to indicate where on the site the user is.|Load home page|The home navbar menu item is a bolder font than the others.|✅|
 |Site Logo|Clicking on logo will return user to the home page|Clicked on logo|Home page reloaded|✅|
-|Carousel Control Buttons|Clicking on either of the carousel control buttons moves the carousel by one card|Left button and right button clicked|Carousel moved in the direction expected|✅|
-|Carousel Indicators|Active carousel indicator will be more opaque than inactive indicators and active indicator will move depending on which card is in focus|Clicked carousel control button a number of times|Active carousel indicator changed depending on which card was in focus. The active indicator more opaque than inactive indiactors|✅|
-|Carousel Card|On hover the carousel card background colour will alter and pointer appear|Moved cursor over the top of one of the carousel cards|Cursor changed to pointer and the background colour changed subtly to indicate the card is being hovered over|✅|
-|Carousel Card|When clicking a card, a modal will appear with further information on the emission selected.|Selected a card and clicked|Modal appeared as expected|✅|
-|Home Page Modal - Submit Check Button|When clicking on the submit emission check button it should redirect the user to the submit check page for the emission selected|Opened modal and clicked the submit emission check button|User is redirected to the submit check page for the correct emission|✅|
-Home Page Modal - Content|The modal should display the following emission information: *Type*, *Description*, *Location*, *Check Status*, *Current Check Due*, *Last Checked*, *Next Check Due*.| Opened *FT-4100* modal by clicking on its carousel card. | Modal opened with all of the information expected.| ✅|
-Home Page Modal - Emission Detail Button |When clicking on the go to emission detail page button it should redirect the user to the emission detail page for the emission selected|Opened modal and clicked the go to emission detail page button|User is redirected to the emission detail page for the correct emission|✅|
-Home Page Modal - Go To All Emissions Page Button|When clicking on the go to all emissions page button it should redirect the user to the emissions page.|Opened modal and clicked the go to all emissions page button|User is redirected to the emissions page.|✅|
-Home Page Modal - All Buttons(except close button)|When hovering over all buttons the font should change colour and the background opacity should reduce.|Hovered over all three of the home page modal buttons|The font changed colour and the background opacity reduced as expected|✅|
-Home Page Modal - Close Button|When clicking on the close button, the modal should be dismissed.|Opened home page modal and clicked on the close button| Home page modal was dismissed|✅|
-|Screen width <= 768px|h1, h4 and p elements comprising *Welcome to the emissions monitoring tool Your one stop shop for mangaging industrial emissions on your asset or facility.*  should be hidden from the user when screen width is 768px or below and reappear when screen width is above 768px. |Using Chrome Devtools, reduced the screen width to 768px then below before returning width to above 768px.| The h1, h4 and p elements were hidden from the user at 768px and below. They reappeared when the screen width was brought above 768px.|✅|
+|Account Header Button|Clicking on Account header button opens an offcanvas with account options|Clicked on Account header button|Account offcanvas opened.|✅|
+|Cart Header Button|Clicking on Cart header button opens the Cart page|Clicked on Cart header button|Site redirected to Cart page.|✅|
+|About Header Button|Clicking on About header button opens an offcanvas with company information|Clicked on About header button|About offcanvas opened with company information included.|✅|
+|Products Shop Now Button|Clicking on the Products Shop Now button opens the Products page with all Products listed|Clicked Products Shop Now button|Site redirected to Products page with all products displayed.|✅|
+|Gift Set Shop Now Button|Clicking on the Gift Set Shop Now button opens the Products page filtered to Gift Set products only|Clicked Gift Set Shop Now button|Site redirected to Products page filtered to display Gift Set products.|✅|
+|Learn to Crochet Learn Now Button|Clicking on the Learn to Crochet Learn Now button opens the Products page filtered to Learn to Crochet products only|Clicked Learn to Crochet Learn Now button|Site redirected to Products page filtered to display Learn to Crochet products.|✅|
+|Hats Shop Now Button|Clicking on the Hats Shop Now button opens the Products page filtered to Hats products only|Clicked Hats Shop Now button|Site redirected to Products page filtered to display Hats products.|✅|
+|Blankets Shop Now Button|Clicking on the Blankets Shop Now button opens the Products page filtered to Blankets products only|Clicked Blankets Shop Now button|Site redirected to Products page filtered to display Blankets products.|✅|
+|Items Hover|Hover over logo text or header buttons will change their colour to light pink and then return to white once cursor moves off again.|Hovered over each of the aforementioned items| All items changed colour to light pink and then returned to white once cursor moved off|✅|
 
 
+### Off Canvases
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Account Off Canvas - No User|When no user logged in, only the Register and Login options should be available.|Ensure user logged out and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed only Register and Login options.|✅|
+|Account Off Canvas - Standard User|When standard user logged in, only the Profile and Logout options should be available.|Logged in as standard user and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed Profile and Logout options.|✅|
+|Account Off Canvas - Superuser|When superuser logged in, a Product Management option should be available along with the Profile and Logout options.|Logged in as superuser and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed Product Management,Profile and Logout options.|✅|
 ### Emissions Page
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
