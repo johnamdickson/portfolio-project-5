@@ -413,7 +413,7 @@ A coverage report was generated to analyse the coverage rate for Cart and Produc
     <td><img src="documentation/TESTING-files/automated-testing-results/coverage-report.png"></td>
   </tr>
 </table>
-### Javascript Automated Testing
+### Javascript Automated Testing ###
 Javascript testing was completed using Jest. The only function tested is the errorCountdown (used to create a countdown prior to automatic redirect on HTTP Status Code error pages) as all of the other functions would require a more complex set up to test their functionality fully. Given the time constraints of the project, the remaining functionality would be manually tested. Each test essentially checks for the same seven elements: 
 1. Timer set to correct time on page load (60 seconds for 400 and 500 pages, 10 seconds 403 and 404).
 2. A check to ensure that the timer is halfway through the countdown (30 or 5 seconds).
@@ -423,10 +423,10 @@ Javascript testing was completed using Jest. The only function tested is the err
 6. A check to ensure an h3 exists.
 7. A check to ensure the h3 has the correct error description.<br>
 
-The test running can be viewed [here.](TESTING-files/automated-testing/javascript-automated-testing/jest-tests.gif)<br>
+The test running can be viewed [here.](documentation/TESTING-files/automated-testing-results/jest-testing.gif)<br>
 The test results can be seen in the image below:
       <p align="center">
-  ![automated-testing](TESTING-files/automated-testing/javascript-automated-testing/jest-tests.png)
+  ![automated-testing](documentation/TESTING-files/automated-testing-results/jest-testing.png)
       </p>
 
 
