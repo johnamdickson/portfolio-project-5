@@ -455,9 +455,13 @@ Each feature and action on every page of the app was tested manually to verify t
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
 |:-----|:------|:------|:-----|:------:|
-|Account Off Canvas - No User|When no user logged in, only the Register and Login options should be available.|Ensure user logged out and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed only Register and Login options.|✅|
+|Account Off Canvas - No User|When no user logged in, only the Register and Login options should be available.|Ensure user was logged out and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed only Register and Login options.|✅|
 |Account Off Canvas - Standard User|When standard user logged in, only the Profile and Logout options should be available.|Logged in as standard user and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed Profile and Logout options.|✅|
 |Account Off Canvas - Superuser|When superuser logged in, a Product Management option should be available along with the Profile and Logout options.|Logged in as superuser and then clicked on Account header button to open off canvas|Account offcanvas opened and revealed Product Management,Profile and Logout options.|✅|
+|Login Offcanvas - user authenticated|When the user enters the correct login information, the offcanvas should return to hiddent status and the user informed via a confirmation message toast that they have successfully logged in.|Opened account off canvas and selected login. Entered authenticated user information and clicked login button|Offcanvas animated out of view and the user was notified of successful login via toast with message *Successfully signed in as 'username'*.|✅|
+|Login Offcanvas - user not authenticated|When the user enters incorrect or spurious login information, the offcanvas should return to hidden status and the user redirected to the main login page where they should be presented with an error alert and the option to try entering login details again.|Opened account off canvas and selected login. Entered authenticated user information adding extra characters to password before clicking the login button|Offcanvas animated out of view and the user was redirected to the main login page with an error alert in view with the message *The username and/or password you specified are not correct.*.|✅|
+|Login Offcanvas - signup link|When the user clicks on the signup link, the Login offcanvas should hide and the Register offcanvas appear.|Opened login offcanvas and then clicked the signup link.|Login offcanvas animated out of view and the register offcanvas appeared.|✅|
+
 ### Emissions Page
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
