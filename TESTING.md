@@ -359,7 +359,7 @@ Automated testing was completed on the Products and Cart app methods using the b
 The individual test cases are described in the table below with gif of running tests included:
 #### Cart App Tests ####
 **Test**|**Test Description**                                            
-|:-----:|:------|
+|:------|:------|
 |test_view_cart|Test to confirm correct status code when view_cart url is accessed.
 |test_add_to_cart|Add product to cart and test correct item added with appropriate redirection using passed in url and instantiated message.
 |test_adjust_cart|Adjust cart by mutating quantity and test correct item quantity with appropriate redirection using passed in url and instantiated message.
@@ -377,7 +377,28 @@ The individual test cases are described in the table below with gif of running t
 #### Products App Tests ####
 **Test**|**Test Description**                                            
 |:-----|:------|
-|test_view_cart|Test to confirm correct status code when view_cart url is accessed.
+|test_category_name|Test category name assigned in setup is correct.
+|test_category_friendly_name|Test category friendly name assigned in setup is correct.
+|test_product_name_and_category|Test product name and category assigned in setup is correct.
+|test_product_description|Test product description assigned in setup is correct.
+|test_product_attributes|Test product attributes of sizes and colours assigned in test are correct.
+|test_product_size|Test product size assigned in setup is correct.|
+|test_product_colour|Test product colour assigned in setup is correct.|
+|test_products_view_GET|Test get products view returns correct url, template and response code.|
+|test_products_sort_by_name|Test sorting products by name returns correct sort..|
+|test_products_sort_by_category|Test sorting products by category returns correct sort.|
+|test_products_sort_by_price|Test sorting products by price returns correct sort.|
+|test_product_detail_view_GET|Test get product detail view returns correct url, template and response code.|
+|test_add_product_superuser|Test adding product by the superuser adds a new product to DB, and redirects to the new products detail page.|
+|test_add_product_regular_user|Test adding product by the regular user does not add a new product to DB, and redirects to the home page whilst also instantiating a message to user.|
+|test_add_product_no_user|Test adding product by anonymous user does not add a new product to DB, and redirects to the login page.|
+|test_edit_product_superuser|Test editing product by the superuser edits product in the DB, and redirects to the new products detail page.|
+|test_edit_product_regular_user|Test editing product by the regular user does not edit product in DB and redirects to the home page whilst also instantiating a message to user.|
+|test_edit_product_no_user|Test editing product by anonymous user does not edit product on DB, and redirects to the login page.|
+|test_delete_product_superuser|Test deleting product by the superuser deletes the product from the DB, and redirects to the products page.|
+|test_delete_product_regular_user|Test deleting product by the regular user does not delete product from DB, and redirects to the home page whilst also instantiating a message to user.|
+|test_delete_product_no_user|Test deleting product by anonymous user does not delete the product from DB, and redirects to the login page.|
+
 #### Products App Tests Outcome ####
 <table width=90% align="center">
   <tr>
@@ -385,6 +406,13 @@ The individual test cases are described in the table below with gif of running t
   </tr>
 </table>
 
+#### Coverage ####
+A coverage report was generated to analyse the coverage rate for Cart and Products app tests. The testing coverage on Cart and Products apps was 52% and 73% respectively with an overall score of 71%. The preference would have been to write more tests to bring these figures up, however in the interests of project deadlines this was not feasible.
+<table width=90% align="center">
+  <tr>
+    <td><img src="documentation/TESTING-files/automated-testing-results/coverage-report.png"></td>
+  </tr>
+</table>
 ### Javascript Automated Testing
 Javascript testing was completed using Jest. The only function tested is the errorCountdown (used to create a countdown prior to automatic redirect on HTTP Status Code error pages) as all of the other functions would require a more complex set up to test their functionality fully. Given the time constraints of the project, the remaining functionality would be manually tested. Each test essentially checks for the same seven elements: 
 1. Timer set to correct time on page load (60 seconds for 400 and 500 pages, 10 seconds 403 and 404).
