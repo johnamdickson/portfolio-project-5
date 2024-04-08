@@ -355,11 +355,35 @@ iPad Pro 11<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/
 ## Automated Testing
 
 ### Python Automated Testing
-Automated testing was completed on the Products and Cart app methods using the built in Django TestCase class. The remainder of the Python based functionality was tested manually.
-The individual test cases and results are shown in the table below:
-**Test**|**Test Description**|**Result**                                              
-|:-----|:------|:------|
-|test_login_<br>verified_user| Checks if verified user created in set up can log in. Performs two assertions - checks user is verified and confirms if request has been successful.|<img src="TESTING-files/automated-testing/python-automated-testing/test-login-verfied.png" width="3000px">![device-testing](TESTING-files/automated-testing/python-automated-testing/test-login-verfied.gif)|
+Automated testing was completed on the Products and Cart app methods using the built in Django TestCase class. The remainder of the Python based functionality was tested manually. The coverage report for automated testing can be found [here.]
+The individual test cases are described in the table below with gif of running tests included:
+#### Cart App Tests ####
+**Test**|**Test Description**                                            
+|:-----:|:------|
+|test_view_cart|Test to confirm correct status code when view_cart url is accessed.
+|test_add_to_cart|Add product to cart and test correct item added with appropriate redirection using passed in url and instantiated message.
+|test_adjust_cart|Adjust cart by mutating quantity and test correct item quantity with appropriate redirection using passed in url and instantiated message.
+|test_remove_from_cart|Remove item from cart by calling remove_from_cart and test item removed with appropriate redirection using passed in url and instantiated message.
+|test_empty_cart_contents|Test that initial cart session is empty.|
+|test_cart_contents|Test cart session contains items when they are added to cart.|
+
+#### Cart App Tests Outcome ####
+<table width=90% align="center">
+  <tr>
+    <td><img src="documentation/TESTING-files/automated-testing-results/cart-app-tests.gif"></td>
+  </tr>
+</table>
+
+#### Products App Tests ####
+**Test**|**Test Description**                                            
+|:-----|:------|
+|test_view_cart|Test to confirm correct status code when view_cart url is accessed.
+#### Products App Tests Outcome ####
+<table width=90% align="center">
+  <tr>
+    <td><img src="documentation/TESTING-files/automated-testing-results/products-app-tests.gif"></td>
+  </tr>
+</table>
 
 ### Javascript Automated Testing
 Javascript testing was completed using Jest. The only function tested is the errorCountdown (used to create a countdown prior to automatic redirect on HTTP Status Code error pages) as all of the other functions would require a more complex set up to test their functionality fully. Given the time constraints of the project, the remaining functionality would be manually tested. Each test essentially checks for the same seven elements: 
