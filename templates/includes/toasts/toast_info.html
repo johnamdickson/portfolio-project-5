@@ -3,7 +3,7 @@
 <div class="toast position-fixed" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-animation="true">
     <div class="toast-header text-white toast-header-info">
       <img src="{{MEDIA_URL}}logo-transparent-background.webp" class="rounded me-2 toast-logo" alt="Little Woolly Snuggles logo">
-      <strong class="me-auto"> {% for message in messages %}{{message.extra_tags}}{% endfor %} </strong>
+      <strong class="me-auto"> {% for message in messages %}{% if message.extra_tags%}{{message.extra_tags}}{% else %}Info{% endif %}{% endfor %} </strong>
       <small class=""></small>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
