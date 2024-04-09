@@ -9,6 +9,10 @@ window.addEventListener('load', function () {
     errorCountdown();
 });
 
+window.addEventListener('DOMContentLoaded', function() {
+    setUpAddEditProduct();
+  });
+
 // BS Boilerplate for initialising toasts.
 const initialiseToast = () => {
     var toastElList = [].slice.call(document.querySelectorAll('.toast'));
@@ -315,3 +319,230 @@ const errorCountdown = () => {
 // https://stackoverflow.com/questions/66349868/jest-unit-testing-module-export-error-in-browser-console
 var module = module || {};
 if (module) {module.exports = errorCountdown;}
+
+
+const setUpAddEditProduct = () => {
+    /**
+     * Function to configure checkboxes. At initial load, learn product pdf should have a display of none
+     * and sceondary colour disabled. Enabling/disabling or changing display property will be dependant on 
+     * what checkboxes are selected.
+     */
+    // declare all variables for the main page.
+    const mainLearnInput = document.getElementById('id_learn_product');
+    const mainSizeCheckBoxes = document.getElementsByName('sizes');
+    const mainColourCheckBoxes = document.getElementsByName('colours');
+    const mainSecondaryColour = document.getElementById('id_secondary_colour');
+    const mainLearnPdfInput = document.getElementById('div_id_learn_product_pdf');
+    const mainImgInput = document.getElementById('id_image');
+    const mainDisplayImg = document.querySelector("#display-img");
+    const mainPdfClear = document.getElementById('learn_product_pdf-clear_id');
+  
+    // declare variables for regular off canvas
+    const offcanvasRegularLearnInput = document.getElementById('id_offcanvas_regular-learn_product');
+    const offcanvasRegularSizeCheckBoxes = document.getElementsByName('offcanvas_regular-sizes');
+    const offcanvasRegularColourCheckBoxes = document.getElementsByName('offcanvas_regular-colours');
+    const offcanvasRegularSecondaryColour = document.getElementById('id_offcanvas_regular-secondary_colour');
+    const offcanvasRegularLearnPdfInput = document.getElementById('div_id_offcanvas_regular-learn_product_pdf');
+    const offcanvasRegularImgInput = document.getElementById('id_offcanvas_regular-image');
+    const offcanvasRegularDisplayImg = document.querySelector("#offcanvas-regular-display-img");
+    
+   // declare variables for small off canvas
+   const offcanvasSmallLearnInput = document.getElementById('id_offcanvas_small-learn_product');
+   const offcanvasSmallSizeCheckBoxes = document.getElementsByName('offcanvas_small-sizes');
+   const offcanvasSmallColourCheckBoxes = document.getElementsByName('offcanvas_small-colours');
+   const offcanvasSmallSecondaryColour = document.getElementById('id_offcanvas_small-secondary_colour');
+   const offcanvasSmallLearnPdfInput = document.getElementById('div_id_offcanvas_small-learn_product_pdf');
+   const offcanvasSmallImgInput = document.getElementById('id_offcanvas_small-image');
+   const offcanvasSmallDisplayImg = document.querySelector("#offcanvas-small-display-img");
+  
+  // check if learnInputs exist before calling helper function on each. Prevents errors on other product pages.
+    if (mainLearnInput){
+      handleAddProductDisplay(
+        mainLearnInput,
+        mainSizeCheckBoxes,
+        mainColourCheckBoxes,
+        mainSecondaryColour,
+        mainLearnPdfInput,
+        mainImgInput,
+        mainDisplayImg,
+        mainPdfClear
+        );
+    } 
+  
+    if (offcanvasRegularLearnInput){
+      handleAddProductDisplay(
+        offcanvasRegularLearnInput,
+        offcanvasRegularSizeCheckBoxes,
+        offcanvasRegularColourCheckBoxes,
+        offcanvasRegularSecondaryColour,
+        offcanvasRegularLearnPdfInput,
+        offcanvasRegularImgInput,
+        offcanvasRegularDisplayImg
+        );
+    }
+  
+    if (offcanvasSmallLearnInput){
+      handleAddProductDisplay(
+        offcanvasSmallLearnInput,
+        offcanvasSmallSizeCheckBoxes,
+        offcanvasSmallColourCheckBoxes,
+        offcanvasSmallSecondaryColour,
+        offcanvasSmallLearnPdfInput,
+        offcanvasSmallImgInput,
+        offcanvasSmallDisplayImg
+        );
+  }
+    function handleAddProductDisplay (
+      /**
+       * Function takes in parameters from each of the three possible displays (main and small/regular offcanvases).
+       * Initial set up takes place by hiding the 
+       */
+      learnInput, 
+      sizeCheckBoxes,
+      colourCheckBoxes,
+      secondaryColour,
+      learnPdfInput,
+      imgInput,
+      displayImg,
+      pdfClear = null
+        ) {
+          if (!pdfClear) {
+            // create a dummy input image to handle cases where no input is passed in or clear button does not exist yet. 
+            // Prevents console errors when trying to assign attributes on a null object.
+            pdfClear = document.createElement('input');
+          }
+          if (learnInput.checked === true) {
+            // display the pdf input and make sure clear check is unchecked. This is only applicable in the Edit Product Page.
+            learnPdfInput.style.display = 'block';
+            pdfClear.checked = false;
+            secondaryColour.checked = false;
+            secondaryColour.disabled = true;
+
+            for (let box of sizeCheckBoxes){
+              box.disabled = true;
+              box.checked = false;
+            }
+            for (let box of colourCheckBoxes){
+              box.disabled = true;
+              box.checked = false;
+            }
+          } else {
+            // remove learn input display property and clear check becomes checked
+            // to ensure that if user does not want a learn product the pdf is removed
+            // on update.
+            learnPdfInput.style.display = 'none';
+            pdfClear.checked = true;
+            for (let box of sizeCheckBoxes){
+                box.disabled = false;
+              }
+              for (let box of colourCheckBoxes){
+                box.disabled = false;
+              }
+          }
+          learnInput.addEventListener('change', function() {
+            if (this.checked){
+              // if learn input is checked, all sizes and colours options should be 
+              // unchecked and disabled.
+              secondaryColour.checked = false;
+              secondaryColour.disabled = true;
+
+              for (let box of sizeCheckBoxes){
+                box.disabled = true;
+                box.checked = false;
+              }
+              for (let box of colourCheckBoxes){
+                box.disabled = true;
+                box.checked = false;
+              }
+              // display the learn_pdf input and uncheck the clear checkbox.
+              learnPdfInput.style.display = 'block';
+              pdfClear.checked = false;
+            } else {
+              // if unchecked, enable size and colour checkboxes.
+              for (let box of sizeCheckBoxes){
+                box.disabled = false;
+              }
+              for (let box of colourCheckBoxes){
+                box.disabled = false;
+              }
+              // hide the learn_pdf input and check the clear checkbox again ensuring
+              // file is removed on update.
+              pdfClear.checked = true;
+              learnPdfInput.style.display = 'none';
+            }
+          });
+        //   check initial status of colours checkboxes. If all unchecked, disable
+        // secondary colour checkbox.
+          let checkAllColoursFalse = Array
+          .from(colourCheckBoxes)
+          .filter(checkbox => checkbox.checked);
+          if(checkAllColoursFalse.length === 0){
+            secondaryColour.disabled = true;
+            secondaryColour.checked = false;
+          }
+          for (let colourCheck of colourCheckBoxes) {
+            colourCheck.addEventListener('change', function(){
+              // add event listeners to all colour checkboxes to enable the secondary 
+              // colour checkbox, disable the learn input checkbox and ensure the clear
+              // checkbox is checked.
+              if (this.checked){
+                secondaryColour.disabled = false;
+                learnInput.disabled = true;
+                pdfClear.checked = true;
+              } else {
+                // solution to checking all checkboxes:
+                // https://stackoverflow.com/questions/590018/getting-all-selected-checkboxes-in-an-array
+                // create an array containing bool for checkboxes status. If none checked, disable secondary
+                // colour and uncheck.
+                let checkAllColoursFalse = Array
+                .from(colourCheckBoxes)
+                .filter(checkbox => checkbox.checked);
+                if(checkAllColoursFalse.length === 0){
+                  secondaryColour.disabled = true;
+                  secondaryColour.checked = false;
+                }
+                // do same as above for sizes and then check if both sets of checkboxes are all unchecked
+                // before enabling the learn input checkbox again.
+                let checkAllSizesFalse = Array
+                .from(sizeCheckBoxes)
+                .filter(checkbox => checkbox.checked);
+                if (checkAllColoursFalse.length === 0 && checkAllSizesFalse.length === 0) {
+                  learnInput.disabled = false;
+                }
+              }
+            });
+          }
+          for (let sizeCheck of sizeCheckBoxes) {
+            sizeCheck.addEventListener('change', function(){
+              // do similar as above colour checkboxes with size checkboxes. 
+              if (this.checked){
+                learnInput.disabled = true;
+                pdfClear.checked = true;
+              } else {
+                // solution to checking all checkboxes:
+                // https://stackoverflow.com/questions/590018/getting-all-selected-checkboxes-in-an-array
+                let checkAllColoursFalse = Array
+                .from(colourCheckBoxes)
+                .filter(checkbox => checkbox.checked);
+                let checkAllSizesFalse = Array
+                .from(sizeCheckBoxes)
+                .filter(checkbox => checkbox.checked);
+                if (checkAllColoursFalse.length === 0 && checkAllSizesFalse.length === 0) {
+                  learnInput.disabled = false;
+                }
+              }
+            });
+          }
+          imgInput.addEventListener('change',(event)=>{
+            // How to display image once selected on input:
+            // https://stackoverflow.com/questions/72752673/how-to-show-image-just-after-uploading-in-django-form
+            // display a thumbnail of image that is selected/already in db or a no image selected placeholder.
+             const imgObject = event.target.files[0];
+             if (imgObject) {
+              displayImg.src = URL.createObjectURL(imgObject);
+                  } else {
+              displayImg.src = "https://little-woolly-snuggles.s3.amazonaws.com/media/no-image-selected.webp";
+                  }
+          });
+    }
+  };
