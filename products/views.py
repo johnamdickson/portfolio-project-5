@@ -128,7 +128,13 @@ def add_product(request):
         return redirect(reverse('home'))
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
+        print(request.POST.keys())
+        if 'offcanvas_regular-name' in request.POST.keys():
+            form = ProductForm(request.POST, request.FILES, prefix="offcanvas_regular")        
+        elif 'offcanvas_small-name' in request.POST.keys():
+            form = ProductForm(request.POST, request.FILES, prefix="offcanvas_small")
+        else:
+            form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
             messages.success(
