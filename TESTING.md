@@ -444,6 +444,9 @@ Each feature and action on every page of the app was tested manually to verify t
 |Hats Shop Now Button|Clicking on the Hats Shop Now button opens the Products page filtered to Hats products only|Clicked Hats Shop Now button|Site redirected to Products page filtered to display Hats products.|✅|
 |Blankets Shop Now Button|Clicking on the Blankets Shop Now button opens the Products page filtered to Blankets products only|Clicked Blankets Shop Now button|Site redirected to Products page filtered to display Blankets products.|✅|
 |Items Hover|Hover over logo text or header buttons will change their colour to light pink and then return to white once cursor moves off again.|Hovered over each of the aforementioned items| All items changed colour to light pink and then returned to white once cursor moved off|✅|
+|Back to Top Button - visibility |When the window y position is greater than 5 the Back to Top button should change from default visibility of hidden to visible. The button should become hidden again when the window y position is less than or equal to 5. |Scrolled window past y position of 5 and then back to top of screen |The button became visible and then hidden again on scroll to top.|✅|
+|Back to Top Button - click|When the button is clicked, the window should automatically scroll to top most position and the button become hidden.| Scrolled to bottom of page and clicked the Back to Top button| The window scrolled to very top and button disappeared.|✅|
+
 
 ### Navbar
 
