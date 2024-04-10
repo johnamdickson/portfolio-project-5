@@ -37,6 +37,7 @@
   * [Products Page](#products-page)
   * [Product Detail Page](#product-detail-page)
   * [Cart Page](#cart-page)
+  * [Checkout Page](#checkout-page)
 - [Bugs](#bugs)
 
 ## User Story Testing
@@ -346,7 +347,7 @@ iPad Pro 11<br><sup><sub>(Simulated Device)</sub></sup>|<img src="documentation/
 ### Python Automated Testing
 Automated testing was completed on the Products and Cart app methods using the built in Django TestCase class. The remainder of the Python based functionality was tested manually. The coverage report for automated testing can be found [here.]
 The individual test cases are described in the table below with gif of running tests included:
-#### Cart App Tests ####
+#### Cart App Tests
 **Test**|**Test Description**                                            
 |:------|:------|
 |test_view_cart|Test to confirm correct status code when view_cart url is accessed.
@@ -356,14 +357,14 @@ The individual test cases are described in the table below with gif of running t
 |test_empty_cart_contents|Test that initial cart session is empty.|
 |test_cart_contents|Test cart session contains items when they are added to cart.|
 
-#### Cart App Tests Outcome ####
+#### Cart App Tests Outcome
 <table width=90% align="center">
   <tr>
     <td><img src="documentation/TESTING-files/automated-testing-results/cart-app-tests.gif"></td>
   </tr>
 </table>
 
-#### Products App Tests ####
+#### Products App Tests
 **Test**|**Test Description**                                            
 |:-----|:------|
 |test_category_name|Test category name assigned in setup is correct.
@@ -388,21 +389,22 @@ The individual test cases are described in the table below with gif of running t
 |test_delete_product_regular_user|Test deleting product by the regular user does not delete product from DB, and redirects to the home page whilst also instantiating a message to user.|
 |test_delete_product_no_user|Test deleting product by anonymous user does not delete the product from DB, and redirects to the login page.|
 
-#### Products App Tests Outcome ####
+#### Products App Tests Outcome
 <table width=90% align="center">
   <tr>
     <td><img src="documentation/TESTING-files/automated-testing-results/products-app-tests.gif"></td>
   </tr>
 </table>
 
-#### Coverage ####
+#### Coverage
 A coverage report was generated to analyse the coverage rate for Cart and Products app tests. The testing coverage on Cart and Products apps was 52% and 73% respectively with an overall score of 71%. The preference would have been to write more tests to bring these figures up, however in the interests of project deadlines this was not feasible.
 <table width=90% align="center">
   <tr>
     <td><img src="documentation/TESTING-files/automated-testing-results/coverage-report.png"></td>
   </tr>
 </table>
-### Javascript Automated Testing ###
+
+### Javascript Automated Testing
 Javascript testing was completed using Jest. The only function tested is the errorCountdown (used to create a countdown prior to automatic redirect on HTTP Status Code error pages) as all of the other functions would require a more complex set up to test their functionality fully. Given the time constraints of the project, the remaining functionality would be manually tested. Each test essentially checks for the same seven elements: 
 1. Timer set to correct time on page load (60 seconds for 400 and 500 pages, 10 seconds 403 and 404).
 2. A check to ensure that the timer is halfway through the countdown (30 or 5 seconds).
@@ -493,7 +495,21 @@ Back to Products link|On pressing the Back to Products link, the user should be 
 |Cart Summary container - fixed positioning|When the cart items overflow off screen and user scrolls down, the Cart Summary container should remain in a fixed position.| Added 4 items to cart and then opened cart page. Scrolled to bottom of page.| The Cart Summary container remained in a fixed position on the page.|✅|
 |Cart Summary container - Back to Products link| On pressing the Back to Products link, the user should be redirected to the Products page.| Clicked the Back to Products link.|User returned to the Products page.|✅|
 |Cart Summary container - Secure Checkout button| On pressing the Secure Checkout button, the user should be directed to the Checkout page.| Clicked the Secure Checkout butto.|Checkout page loaded.|✅|
-|Cart Summary container - Secure Checkout button hover|Hovering over the button should change the background colour to dark green with the font and border colours changing to pink. When the cursor moves off the button it should revert to original styling. |Hovered cursor over Secure Checkout button then moved it off.|The Secure Checkout button background colour changed to dark green and the font/border colour changed to pink.|✅|
+|Cart Summary container - Secure Checkout button hover|Hovering over the button should change the background colour to dark green with the font and border colours changing to pink. When the cursor moves off the button it should revert to original styling. |Hovered cursor over Secure Checkout button then moved it off.|The Secure Checkout button background colour changed to dark green and the font/border colour changed to pink. The button styling returned to default once the cursor moved off the button.|✅|
+
+### Checkout Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Pay Now Button - required input missing|When any of the required input fields are missing and the user clicks the Pay Now button the form should not be submitted nor payment completed, the window should be scrolled to and highlight the missing input and a popover should appear requesting the user to fill in the required field. |Filled in every field with the exception of email and clicked the Pay Now button|The form was not submitted nor payment completed and the window scrolled to and highlighted the missing input. However the popover failed to appear consistently meaning the test failed. This is considered a minor failure as the important aspect of the test is to ensure the form does not submit and the window scrolling to and focussing on the input is enough to let the user know where the issue is. This will be recorded as an unresolved bug.|❌|
+|Pay Now Button - credit card details missing|When any of the required credit card details are missing and the user clicks the Pay Now button the payment should not be completed and the missing field highlighted red with a message to user. |Left all fields blank in the payment element and clicked the Pay Now button|The payment did not go ahead and each of the payment element inputs were highlighted red with a message to the user what details is required.|✅|
+|Pay Now Button - payment submitted with declined test card|When a test payment is submitted with the declined test payment card number (4000 0000 0000 0002) the payment should be declined and the user informed with a message below the Pay Now button|Completed all details including the declined test payment card number and clicked Pay Now|The payment did not proceed and the user was informed via the message *Your card has been declined* appearing underneath the Pay Now button.|✅|
+|Pay Now Button - payment submitted with the successful payment test card|When a test payment is submitted with the successful payment test card number (4242 4242 4242 4242) the payment should be authorised and the user redirected to the checkout success page. A unique order number should be generated and an order added to the database. A success toast should appear informing the user that the order has been successfully processed|Completed all details including the successful payment test card number and clicked Pay Now|The user was redirected to the checkout success page and a success toast appeared confirming that the order has been processed along with an order number. The database was updated with the new order as confirmed in Django admin panel by cross referencing the generated order number.|✅|
+|Pay Now Button - loading animation|When a test payment is being processed via AJAX request, a loading animation situated inside the Pay Now button should commence and then stop once the AJAX fetch is completed|Completed all details including the declined test payment card number and clicked Pay Now|The loading animation started immediately and then stopped when the card declined message was returned.|✅|
+|Pay Now Button - hover|Hovering over the button should change the background colour to dark green with the font and border colours changing to pink. A message in red font should appear under the button informing the user how much their card will be charged. When the cursor moves off the button it should revert to original styling and the message should disappear. |Hovered cursor over Pay Now button then moved it off.|The Pay Now button background colour changed to dark green and the font/border colour changed to pink. A message appeared underneath the button in red font *ℹ Your card will be charged €21.99*. The button styling returned to default and text disappeared once the cursor moved off the button.|✅|
+
+
+
 
 ### Off Canvases
 
