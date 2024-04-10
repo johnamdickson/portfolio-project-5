@@ -137,18 +137,20 @@ The user stories were broken down into tasks and acceptance criteria which can b
 </p>
 
 #### Logo
-- *ADD logo description*.<br><br>
-![logo-image]()*ADD logo image*
+The site logo consists of a cartoon sheep, representing the wool used in crafting the company's products. It is prominent in the header along with the company name and can also be found in various places through the site such as toast headers, offcanvas title and favicon.<br><br>
+![logo-image](media/logo-transparent-background.webp)
 #### Typography
-- *ADD description of fonts used*.<br><br>
+The fonts used in the project were sourced from Google Fonts open source offering and are described below:
+- Sacramento. A cursive font used for the logo text.
+- Bitter. A serif font used for most titles and headings.
+- Quicksand. A sans-serif font <br><br>
 <a href="#contents">BACK TO CONTENTS 🔼</a>
 
 ## Features 
 
 ### Security Features
 - There are a number of features utilsed in the app to ensure the security of private information. The following information is contained in the env.py file and Heroku config vars:
-  - *ADD security features eg those below*. 
-  - The database URL and secret key.
+  - The database URL. NOTE: this was changed at commit number 507 by rotating the password in Elephant SQL for the database as the url was deployed to Github in error.
   - Allowed hosts.
 - There are *ADD* user types avialable in the app: *ADD*. The different groups confer different permissiions as described below:
   - All users can view *ADD*.
