@@ -35,9 +35,12 @@
   * [Home Page](#home-page)
   * [Nav Bar](#navbar)
   * [Products Page](#products-page)
+  * [Add Product Page](#add-product-page)
   * [Product Detail Page](#product-detail-page)
   * [Cart Page](#cart-page)
   * [Checkout Page](#checkout-page)
+  * [Checkout Success](#checkout-success)
+  * [Offcanveses](#offcanvases)
 - [Bugs](#bugs)
 
 ## User Story Testing
@@ -466,6 +469,17 @@ Each feature and action on every page of the app was tested manually to verify t
 |Add Product Button - hover|Hovering over the button should marginally increase the scale and change the background colour to dark green with the font and border colours changing to pink. When the cursor moves off the button it should revert to original styling. |Hovered cursor over Add Product button the moved it off.|The Add Product button increased in size, the background colour changed to dark green and the font/border colour changed to pink.|✅|
 |Add Product Button - click|Clicking the button should direct the user to the Add Product page. |Clicked on the Add Product button|User is redirected to the Add Product page.|✅|
 
+### Add Product Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Add product form - successful submission|When the Add Product button is clicked with all required fields in the form populated the product detail page for the new product should load with a success notification to the user. The database product list should be updated with the new product.|Created a new product named *Test Product* and clicked the Add Product button.|The product detail page for the new product loaded and a success toast appeared informing the user that the product had been successfully added. The new product was confirmed in the database by checking the products list in Django admin.|✅|
+|Add product form - required fields missing|When the Add Product button is clicked and required fields in the form are not populated the form should not be submitted, the missing input becomes focused. A browser generated popover should appear on the missing field informing the user of the emission.|Created a new product named *Test Product*, omitting the price before clicking the Add Product button.|The add product form was not submitted, the missing input focused and a browser generated popover appeared informing the user of the omission.|✅|
+|Add product form - secondary colour checkbox conditional formatting|When the Add Product page loads the secondary solour checkbox should be disabled. When a primary colour is selected then the checkbox should be enabled. When all primary colours are unchecked the secondary colour checkbox should be disabled again.|Accessed the Add Product page and selected two primary colour checkboxes before deselecting them again|On load of the Add Product page, the secondary colour checkbox was disabled. On selection of primary colours the checkbox was enabled and then became disabled again when the primary colour checkboxes were deselected|✅|
+|Add product form - submission without image selected|If a product is added without an image selected, a placeholder should used in its abscence on the resultant product detail page.|Added a test product with all required fields and no image.|When the form was submitted, the product detail loaded with the expected success notification. A no image available placeholder was displayed in place of the missing image. |✅|
+|Add product form - learn product checkbox conditional formatting|When the learn product checkbox is checked, the input for adding a file should appear and the sizes and primary colour checkboxes become disabled. When the checkbox is deselected, the input for adding a file should disappear and  the sizes and primary colour checkboxes should be re-enabled. If any of the sizes or colours checkboxes are selected, the learn product checkbox should be disabled. If all of the sizes and colours checkboxes are deselected the checkbox should be enabled. |Selected the learn product checkbox before deselecting again. The next step was to select a size and primary colour checkbox before deselecting again.|On selection of the learn product checkbox the learn file upload input appeared and both sizes and colours checkboxes were disabled. On deselecting the learn product checkbox the learn file upload disappeared and both sizes and colours checkboxes re-enabled. On selection of sizes and colours checkboxes, the learn product checkbox was disabled, renabling when all sizes and colours checkboxes were deselected. |✅|
+|Add image - thumbnail update|When an image is added using the Add Image button the image thumbnail placeholder should be replaced with a preview of the image selected.|Clicked the add image button and selected an image from file|The image thumbnail updated to display the selected image.|✅|
+|Cancel link|When the cancel link is clicked the user should be returned to the products page.|Clicked the cancel link adjacent to add product button|The page returned to the products page.|✅|
 
 ### Product Detail Page
 
@@ -520,7 +534,7 @@ Back to Products link|On pressing the Back to Products link, the user should be 
 |Checkout success - webhook back up|When an order has not been completed for an unforseen reason but the payment was successful, the Stripe payment intent succeeded webhook should create the order in the database. |Deleted previous tests item from database and then resent the payment intent succeeded webhook from Stripe|The order reappeared on the database with all of the details present.|✅|
 |Checkout success - webhook back up|When an order has not been completed for an unforseen reason but the payment was successful, the Stripe payment intent succeeded webhook should create the order in the database. |Deleted previous tests item from database and then resent the payment intent succeeded webhook from Stripe|The order reappeared on the database with all of the details present.|✅|
 
-### Off Canvases
+### Offcanvases
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
 |:-----|:------|:------|:-----|:------:|
