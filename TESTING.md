@@ -35,7 +35,8 @@
   * [Home Page](#home-page)
   * [Nav Bar](#navbar)
   * [Products Page](#products-page)
-
+  * [Product Detail Page](#product-detail-page)
+  * [Cart Page](#cart-page)
 - [Bugs](#bugs)
 
 ## User Story Testing
@@ -463,12 +464,12 @@ Each feature and action on every page of the app was tested manually to verify t
 |Add Product Button - hover|Hovering over the button should marginally increase the scale and change the background colour to dark green with the font and border colours changing to pink. When the cursor moves off the button it should revert to original styling. |Hovered cursor over Add Product button the moved it off.|The Add Product button increased in size, the background colour changed to dark green and the font/border colour changed to pink.|✅|
 |Add Product Button - click|Clicking the button should direct the user to the Add Product page. |Clicked on the Add Product button|User is redirected to the Add Product page.|✅|
 
-### Product Details Page
+### Product Detail Page
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
 |:-----|:------|:------|:-----|:------:|
-|Product Quantity selector|The plus and minus buttons should change the product quantity displayed between both buttons|Clicked on the - and + buttons.|The quantity value incremented and decremented when the + and - buttons were clicked respectivley.|✅|
-|Product Size selector|When the product has sizes, a dropdown should be available where the user can select the size they want that when selected updates the value on the form.|Opened the size drop down and selected a size.|The size dropdown opened revealing a list of sizes. WHen the desired size was selected the dropdown menu disappeared and the selected value was returned in the selection input.|✅|
+|Product Quantity selector|The `+` and `-` buttons should change the product quantity displayed between both buttons|Clicked on the `+` and `-` buttons.|The quantity value incremented and decremented when the `+` and `-` buttons were clicked respectivley.|✅|
+|Product Size selector|When the product has sizes, a dropdown should be available where the user can select the size they want that when selected updates the value on the form.|Opened the size drop down and selected a size.|The size dropdown opened revealing a list of sizes. When the desired size was selected the dropdown menu disappeared and the selected value was returned in the selection input.|✅|
 |Product Primary Colour selector|When the product has a primary colour, a dropdown should be available where the user can select the primary colour they want that when selected updates the value on the form.|Opened the primary colour drop down and selected a colour.|The primary colour dropdown opened revealing a list of colours. WHen the desired colopur was selected the dropdown menu disappeared and the selected value was returned in the selection input.|✅|
 |Product Secondary Colour selector|When the product has a secondary colour, a dropdown should be available where the user can select the secondary colour they want that when selected updates the value on the form.|Opened the secondary colour drop down and selected a colour.|The secondary colour dropdown opened revealing a list of colours. When the desired colour was selected the dropdown menu disappeared and the selected value was returned in the selection input.|✅|
 Add to Cart Button - click with no product attributes selected|When the Add to Cart button is button is clicked and not all or no product attributes (size, primary colour or secondary colour) are selected, the user should be visually notified to make a selection.|On *Classic Beanie* product detail page, clicked Add to Cart button with no product attributes selected.| An error popover appeared over each of the inputs requesting the user add information.|✅|
@@ -478,6 +479,21 @@ Back to Products link|On pressing the Back to Products link, the user should be 
 |Edit Product Button - hover|Hovering over the button should marginally increase the scale and change the background colour to dark green with the font and border colours changing to pink. When the cursor moves off the button it should revert to original styling. |Hovered cursor over Edit Product button the moved it off.|The Edit Product button increased in size, the background colour changed to dark green and the font/border colour changed to pink.|✅|
 |Edit Product Button - click|Clicking the button should direct the user to the Edit Product page for the product displayed on the product detail page|Clicked on the Edit Product button|User is redirected to the Edit Product page for the correct product.|✅|
 
+### Cart Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Product Quantity selector|The `+` and `-` buttons should change the product quantity displayed between both buttons|Clicked on the `+` and `-` buttons.|The quantity value incremented and decremented when the `+` and `-` buttons were clicked respectivley.|✅|
+|Product Quantity selector - values at upper range|The `+` button should be disabled when the quantity value is 99 and enabled when below 99.|Changed value to 98 and clicked `+` button to change value to 99 before clicking the `-` button to bring value back to 98.|When the value changed to 99 the `+` was disabled and renabled when the value went back to 98.|✅|
+|Product Quantity selector - values at lower range|The `-` button should be disabled when the quantity value is 0 and enabled when above 0.|Changed value to 1 and clicked `-` button before clicking the `+` button to bring value back to 1.|When the value changed to 0 the `-` was disabled and renabled when the value went back to 1.|✅|
+|Update Item button - quantity selector value matches quantity in cart|The update item button should be disabled if the value in the quantity select input matches the quantity value in the cart. When the user hovers over the disabled button, an info popover should appear notifying the user that the quantity matches what is in the cart already and to use the `+` and `-` buttons to change the quantity.| Reload or load cart page. At this point in time, all cart items quantities displayed in the quantity select inputs will match what is in the cart.| On page reload, the Update Item buttons for all cart items was disabled. On hovering over one of the buttons, the info popover appeared as expected.|✅|
+|Update Item button - quantity selector value changed by user|On clicking the Update Item button after the user has changed a product quantity the page should reload and the product quantity changed to should persist in the cart. A toast should appear informing the user that they have changed the product quantity.| Changed cart item quantity from 1 to 2 and clicked the Update Item button.| Page reloaded and quantity selector input value remained at 2. A toast appeared with message that the item qauntity had been changed to 2.|✅|
+|Remove Item button - confirm action cancelled|On clicking the Remove Item button the user should be presented with a confirm dialogue. Clicking cancel should take no action other than dismissing the dialogue.| Clicked a cart item Remove Item button and then clicked cancel on the resultant dialogue.| Dialogue dismissed with not further outcomes.|✅|
+|Remove Item button - confirm action|On clicking the Remove Item button the user should be presented with a confirm dialogue. Clicking OK should reload the cart page where the deleted item should no longer exist. An item removed toast should appear informing the user that they have removed the item from their cart.| Clicked a cart item Remove Item button and then clicked OK on the resultant dialogue.| Cart page reloaded and deleted item was removed from the cart. An info toast appeared with the correct information.|✅|
+|Cart Summary container - fixed positioning|When the cart items overflow off screen and user scrolls down, the Cart Summary container should remain in a fixed position.| Added 4 items to cart and then opened cart page. Scrolled to bottom of page.| The Cart Summary container remained in a fixed position on the page.|✅|
+|Cart Summary container - Back to Products link| On pressing the Back to Products link, the user should be redirected to the Products page.| Clicked the Back to Products link.|User returned to the Products page.|✅|
+|Cart Summary container - Secure Checkout button| On pressing the Secure Checkout button, the user should be directed to the Checkout page.| Clicked the Secure Checkout butto.|Checkout page loaded.|✅|
+|Cart Summary container - Secure Checkout button hover|Hovering over the button should change the background colour to dark green with the font and border colours changing to pink. When the cursor moves off the button it should revert to original styling. |Hovered cursor over Secure Checkout button then moved it off.|The Secure Checkout button background colour changed to dark green and the font/border colour changed to pink.|✅|
 
 ### Off Canvases
 
