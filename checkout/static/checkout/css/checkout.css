@@ -58,6 +58,13 @@ select option[value=""] {
   transition: opacity 0.5s ease-in-out;
 }
 
+.payment-processing {
+  border: 1px solid #f2bfdc;
+  border-radius: 30px;
+  color: #f2cbe1;
+  background-color: #4d6562;
+}
+
 /* spinner/processing state, errors */
 .spinner,
 .spinner:before,
