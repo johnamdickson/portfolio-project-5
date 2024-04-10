@@ -183,6 +183,9 @@ svg {
     font-size: 1.25rem;
 }
 
+#offcanvas-menu-about {
+    width:450px;
+}
 #offcanvas-menu-login, #offcanvas-menu-register {
     width: 550px;
 }
@@ -246,6 +249,11 @@ svg {
     color: #f1d5e5;
     opacity: 0.98;
     height: 1px;
+}
+
+.offcanvas-logo{
+    width: 40px;
+    height: 40px;
 }
 /* ----------------------------------- Header Styling ----------------------------------- */
 
