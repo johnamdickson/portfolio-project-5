@@ -46,6 +46,7 @@
   * [Signup Page](#signup-page)
   * [Logout Page](#logout-page)
   * [Verify Email Page](#verify-email-page)
+  * [Footer](#footer)
   * [Offcanveses](#offcanvases)
   * [400 Error Page](#400-error-page)
   * [403 Error Page](#403-error-page)
@@ -602,6 +603,15 @@ Registration - successful registration|When a user successfully registers they s
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
 |:-----|:------|:------|:-----|:------:|
 |Verify user - confirm button click|When a new user is created in sign up process, they should receive an email to confirm email address. Clicking on the link should open the verify email page. On clicking the confirm button, the user should be redirected to the login page with a notification message that are confirmed. The email address should show as verified in the Django admin panel.|Created *new_test_user* in production environment with existing email address and submitted signup form. Received email and clicked the link. Verify email address page opened and clicked Confirm button.|Log in page loaded and a success toast appeared with the required message. Checked Django admin and confirmed that the new users email address was verified.|✅|
+
+### Footer
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Mailchimp sign up|When a new user enters an email address in the mailchimp subscribe email address input and clicks subscribe, a message should appear confirming subscription. The email address should appear in the site admin mailchimp account under Audience tab.|Created a temporary email address *jomane3583@acname.com* and added to mailchimp subscribe email before clicking the Subscribe button.|A message appeared under button thanking the user for subscribing. Checked the mailchimp Audience tab and confirmed that the inputted email had been added.|✅|
+|Email icon|When a new user clicks on the email address icon, the default mail app should open with To recipient field prepopulated with *littlewoollysnuggles@gmail.com* |Clicked on mail icon.|A mail window opened on default mail app and the To recipient field was prepopulated with the expected email address.|✅|
+|YouTube icon|When a new user clicks on the YouTube icon, the YouTube home page should open in a new tab.|Clicked on the YouTube icon.|A new tab opened and the YouTube home page loaded.|✅|
+|Facebook icon|When a new user clicks on the Facebook icon, the Little Woolly Snuggles Facebook page should open in a new tab.|Clicked on the Facebook icon.|A new tab opened and the Little Woolly Snuggles business page loaded.|✅|
 
 ### Offcanvases
 
