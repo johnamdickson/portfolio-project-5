@@ -37,10 +37,20 @@
   * [Products Page](#products-page)
   * [Add Product Page](#add-product-page)
   * [Product Detail Page](#product-detail-page)
+  * [Edit Product Page](#edit-product-page)
   * [Cart Page](#cart-page)
   * [Checkout Page](#checkout-page)
   * [Checkout Success](#checkout-success)
+  * [Profile Page](#profile-page)
+  * [Login Page](#login-page)
+  * [Signup Page](#signup-page)
+  * [Logout Page](#logout-page)
+  * [Verify Email Page](#verify-email-page)
   * [Offcanveses](#offcanvases)
+  * [400 Error Page](#400-error-page)
+  * [403 Error Page](#403-error-page)
+  * [404 Error Page](#404-error-page)
+  * [500 Error Page](#500-error-page)
 - [Bugs](#bugs)
 
 ## User Story Testing
@@ -553,6 +563,46 @@ Back to Products link|On pressing the Back to Products link, the user should be 
 |Checkout success - webhook back up|When an order has not been completed for an unforseen reason but the payment was successful, the Stripe payment intent succeeded webhook should create the order in the database. |Deleted previous tests item from database and then resent the payment intent succeeded webhook from Stripe|The order reappeared on the database with all of the details present.|✅|
 |Checkout success - webhook back up|When an order has not been completed for an unforseen reason but the payment was successful, the Stripe payment intent succeeded webhook should create the order in the database. |Deleted previous tests item from database and then resent the payment intent succeeded webhook from Stripe|The order reappeared on the database with all of the details present.|✅|
 
+### Profile Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Update Profile form submit|When the user changes the form data and clicks the Update Profile button, the profile page should reload and a notification given to the user that .their profile was updated successfully. The changes should persist on the reloaded page and database. |On main profile page for test user, added data into the second address input and then clicked the Update Prodile button.|The profile page reloaded and a success toast appeared informing the user that their profile had been updated. The edited data persisted on the page and also the Django admin panel.|✅|
+
+
+### Login Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Sign in - authorised user|When the authorised user signs into the app they should be remain on the current page and a notification generated informing them that they have successfully logged in.|Whilst on the products page, entered details for user *johnamdickson* and clicked Log In button|User was logged into the app, remained on the products page and then a success toast appeared confirming login.|✅|
+|Sign in - unauthorised user|When an unauthorised user tries to sign into the app the Login page should reload and an error alert appear in the form stating that the username and/or password are not correct.|Entered details for non-existent user and clicked the log in button.|The page reloaded and an error alert appeared in the form stating that the username and/or password are not correct.|✅|
+|Sign Up Link| Sign up text link in login callout should direct user to the sign up/register page.| Clicked on the sign up text link.|User is redirected to the sign up page.|✅|
+
+### Signup Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Registration - user already registered| If a user tries to register a new user with a username that is already in use the signup page should reload and the username input should be highlighted with an error message.|Entered existing username *johnamdickson* into form and selected password before clicking the register button.| The username input was highlighted red and a message appeared informing the user that the username already exists.|✅|
+|Registration - password too short|If user tries to register with a password less than 8 characters then the signup page should reload and the first password input should be highlighted with an error message.|Entered a new username *new_test_user* and typed in a password less than 8 characters long.| The first password input was highlighted red and a message appeared informing the user that the password is too short and it must contain at least 8 characters.|✅|
+|Registration - passwords do not match|If user tries to register with the two different passwords then the signup page should reload and the second password input should be highlighted with an error message.|Entered a new username *new_test_user* and typed in different passwords into the password and password(again) inputs.| The second password input was highlighted red and a message appeared informing the user that they must type the same password each time.|✅|
+|Registration - password entirely numeric|If user tries to register with a password that is entirely numeric then the signup page should reload and the first password input should be highlighted with an error message.|Entered a new username *new_test_user* and typed in matching numerical passwords into the two password inputs.| The first password input was highlighted red and a message appeared informing the user that the password is entirely numeric. There was also a error that the password is too common.|✅|
+|Registration - passwords to common|If user tries to register with a password that is deemed too common then the signup page should reload and the first password input should be highlighted with an error message.|Entered a new username *new_test_user* and typed in a series of common passwords: *qwertyuiop*, *password1* and *admin123*.| The first password input was highlighted red and a message appeared informing the user that the password is too common.|✅|
+Registration - password similar to username|If user tries to register with a password that is deemed too similar to the username then the signup page should reload and the first password input should be highlighted with an error message.|Entered a new username *new_test_user* and typed *newtestuser* into the password inputs.| The first password input was highlighted red and a message appeared informing the user that the password is too similar to the username.|✅|
+Registration - successful registration|When a user successfully registers they shoud be automatically be redirected to the Verify Email Address page prompting user to check theur email address for confirmation link.|Entered a new username *new_test_user* and typed in a password which conforms to the password requirements before clicking the Register button.| The Verify Email Address page loaded prompting the user to check their email for confirmation link.|✅|
+|Sign In Link| Sign in text link in sign up callout should direct user to the login page.| Clicked on the sign in text link.|User is redirected to the login page.|✅|
+
+### Logout Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Sign out|When the currently logged in user signs out of the the app they should be redirected to the home page and a notification generated informing the user they have logged out and thanking them for using the app.|Accessed logout page and clicked *Log Out* button|User was logged out of the app, redirected to the home page and then a success toast generated confirming log out.|✅|
+
+### Verify Email Page
+
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+|Verify user - confirm button click|When a new user is created in sign up process, they should receive an email to confirm email address. Clicking on the link should open the verify email page. On clicking the confirm button, the user should be redirected to the login page with a notification message that are confirmed. The email address should show as verified in the Django admin panel.|Created *new_test_user* in production environment with existing email address and submitted signup form. Received email and clicked the link. Verify email address page opened and clicked Confirm button.|Log in page loaded and a success toast appeared with the required message. Checked Django admin and confirmed that the new users email address was verified.|✅|
+
 ### Offcanvases
 
  **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
@@ -572,6 +622,34 @@ Back to Products link|On pressing the Back to Products link, the user should be 
 |Profile Offcanvas - update profile|When the user adds new data into the form and clicks the Update Profile button, the offcanvas should disappear and the user notified that their profile has been updated.|Opened account off canvas and selected profile. Added data to the Address 2 field and clicked the Update Profile button|The offcanvas disappeared and a success toast notified the user that their profile was updated successfully.|✅|
 |Profile Offcanvas - order history link|When the user clicks on the logout button, the offcanvas should disappear and the user redirected to the main profile page.|Opened account off canvas and selected profile then clicked on the link at bottom of offcanvas.|The offcanvas disappeared and user redirected to the main profile page.|✅|
 |Logout Offcanvas|When the user clicks on the check out order history here line, the offcanvas should disappear and the window redirects to the home page with a notification that the logout was successful.|Opened account off canvas and selected logout then clicked on Logout button.|The offcanvas disappeared and window redirected to the home page. A toast notification appeared informing the user that they have successfully logged out.|✅|
+
+### 400 Error Page
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+400 Bad Request Page - test page|The 400 error page should be presented when a bad request is returned|Simulate a 400 error by logging in as superuser and adding `/test-400/` to the end of the home page url.|The 400 error page was returned.|✅|
+Automatic Redirect| There should be a message informing user they will be redirected automatically in 60 seconds. The time text should count down to 0 before attempting redirection to the homepage.|Initiated 400 error as described in test page above and then reinstated hosting platform to allowed hosts before 60 second timeout and then waited 60 seconds.| The user was automatically redirected to the home page.|✅|
+Go Back Button| The go back button should return the user to the home page.|Initiated 400 error as described above and then reinstated hosting platform to allowed hosts before pressing the Go Back button.|The user was returned to the homepage.|✅|
+
+### 403 Error Page
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+403 Forbidden - test page|The 403 error page should be presented when a user without permissions tries to access an area of the site that requires those permissions|Simulate a 403 error by logging in as superuser and adding `/test-403/` to the end of the home page url.|The 403 error page was returned.|✅|
+Automatic Redirect| There should be a message informing user they will be redirected automatically in 10 seconds. The time text should count down to 0 before attempting redirection to the homepage.|Initiated 403 error as described in test page above and wait 10 seconds.| The user was automatically redirected to the home page.|✅|
+Go Back Button| The go back button should return the user to the home page.|Initiated 403 error as described in test page above and then pressed the go back button.|The user was returned to the homepage.|✅|
+
+### 404 Error Page
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+404 Page Does Not Exist - page set up|The 404 error page should be presented when a user tries to access a page that does not exists|Simulate a 404 error by typing a typo `/rpoducts/` at the end of the home page url.|The 404 error page was returned.|✅|
+Automatic Redirect| There should be a message informing user they will be redirected automatically in 10 seconds. The time text should count down to 0 before attempting redirection to the homepage.|Initiated 404 error as described in page set up above and wait 10 seconds.| The user was automatically redirected to the home page.|✅|
+Go Back Button| The go back button should return the user to the home page.|Initiated 404 error as described in page set up above and then pressed the go back button.|The user was returned to the homepage.|✅|
+
+### 500 Error Page
+ **Feature** | **Expected Outcome** | **Testing Performed** | **Testing Outcome** | **Result** |
+|:-----|:------|:------|:-----|:------:|
+500 Server Error - test page.|The 500 error page should be presented when a server is returned|Simulate a 500 error by logging in as superuser and adding `/test-500/` to the end of the home page url|✅|
+Automatic Redirect| There should be a message informing user they will be redirected automatically in 60 seconds. The time text should count down to 0 before attempting redirection to the homepage.|Initiated 500 error as described in test page above and then removed the unmigrated property from the emission model before 60 second timeout and then waited 60 seconds.| The user was automatically redirected to the home page.|✅|
+Go Back Button| The go back button should return the user to the home page.|Initiated 500 error as described in test page above and then removed the unmigrated property from the emission model before pressing the Go Back button.|The user was returned to the homepage.|✅|
 
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 
