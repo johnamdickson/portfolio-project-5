@@ -18,6 +18,9 @@
   * [Error Pages Epic](#error-pages-epic)
   * [Deploy Project to Production Environment Epic](#deploy-project-to-production-environment-epic)
   * [Search Engine Optimisation Epic](#search-engine-optimisation-epic)
+  * [Fine Tuning Site Styling, Code and Admin Epic](#fine-tuning-site-styling-code-and-admin-epic)
+  * [Testing and Documentation Epic](#testing-and-documentation-epic)
+  * [FAQs Epic](#faqs-epic)
 - [Validator Testing](#validator-testing)
   * [HTML](#html)
   * [CSS](#css)
@@ -158,6 +161,30 @@ As a **user** I can **receive pertinent emails** so that **I know when major ope
 As a **site owner** I can **optimise the website using established tools and techniques** so that **it ranks highly in the search engines.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/71)</span>|Short and long tail keywords added to key areas in DOM. Meta description updated in html head. Sitemap and robots files added to root directory.| ✅| [SEO and Web Marketing Study](documentation/TESTING-files/user-story-testing/seo-web-marketing-study.pdf)<br><br>![user_stories](documentation/TESTING-files/user-story-testing/seo-ide.png) | An optimised website for search engines to improve visibility and reach. <br><br> A series of web marketing strategies both on the website and external to it.
 As a **site owner** I can **use marketing tools and strategies** so that **I retain customers and attract new ones.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/73)</span>|Facebook business page created. Email marketing service added to footer. Links to socials also added to footer| ✅|![user_stories](documentation/TESTING-files/user-story-testing/footer.png)  ![user_stories](documentation/README-files/fb-business-page.png)| An optimised website for search engines to improve visibility and reach. <br><br> A series of web marketing strategies both on the website and external to it.
 
+
+### [Fine Tuning Site Styling, Code and Admin Epic](https://github.com/johnamdickson/portfolio-project-5/issues/71)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goals**
+:---|:---|:----:|:----------:|:------|
+As a **user** I can **log in from the site off canvas feature** so that **the process is seamless and does not necessitate navigating to a new page unless there are errors.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/44)</span>|Log in, sign up and logout functionality added to offcanvas.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/accounts-offcanvas.gif) | A secure platform for purchasing and user creation.
+As a **user** I can **access the navbar links to products regardless of which page I am on** so that **there is no confusion over available products at any stage in the users experience.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/46)</span>|Products context processor created and all products available across all pages.| ✅| [Products Context Processor](products/contexts.py) | A fully functional, user friendly and dynamic website with the best possible user experience.
+As a **site owner** I can **ensure the project cart app uses concise code** so that **any future improvements by other developers will be straight forward.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/53)</span>|Refactoring process completed on cart views.| ✅| [Cart Directory](cart)  | A modern,responsive and stylish website.
+As a **site admin** I can **edit products in the product management off canvas** so that **the site navigation is consistent with other aspects that utilise the offcanvas feature.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/64)</span>|This user story will not be completed within version 1 of the app.| ❌ | N/A | N/A
+As a **site owner** I can **received properly annotated and structured code** so that **the site is future proofed for further development/testing/fault finding.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/76)</span>|Refactoring process completed across entire codebase.| ✅| [Main Directory](/) | A modern,responsive and stylish website.
+As a **site user** I can **see all then products that the store has to offer** so that **I can purchase the product I want**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/82)</span>|All products added to the store.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/all-products.png) | A selection of crocheted products are available for purchase directly in the website.<br><br>Learn products offering users purchase of crocheting tutorials.
+As a **user** I can **access learn to crochet offerings** so that **I can develop a craft skill in my own time.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/83)</span>|Learn to crochet functionality added to product consisting of a pdf tutorial sent to user via email.| ✅| ![user_stories](documentation/TESTING-files/user-story-testing/tutorial.png)![user_stories](documentation/TESTING-files/user-story-testing/tutorial-email.png) |Learn products offering users purchase of crocheting tutorials.
+
+### [Testing and Documentation Epic](https://github.com/johnamdickson/portfolio-project-5/issues/77)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goals**
+:---|:---|:----:|:----------:|:------|
+As a **Site Owner** I can **access the project README** so that **all of the necessary information for the tool is available on project completion**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/78)</span>|**HOLD**| ✅| ![user_stories]() | A modern,responsive and stylish website.
+As a **Site Admin** I can **use automated testing** so that **efficient testing is utilsed**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/79)</span>|Select Python and Javascript automated testing completed and described later in this markdown.| ✅| [Automated Testing](#automated-testing) | A modern,responsive and stylish website.
+As a **Site Admin** I can **complete manual testing** so that **all aspects of the project will be tested.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/79)</span>|Manual testing completed and referenced in this markdown.| ✅| [Manual Testing](#manual-testing) | A modern,responsive and stylish website.
+
+### [FAQs Epic](https://github.com/johnamdickson/portfolio-project-5/issues/88)
+**User Story**|**Test**|**Result**|**Evidence**|**Project Goals**
+:---|:---|:----:|:----------:|:------|
+As a **site admin** I can **implement an FAQs app** so that **the website is set up to provide answers to users queries**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/89)</span>|This user story will not be completed within version 1 of the app.| ❌ | N/A | N/A
+As a **user** I can **access and FAQ section** so that **any common questions that I have can be answered.**<br><span style="font-size:1.5em;">[🔗](https://github.com/johnamdickson/portfolio-project-5/issues/90)</span>|This user story will not be completed within version 1 of the app.| ❌ | N/A | N/A
 
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 
