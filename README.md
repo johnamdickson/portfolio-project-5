@@ -5,9 +5,9 @@ Little Woolly Snuggles is a business-to-consumer e-commerce website, selling han
 
 This site is my Portfolio Project 5 submission showcasing full stack frameworks, search engine optimisation and web marketing skills. 
 
-*Add link to deployed project here* [link.](https://little-woolly-snuggles-4b258af9630a.herokuapp.com/)
+The deployed website can be found at this [link.](https://little-woolly-snuggles-4b258af9630a.herokuapp.com/)
 
-![Responsive Mockup Screenshot]() *Add responsive screenshot here*
+![Responsive Mockup Screenshot](documentation/README-files/am-i-responsive.png)
 
 ## Contents
 <a name="contents"></a>
@@ -15,6 +15,7 @@ This site is my Portfolio Project 5 submission showcasing full stack frameworks,
 - [UX](#ux)
   - [Strategy](#strategy)
     - [Project Goals](#project-goals)
+    - [Marketing Strategy](#marketing-strategy)
     - [Agile Methodology](#agile-methodology)
     - [User Stories](#user-stories)
   - [Scope](#scope)
@@ -25,6 +26,7 @@ This site is my Portfolio Project 5 submission showcasing full stack frameworks,
     - [Wireframes](#wireframes)
   - [Surface(Design)](#surface-design)
     - [Colour Scheme](#colour-scheme)
+    - [Mockups](#mockups)
     - [Imagery](#imagery)
     - [Logo](#logo)
     - [Typography](#typography)
@@ -46,7 +48,7 @@ This site is my Portfolio Project 5 submission showcasing full stack frameworks,
 
 ## UX
 ### Strategy
-The primary objective of our business-to-consumer e-commerce site is to offer consumers a diverse selection of crocheted goods across various categories while providing a user-friendly platform for browsing, selecting, and purchasing these items. Additionally, we aim to enhance user engagement by offering a learning environment where users can access step-by-step walkthroughs to create their own crocheted products. The site employs intuitive navigation, responsive design, and a streamlined purchasing process to deliver an optimal user experience.
+The primary objective of this business-to-consumer e-commerce site is to offer consumers a diverse selection of crocheted goods across various categories while providing a user-friendly platform for browsing, selecting, and purchasing these items. Additionally, we aim to enhance user engagement by offering a learning environment where users can access step-by-step walkthroughs to create their own crocheted products. The site employs intuitive navigation, responsive design, and a streamlined purchasing process to deliver an optimal user experience.
 
 #### Project Goals
 
@@ -60,6 +62,11 @@ The following goals were identified for the project:
 - A selection of crocheted products are available for purchase directly in the website.
 - Learn products offering users purchase of crocheting tutorials.
 
+#### Marketing Strategy
+The business is a small, home based business with a limited budget for marketing. As such, an organic marketing strategy has been selected by the client. The following marketing means will be used:
+- A mail subscription sign up service for users.
+- A Facebook business page.
+
 #### Agile Methodology
 
 The project followed an Agile Project Management approach, completing *15* epics consisting of various user stories. These stories were categorized using MoSCoW prioritization, labeled in GitHub as *Must Have*, *Should Have*, *Could Have*, and *Won't Have*. Each user story was assigned a timebox value using the Fibonacci Sequence. Throughout the project, sprints were conducted, selecting user stories with a timebox value of no more than 8 per sprint. Epics, user stories, and bugs were tracked and visualized using GitHub's Project Kanban board feature, accessible [here.](https://github.com/users/johnamdickson/projects/3/views/1)
@@ -68,31 +75,9 @@ The project followed an Agile Project Management approach, completing *15* epics
 #### User Stories
 
 As stated, the user stories were collated into *16* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *56* user stories, with *16* Must Have (*29*%), *23* Should Have(*41*%), *14* Could Have (*25*%) and *3* Won't Have (*5*%). 
-<br>![user-story-breakdown]()*ADD user story breakdown graph*
-The total number of story points assigned to the user stories is *ADD* of which Must Have assigned *ADD* points(*ADD*%), Should Have assigned *ADD* points(*ADD*%), Could Have assigned *ADD* points(*ADD*%) and Won't Have assigned *ADD* points (*ADD*%).
-
-<table>
-<tr>
-  <img src="" >*ADD Total Story Point graph*
-</tr>
-<tr>
-<td width=50%>
-  <img src="" > *ADD Must have story point graph*
-</td>
-<td>
-  <img src=""> *ADD Should have story point graph*
-
-</td>
-</tr>
-<tr>
-<td width=50%>
-  <img src="" > *ADD could have story point graph*
-</td>
-<td>
-  <img src=""> *ADD wont have story point grpah*
-</td>
-</tr>
-</table>
+<br>![user-story-breakdown](documentation/README-files/user-story-breakdown.png)<br><br>
+The total number of story points assigned to the user stories is *179* of which the majority were in the category of 3 storypoints. 
+<br>![user-story-breakdown](documentation/README-files/storypoint-breakdown.png)<br>
 
 Each of the user stories were broken down into tasks and acceptance criteria which can be reviewed on the project [kanban board](https://github.com/users/johnamdickson/projects/3/views/1).
 
@@ -109,27 +94,29 @@ Each of the user stories were broken down into tasks and acceptance criteria whi
 
 
 #### Optional Content
-- User profile creation/management.
-- FAQs section.
+  - User profile creation/management.
+  - FAQs section.
 
 ### Structure
-- *ADD database description*.<br><br>
-![database schema]() *ADD database schema image*
+- The structure of the postgresql database was defined and mapped out on a database schema. This helped define the required data interactions to develop a usuable product. The Product model forms the backbone of the schema. The model contains the expected properties of an online business product with additional attributes such as size, primary and secondary colour and alearn component.  There exists two product attribute models - size and colour - which have a Many-to-Many relationship with the Product model. The Category model is a foreign key for the Product model with a One-to-Many relationship. The auth user has relationships with account email model and the user profile model. The Order model for tracking customer orders has a One-to-Many relationship with OrderLineItems model, itself having a One-to-One relationship with the Product model.<br><br>
+![database schema](documentation/TESTING-files/misc-files/dbeaver-db-schema.png)
 - The front end utilises bootstrap and bespoke styling for a user friendly, designed approach. 
-- *ADD static and image storage solution*.
+- Static and media files are stored in Amazon S3 cloud based storage bucket and linked to Django via the Boto3 library.
 ### Skeleton
 #### Wireframes
-- The desktop wireframes can be found [here.]()*ADD web wireframes*
-- The mobile and tablet wireframes can be found [here.]()*ADD mobile wireframes*
+- The desktop wireframes can be found [here.](documentation/README-files/desktop-wireframes.pdf)
+- The mobile and tablet wireframes can be found [here.]documentation/README-files/mobile-tablet-wireframes.pdf()
 ### Surface (Design)
 #### Colour Scheme
-- The main theme colour for the site is a shade of *ADD* called *ADD*. <br><br>
+- The main theme colours for the site are derivatives of the colours found in the company logo. The main colours used werea shade of green called Cutty Sark and a shage of pink called following are the colour names:
+  * a shade of green called Cutty Sark.
+  * a shade of pink called We Peep <br><br>
       <p align="center">
-![colour-pallette]()*ADD colour pallette image*
+![colour-pallette](documentation/README-files/colour-pallette.png)
       </p>
-      <p align="center">
-![colour-hex-codes]() *ADD hex code image*
-      </p>
+
+#### Mockups
+- The project mockups can be found [here.](documentation/README-files/mockups.pdf)
 
 #### Imagery
 - *ADD image descriptions*.<br><br>
