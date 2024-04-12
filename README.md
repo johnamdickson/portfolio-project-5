@@ -108,7 +108,7 @@ Each of the user stories were broken down into tasks and acceptance criteria whi
 - The mobile and tablet wireframes can be found [here.]documentation/README-files/mobile-tablet-wireframes.pdf()
 ### Surface (Design)
 #### Colour Scheme
-- The main theme colours for the site are derivatives of the colours found in the company logo. The main colours used werea shade of green called Cutty Sark and a shage of pink called following are the colour names:
+- The main theme colours for the site are muted derivatives of the colours found in the company logo. The main colours used werea shade of green called Cutty Sark and a shage of pink called following are the colour names:
   * a shade of green called Cutty Sark.
   * a shade of pink called We Peep <br><br>
       <p align="center">
@@ -119,8 +119,26 @@ Each of the user stories were broken down into tasks and acceptance criteria whi
 - The project mockups can be found [here.](documentation/README-files/mockups.pdf)
 
 #### Imagery
-- *ADD image descriptions*.<br><br>
-![hero-image]() *ADD images*
+- Aside from individual product images, the following images were used on the site:<br><br>
+<table>
+<tr>
+<td width=66%>
+  <img src="static/images/crochet-hook.webp" >
+</td>
+<td>
+A simple crochet hook and yarn. This image serve as the main image on the home page providing a simple and striking depiction of the basics of crochet - the hook and yarn. On the home page, the link to all products is situated on the corner of the image.
+</td>
+</tr>
+<tr>
+<td width=66%>
+  <img src="static/images/gift-set.webp" >
+</td>
+<td>
+An professional image of two matching hats in adult and child sizes showcasing a Mummy and Me giftset. On the home page, the link to all Gift Sets is situated on the corner of the image.
+</td>
+</tr>
+</table>
+
 
 - *ADD icon descriptions*.<br><br>
 <p align="center">
