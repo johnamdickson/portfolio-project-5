@@ -315,11 +315,6 @@ const errorCountdown = () => {
             }
           };
 
-// solution to console error from stack overflow:
-// https://stackoverflow.com/questions/66349868/jest-unit-testing-module-export-error-in-browser-console
-var module = module || {};
-if (module) {module.exports = errorCountdown;}
-
 
 const setUpAddEditProduct = () => {
     /**
@@ -546,3 +541,9 @@ const setUpAddEditProduct = () => {
           });
     }
   };
+
+
+  // solution to console error from stack overflow:
+// https://stackoverflow.com/questions/66349868/jest-unit-testing-module-export-error-in-browser-console
+var module = module || {};
+if (module) {module.exports = errorCountdown;}
