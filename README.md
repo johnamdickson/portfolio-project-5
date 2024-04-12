@@ -67,7 +67,7 @@ The project followed an Agile Project Management approach, completing *15* epics
 
 #### User Stories
 
-As stated, the user stories were collated into *15* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *56* user stories, with *16* Must Have (*29*%), *23* Should Have(*41*%), *14* Could Have (*25*%) and *3* Won't Have (*5*%). 
+As stated, the user stories were collated into *16* epics. Each user story was assigned to either the user, site admin, super user or site owner. In total there are *56* user stories, with *16* Must Have (*29*%), *23* Should Have(*41*%), *14* Could Have (*25*%) and *3* Won't Have (*5*%). 
 <br>![user-story-breakdown]()*ADD user story breakdown graph*
 The total number of story points assigned to the user stories is *ADD* of which Must Have assigned *ADD* points(*ADD*%), Should Have assigned *ADD* points(*ADD*%), Could Have assigned *ADD* points(*ADD*%) and Won't Have assigned *ADD* points (*ADD*%).
 
@@ -90,23 +90,27 @@ The total number of story points assigned to the user stories is *ADD* of which 
 </td>
 <td>
   <img src=""> *ADD wont have story point grpah*
-
 </td>
 </tr>
 </table>
-The user stories were broken down into tasks and acceptance criteria which can be reviewed by clicking on the linked epics and user stories below.
 
-1. [*ADD*Epic]()
-    - [*ADD user stories*]()
-
-
+Each of the user stories were broken down into tasks and acceptance criteria which can be reviewed on the project [kanban board](https://github.com/users/johnamdickson/projects/3/views/1).
 
 ### Scope
 #### Essential Content
- - *ADD essential content summary*.
+  - A selection of crocheted products for sale.
+  - A selection of learn to crochet digital tutorials.
+  - A secure user authentication system.
+  - A secure means of making payments for products.
+  - An order tracking system.
+  - Superuser only access to add and edit products.
+  - An email sending mechanism for verification and order confirmation.
+  - Dymanic sidebar functionality.
+
 
 #### Optional Content
-- *ADD optional content*.
+- User profile creation/management.
+- FAQs section.
 
 ### Structure
 - *ADD database description*.<br><br>
