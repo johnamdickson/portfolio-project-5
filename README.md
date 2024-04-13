@@ -243,8 +243,21 @@ The fonts used in the project were sourced from Google Fonts open source offerin
 
 ### Existing Features
 - __Header__
-  - The .<br><br>
-  ![navbar](documentation/README-files/header.png)
+  - The header consists of the site logo which when pressed returns the user to the home page. Adjacent to the this is the search bar which searches the site categories, products and product descriptions. Next to the search bar are the header icons for Account, Cart and About. The Account and About links open an offcanvas described later in this section. The Cart link will open the Cart page. There is also a dynamic order total which changes depending on what is in the users cart. The header changes dependant on screen size with the logo occupying the full screen width in medium screens and each section occupying a full width in small screens. On small screens, the aforementioned header icons are joined by a menu icon which opens an offcanvas menu of navbar items, described later in this section.<br><br>
+  - Header Large
+  ![header](documentation/README-files/header.png)
+  - Header Medium
+  ![header](documentation/README-files/header-medium.png)
+  - Header Small
+  ![header](documentation/README-files/header-small.png)
+- __Navbar__
+  - The navbar contains a series of dropdown menus opened by clicking on nav items. These items allow the user to navigate to all products or navigate to products by category. When clicked, a drop down menu appears and for all products the user can make a choice between products by price, producst by category or all products. For the category dropdowns the user is presented with a list of products in the category or an option to view all products by that category. As stated in the Header description, on small screens the nav items are contained in a menu off canvas which is toggles using the Menu header buton.<br><br>
+  - Navbar All Products Selected
+  ![header](documentation/README-files/navbar-all-products.png)
+  - Navbar Category Selected
+  ![header](documentation/README-files/navbar-category-dropdown.png)
+  - Menu Offcanvas
+  ![header](documentation/README-files/menu-offcanvas.png)
 - __Footer__
   - *ADD*.<br><br>
   ![footer]()<br><br>
