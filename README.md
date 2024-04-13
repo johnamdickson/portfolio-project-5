@@ -272,44 +272,82 @@ The fonts used in the project were sourced from Google Fonts open source offerin
 
 ### Existing Features
 - __Header__
-  - The header consists of the site logo which when pressed returns the user to the home page. Adjacent to the this is the search bar which searches the site categories, products and product descriptions. Next to the search bar are the header icons for Account, Cart and About. The Account and About links open an offcanvas described later in this section. The Cart link will open the Cart page. There is also a dynamic order total which changes depending on what is in the users cart. The header changes dependant on screen size with the logo occupying the full screen width in medium screens and each section occupying a full width in small screens. On small screens, the aforementioned header icons are joined by a menu icon which opens an offcanvas menu of navbar items, described later in this section.<br><br>
-  - Header Large
-  ![header](documentation/README-files/header.png)
-  - Header Medium
-  ![header](documentation/README-files/header-medium.png)
-  - Header Small
-  ![header](documentation/README-files/header-small.png)
+  - The header consists of the site logo which when pressed returns the user to the home page. Adjacent to the this is the search bar which searches the site categories, products and product descriptions. Next to the search bar are the header icons for Account, Cart and About. The Account and About links open an offcanvas described later in this section. The Cart link will open the Cart page. There is also a dynamic order total which changes depending on what is in the users cart. The header changes dependant on screen size with the logo occupying the full screen width in medium screens and each section occupying a full width in small screens. On small screens, the aforementioned header icons are joined by a menu icon which opens an offcanvas menu of navbar items, described later in this section.
+    ##### Header Large
+    ![header](documentation/README-files/header.png)
+    ##### Header Medium
+    ![header](documentation/README-files/header-medium.png)
+    ##### Header Small
+    ![header](documentation/README-files/header-small.png)
 - __Navbar__
-  - The navbar contains a series of dropdown menus opened by clicking on nav items. These items allow the user to navigate to all products or navigate to products by category. When clicked, a drop down menu appears and for all products the user can make a choice between products by price, producst by category or all products. For the category dropdowns the user is presented with a list of products in the category or an option to view all products by that category. As stated in the Header description, on small screens the nav items are contained in a menu off canvas which is toggles using the Menu header buton.<br><br>
-  - Navbar All Products Selected
-  ![header](documentation/README-files/navbar-all-products.png)
-  - Navbar Category Selected
-  ![header](documentation/README-files/navbar-category-dropdown.png)
-  - Menu Offcanvas
-  ![header](documentation/README-files/menu-offcanvas.png)
+  - The navbar contains a series of dropdown menus opened by clicking on nav items. These items allow the user to navigate to all products or navigate to products by category. When clicked, a drop down menu appears and for all products the user can make a choice between products by price, producst by category or all products. For the category dropdowns the user is presented with a list of products in the category or an option to view all products by that category. As stated in the Header description, on small screens the nav items are contained in a menu off canvas which is toggles using the Menu header buton.
+    ##### Navbar All Products Selected
+    ![navbar](documentation/README-files/navbar-all-products.png)
+    ##### Navbar Category Selected
+    ![navbar](documentation/README-files/navbar-category-dropdown.png)
+    ##### Menu Offcanvas
+    ![navbar](documentation/README-files/menu-offcanvas.png)
+- __Home Page__
+  - The home page consists of a grid of crochet based images depicting the products and categories. The main image and associated button will take the user to the products page where all products will be visible. The other buttons take the user to the products page where they will be filtered by the category selected.
+    ![home](documentation/README-files/home-page.png)<br><br>
+- __Products Page__
+  - The products page consists of a series of containers with the following product details included: image, price and category. The products can be sorted with the sort selector by: Product Price high to low or low to high, Product Category a-z or z-a and Product Name a-z or z-a.<br><br>
+  ![products](documentation/README-files/product-sort.png)<br><br>
+  - When products are hovered over the container background colour changes and the scale increases marginally.<br><br>
+  ![products](documentation/README-files/product-hover.png)<br><br>
+  - When the product sizes button is clicked, a popover appears with all of the available sizes and a link to a size guide chart. When the size chart button is clicked the chart appears in a new tab.<br><br>
+  ![products](documentation/README-files/available-sizes.png)<br>
+  ![products](documentation/README-files/size-chart.png)<br><br>
+  - When the product colours button is clicked, a popover appears with all of the products available sizes.<br><br>
+  ![products](documentation/README-files/available-colours.png)<br><br>
+  - When the product is a learn product it is identifiable through a Learn to Crochet badge.<br><br>
+  ![products](documentation/README-files/learn-product.png)<br><br>
+- __Add Product__
+  - The add product functionality is available in the Product Management offcanvas or via the button in the Products page. This feature is only available to superusers and consists of a form with all of the product fields that are available for adding.<br><br>
+    ![products](documentation/README-files/add-product.gif)<br><br>
+- __Product Detail Page__
+  - The products detail page consists of an image, description, quantity selector buttons, attribute selectors (size or colour)and buttons to either add the selected product to the cart or go back to Products page.<br><br>
+  ![products](documentation/README-files/product-detail.png)<br><br>
+  - When the size or colour inputs are selected a drop down menu appears.<br><br>
+  ![products](documentation/README-files/attribute-selector.png)<br><br>
+  - If the user does not select any attributes for the product, warning popovers appear requesting the user to make a selection.<br><br>
+  ![products](documentation/README-files/warning-popovers.png)<br><br>
+  - When the user adds the product to their cart, a success toast appears with a summary of their cart items.<br><br>
+  ![products](documentation/README-files/success-add-product-toast.png)<br><br>
+- __Edit Product__
+  - The edit product functionality is available via the button in the Product Detail page. This feature is only available to superusers and consists of a form with all of the product fields that are available for editing. The edit product page also has a button to delete the product if required.<br><br>
+    ![products](documentation/README-files/edit-product.gif)<br><br>
+- __Cart Page__
+  - The cart page consists of a table detailing all of the items that are in the users cart. A quantity adjustment is available for the items as well as an option to remove the item from the cart altogether. Any changes made in the cart are notifiied to the user via an info toast. A cart summary is positioned to the right of the table and is fixed on the screen should the user have multiple items to scroll through. Within this summary is a button to access the Checkout page or return to products.<br><br>
+  ![products](documentation/README-files/cart.gif)<br><br>
+- __Checkout and Checkout Success Pages__
+  - The checkout page consists of two sections - an order summary and a payment form. The order details summarises the users order with a list of products in the cart along with a the total pricee. The payment form consists of a contact details section, an address section and a Stripe. On entering the required details the user can pay for their products by clicking the Pay Now button. Whilst the request is in process, an animation commences on the button itself. Once the payment is confirmed, the user is directed to a checkout success where a summary of the order is given along with a success toast confirming the order.<br><br>
+  ![products](documentation/TESTING-files/user-story-testing/checkout-and-success.gif)<br><br>
+- __Register__
+  - If a user wants to register for an account they can do so in the Register offcanvas. This replicates the main registration page but in an easy to access mannner that does not require a page reload. The main registration page is still available and can be accessed by typing in the correct url or is automatically opened if there is an error with the offcanvas form.<br><br>
+  ![products](documentation/README-files/register.png)<br><br>
+- __Login__
+  - If a user wants to login to their account they can do so in the login offcanvas. This replicates the main login page but in an easy to access mannner that does not require a page reload. The main login page is still available and can be accessed by typing in the correct url or is automatically opened if there is an error with the offcanvas form.<br><br>
+  ![products](documentation/README-files/login.png)<br><br>
+- __Logout__
+  - If a user wants to logout of their account they can do so in the logout offcanvas. This replicates the main logout page but in an easy to access mannner that does not require a page reload. The main logout page is still available and can be accessed by typing in the correct url.<br><br>
+  ![products](documentation/README-files/logout.png)<br><br>
+- __User Profile__
+  - When a new user is created, they are automatically assigned a profile. The profile can be amended in the My Profile offcanvas. Here there are options to edit user details and submit to update. The user can also access an order history by clicking the relevant link in the My Profile offcanvas. This leads the user to the main profile page where the update profile form also exists and a summary of all of the users orders is also present.<br><br>
+  ![products](documentation/README-files/profile.gif)<br><br>
 - __Footer__
-  - *ADD*.<br><br>
-  ![footer]()<br><br>
-- __Login Page__ 
-  - *ADD*<br><br>
-        <p align="center">
-  ![login]()
-      </p>
+  - The footer contains a mail sign up embedded form provided by Mail Chimp on one side with a contact section on the other. The contact options are email, Facebook or YouTube.<br><br>
+  ![products](documentation/README-files/footer.png)<br><br>
 
-- __Register Page__ 
-  - *ADD*.<br><br>
-  ![login]()
-- __Home Page__ 
-  - *ADD*.<br><br>
-   ![home page]()<br><br>
 
-- __Logout Page__ 
-  - *ADD*
-          <p align="center">
-      <img src="">
-      </p> 
-- __Alerts__
-  - *ADD*
+- __Toasts and Popovers__
+  - Bootstrap toasts were used to convey notifications to the user in a visually engaging manner. The toasts were coloured green for success, blue for info and red for error. <br><br>
+  ![products](documentation/README-files/success-toast.png)
+  ![products](documentation/README-files/info-toast.png)
+  ![products](documentation/README-files/error-toast.png)
+  ![products](documentation/README-files/error-popover.png)
+  ![products](documentation/README-files/password-popover.png)<br><br>
+
 
 
 ### Features Left to Implement
@@ -348,6 +386,7 @@ A number of features were considered at the outset of and during the project but
 - **mailtrap** Python library for interacting with Mailtrap email sending services.
 - **num2words** Python library for coverting integers into words.
 - **stripe** Python library for interactions with the Stripe payment service.
+- **Mail Chimp** embeded form and boilerplate code to enable functionality for email subscription service.
 
 <br><a href="#contents">BACK TO CONTENTS 🔼</a>
 ## Testing 
