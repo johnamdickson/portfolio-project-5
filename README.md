@@ -28,6 +28,7 @@ The deployed website can be found at this [link.](https://little-woolly-snuggles
     - [Colour Scheme](#colour-scheme)
     - [Mockups](#mockups)
     - [Imagery](#imagery)
+    - [Icons](#icons)
     - [Logo](#logo)
     - [Typography](#typography)
 - [Features](#features)
@@ -91,7 +92,6 @@ Each of the user stories were broken down into tasks and acceptance criteria whi
   - Superuser only access to add and edit products.
   - An email sending mechanism for verification and order confirmation.
   - Dymanic sidebar functionality.
-
 
 #### Optional Content
   - User profile creation/management.
@@ -231,15 +231,20 @@ The fonts used in the project were sourced from Google Fonts open source offerin
 
 ### Security Features
 - There are a number of features utilsed in the app to ensure the security of private information. The following information is contained in the env.py file and Heroku config vars:
-  - The database URL. NOTE: this was changed at commit number 507 by rotating the password in Elephant SQL for the database as the url was deployed to Github in error.
-  - Allowed hosts.
-- There are *ADD* user types avialable in the app: *ADD*. The different groups confer different permissiions as described below:
-  - All users can view *ADD*.
+  - The database URL. NOTE: this was changed at commit number 507 by rotating the password in Elephant SQL for the database as the url was deployed to Github in error previously.
+  - Sripe secret key to authenticate the payment API request.
+  - Stripe WH secret key to authenticate the webhook API request.
+  - Mailtrap token for accessing the Mailtrap account via SMTP.
+  - Django secret key. User defined specifically for this project.
+- There are 3 user types avialable in the app: Anonymous User, Standard User and Superuser. The different user types confer different permissiions as described below:
+  - All users can view products, add them to cart, change quantity or remove from cart and checkout.
+  - Standard Users and Superusers can update profile information and review order history.
+  - Superusers can add, edit and delete products from the store.
 
 ### Existing Features
-- __Navbar__
-  - *ADD*.<br><br>
-  ![navbar]()
+- __Header__
+  - The .<br><br>
+  ![navbar](documentation/README-files/header.png)
 - __Footer__
   - *ADD*.<br><br>
   ![footer]()<br><br>
