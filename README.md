@@ -178,11 +178,44 @@ An image of a lamb lying down in a rugged landscape used in the About offcanvas.
 </tr>
 </table>
 
-
-- *ADD icon descriptions*.<br><br>
-<p align="center">
-  <img src=""  width="100" height="100">*ADD icon images*
-</p>
+#### Icons
+- Many of the icons used on site were sourced from Fontawesome. The icons used to depict the product and product categories are SVGs, the sources of which are in the credit section:<br><br>
+<table>
+<tr>
+<td width=10%>
+  <img src="documentation/README-files/products-icon.png" >
+</td>
+<td>
+Products Icon. Used when all products are on display.
+</td>
+<td width=10%>
+  <img src="documentation/README-files/learn-icon.png" >
+</td>
+<td>
+Learn Icon. Used when the Learn to Crochet products are displayed.
+</td>
+<td width=10%>
+  <img src="documentation/README-files/hats-icon.png" >
+</td>
+<td>
+Hats Icon. Used when Hats products are displayed.
+</td>
+</tr>
+<tr>
+<td width=10%>
+  <img src="documentation/README-files/blanket-icon.png" >
+</td>
+<td>
+Blankets Icon. Used when Blankets products are on display.
+</td>
+<td width=10%>
+  <img src="documentation/README-files/gift-set-icon.png" >
+</td>
+<td>
+Learn Icon. Used when the Learn to Crochet products are displayed.
+</td>
+</tr>
+</table>
 
 #### Logo
 The site logo consists of a cartoon sheep, representing the wool used in crafting the company's products. It is prominent in the header along with the company name and can also be found in various places through the site such as toast headers, offcanvas title and favicon.<br><br>
