@@ -323,6 +323,10 @@ The fonts used in the project were sourced from Google Fonts open source offerin
 - __Checkout and Checkout Success Pages__
   - The checkout page consists of two sections - an order summary and a payment form. The order details summarises the users order with a list of products in the cart along with a the total pricee. The payment form consists of a contact details section, an address section and a Stripe. On entering the required details the user can pay for their products by clicking the Pay Now button. Whilst the request is in process, an animation commences on the button itself. Once the payment is confirmed, the user is directed to a checkout success where a summary of the order is given along with a success toast confirming the order.<br><br>
   ![products](documentation/TESTING-files/user-story-testing/checkout-and-success.gif)<br><br>
+- __Learn Tutorial__
+  - When the user purchases a learn product, they receive a pdf tutorial which details how to create a crocheted product themselves.<br><br>
+  ![products](documentation/TESTING-files/user-story-testing/tutorial.png)<br><br>
+
 - __Register__
   - If a user wants to register for an account they can do so in the Register offcanvas. This replicates the main registration page but in an easy to access mannner that does not require a page reload. The main registration page is still available and can be accessed by typing in the correct url or is automatically opened if there is an error with the offcanvas form.<br><br>
   ![products](documentation/README-files/register.png)<br><br>
@@ -341,7 +345,11 @@ The fonts used in the project were sourced from Google Fonts open source offerin
 - __Footer__
   - The footer contains a mail sign up embedded form provided by Mail Chimp on one side with a contact section on the other. The contact options are email, Facebook or YouTube.<br><br>
   ![products](documentation/README-files/footer.png)<br><br>
-
+- __Emails__
+  - Automated emails are sent to verify a users email address, to confirm an order has been purchased and also to send the user the learn product tutorial.<br><br>
+  ![products](documentation/TESTING-files/user-story-testing/email-verification.gif)
+  ![products](documentation/README-files/confirmation-email.png)
+  ![products](documentation/TESTING-files/user-story-testing/tutorial-email.png)<br><br>
 
 - __Toasts and Popovers__
   - Bootstrap toasts were used to convey notifications to the user in a visually engaging manner. The toasts were coloured green for success, blue for info and red for error. <br><br>
