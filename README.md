@@ -134,7 +134,46 @@ A simple crochet hook and yarn. This image serve as the main image on the home p
   <img src="static/images/gift-set.webp" >
 </td>
 <td>
-An professional image of two matching hats in adult and child sizes showcasing a Mummy and Me giftset. On the home page, the link to all Gift Sets is situated on the corner of the image.
+A professional image of two matching hats in adult and child sizes showcasing a Mummy and Me giftset. On the home page, the link to all Gift Sets is situated on the corner of the image.
+</td>
+</tr>
+<tr>
+<td width=66%>
+  <img src="static/images/learn.webp" >
+</td>
+<td>
+An image of crochet hooks of different sizes arranged in a fan shape to encompass the learn offering on the site by showcasing the tool used. On the home page, the link to all Learn Products is situated on the corner of the image.
+</td>
+</tr>
+<tr>
+<td width=66%>
+  <img src="static/images/teddy-bear-hats.webp" >
+</td>
+<td>
+A professional image of bear hats that are for sale in the shop. On the home page, the link to all Hats is situated on the corner of the image.
+</td>
+</tr>
+<tr>
+<td width=66%>
+  <img src="static/images/blanket.webp" >
+</td>
+<td>
+A blanket draped over a stylish chair, this image links together. the final category of the shop. On the home page, the link to Blankets is situated on the corner of the image.
+</td>
+</tr>
+<tr>
+<td width=66%>
+  <img src="media/croagh-patrick.webp" >
+</td>
+<td>
+An image of Croagh Patrick used in the About offcanvas. This image depicts the area where the company is based using the most prominent landmark on the Wild Atlantic Way.
+</td>
+</tr>
+<td width=66%>
+  <img src="media/sheep.webp" >
+</td>
+<td>
+An image of a lamb lying down in a rugged landscape used in the About offcanvas. The image ties in the use of wool in the products and is representative of the area the company is based in.
 </td>
 </tr>
 </table>
