@@ -335,6 +335,9 @@ The fonts used in the project were sourced from Google Fonts open source offerin
 - __User Profile__
   - When a new user is created, they are automatically assigned a profile. The profile can be amended in the My Profile offcanvas. Here there are options to edit user details and submit to update. The user can also access an order history by clicking the relevant link in the My Profile offcanvas. This leads the user to the main profile page where the update profile form also exists and a summary of all of the users orders is also present.<br><br>
   ![products](documentation/README-files/profile.gif)<br><br>
+- __About__
+  - An About offcanvas is accessible through the header icon and opens to reveal a short bio of the company, focussing on the location on Ireland's Wild Atlantic Way.<br><br>
+  ![products](documentation/README-files/about-offcanvas.png)<br><br>
 - __Footer__
   - The footer contains a mail sign up embedded form provided by Mail Chimp on one side with a contact section on the other. The contact options are email, Facebook or YouTube.<br><br>
   ![products](documentation/README-files/footer.png)<br><br>
