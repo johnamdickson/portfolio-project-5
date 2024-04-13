@@ -125,9 +125,18 @@ Each of the user stories were broken down into tasks and acceptance criteria whi
 - The main colours used were: 
   * a shade of green called Cutty Sark.
   * a shade of pink called We Peep <br><br>
-      <p align="center">
-![colour-pallette](documentation/README-files/colour-pallette.png)
-      </p>
+
+  <table>
+<tr>
+<td width=75%>
+  <img src="documentation/README-files/colour-pallette.png" >
+</td>
+<td>
+  <img src="documentation/README-files/colour-hex-codes.png" >
+</td>
+</tr>
+</table>
+
 
 #### Mockups
 - The project mockups can be found [here.](documentation/README-files/mockups.pdf)
@@ -523,10 +532,10 @@ NOTE: Specific links are included within the Python, Javascript, HTML and CSS  f
 - The colour name was sourced from [Name That Color.](https://chir.ag/projects/name-that-color/)
 - The site colour scheme pallete was generated using the palette creation tool in [Color Hex.](https://www.color-hex.com/) 
 - Most of the icons used on the website were from [Font Awesome](https://fontawesome.com/).
-- Other icons in svg format were obtained taken from various sites: [reshot](https://www.reshot.com/), [iconscout](https://iconscout.com), 
-<br>
+- Other icons in svg format were obtained taken from various sites: [reshot](https://www.reshot.com/) [iconscout](https://iconscout.com)
+
 
 ### Acknowledgements
   - I would like to extend my thanks to my wife Sinéad for all of her help during the project. The majority of photos are her work along with all of the product descriptions and text in the about section. Thank you Sinéad, I could not have done this project and every other project in this course without your support.
-  - I would like to thank my mentor Graeme for all of his guidance during our mentor sessions, particularly spotting an error that was not replicating for me that surely would have resulted in a fail mark. Thank you for all your assistance.<br>
+  - I would like to thank my mentor Graeme for all of his guidance during our mentor sessions, particularly spotting an error that was not replicating for me that surely would have resulted in a fail mark. Thank you for all your assistance.<br><br>
 <a href="#contents">BACK TO CONTENTS 🔼</a>
