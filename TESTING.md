@@ -200,7 +200,9 @@ Results for all HTML pages can be found in the table below:
 :-----:|:-----:|:-----|:-----:|:-----:
  |home| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/html-validation/pre-edit-results/index.md)| ✅ |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/home-page.png) 
 |products| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/html-validation/pre-edit-results/products.md)| ✅ |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/products-page.png) 
+|add-product| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/html-validation/pre-edit-results/add-product.md)| ✅ |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/add-product-page.png) 
 |product-detail| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/html-validation/pre-edit-results/product-detail.md)| ✅ |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/product-detail-page.png) 
+|edit-product| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/html-validation/pre-edit-results/edit-product.md)| ✅ |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/edit-product-page.png) 
 |cart| ✅ |No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/cart-page.png) 
 |checkout| ✅ |No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/checkout-page.png) 
 |checkout-success| ✅ |No errors/warnings returned| N/A |![html_checker](documentation/TESTING-files/html-validation/post-edit-results/checkout-success-page.png) 
@@ -213,11 +215,11 @@ Results for all HTML pages can be found in the table below:
  
 ### CSS
 
-The site CSS was checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). There remains 228 warnings in total post edit associated with Bootstrap CSS and webkit vendor extensions. These warnings are unavoidable in the validator because they are vendor extensions. In the interests of project delivery timeline, no action was taken to rectify them.
+The site CSS was checked using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). There remains 228 warnings in total post edit associated with Bootstrap CSS and webkit vendor extensions. These warnings are unavoidable in the validator because they are vendor extensions. In the interests of project delivery timeline, no action was taken to rectify them. The base and cart css files were checked using the URI. The profiles and checkout css was checked by direct input.
 
 **First Pass**|**Warnings/Errors**|**Second Pass<br><sup><sub>(Post Fix)</sub></sup>**|**Screenshot**
 :-----:|:-----|:-----:|:-----:
-| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/css-validation/pre-edit-results/css.md)|✅|![css_checker](documentation/TESTING-files/css-validation/post-edit-results/css-post-edit.png) 
+| ❌ |Errors/warnings returned, click [here](documentation/TESTING-files/css-validation/pre-edit-results/css.md)|✅|Base CSS![css_checker](documentation/TESTING-files/css-validation/post-edit-results/css-post-edit.png) Cart CSS![css_checker](documentation/TESTING-files/css-validation/post-edit-results/cart-css.png) Checkout CSS![css_checker](documentation/TESTING-files/css-validation/post-edit-results/checkout-css.png) Profile CSS![css_checker](documentation/TESTING-files/css-validation/post-edit-results/profile-css.png) 
 
 ### Javascript
 
