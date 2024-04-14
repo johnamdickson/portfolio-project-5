@@ -248,7 +248,10 @@ Hats Icon. Used when Hats products are displayed.
 
 #### Logo
 The site logo consists of a cartoon sheep, representing the wool used in crafting the company's products. It is prominent in the header along with the company name and can also be found in various places through the site such as toast headers, offcanvas title and favicon.<br><br>
-![logo-image](media/logo-transparent-background.webp)
+      <p align="center">
+        <img src="media/logo-transparent-background.webp"  width="200" height="200"> 
+      </p>
+
 #### Typography
 The fonts used in the project were sourced from Google Fonts open source offering and are described below:
 - Sacramento. A cursive font used for the logo text.
@@ -352,7 +355,7 @@ The fonts used in the project were sourced from Google Fonts open source offerin
   ![products](documentation/TESTING-files/user-story-testing/tutorial-email.png)<br><br>
 
 - __Toasts and Popovers__
-  - Bootstrap toasts were used to convey notifications to the user in a visually engaging manner. The toasts were coloured green for success, blue for info and red for error. <br><br>
+  - Bootstrap toasts were used to convey notifications to the user in a visually engaging manner. The toasts were coloured green for success, blue for info and red for error. Bootstrap popovers were used where the use of toasts would otherwise take from the user experience such as information buttons or input errors. <br><br>
   ![products](documentation/README-files/success-toast.png)
   ![products](documentation/README-files/info-toast.png)
   ![products](documentation/README-files/error-toast.png)
@@ -366,6 +369,7 @@ A number of features were considered at the outset of and during the project but
 - A subscription service for the learn feature.
 - Videos to compliment the learn pdf offering.
 - A styled email for order confirmation and learn to crochet.
+- A standalon css file for the Products app.
 
 <a href="#contents">BACK TO CONTENTS 🔼</a>
 
@@ -582,7 +586,7 @@ NOTE: Specific links are included within the Python, Javascript, HTML and CSS  f
 - The colour name was sourced from [Name That Color.](https://chir.ag/projects/name-that-color/)
 - The site colour scheme pallete was generated using the palette creation tool in [Color Hex.](https://www.color-hex.com/) 
 - Most of the icons used on the website were from [Font Awesome](https://fontawesome.com/).
-- Other icons in svg format were obtained taken from various sites: [reshot](https://www.reshot.com/) [iconscout](https://iconscout.com)
+- Other icons in svg format were obtained taken from [reshot](https://www.reshot.com/) and [iconscout](https://iconscout.com)
 
 
 ### Acknowledgements
