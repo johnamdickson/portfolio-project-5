@@ -53,6 +53,7 @@ The deployed website can be found at this [link.](https://little-woolly-snuggles
 - [Credits](#credits)
   - [Content](#content)
   - [Media](#media)
+  - [Acknowledgements](#acknowledgements)
 
 ## UX
 ### Strategy
