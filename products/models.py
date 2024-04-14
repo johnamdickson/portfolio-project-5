@@ -25,11 +25,11 @@ class Category(models.Model):
 
 class Product(models.Model):
     """
-    Product model containing all product fields. Unique product id uses UUID to 
-    generate a unique number. Sizes and colours fields use a many-to-many 
+    Product model containing all product fields. Unique product id uses UUID to
+    generate a unique number. Sizes and colours fields use a many-to-many
     relationship to cover different configurations of all properties with
-    products. The learn_product_pdf is a file field for uploading tutorial pdfs.
-    The other fields are self explanatory in terms of their intent.
+    products. The learn_product_pdf is a file field for uploading tutorial
+    pdfs.The other fields are self explanatory in terms of their intent.
     """
     category = models.ForeignKey(
         'Category',
@@ -73,7 +73,7 @@ class Product(models.Model):
 
     def svg(self):
         """
-        Method to return correct svg includes string based on 
+        Method to return correct svg includes string based on
         product category.
         """
         name = self.category.friendly_name

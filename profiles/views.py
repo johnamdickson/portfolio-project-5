@@ -12,17 +12,28 @@ from checkout.models import Order
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
-
+    regular_form = 'profile_offcanvas_form_regular-default_full_name'
     if request.method == 'POST':
         if 'view_form-default_full_name' in request.POST.keys():
-            form = UserProfileForm(request.POST, instance=profile, prefix="view_form")        
-        elif 'profile_offcanvas_form_regular-default_full_name' in request.POST.keys():
-            form = UserProfileForm(request.POST, instance=profile, prefix="profile_offcanvas_form_regular")
+            form = UserProfileForm(
+                request.POST,
+                instance=profile,
+                prefix="view_form"
+            )
+        elif regular_form in request.POST.keys():
+            form = UserProfileForm(
+                request.POST,
+                instance=profile,
+                prefix="profile_offcanvas_form_regular"
+            )
         else:
-            form = UserProfileForm(request.POST, instance=profile, prefix="profile_offcanvas_form_small")
+            form = UserProfileForm(
+                request.POST,
+                instance=profile,
+                prefix="profile_offcanvas_form_small"
+            )
 
         if form.is_valid():
-            print(form.cleaned_data)
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:

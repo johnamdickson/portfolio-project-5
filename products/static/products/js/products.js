@@ -20,7 +20,6 @@ const setUpSelect = () => {
   if (selector) {
     const queryString = window.location.search;
     let currentUrl = new URLSearchParams(queryString);
-    console.log(currentUrl.values)
     selector.onchange = () => {
       let selectedVal = selector.value;
       if (selectedVal != 'reset') {
@@ -28,7 +27,7 @@ const setUpSelect = () => {
         let direction = selectedVal.split("_")[1];
         // delete products from search params in case this was selected
         // in drop down.
-        currentUrl.delete('products')
+        currentUrl.delete('products');
         currentUrl.set("sort", sort);
         currentUrl.set("direction", direction);       
         window.location.replace('?' + currentUrl);

@@ -11,7 +11,6 @@ from num2words import num2words
 import constants as k
 from django.views.decorators.cache import never_cache
 
-# Create your views here.
 
 @never_cache
 def view_cart(request):
@@ -216,7 +215,6 @@ def remove_from_cart(request, item_id):
                             'cart': cart,
                             'id': item_id,
                             }
-        print('handle', handle_item_data)
         # call handle item function passing in a parameter to remove
         # the item(s) from cart.
         if size and colour and secondary_colour:

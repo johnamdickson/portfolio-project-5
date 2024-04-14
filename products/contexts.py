@@ -7,8 +7,8 @@ from .forms import ProductForm
 def add_product_details(request):
     """
     Function to filter products by categories and add to context.
-    Specifically for use in the nav drop downs so that products are 
-    available across the whole site. 
+    Specifically for use in the nav drop downs so that products are
+    available across the whole site.
     """
     hats = Product.objects.filter(category__name='hats')
     learn_to_crochet = Product.objects.filter(

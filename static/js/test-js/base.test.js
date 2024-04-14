@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+/*jshint esversion: 6 */ 
+
 // all code below from my pp4 automated testing.
 // https://github.com/johnamdickson/portfolio-project-4/blob/main/static/js/test-js/script.test.js
 

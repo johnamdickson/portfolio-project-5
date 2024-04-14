@@ -27,7 +27,7 @@ def products(request):
     title = "Products"
     sort = None
     direction = None
-    # checks if referer was edit product, in instance of delete this 
+    # checks if referer was edit product, in instance of delete this
     # will be the case which will return to the products page.
     if 'edit' in request_origin:
         cache.clear()
@@ -129,9 +129,17 @@ def add_product(request):
 
     if request.method == 'POST':
         if 'offcanvas_regular-name' in request.POST.keys():
-            form = ProductForm(request.POST, request.FILES, prefix="offcanvas_regular")        
+            form = ProductForm(
+                request.POST,
+                request.FILES,
+                prefix="offcanvas_regular"
+            )
         elif 'offcanvas_small-name' in request.POST.keys():
-            form = ProductForm(request.POST, request.FILES, prefix="offcanvas_small")
+            form = ProductForm(
+                request.POST,
+                request.FILES,
+                prefix="offcanvas_small"
+                )
         else:
             form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
